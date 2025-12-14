@@ -196,12 +196,14 @@ print("✓ Created qa_report.html")
 PYEOF
 
 cp qa_report.html flagged_subjects.csv "${EVIDENCE_DIR}/"
-rm -f qa_report.html flagged_subjects.csv
 
 python3 << 'PYEOF' > "${EVIDENCE_DIR}/validation_summary.json"
 import json
 import os
 from datetime import datetime
+
+# Get evidence directory path
+evidence_dir = os.environ.get('EVIDENCE_DIR', './evidence')
 
 summary = {
     "task_id": "DATA-016",
@@ -210,8 +212,8 @@ summary = {
     "validation_timestamp": datetime.now().isoformat(),
     "status": "success",
     "checks_performed": {
-        "qa_report_generated": os.path.exists('qa_report.html'),
-        "issues_identified": os.path.exists('flagged_subjects.csv')
+        "qa_report_generated": os.path.exists(os.path.join(evidence_dir, 'qa_report.html')),
+        "issues_identified": os.path.exists(os.path.join(evidence_dir, 'flagged_subjects.csv'))
     },
     "acceptance_metrics": {
         "qa_report_generated": True,
@@ -220,6 +222,8 @@ summary = {
 }
 print(json.dumps(summary, indent=2))
 PYEOF
+
+rm -f qa_report.html flagged_subjects.csv
 
 cat > "${EVIDENCE_DIR}/README.md" << 'EOF'
 # DATA-016 Evidence: Generate Quality Assurance Report
