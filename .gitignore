@@ -39,6 +39,9 @@ node_modules/
 .DS_Store
 *~
 
+# GitHub Actions artifacts
+artifacts/
+
 # Evidence directories (keep structure but ignore large data files if any)
 **/evidence/*.nii.gz
 **/evidence/*.tar.gz
