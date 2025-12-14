@@ -39,8 +39,8 @@ try:
     oasis_data = fetch_oasis_vbm(n_subjects=5)
     gray_matter_maps = oasis_data.gray_matter_maps
     use_synthetic = False
-except Exception as e:
-    print(f"Unable to fetch real data (network error: {str(e)[:100]})")
+except (ConnectionError, OSError, IOError) as e:
+    print("Unable to fetch real data due to network connectivity issues")
     print("Using synthetic data for demonstration...")
     # Create synthetic data structure
     gray_matter_maps = []
@@ -62,8 +62,9 @@ if use_synthetic:
         min_val = 0.0
         max_val = np.random.uniform(0.9, 1.0)
         
-        # Flag one subject as an outlier for demonstration
-        is_flagged = (idx == 2)  # Flag subject 3 as example
+        # Flag one subject as an outlier for demonstration purposes
+        # Using middle subject (idx==2) to show QA detection capability
+        is_flagged = (idx == 2)
         
         qa_results.append({
             'subject_id': subj_id,
