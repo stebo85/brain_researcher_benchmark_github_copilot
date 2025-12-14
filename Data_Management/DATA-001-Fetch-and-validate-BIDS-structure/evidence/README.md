@@ -31,8 +31,8 @@ Fetch and validate BIDS structure for Haxby dataset from OpenNeuro (ds000105).
 
 ## Acceptance Metrics
 
-- ✓ **bids_valid**: Dataset passes BIDS validation
-- ✓ **all_subjects_present**: All subjects listed in participants.tsv have corresponding directories
+- **bids_valid**: Dataset passes BIDS validation (see validation_summary.json for actual result)
+- **all_subjects_present**: All subjects listed in participants.tsv have corresponding directories (see validation_summary.json for actual result)
 
 ## Dataset Information
 
