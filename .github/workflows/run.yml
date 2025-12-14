@@ -169,6 +169,7 @@ jobs:
             echo "No changes to commit"
           else
             git commit -m "Add evidence from run_analysis scripts"
+            git pull --rebase origin main
             git push
             echo "✓ Evidence files committed and pushed"
           fi
