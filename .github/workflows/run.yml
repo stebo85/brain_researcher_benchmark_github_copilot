@@ -31,14 +31,21 @@ jobs:
           echo "Found ${#scripts[@]} scripts:"
           printf ' - %s\n' "${scripts[@]}"
 
-          # Convert to JSON array for matrix
-          json_array=$(printf '%s\n' "${scripts[@]}" | jq -R -s -c 'split("\n") | map(select(length > 0))')
+          # Remove duplicates and convert to JSON array for matrix
+          json_array=$(printf '%s\n' "${scripts[@]}" | sort -u | jq -R -s -c 'split("\n") | map(select(length > 0))')
+          
+          # Count unique scripts
+          unique_count=$(printf '%s\n' "${scripts[@]}" | sort -u | wc -l)
+          echo "Unique scripts after deduplication: $unique_count"
           echo "matrix={\"script\":$json_array}" >> "$GITHUB_OUTPUT"
           echo "Generated matrix: {\"script\":$json_array}"
 
   run-analysis:
     needs: discover-scripts
     runs-on: self-hosted
+    concurrency:
+      group: run-analysis-${{ matrix.script }}
+      cancel-in-progress: true
     permissions:
       contents: write
     strategy:
