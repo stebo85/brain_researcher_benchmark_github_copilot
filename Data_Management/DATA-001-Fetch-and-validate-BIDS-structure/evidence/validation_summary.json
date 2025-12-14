@@ -2,7 +2,7 @@
   "task_id": "DATA-001",
   "task_name": "Fetch and validate BIDS structure for Haxby dataset",
   "dataset": "OpenNeuro ds000105 (Haxby)",
-  "validation_timestamp": "2025-12-14T16:53:36.617635",
+  "validation_timestamp": "2025-12-14T16:58:45.980908",
   "status": "success",
   "checks_performed": {
     "dataset_description_exists": true,
