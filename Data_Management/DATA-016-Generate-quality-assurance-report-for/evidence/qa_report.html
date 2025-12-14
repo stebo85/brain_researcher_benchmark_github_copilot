@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>OASIS VBM Quality Assurance Report</title>
+    <style>
+        body { font-family: Arial; margin: 20px; }
+        h1 { color: #2c3e50; }
+        .summary { background-color: #ecf0f1; padding: 15px; border-radius: 5px; }
+        .metric { margin: 10px 0; }
+        .good { color: green; }
+        .warning { color: orange; }
+        .error { color: red; }
+        table { border-collapse: collapse; width: 100%; margin-top: 20px; }
+        th, td { border: 1px solid #ddd; padding: 8px; text-align: left; }
+        th { background-color: #3498db; color: white; }
+        tr:nth-child(even) { background-color: #f2f2f2; }
+    </style>
+</head>
+<body>
+    <h1>OASIS VBM Quality Assurance Report</h1>
+    <div class="summary">
+        <h2>Summary</h2>
+        <div class="metric"><b>Generated:</b> 2025-12-14T18:11:15.251220</div>
+        <div class="metric"><b>Total Subjects:</b> 5</div>
+        <div class="metric"><b>Flagged Subjects:</b> <span class="error">1</span></div>
+        <div class="metric"><b>Pass Rate:</b> 80.0%</div>
+    </div>
+    
+    <h2>Quality Metrics</h2>
+    <table>
+        <tr>
+            <th>Subject ID</th>
+            <th>Mean Intensity</th>
+            <th>Std Intensity</th>
+            <th>Status</th>
+            <th>Notes</th>
+        </tr>
+
+        <tr>
+            <td>sub-0001</td>
+            <td>0.412</td>
+            <td>0.245</td>
+            <td class="good">OK</td>
+            <td>OK</td>
+        </tr>
+    
+        <tr>
+            <td>sub-0002</td>
+            <td>0.335</td>
+            <td>0.211</td>
+            <td class="good">OK</td>
+            <td>OK</td>
+        </tr>
+    
+        <tr>
+            <td>sub-0003</td>
+            <td>0.550</td>
+            <td>0.160</td>
+            <td class="error">FLAGGED</td>
+            <td>Intensity outlier (synthetic)</td>
+        </tr>
+    
+        <tr>
+            <td>sub-0004</td>
+            <td>0.597</td>
+            <td>0.205</td>
+            <td class="good">OK</td>
+            <td>OK</td>
+        </tr>
+    
+        <tr>
+            <td>sub-0005</td>
+            <td>0.535</td>
+            <td>0.213</td>
+            <td class="good">OK</td>
+            <td>OK</td>
+        </tr>
+    
+    </table>
+</body>
+</html>
