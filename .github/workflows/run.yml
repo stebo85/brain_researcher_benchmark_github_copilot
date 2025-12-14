@@ -52,7 +52,7 @@ jobs:
           printf ' - %s\n' "${scripts[@]}"
 
           {
-            echo "scripts<<'EOF'"
+            echo "scripts<<EOF"
             printf '%s\n' "${scripts[@]}"
             echo "EOF"
           } >> "$GITHUB_OUTPUT"

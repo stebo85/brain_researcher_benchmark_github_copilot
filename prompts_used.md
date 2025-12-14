@@ -7,3 +7,9 @@ Create a bash file custom_runner_setup.sh with steps to setup the custom github 
 generarlize the workflow file data-001.yml, so that it would run every run_analysis.sh file in every subdirectory. 
 
 look at this run_analysis file again. Assume you have to install python packages yourself in a venv per analysis. Datalad and Neurodesk are installed ready to go.
+
+fix: Searching for run_analysis.sh scripts...
+Found 1 scripts:
+ - ./Data_Management/DATA-001-Fetch-and-validate-BIDS-structure/run_analysis.sh
+Error: Unable to process file command 'output' successfully.
+Error: Invalid value. Matching delimiter not found ''EOF''
