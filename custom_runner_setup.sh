@@ -164,20 +164,49 @@ sudo apt install lmod
 
 # Create a the new file /usr/share/module.sh with the content (NOTE: update the version, here 6.6, with your lmod version, e.g. 6.6 (Ubuntu 20.04/22.04), 8.6.19 (Ubuntu 24.04)):
 
+sudo vi /usr/share/module.sh
+
 # system-wide profile.modules                                          #
 # Initialize modules for all sh-derivative shells                      #
 #----------------------------------------------------------------------#
 trap "" 1 2 3
 
 case "$0" in
-    -bash|bash|*/bash) . /usr/share/lmod/YOURLMODVERSION_HERE/init/bash ;;
-       -ksh|ksh|*/ksh) . /usr/share/lmod/YOURLMODVERSION_HERE/init/ksh ;;
-       -zsh|zsh|*/zsh) . /usr/share/lmod/YOURLMODVERSION_HERE/init/zsh ;;
-          -sh|sh|*/sh) . /usr/share/lmod/YOURLMODVERSION_HERE/init/sh ;;
-                    *) . /usr/share/lmod/YOURLMODVERSION_HERE/init/sh ;;  # default for scripts
+    -bash|bash|*/bash) . /usr/share/lmod/8.6.19/init/bash ;;
+       -ksh|ksh|*/ksh) . /usr/share/lmod/8.6.19/init/ksh ;;
+       -zsh|zsh|*/zsh) . /usr/share/lmod/8.6.19/init/zsh ;;
+          -sh|sh|*/sh) . /usr/share/lmod/8.6.19/init/sh ;;
+                    *) . /usr/share/lmod/8.6.19/init/sh ;;  # default for scripts
 esac
 
 trap - 1 2 3
+
+vi ~/.bashrc
+
+# add the following: 
+
+if [ -f '/usr/share/module.sh' ]; then source /usr/share/module.sh; fi
+
+if [ -d /cvmfs/neurodesk.ardc.edu.au/neurodesk-modules ]; then
+        # export MODULEPATH="/cvmfs/neurodesk.ardc.edu.au/neurodesk-modules"
+        module use /cvmfs/neurodesk.ardc.edu.au/neurodesk-modules/*
+else
+        export MODULEPATH="/neurodesktop-storage/containers/modules"              
+        module use $MODULEPATH
+        export CVMFS_DISABLE=true
+fi
+
+if [ -f '/usr/share/module.sh' ]; then
+        echo 'Run "ml av" to see which tools are available - use "ml <tool>" to use them in this shell.'
+        if [ -v "$CVMFS_DISABLE" ]; then
+                if [ ! -d $MODULEPATH ]; then
+                        echo 'Neurodesk tools not yet downloaded. Choose tools to install from the Application menu.'
+                fi
+        fi
+fi
+
+export APPTAINER_BINDPATH='/cvmfs,/mnt,/home'
+
 
 # ========================================
 # 4. Setup GitHub Actions Runner
