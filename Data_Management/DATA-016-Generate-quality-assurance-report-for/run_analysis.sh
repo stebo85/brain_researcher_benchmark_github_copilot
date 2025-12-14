@@ -196,6 +196,7 @@ print("✓ Created qa_report.html")
 PYEOF
 
 cp qa_report.html flagged_subjects.csv "${EVIDENCE_DIR}/"
+rm -f qa_report.html flagged_subjects.csv
 
 python3 << 'PYEOF' > "${EVIDENCE_DIR}/validation_summary.json"
 import json
