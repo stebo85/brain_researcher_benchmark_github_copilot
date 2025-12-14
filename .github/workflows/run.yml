@@ -124,7 +124,69 @@ jobs:
           popd >/dev/null
           echo "Completed $script"
 
-      - name: Upload evidence as artifact
+      - name: Commit and push evidence
+        if: always()
+        run: |
+          set -e
+          script="${{ matrix.script }}"
+          script_dir=$(dirname "$script")
+          evidence_dir="$script_dir/evidence"
+          
+          # Check if evidence directory exists
+          if [ ! -d "$evidence_dir" ]; then
+            echo "No evidence directory found at $evidence_dir"
+            exit 0
+          fi
+          
+          # Check if evidence directory has any files
+          if [ -z "$(ls -A "$evidence_dir" 2>/dev/null)" ]; then
+            echo "Evidence directory is empty, nothing to commit"
+            exit 0
+          fi
+          
+          echo "Committing evidence from $evidence_dir"
+          
+          # Add evidence files
+          git add "$evidence_dir"
+          
+          # Check if there are changes to commit
+          if git diff --staged --quiet; then
+            echo "No new changes to commit (evidence may already be committed)"
+            exit 0
+          fi
+          
+          # Commit the evidence
+          task_name=$(basename "$script_dir")
+          git commit -m "Add evidence for $task_name"
+          
+          # Push with retry logic to handle concurrent pushes
+          max_retries=10
+          retry_count=0
+          current_branch="${{ github.ref_name }}"
+          
+          while [ $retry_count -lt $max_retries ]; do
+            echo "Attempt $((retry_count + 1)) to push changes..."
+            
+            if git push origin HEAD:"$current_branch"; then
+              echo "✓ Evidence pushed successfully to $current_branch"
+              exit 0
+            fi
+            
+            # Pull with rebase and retry
+            echo "Push failed, pulling latest changes and retrying..."
+            if git pull --rebase origin "$current_branch"; then
+              retry_count=$((retry_count + 1))
+              sleep $((RANDOM % 5 + 1))  # Random delay between 1-5 seconds
+            else
+              echo "Failed to pull and rebase"
+              exit 1
+            fi
+          done
+          
+          echo "Failed to push after $max_retries attempts"
+          exit 1
+
+      - name: Upload evidence as artifact (backup)
         uses: actions/upload-artifact@v4
         if: always()
         with:
@@ -134,11 +196,9 @@ jobs:
           if-no-files-found: warn
           retention-days: 90
 
-  commit-results:
+  summary:
     needs: run-analysis
     runs-on: self-hosted
-    permissions:
-      contents: write
     if: always()
     
     steps:
@@ -147,43 +207,11 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Configure Git
-        run: |
-          git config --global user.name "GitHub Actions Bot"
-          git config --global user.email "actions@github.com"
-
-      - name: Download all artifacts
-        uses: actions/download-artifact@v4
-        with:
-          path: artifacts
-
-      - name: Move evidence files to workspace
-        run: |
-          if [ -d "artifacts" ]; then
-            find artifacts -type f -path "*/evidence/*" -exec sh -c '
-              for file; do
-                rel_path="${file#artifacts/evidence-*/}"
-                mkdir -p "$(dirname "$rel_path")"
-                cp "$file" "$rel_path"
-              done
-            ' sh {} +
-          fi
-
-      - name: Commit evidence files
-        run: |
-          git add -A
-          if git diff --staged --quiet; then
-            echo "No changes to commit"
-          else
-            git commit -m "Add evidence from run_analysis scripts"
-            git pull --rebase origin main
-            git push
-            echo "✓ Evidence files committed and pushed"
-          fi
-
       - name: Summary
         run: |
           echo "## Run Analysis Summary" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "All analysis scripts have been executed and evidence has been committed per action." >> $GITHUB_STEP_SUMMARY
           echo "" >> $GITHUB_STEP_SUMMARY
           echo "### Evidence directories" >> $GITHUB_STEP_SUMMARY
           echo "" >> $GITHUB_STEP_SUMMARY
