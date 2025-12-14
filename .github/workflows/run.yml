@@ -25,18 +25,33 @@ jobs:
 
       - name: Set up environment
         run: |
-          export PATH="/home/ubuntu/venv_runner/bin:$PATH"
-          echo "/home/ubuntu/venv_runner/bin" >> "$GITHUB_PATH"
-          echo "Added /home/ubuntu/venv_runner/bin to PATH for datalad"
-          which datalad || echo "Datalad not found, please install"
-          which python3 || echo "Python3 not found"
+          # Check if custom runner venv exists (for self-hosted runner)
+          if [ -d "/home/ubuntu/venv_runner/bin" ]; then
+            export PATH="/home/ubuntu/venv_runner/bin:$PATH"
+            echo "/home/ubuntu/venv_runner/bin" >> "$GITHUB_PATH"
+            echo "Added /home/ubuntu/venv_runner/bin to PATH for datalad"
+          fi
+          
+          # Ensure git-lfs is installed
+          git lfs install || echo "git-lfs not available"
+          
           echo "Environment Information:"
           echo "========================"
           echo "OS: $(uname -a)"
+          echo "User: $(whoami)"
+          echo "Home: $HOME"
           echo "Python: $(python3 --version)"
-          echo "Datalad: $(datalad --version || echo 'not available')"
-          echo "Available modules:"
-          module avail 2>&1 | head -20 || echo "Module system not available"
+          echo "Datalad: $(datalad --version 2>/dev/null || echo 'not available - will be installed by scripts')"
+          echo "Git: $(git --version)"
+          echo "Git-LFS: $(git lfs version 2>/dev/null || echo 'not available')"
+          
+          # Check for module system (on custom runners)
+          if command -v module &> /dev/null; then
+            echo "Available modules:"
+            module avail 2>&1 | head -20 || true
+          else
+            echo "Module system not available (GitHub-hosted runner or not configured)"
+          fi
 
      
       - name: Discover analysis scripts
