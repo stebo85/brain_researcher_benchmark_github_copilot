@@ -1,0 +1,18 @@
+{
+  "task_id": "DATA-002",
+  "task_name": "Load and cache ADHD-200 dataset with phenotypic data",
+  "dataset": "ADHD-200",
+  "validation_timestamp": "2025-12-14T18:02:05.010728",
+  "status": "success",
+  "checks_performed": {
+    "data_cached": true,
+    "phenotypes_loaded": true,
+    "cache_size_bytes": 19519,
+    "num_subjects": 30,
+    "num_phenotypic_vars": 65
+  },
+  "acceptance_metrics": {
+    "data_cached": true,
+    "phenotypes_loaded": true
+  }
+}
