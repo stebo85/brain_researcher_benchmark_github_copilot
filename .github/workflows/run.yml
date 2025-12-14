@@ -25,6 +25,9 @@ jobs:
 
       - name: Set up environment
         run: |
+          export PATH="/home/ubuntu/venv_runner/bin:$PATH"
+          echo "/home/ubuntu/venv_runner/bin" >> "$GITHUB_PATH"
+          echo "Added /home/ubuntu/venv_runner/bin to PATH for datalad"
           which datalad || echo "Datalad not found, please install"
           which python3 || echo "Python3 not found"
           echo "Environment Information:"
