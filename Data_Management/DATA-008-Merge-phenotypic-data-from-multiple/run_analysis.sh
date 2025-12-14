@@ -52,6 +52,12 @@ if 'site' in merged_df.columns:
     with open('site_mapping.json', 'w') as f:
         json.dump(site_mapping, f, indent=2)
     print(f"✓ Created site_mapping.json with {len(site_mapping)} sites")
+else:
+    # Create empty site mapping if 'site' column is missing
+    site_mapping = {}
+    with open('site_mapping.json', 'w') as f:
+        json.dump(site_mapping, f, indent=2)
+    print("✓ Created empty site_mapping.json (no 'site' column in data)")
 
 # Save merged phenotypes
 merged_df.to_csv('merged_phenotypes.csv', index=False)
