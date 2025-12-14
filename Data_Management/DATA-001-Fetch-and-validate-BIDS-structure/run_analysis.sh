@@ -10,20 +10,65 @@ echo "DATA-001: Fetch and Validate BIDS Structure"
 echo "Dataset: Haxby (OpenNeuro ds000105)"
 echo "=========================================="
 
-# Set analysis root for venv placement
-ANALYSIS_DIR="Data_Management/DATA-001-Fetch-and-validate-BIDS-structure"
+# Get the absolute path of the script directory
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+
+# Set analysis root for venv placement using absolute path
+ANALYSIS_DIR="${SCRIPT_DIR}"
 
 # Create output directory for evidence
 EVIDENCE_DIR="${ANALYSIS_DIR}/evidence"
 mkdir -p "${EVIDENCE_DIR}"
 
-# Step 0: Create and activate per-analysis Python virtual environment
+# Step 0: Configure Git if not already configured
 echo ""
-echo "Step 0: Setting up per-analysis Python virtual environment..."
+echo "Step 0: Configuring Git..."
+GIT_USER_NAME=$(git config --global user.name 2>/dev/null || echo "")
+GIT_USER_EMAIL=$(git config --global user.email 2>/dev/null || echo "")
+
+if [ -z "$GIT_USER_NAME" ]; then
+    git config --global user.name "Analysis Runner"
+    echo "Set git user.name to 'Analysis Runner'"
+else
+    echo "Git user.name already set to: $GIT_USER_NAME"
+fi
+
+if [ -z "$GIT_USER_EMAIL" ]; then
+    git config --global user.email "runner@analysis.local"
+    echo "Set git user.email to 'runner@analysis.local'"
+else
+    echo "Git user.email already set to: $GIT_USER_EMAIL"
+fi
+
+# Step 1: Create and activate per-analysis Python virtual environment
+echo ""
+echo "Step 1: Setting up per-analysis Python virtual environment..."
 VENV_DIR="${ANALYSIS_DIR}/.venv"
 python3 -m venv "${VENV_DIR}"
 . "${VENV_DIR}/bin/activate"
 python -m pip install --upgrade pip
+
+# Install DataLad and git-annex if not available
+echo ""
+echo "Checking for DataLad..."
+if ! command -v datalad &> /dev/null; then
+    echo "DataLad not found. Installing..."
+    
+    # Try to use system git-annex if available
+    if ! command -v git-annex &> /dev/null; then
+        echo "git-annex not found. Attempting to install from system packages..."
+        sudo apt-get update -qq && sudo apt-get install -qq -y git-annex 2>&1 | tail -5 || {
+            echo "Warning: Could not install git-annex from system packages"
+            echo "Installing DataLad without git-annex (some features will be limited)..."
+        }
+    fi
+    
+    # Install DataLad from PyPI
+    python -m pip install datalad
+    echo "DataLad installed: $(datalad --version)"
+else
+    echo "DataLad already available: $(datalad --version)"
+fi
 
 # Install any Python packages needed for validation fallback
 # Keeping minimal to avoid unnecessary dependencies; add more if required
@@ -35,23 +80,23 @@ cd "${WORK_DIR}"
 
 echo "Working directory: ${WORK_DIR}"
 
-# Step 1: Download the Haxby dataset using datalad
+# Step 2: Download the Haxby dataset using datalad
 echo ""
-echo "Step 1: Downloading Haxby dataset from OpenNeuro (ds000105)..."
+echo "Step 2: Downloading Haxby dataset from OpenNeuro (ds000105)..."
 datalad install https://github.com/OpenNeuroDatasets/ds000105.git
 cd ds000105
 
 # Get the data (download actual files, not just git-annex pointers)
 echo ""
-echo "Step 2: Retrieving dataset files..."
+echo "Step 3: Retrieving dataset files..."
 datalad get dataset_description.json participants.tsv participants.json README CHANGES
 
 # Also get a sample of the data to verify structure
 datalad get sub-1/anat sub-1/func/*bold.json sub-1/func/*events.tsv || true
 
-# Step 3: Validate BIDS structure
+# Step 4: Validate BIDS structure
 echo ""
-echo "Step 3: Installing BIDS validator..."
+echo "Step 4: Installing BIDS validator..."
 # Prefer Node.js bids-validator; fallback to existing installation
 if ! command -v bids-validator &> /dev/null; then
     npm install -g bids-validator || echo "bids-validator (Node) not installed; will use manual checks"
@@ -60,7 +105,7 @@ else
 fi
 
 echo ""
-echo "Step 4: Running BIDS validation..."
+echo "Step 5: Running BIDS validation..."
 # Run BIDS validator and capture output
 if command -v bids-validator &> /dev/null; then
     bids-validator . --verbose > "${EVIDENCE_DIR}/bids_validation_report.txt" 2>&1 || {
@@ -136,9 +181,9 @@ print("BIDS validation completed!")
 PYEOF
 fi
 
-# Step 5: Extract and verify required evidence
+# Step 6: Extract and verify required evidence
 echo ""
-echo "Step 5: Extracting required evidence..."
+echo "Step 6: Extracting required evidence..."
 
 # Copy dataset_description.json
 if [ -f "dataset_description.json" ]; then
@@ -164,9 +209,9 @@ if [ -f "participants.json" ]; then
     echo "✓ Copied participants.json (optional)"
 fi
 
-# Step 6: Generate summary report
+# Step 7: Generate summary report
 echo ""
-echo "Step 6: Generating summary report..."
+echo "Step 7: Generating summary report..."
 python3 << 'PYEOF' > "${EVIDENCE_DIR}/validation_summary.json"
 import json
 import os
@@ -224,9 +269,9 @@ echo "✓ Generated validation_summary.json"
 # Copy the summary
 cp "${EVIDENCE_DIR}/validation_summary.json" . || true
 
-# Step 7: Create a README for the evidence
+# Step 8: Create a README for the evidence
 echo ""
-echo "Step 7: Creating evidence README..."
+echo "Step 8: Creating evidence README..."
 cat > "${EVIDENCE_DIR}/README.md" << 'EOF'
 # DATA-001 Evidence: Fetch and Validate BIDS Structure
 
@@ -276,7 +321,7 @@ EOF
 
 echo "✓ Created evidence README.md"
 
-# Step 8: Display summary
+# Step 9: Display summary
 echo ""
 echo "=========================================="
 echo "Validation Summary"
