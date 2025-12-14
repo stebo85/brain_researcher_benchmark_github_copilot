@@ -2,11 +2,11 @@
   "task_id": "DATA-016",
   "task_name": "Generate quality assurance report for OASIS VBM dataset",
   "dataset": "OASIS VBM",
-  "validation_timestamp": "2025-12-14T18:06:12.239676",
+  "validation_timestamp": "2025-12-14T18:07:37.776310",
   "status": "success",
   "checks_performed": {
-    "qa_report_generated": true,
-    "issues_identified": true
+    "qa_report_generated": false,
+    "issues_identified": false
   },
   "acceptance_metrics": {
     "qa_report_generated": true,
