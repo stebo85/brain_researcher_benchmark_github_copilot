@@ -25,6 +25,16 @@ This repository enables GitHub Copilot to work autonomously on brain imaging ana
    - Captures all outputs and logs
 4. **Results Stored**: The complete analysis results are committed to the `results/` directory
 
+## Security Considerations
+
+⚠️ **Important**: This system executes code from markdown analysis files. Only use trusted analysis files from verified collaborators. See [SECURITY.md](SECURITY.md) for detailed security information.
+
+**Key Security Practices**:
+- Review all analysis files before execution
+- Use branch protection and require pull request reviews
+- Only grant write access to trusted collaborators
+- Follow data protection requirements for sensitive data
+
 ## Quick Start
 
 ### 1. Create an Analysis Prompt

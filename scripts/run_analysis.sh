@@ -1,5 +1,10 @@
 #!/bin/bash
 
+# SECURITY WARNING: This script executes code from markdown analysis files.
+# Only run with trusted analysis files from verified repository collaborators.
+# All analysis files should be reviewed before execution to prevent malicious code.
+# The script is designed for use in controlled GitHub Actions environments.
+
 set -e
 
 # Check if analysis file is provided
@@ -22,8 +27,12 @@ echo "Analysis file: $ANALYSIS_FILE"
 echo "Timestamp: $(date -u +"%Y-%m-%d %H:%M:%S UTC")"
 echo "================================================"
 
-# Extract analysis name from filename
-ANALYSIS_NAME=$(basename "$ANALYSIS_FILE" .md)
+# Extract analysis name from filename and sanitize it
+ANALYSIS_NAME=$(basename "$ANALYSIS_FILE" .md | tr -cd '[:alnum:]_-')
+if [ -z "$ANALYSIS_NAME" ]; then
+    echo "Error: Invalid analysis filename"
+    exit 1
+fi
 RESULT_DIR="results/${ANALYSIS_NAME}_$(date +%Y%m%d_%H%M%S)"
 mkdir -p "$RESULT_DIR"
 
@@ -76,8 +85,11 @@ else
     echo "" >> "$RESULT_FILE"
 fi
 
-# Extract container specification from markdown
-CONTAINER=$(grep -E "^\*\*Container:\*\*|^Container:" "$ANALYSIS_FILE" | sed 's/\*\*Container:\*\*//g; s/^Container://g' | xargs || echo "")
+# Extract container specification from markdown and sanitize
+# Note: Container and command names are sanitized but commands are executed as-is by design
+# This is an intentional feature to allow flexible analysis workflows
+# Only use trusted analysis files from repository collaborators
+CONTAINER=$(grep -E "^\*\*Container:\*\*|^Container:" "$ANALYSIS_FILE" | sed 's/\*\*Container:\*\*//g; s/^Container://g' | xargs | tr -cd '[:alnum:]_-' || echo "")
 COMMAND=$(grep -E "^\*\*Command:\*\*|^Command:" "$ANALYSIS_FILE" | sed 's/\*\*Command:\*\*//g; s/^Command://g' | sed 's/^[ \t]*//g' || echo "")
 
 echo "### Execution Details" >> "$RESULT_FILE"

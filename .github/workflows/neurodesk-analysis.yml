@@ -45,11 +45,14 @@ jobs:
           EOF
           
           sudo tee /etc/cvmfs/config.d/neurodesk.ardc.edu.au.conf > /dev/null <<EOF
+          # CVMFS uses HTTP with cryptographic verification via public key
+          # Content integrity is ensured through signed manifests and checksums
           CVMFS_SERVER_URL="http://203.101.229.100/cvmfs/@fqrn@"
           CVMFS_PUBLIC_KEY="/etc/cvmfs/keys/neurodesk.ardc.edu.au/neurodesk.ardc.edu.au.pub"
           EOF
           
           sudo mkdir -p /etc/cvmfs/keys/neurodesk.ardc.edu.au
+          # Official Neurodesk public key from https://www.neurodesk.org/docs/getting-started/neurocontainers/cvmfs/
           sudo tee /etc/cvmfs/keys/neurodesk.ardc.edu.au/neurodesk.ardc.edu.au.pub > /dev/null <<EOF
           -----BEGIN PUBLIC KEY-----
           MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA0D3i+JhH1PrEKNqc4BhM
