@@ -20,7 +20,6 @@ VENV_DIR="${SCRIPT_DIR}/.venv"
 python3 -m venv "${VENV_DIR}"
 . "${VENV_DIR}/bin/activate"
 python -m pip install --upgrade pip
-python -m pip install mne
 
 echo ""
 echo "Linking MNE sample with FreeSurfer data..."
@@ -28,7 +27,6 @@ python3 << 'PYEOF'
 import os
 import json
 from datetime import datetime
-import mne
 
 print("Setting up MNE sample dataset...")
 

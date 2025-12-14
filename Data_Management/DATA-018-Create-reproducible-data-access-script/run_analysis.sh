@@ -40,10 +40,10 @@ import hashlib
 from datetime import datetime
 from nilearn.datasets import fetch_mixed_gambles
 
-def verify_checksum(filepath, expected_hash=None):
-    """Verify file integrity using MD5 checksum"""
+def calculate_checksum(filepath):
+    """Calculate MD5 checksum for a file"""
     if not os.path.exists(filepath):
-        return False
+        return ""
     
     hasher = hashlib.md5()
     with open(filepath, 'rb') as f:
