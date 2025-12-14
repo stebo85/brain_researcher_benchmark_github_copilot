@@ -87,7 +87,15 @@ manifest_exists = os.path.exists('haxby_derivatives/manifest.txt')
 
 if archive_exists:
     archive_size = os.path.getsize('haxby_derivatives.tar.gz')
-    compression_ratio = float('${RATIO}')
+    try:
+        compression_ratio = float('${RATIO}')
+    except (ValueError, TypeError):
+        # Fallback: calculate ratio in Python if bash value is invalid
+        import os
+        orig_size = sum(os.path.getsize(os.path.join(dirpath, filename))
+                       for dirpath, _, filenames in os.walk('haxby_derivatives')
+                       for filename in filenames)
+        compression_ratio = archive_size / orig_size if orig_size > 0 else 0
 else:
     archive_size = 0
     compression_ratio = 0
