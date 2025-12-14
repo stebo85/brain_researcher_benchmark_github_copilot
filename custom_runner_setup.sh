@@ -158,6 +158,27 @@ pip install datalad
 datalad --version
 echo "✓ DataLad installed successfully"
 
+
+# setup lmod
+sudo apt install lmod
+
+# Create a the new file /usr/share/module.sh with the content (NOTE: update the version, here 6.6, with your lmod version, e.g. 6.6 (Ubuntu 20.04/22.04), 8.6.19 (Ubuntu 24.04)):
+
+# system-wide profile.modules                                          #
+# Initialize modules for all sh-derivative shells                      #
+#----------------------------------------------------------------------#
+trap "" 1 2 3
+
+case "$0" in
+    -bash|bash|*/bash) . /usr/share/lmod/YOURLMODVERSION_HERE/init/bash ;;
+       -ksh|ksh|*/ksh) . /usr/share/lmod/YOURLMODVERSION_HERE/init/ksh ;;
+       -zsh|zsh|*/zsh) . /usr/share/lmod/YOURLMODVERSION_HERE/init/zsh ;;
+          -sh|sh|*/sh) . /usr/share/lmod/YOURLMODVERSION_HERE/init/sh ;;
+                    *) . /usr/share/lmod/YOURLMODVERSION_HERE/init/sh ;;  # default for scripts
+esac
+
+trap - 1 2 3
+
 # ========================================
 # 4. Setup GitHub Actions Runner
 # ========================================
