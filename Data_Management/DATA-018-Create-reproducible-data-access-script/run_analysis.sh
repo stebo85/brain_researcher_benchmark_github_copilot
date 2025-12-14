@@ -81,13 +81,13 @@ def fetch_mixed_gambles_reproducible(data_dir='./mixed_gambles_data'):
     
     # Verify dataset structure
     print("\nDataset verification:")
-    print(f"  ✓ Functional images: {len(dataset.func)}")
-    print(f"  ✓ Confounds: {len(dataset.confounds)}")
+    print(f"  ✓ Z-maps: {len(dataset.zmaps)}")
+    print(f"  ✓ Subjects: {len(dataset.subject_id)}")
     
     # Document fetch
     fetch_log = {
         'timestamp': datetime.now().isoformat(),
-        'n_subjects': len(dataset.func),
+        'n_subjects': len(dataset.zmaps),
         'data_dir': data_dir,
         'dataset_description': dataset.description
     }
