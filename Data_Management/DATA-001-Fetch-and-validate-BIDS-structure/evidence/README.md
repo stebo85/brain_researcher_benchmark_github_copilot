@@ -11,12 +11,14 @@ Fetch and validate BIDS structure for Haxby dataset from OpenNeuro (ds000105).
    - Contains dataset name, BIDS version, and metadata
    - Validates that the dataset follows BIDS specification
 
-2. **participants.tsv** - Participant information (required)
+2. **participants.tsv** - Participant information (optional in BIDS)
    - Lists all subjects in the dataset
    - Contains participant IDs and metadata
+   - Note: Not all BIDS datasets include this file
 
 3. **participants.json** - Participant metadata schema (optional)
    - Describes the columns in participants.tsv
+   - Only present if participants.tsv exists
 
 4. **bids_validation_report.txt** - BIDS validator output
    - Detailed validation results from bids-validator
