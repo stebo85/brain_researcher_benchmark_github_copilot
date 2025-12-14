@@ -1,0 +1,31 @@
+# Temporary files
+*.tmp
+*.log
+.DS_Store
+
+# Build artifacts
+*.pyc
+__pycache__/
+*.so
+*.dylib
+
+# IDE files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Data files (uncomment if you want to ignore large data files)
+# data/*.nii
+# data/*.nii.gz
+# data/*.mgz
+
+# Results intermediate files (keep the markdown results)
+results/**/*.nii
+results/**/*.nii.gz
+results/**/*.mgz
+results/**/script.sh
+
+# System files
+Thumbs.db

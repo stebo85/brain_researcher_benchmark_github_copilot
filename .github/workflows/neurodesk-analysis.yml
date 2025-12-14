@@ -1,0 +1,119 @@
+name: Neurodesk Brain Imaging Analysis
+
+on:
+  workflow_dispatch:
+    inputs:
+      analysis_file:
+        description: 'Path to the analysis prompt markdown file'
+        required: true
+        default: 'analyses/example_analysis.md'
+  push:
+    paths:
+      - 'analyses/*.md'
+      - 'analyses/**/*.md'
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  brain-imaging-analysis:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      
+      - name: Install CVMFS
+        run: |
+          wget https://ecsft.cern.ch/dist/cvmfs/cvmfs-release/cvmfs-release-latest_all.deb
+          sudo dpkg -i cvmfs-release-latest_all.deb
+          rm -f cvmfs-release-latest_all.deb
+          sudo apt-get update
+          sudo apt-get install -y cvmfs cvmfs-config-default
+          
+      - name: Configure CVMFS for Neurodesk
+        run: |
+          sudo mkdir -p /etc/cvmfs
+          sudo tee /etc/cvmfs/default.local > /dev/null <<EOF
+          CVMFS_REPOSITORIES=neurodesk.ardc.edu.au
+          CVMFS_HTTP_PROXY=DIRECT
+          CVMFS_QUOTA_LIMIT=10000
+          CVMFS_CLIENT_PROFILE=single
+          EOF
+          
+          sudo tee /etc/cvmfs/config.d/neurodesk.ardc.edu.au.conf > /dev/null <<EOF
+          CVMFS_SERVER_URL="http://203.101.229.100/cvmfs/@fqrn@"
+          CVMFS_PUBLIC_KEY="/etc/cvmfs/keys/neurodesk.ardc.edu.au/neurodesk.ardc.edu.au.pub"
+          EOF
+          
+          sudo mkdir -p /etc/cvmfs/keys/neurodesk.ardc.edu.au
+          sudo tee /etc/cvmfs/keys/neurodesk.ardc.edu.au/neurodesk.ardc.edu.au.pub > /dev/null <<EOF
+          -----BEGIN PUBLIC KEY-----
+          MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA0D3i+JhH1PrEKNqc4BhM
+          rDqbT9RD8VvmjNq3W3QQHMjvhAOj8UJ3/hzaZVWchGm0VqXQYnRvLSQDf5T0BJDI
+          n/8Y3xkPKBm9xzNT7U8QvQzR+1h4sMU6n5HqYCF9XUm0Y1TQYmqQw0TZJQKQV6Lf
+          KLz8LqvLKfuXHghxD7eLRfK8tWsNjGKlLLKmk3TQi0+TvO3G5HYLwFJlWxWKNUqU
+          xQwvWrHLQQU8qBVDJZI4wWHi5lqF+d7L3K6HLQZlFAb8vOLqFLmr8VxOZ7EL7T8U
+          jqZZmNQvJN+Vh3lqJPvOqQvCH/9qnvw3gCJGBKFQH3sQW4JXhVH0aELKU0LQlJAY
+          3wIDAQAB
+          -----END PUBLIC KEY-----
+          EOF
+          
+          sudo cvmfs_config setup
+          sudo cvmfs_config probe neurodesk.ardc.edu.au
+          
+      - name: Mount CVMFS and verify Neurodesk access
+        run: |
+          sudo mount -t cvmfs neurodesk.ardc.edu.au /cvmfs/neurodesk.ardc.edu.au 2>&1 || true
+          ls -la /cvmfs/neurodesk.ardc.edu.au/ || echo "CVMFS mount may need to auto-mount"
+          
+      - name: Install Singularity/Apptainer
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y software-properties-common
+          sudo add-apt-repository -y ppa:apptainer/ppa
+          sudo apt-get update
+          sudo apt-get install -y apptainer
+          
+      - name: Determine analysis file
+        id: analysis-file
+        run: |
+          if [ "${{ github.event_name }}" == "workflow_dispatch" ]; then
+            ANALYSIS_FILE="${{ github.event.inputs.analysis_file }}"
+          else
+            # For push events, find the modified markdown files
+            ANALYSIS_FILE=$(git diff-tree --no-commit-id --name-only -r ${{ github.sha }} | grep -E '^analyses/.*\.md$' | head -1)
+            if [ -z "$ANALYSIS_FILE" ]; then
+              ANALYSIS_FILE="analyses/example_analysis.md"
+            fi
+          fi
+          echo "file=$ANALYSIS_FILE" >> $GITHUB_OUTPUT
+          echo "Analysis file: $ANALYSIS_FILE"
+          
+      - name: Execute brain imaging analysis
+        id: execute-analysis
+        run: |
+          chmod +x scripts/run_analysis.sh
+          ./scripts/run_analysis.sh "${{ steps.analysis-file.outputs.file }}"
+        env:
+          CVMFS_PATH: /cvmfs/neurodesk.ardc.edu.au
+          
+      - name: Commit and push results
+        run: |
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+          
+          # Add all results
+          git add results/ || true
+          git add analyses/ || true
+          
+          # Check if there are changes to commit
+          if git diff --staged --quiet; then
+            echo "No changes to commit"
+          else
+            git commit -m "Add analysis results from ${{ steps.analysis-file.outputs.file }}"
+            git push
+          fi
