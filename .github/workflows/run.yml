@@ -196,6 +196,7 @@ jobs:
           name: evidence-${{ hashFiles(matrix.script) }}
           path: |
             ${{ github.workspace }}/**/evidence/**
+            !${{ github.workspace }}/artifacts/**
           if-no-files-found: warn
           retention-days: 90
 
