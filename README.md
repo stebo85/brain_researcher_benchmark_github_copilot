@@ -6,6 +6,8 @@ Autonomous brain imaging analysis system using GitHub Copilot, Neurodesk contain
 
 This repository enables GitHub Copilot to work autonomously on brain imaging analyses using Neurodesk containers mounted via CVMFS (CernVM File System) into GitHub Actions runners. Every analysis is prompted via a markdown file, and all results and thought processes are stored back to the repository.
 
+📖 **New to this project?** Check out the [Quick Start Guide](QUICKSTART.md) to get started in 5 minutes!
+
 ## Features
 
 - 🧠 **Autonomous Brain Imaging Analysis**: GitHub Actions workflows execute analyses automatically
