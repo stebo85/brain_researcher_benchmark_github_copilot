@@ -1,0 +1,42 @@
+File Integrity Validation Log
+============================================================
+
+Dataset: OASIS VBM
+Validation Date: 2025-12-14T17:45:43.059424
+Files Checked: 5
+Files Valid: 5
+Files Invalid: 0
+Overall Status: PASS
+
+File Details:
+------------------------------------------------------------
+
+File: mwrc1OAS1_0001_MR1_mpr_anon_fslswapdim_bet.nii.gz
+  Size: 1100048 bytes
+  MD5: 13953ce3d63bff37ad641c9cfc264f74
+  SHA256: c47546a0998aeceb60a9df2541c7e08fbe792e27297afe36357d666427cb06d4
+  Status: VALID
+
+File: mwrc1OAS1_0002_MR1_mpr_anon_fslswapdim_bet.nii.gz
+  Size: 965093 bytes
+  MD5: 8823cbadb6e2b4f464d610fb529ffe9e
+  SHA256: 5c02e57c377a54014a407b7d1b9a721f31528f99b8e68079a29fc362a6929c7f
+  Status: VALID
+
+File: mwrc1OAS1_0003_MR1_mpr_anon_fslswapdim_bet.nii.gz
+  Size: 1175284 bytes
+  MD5: 06f1b57496bc18788ed3f7b436cbeafb
+  SHA256: 0ed7d3df69ad1935ac26eac1a833fe6de626f96be74cd1ed0cdea8370aefec4c
+  Status: VALID
+
+File: mwrc1OAS1_0004_MR1_mpr_anon_fslswapdim_bet.nii.gz
+  Size: 1002950 bytes
+  MD5: 0c2e88fbb41a1006294dec224ce86a33
+  SHA256: 104f8ae7307f77cbdb67762f74de1f0687caa43971650b28d70b8a84c00dac59
+  Status: VALID
+
+File: mwrc1OAS1_0005_MR1_mpr_anon_fslswapdim_bet.nii.gz
+  Size: 1004433 bytes
+  MD5: 90691ac1bc771496b574d5319cf16c8f
+  SHA256: e398479a9efc372048c26d6359eff66d48587a4ca7c30c90195592198ab042ac
+  Status: VALID

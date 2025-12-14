@@ -1,0 +1,32 @@
+Manual BIDS Structure Validation
+==================================================
+✓ Found required file: dataset_description.json
+✗ Missing required file: participants.tsv
+
+Dataset Name: Visual object recognition
+BIDS Version: 1.0.0
+✓ Required field 'Name' present
+✓ Required field 'BIDSVersion' present
+
+✓ Found 6 subject directories:
+  - sub-1
+  - sub-2
+  - sub-3
+  - sub-4
+  - sub-5
+  ... and 1 more
+
+Checking structure of sub-1:
+  ✓ anat/ directory with 1 NIfTI files
+  ✓ func/ directory with 12 BOLD files and 12 events files
+
+Checking structure of sub-2:
+  ✓ anat/ directory with 1 NIfTI files
+  ✓ func/ directory with 12 BOLD files and 12 events files
+
+Checking structure of sub-3:
+  ✓ anat/ directory with 1 NIfTI files
+  ✓ func/ directory with 12 BOLD files and 12 events files
+
+==================================================
+BIDS validation completed!

@@ -1,0 +1,11 @@
+Data Catalog Version Log
+==================================================
+
+Version 1.0 - 2025-12-14T17:50:00.163714
+  - Initial catalog creation
+  - Cataloged 2 files from Brainomics Localizer dataset
+  - MD5 checksums computed for all files
+
+File Inventory:
+  - cmaps_Checkerboard.nii.gz (v1)
+  - cmaps_Checkerboard.nii.gz (v1)

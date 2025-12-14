@@ -1,0 +1,15 @@
+{
+  "task_id": "DATA-015",
+  "task_name": "Sync HCP MegaTrawls updates with local repository",
+  "dataset": "HCP MegaTrawls",
+  "validation_timestamp": "2025-12-14T17:46:14.820802",
+  "status": "success",
+  "checks_performed": {
+    "sync_complete": true,
+    "new_data_integrated": true
+  },
+  "acceptance_metrics": {
+    "sync_complete": true,
+    "new_data_integrated": true
+  }
+}

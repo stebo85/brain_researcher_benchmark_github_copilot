@@ -1,0 +1,16 @@
+# Development fMRI Derivatives
+
+This directory contains preprocessed derivatives from the Development fMRI dataset.
+
+## Pipeline
+- Preprocessing: nilearn
+- Smoothing: Applied
+- Confound regression: Applied
+
+## Contents
+- Preprocessed BOLD images in MNI space
+- Confound regressors
+- Quality control metrics
+
+## Usage
+Load derivatives using nilearn or standard neuroimaging tools.

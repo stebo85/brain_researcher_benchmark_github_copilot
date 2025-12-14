@@ -1,0 +1,3 @@
+HCP MegaTrawls Sync Log
+Sync Date: 2025-12-14T17:46:14.659783
+Status: SIMULATED (dataset not fully available)

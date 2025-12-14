@@ -1,0 +1,15 @@
+Haxby Derivatives Archive Manifest
+==================================================
+
+Created: 2025-12-14T17:49:00.872959
+Dataset: Haxby 2001
+Description: Preprocessed derivatives
+
+Contents:
+- Preprocessed BOLD images
+- ROI masks
+- Behavioral data
+
+Files:
+  func: 1 files
+  mask: /home/ubuntu/nilearn_data/haxby2001/mask.nii.gz

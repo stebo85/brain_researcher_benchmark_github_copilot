@@ -1,0 +1,14 @@
+ABIDE Scan Parameter Consistency Report
+============================================================
+
+Generated: 2025-12-14T17:44:56.735731
+
+Total subjects: 10
+Total sites: 1
+
+
+Repetition Time (TR) by site:
+  PITT: 2.50s (std=0.000)
+
+
+✓ No significant outliers detected

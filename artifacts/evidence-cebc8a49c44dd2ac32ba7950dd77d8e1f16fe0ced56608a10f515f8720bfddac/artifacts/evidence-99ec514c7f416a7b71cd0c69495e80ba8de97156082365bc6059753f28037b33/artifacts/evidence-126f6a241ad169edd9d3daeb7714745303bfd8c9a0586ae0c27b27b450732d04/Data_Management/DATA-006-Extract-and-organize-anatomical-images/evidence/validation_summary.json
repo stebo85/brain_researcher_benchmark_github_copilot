@@ -1,0 +1,17 @@
+{
+  "task_id": "DATA-006",
+  "task_name": "Extract and organize anatomical images from ABIDE dataset",
+  "dataset": "ABIDE",
+  "validation_timestamp": "2025-12-14T17:47:23.755673",
+  "status": "success",
+  "checks_performed": {
+    "anatomicals_extracted": true,
+    "organized_structure": true,
+    "subjects_extracted": 5,
+    "sites_represented": 1
+  },
+  "acceptance_metrics": {
+    "anatomicals_extracted": true,
+    "organized_structure": true
+  }
+}
