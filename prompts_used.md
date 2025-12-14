@@ -4,3 +4,4 @@ Now write a bash script based on the prompt for DATA-001. The bash script perfor
 
 Create a bash file custom_runner_setup.sh with steps to setup the custom github action runner and set it up for mounting cvmfs containers from Neurodesk (https://neurodesk.org/getting-started/neurocontainers/cvmfs/), also install datalad.
 
+generarlize the workflow file data-001.yml, so that it would run every run_analysis.sh file in every subdirectory. 
