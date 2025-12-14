@@ -148,8 +148,8 @@ sudo apt-get install -y git-annex
 sudo apt-get install -y python3-pip python3-venv
 
 # Install DataLad and extensions from neurodebian
-python3 -m venv ~/venv_runner
-source ~/venv_runner/bin/activate
+python3 -m venv /home/ubuntu/venv_runner
+source /home/ubuntu/venv_runner/bin/activate
 pip install datalad-installer
 datalad-installer git-annex -m datalad/packages
 pip install datalad

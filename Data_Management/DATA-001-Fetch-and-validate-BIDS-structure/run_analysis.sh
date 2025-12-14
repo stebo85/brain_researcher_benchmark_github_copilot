@@ -10,9 +10,24 @@ echo "DATA-001: Fetch and Validate BIDS Structure"
 echo "Dataset: Haxby (OpenNeuro ds000105)"
 echo "=========================================="
 
+# Set analysis root for venv placement
+ANALYSIS_DIR="Data_Management/DATA-001-Fetch-and-validate-BIDS-structure"
+
 # Create output directory for evidence
-EVIDENCE_DIR="Data_Management/DATA-001-Fetch-and-validate-BIDS-structure/evidence"
+EVIDENCE_DIR="${ANALYSIS_DIR}/evidence"
 mkdir -p "${EVIDENCE_DIR}"
+
+# Step 0: Create and activate per-analysis Python virtual environment
+echo ""
+echo "Step 0: Setting up per-analysis Python virtual environment..."
+VENV_DIR="${ANALYSIS_DIR}/.venv"
+python3 -m venv "${VENV_DIR}"
+. "${VENV_DIR}/bin/activate"
+python -m pip install --upgrade pip
+
+# Install any Python packages needed for validation fallback
+# Keeping minimal to avoid unnecessary dependencies; add more if required
+python -m pip install --quiet pathlib || true
 
 # Create a temporary working directory
 WORK_DIR=$(mktemp -d)
@@ -37,7 +52,12 @@ datalad get sub-1/anat sub-1/func/*bold.json sub-1/func/*events.tsv || true
 # Step 3: Validate BIDS structure
 echo ""
 echo "Step 3: Installing BIDS validator..."
-pip install --quiet bids-validator || npm install -g bids-validator || echo "Using existing bids-validator"
+# Prefer Node.js bids-validator; fallback to existing installation
+if ! command -v bids-validator &> /dev/null; then
+    npm install -g bids-validator || echo "bids-validator (Node) not installed; will use manual checks"
+else
+    echo "bids-validator already available"
+fi
 
 echo ""
 echo "Step 4: Running BIDS validation..."
@@ -49,7 +69,7 @@ if command -v bids-validator &> /dev/null; then
     }
 else
     echo "BIDS validator not available, performing manual checks..."
-    python3 << 'PYEOF' > "${EVIDENCE_DIR}/bids_validation_report.txt"
+    python << 'PYEOF' > "${EVIDENCE_DIR}/bids_validation_report.txt"
 import json
 import os
 from pathlib import Path
@@ -271,6 +291,9 @@ echo "=========================================="
 
 # Clean up - go back to original directory
 cd "${OLDPWD}"
+
+# Deactivate venv
+deactivate || true
 
 echo ""
 echo "✓ DATA-001 completed successfully!"
