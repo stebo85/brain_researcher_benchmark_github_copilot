@@ -102,15 +102,52 @@ cd ds000105
 echo ""
 echo "Step 3: Retrieving dataset files..."
 # Get required files
-if ! datalad get dataset_description.json README CHANGES; then
-    echo "Warning: Failed to retrieve some required files. This may affect validation."
+echo "Retrieving required metadata files..."
+if ! datalad get dataset_description.json README 2>&1; then
+    echo "Warning: Failed to retrieve required metadata files."
 fi
 
-# Try to get optional files - these may not exist in all datasets
-datalad get participants.tsv participants.json 2>&1 || echo "Note: participants files not present (optional in BIDS)"
+# Try to get CHANGES file (optional)
+datalad get CHANGES 2>&1 || echo "Note: CHANGES file not found (optional in BIDS)"
 
-# Also get a sample of the data to verify structure - may fail for git-annex datasets
-datalad get sub-1/anat sub-1/func/*bold.json sub-1/func/*events.tsv 2>&1 || echo "Note: Could not retrieve all sample data files (this may be expected for git-annex datasets)"
+# Try to get optional participant files
+echo "Retrieving participant information..."
+datalad get participants.tsv 2>&1 || echo "Note: participants.tsv not found (optional in BIDS)"
+datalad get participants.json 2>&1 || echo "Note: participants.json not found (optional in BIDS)"
+
+# List available subjects
+echo ""
+echo "Available subjects in the dataset:"
+SUBJECTS=($(datalad ls | grep 'sub-' | grep '^d' | awk '{print $NF}' || find . -maxdepth 1 -type d -name 'sub-*' | sed 's|./||' | sort))
+
+if [ ${#SUBJECTS[@]} -eq 0 ]; then
+    echo "ERROR: No subject directories found! The dataset may not be properly installed."
+    echo "Attempting full dataset download..."
+    datalad get . 2>&1 || echo "Warning: Full dataset download failed"
+    SUBJECTS=($(find . -maxdepth 1 -type d -name 'sub-*' | sed 's|./||' | sort))
+fi
+
+echo "Found ${#SUBJECTS[@]} subjects: ${SUBJECTS[@]}"
+echo ""
+
+# Get data for all available subjects (prioritize efficiency - get metadata only)
+if [ ${#SUBJECTS[@]} -gt 0 ]; then
+    echo "Retrieving subject data structure and metadata..."
+    for subj in "${SUBJECTS[@]}"; do
+        echo "  Processing $subj..."
+        # Get subject-level JSON sidecar files (metadata, not heavy data)
+        datalad get "$subj"/**/*.json 2>&1 || true
+        # Get subject-level TSV files (lightweight, contains behavioral data/timing)
+        datalad get "$subj"/**/*.tsv 2>&1 || true
+        # For functional data, just get the JSON sidecars and events, not the heavy NIfTI files yet
+        if [ -d "$subj/func" ]; then
+            datalad get "$subj/func"/*_bold.json "$subj/func"/*_events.tsv 2>&1 || true
+        fi
+    done
+else
+    echo "ERROR: No subjects available for validation!"
+    exit 1
+fi
 
 # Step 4: Validate BIDS structure
 echo ""
@@ -123,7 +160,27 @@ else
 fi
 
 echo ""
-echo "Step 5: Running BIDS validation..."
+echo "Step 5: Pre-validation structure check..."
+# Verify we have the minimum BIDS structure before running validator
+if [ ! -f "dataset_description.json" ]; then
+    echo "ERROR: dataset_description.json not found!"
+    exit 1
+fi
+
+SUBJECT_COUNT=$(find . -maxdepth 1 -type d -name 'sub-*' | wc -l)
+echo "Found $SUBJECT_COUNT subjects"
+
+if [ "$SUBJECT_COUNT" -lt 1 ]; then
+    echo "ERROR: No subject directories (sub-*/) found. Cannot validate BIDS structure."
+    echo "Current directory contents:"
+    ls -la
+    exit 1
+else
+    echo "✓ Subject directories present"
+fi
+
+echo ""
+echo "Step 6: Running BIDS validation..."
 # Run BIDS validator and capture output
 if command -v bids-validator &> /dev/null; then
     bids-validator . --verbose > "${EVIDENCE_DIR}/bids_validation_report.txt" 2>&1 || {
@@ -201,7 +258,7 @@ fi
 
 # Step 6: Extract and verify required evidence
 echo ""
-echo "Step 6: Extracting required evidence..."
+echo "Step 7: Extracting required evidence..."
 
 # Copy dataset_description.json
 if [ -f "dataset_description.json" ]; then
@@ -230,7 +287,7 @@ fi
 
 # Step 7: Generate summary report
 echo ""
-echo "Step 7: Generating summary report..."
+echo "Step 8: Generating summary report..."
 python3 << 'PYEOF' > "${EVIDENCE_DIR}/validation_summary.json"
 import json
 import os
@@ -290,7 +347,7 @@ cp "${EVIDENCE_DIR}/validation_summary.json" . || true
 
 # Step 8: Create a README for the evidence
 echo ""
-echo "Step 8: Creating evidence README..."
+echo "Step 9: Creating evidence README..."
 cat > "${EVIDENCE_DIR}/README.md" << 'EOF'
 # DATA-001 Evidence: Fetch and Validate BIDS Structure
 
