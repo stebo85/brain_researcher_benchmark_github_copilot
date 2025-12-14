@@ -97,8 +97,17 @@ jobs:
             exit 1
           fi
 
-          chmod +x "$script"
           script_dir=$(dirname "$script")
+          evidence_dir="$script_dir/evidence"
+
+          # Check if evidence directory exists and is not empty
+          if [ -d "$evidence_dir" ] && [ -n "$(ls -A "$evidence_dir" 2>/dev/null)" ]; then
+            echo "✓ Evidence directory already exists and is not empty: $evidence_dir"
+            echo "Skipping execution of $script"
+            exit 0
+          fi
+
+          chmod +x "$script"
           script_name=$(basename "$script")
 
           echo "----------------------------------------"
