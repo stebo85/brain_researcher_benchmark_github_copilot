@@ -2,7 +2,7 @@
   "task_id": "DATA-020",
   "task_name": "Migrate SPM multimodal dataset to cloud storage with metadata",
   "dataset": "SPM Multimodal fMRI",
-  "validation_timestamp": "2025-12-14T18:05:04.875898",
+  "validation_timestamp": "2025-12-14T18:07:31.754152",
   "status": "success",
   "checks_performed": {
     "upload_complete": true,
