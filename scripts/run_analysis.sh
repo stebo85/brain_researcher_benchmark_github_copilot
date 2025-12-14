@@ -74,7 +74,7 @@ if [ -d "${CVMFS_PATH:-/cvmfs/neurodesk.ardc.edu.au}" ]; then
     echo "" >> "$RESULT_FILE"
     
     # List available tools in Neurodesk
-    echo "### Available Neurodesk Tools" >> "$RESULT_FILE"
+    echo "### Available Neurodesk Tools (first 20)" >> "$RESULT_FILE"
     echo '```' >> "$RESULT_FILE"
     ls -1 "${CVMFS_PATH:-/cvmfs/neurodesk.ardc.edu.au}" 2>&1 | head -20 >> "$RESULT_FILE" || echo "Unable to list tools" >> "$RESULT_FILE"
     echo '```' >> "$RESULT_FILE"
@@ -85,11 +85,14 @@ else
     echo "" >> "$RESULT_FILE"
 fi
 
-# Extract container specification from markdown and sanitize
-# Note: Container and command names are sanitized but commands are executed as-is by design
-# This is an intentional feature to allow flexible analysis workflows
-# Only use trusted analysis files from repository collaborators
-CONTAINER=$(grep -E "^\*\*Container:\*\*|^Container:" "$ANALYSIS_FILE" | sed 's/\*\*Container:\*\*//g; s/^Container://g' | xargs | tr -cd '[:alnum:]_-' || echo "")
+# Extract container specification from markdown
+# Container names are sanitized to alphanumeric, underscore, and hyphen only
+CONTAINER_RAW=$(grep -E "^\*\*Container:\*\*|^Container:" "$ANALYSIS_FILE" | sed 's/\*\*Container:\*\*//g; s/^Container://g' | xargs || echo "")
+CONTAINER=$(echo "$CONTAINER_RAW" | tr -cd '[:alnum:]_-')
+
+# Extract command - NOT sanitized by design to allow flexible command syntax
+# SECURITY: Commands are executed as-is within containers. Only use trusted analysis files.
+# See SECURITY.md for details on the security model.
 COMMAND=$(grep -E "^\*\*Command:\*\*|^Command:" "$ANALYSIS_FILE" | sed 's/\*\*Command:\*\*//g; s/^Command://g' | sed 's/^[ \t]*//g' || echo "")
 
 echo "### Execution Details" >> "$RESULT_FILE"
@@ -114,8 +117,8 @@ if grep -q '```bash' "$ANALYSIS_FILE" || grep -q '```sh' "$ANALYSIS_FILE"; then
     echo "Found executable code blocks in analysis file" >> "$RESULT_FILE"
     echo "" >> "$RESULT_FILE"
     
-    # Extract and execute bash code blocks
-    awk '/```bash/,/```/' "$ANALYSIS_FILE" | grep -v '```' > "$RESULT_DIR/script.sh" 2>/dev/null || true
+    # Extract and execute bash/sh code blocks (both variants)
+    awk '/```(bash|sh)/,/```/' "$ANALYSIS_FILE" | grep -v '```' > "$RESULT_DIR/script.sh" 2>/dev/null || true
     
     if [ -s "$RESULT_DIR/script.sh" ]; then
         echo "**Executing embedded script:**" >> "$RESULT_FILE"
