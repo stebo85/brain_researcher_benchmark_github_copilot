@@ -1,0 +1,35 @@
+{
+  "dataset": "MNE Sample",
+  "linkage_timestamp": "2025-12-14T17:49:50.596804",
+  "links": {
+    "meg_data": {
+      "path": "sample_audvis_raw.fif",
+      "type": "MEG",
+      "description": "Raw MEG data from auditory/visual experiment"
+    },
+    "freesurfer_recon": {
+      "subject": "sample",
+      "path": "subjects/sample",
+      "surfaces": [
+        "lh.white",
+        "rh.white",
+        "lh.pial",
+        "rh.pial"
+      ],
+      "description": "FreeSurfer reconstruction of anatomy"
+    },
+    "source_space": {
+      "path": "sample-src.fif",
+      "description": "Source space on cortical surface"
+    },
+    "bem_model": {
+      "path": "sample-bem.fif",
+      "description": "Boundary element model for forward solution"
+    }
+  },
+  "verification": {
+    "coordinate_systems_aligned": true,
+    "transformation_verified": true,
+    "source_space_created": true
+  }
+}

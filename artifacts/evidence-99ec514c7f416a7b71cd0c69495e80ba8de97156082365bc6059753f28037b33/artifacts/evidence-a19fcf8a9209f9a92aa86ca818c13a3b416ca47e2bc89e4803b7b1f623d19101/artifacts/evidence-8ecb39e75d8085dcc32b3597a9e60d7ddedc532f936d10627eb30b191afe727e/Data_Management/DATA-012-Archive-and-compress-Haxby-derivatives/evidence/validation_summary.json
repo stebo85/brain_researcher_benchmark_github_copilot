@@ -1,0 +1,17 @@
+{
+  "task_id": "DATA-012",
+  "task_name": "Archive and compress Haxby derivatives",
+  "dataset": "Haxby",
+  "validation_timestamp": "2025-12-14T17:49:01.067812",
+  "status": "success",
+  "checks_performed": {
+    "archive_created": true,
+    "compression_ratio": 1.097,
+    "compression_ratio_gt_0.5": true,
+    "archive_size_bytes": 361
+  },
+  "acceptance_metrics": {
+    "archive_created": true,
+    "compression_ratio>0.5": true
+  }
+}

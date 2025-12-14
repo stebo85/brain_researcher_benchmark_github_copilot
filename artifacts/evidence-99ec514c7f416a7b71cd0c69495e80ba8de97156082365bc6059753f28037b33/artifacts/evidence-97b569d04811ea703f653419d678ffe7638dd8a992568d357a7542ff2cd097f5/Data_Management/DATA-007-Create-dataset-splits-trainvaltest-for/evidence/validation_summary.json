@@ -1,0 +1,15 @@
+{
+  "task_id": "DATA-007",
+  "task_name": "Create dataset splits for NKI Enhanced cohort",
+  "dataset": "NKI Enhanced",
+  "validation_timestamp": "2025-12-14T17:47:53.880894",
+  "status": "success",
+  "checks_performed": {
+    "splits_created": true,
+    "demographics_balanced": true
+  },
+  "acceptance_metrics": {
+    "splits_created": true,
+    "demographics_balanced": true
+  }
+}
