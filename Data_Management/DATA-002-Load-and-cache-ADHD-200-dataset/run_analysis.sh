@@ -70,13 +70,11 @@ print(f"Downloaded {len(adhd_data.func)} functional images")
 print(f"Downloaded {len(adhd_data.confounds)} confound files")
 
 # Extract phenotypic information
-phenotypes = []
-for i in range(len(adhd_data.phenotypic)):
-    pheno = adhd_data.phenotypic[i]
-    phenotypes.append(pheno)
+# Note: adhd_data.phenotypic is already a pandas DataFrame
+phenotypes_df = adhd_data.phenotypic.copy()
 
-# Create phenotypes DataFrame
-phenotypes_df = pd.DataFrame(phenotypes)
+# Convert phenotypic DataFrame to list of dictionaries for caching
+phenotypes = phenotypes_df.to_dict('records')
 
 # Save cached data
 print("\nCaching dataset...")
