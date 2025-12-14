@@ -13,3 +13,10 @@ Found 1 scripts:
  - ./Data_Management/DATA-001-Fetch-and-validate-BIDS-structure/run_analysis.sh
 Error: Unable to process file command 'output' successfully.
 Error: Invalid value. Matching delimiter not found ''EOF''
+
+
+
+Now write bash scripts based on every prompt file for Data_Management. The bash script performs the analysis on a custom github action runner using github actions. This custom action runner has neurodesk installed, so it can load software via "module load", e.g. module load fsl. You can also install python packages using pip. Download of open neuro datasets works via datalad (e.g. datalad install https://github.com/OpenNeuroDatasets/ds000105.git) which is also installed. The required evidence needs to be committed back to the github repository.
+
+-> The response hit the run limit
+
