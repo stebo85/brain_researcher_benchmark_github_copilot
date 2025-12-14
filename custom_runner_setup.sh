@@ -1,4 +1,5 @@
 #!/bin/bash
+ssh ubuntu@149.165.150.131
 set -e
 
 # Custom GitHub Actions Runner Setup Script
@@ -27,6 +28,7 @@ sudo apt-get install -y \
     software-properties-common \
     apt-transport-https \
     ca-certificates \
+    git-lfs \
     gnupg
 
 # ========================================
@@ -57,23 +59,30 @@ CVMFS_QUOTA_LIMIT=10000
 EOF
 
 # Configure Neurodesk repository
-sudo mkdir -p /etc/cvmfs/keys/ardc.edu.au
-sudo tee /etc/cvmfs/keys/ardc.edu.au/neurodesk.ardc.edu.au.pub > /dev/null <<EOF
------BEGIN PUBLIC KEY-----
-MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAyxHwBH0g7pKHQJHQvYPP
-l8c3yx4V7h8pJD0qmCJlCX0pqAQfVXbN7cKqSJN5lJHhJPzKNQZMEVqlXY8S8qGe
-O3OQ5qLHQ8pJN5PqXp9qJPPy2pPqJPPyPqPy2pPqJPPy2pPqJPPy2pPqJPPy2pPq
-JPPy2pPqJPPy2pPqJPPy2pPqJPPy2pPqJPPy2pPqJPPy2pPqJPPy2pPqJPPy2pPq
-JPPy2pPqJPPy2pPqJPPy2pPqJPPy2pPqJPPy2pPqJPPy2pPqJPPy2pPqJPPy2pPq
-JPPy2pPqJPPy2pPqJPPy2pPqJPPy2pPqJPPy2pPqJPPy2pPqJPPy2pPqJPPy2pPq
-JPPy2pPqJPPy2pPqJPPy2pPqJPPy2pPqJPPy2pPqJPPy2wIDAQAB
------END PUBLIC KEY-----
-EOF
+sudo mkdir -p /etc/cvmfs/keys/ardc.edu.au/
 
-sudo tee /etc/cvmfs/domain.d/ardc.edu.au.conf > /dev/null <<EOF
-CVMFS_SERVER_URL="http://cvmfs1.neurodesk.org/cvmfs/@fqrn@;http://cvmfs2.neurodesk.org/cvmfs/@fqrn@;http://cvmfs3.neurodesk.org/cvmfs/@fqrn@"
-CVMFS_KEYS_DIR=/etc/cvmfs/keys/ardc.edu.au
-EOF
+
+echo "-----BEGIN PUBLIC KEY-----
+MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAwUPEmxDp217SAtZxaBep
+Bi2TQcLoh5AJ//HSIz68ypjOGFjwExGlHb95Frhu1SpcH5OASbV+jJ60oEBLi3sD
+qA6rGYt9kVi90lWvEjQnhBkPb0uWcp1gNqQAUocybCzHvoiG3fUzAe259CrK09qR
+pX8sZhgK3eHlfx4ycyMiIQeg66AHlgVCJ2fKa6fl1vnh6adJEPULmn6vZnevvUke
+I6U1VcYTKm5dPMrOlY/fGimKlyWvivzVv1laa5TAR2Dt4CfdQncOz+rkXmWjLjkD
+87WMiTgtKybsmMLb2yCGSgLSArlSWhbMA0MaZSzAwE9PJKCCMvTANo5644zc8jBe
+NQIDAQAB
+-----END PUBLIC KEY-----" | sudo tee /etc/cvmfs/keys/ardc.edu.au/neurodesk.ardc.edu.au.pub
+
+echo "CVMFS_USE_GEOAPI=yes" | sudo tee /etc/cvmfs/config.d/neurodesk.ardc.edu.au.conf
+
+echo 'CVMFS_SERVER_URL="http://cvmfs-jetstream.neurodesk.org/cvmfs/@fqrn@;http://s1osggoc-cvmfs.openhtc.io:8080/cvmfs/@fqrn@;http://s1fnal-cvmfs.openhtc.io:8080/cvmfs/@fqrn@;http://s1bnl-cvmfs.openhtc.io/cvmfs/@fqrn@"' | sudo tee -a /etc/cvmfs/config.d/neurodesk.ardc.edu.au.conf 
+
+echo 'CVMFS_KEYS_DIR="/etc/cvmfs/keys/ardc.edu.au/"' | sudo tee -a /etc/cvmfs/config.d/neurodesk.ardc.edu.au.conf
+
+echo "CVMFS_HTTP_PROXY=DIRECT" | sudo tee  /etc/cvmfs/default.local
+echo "CVMFS_QUOTA_LIMIT=5000" | sudo tee -a  /etc/cvmfs/default.local
+
+sudo cvmfs_config setup
+
 
 # Start CVMFS
 echo "Starting CVMFS..."
@@ -116,10 +125,11 @@ sudo apt-get install -y \
     zlib1g-dev
 
 # Install Apptainer (modern fork of Singularity)
-APPTAINER_VERSION=1.2.5
-wget https://github.com/apptainer/apptainer/releases/download/v${APPTAINER_VERSION}/apptainer_${APPTAINER_VERSION}_amd64.deb
-sudo dpkg -i apptainer_${APPTAINER_VERSION}_amd64.deb || sudo apt-get install -f -y
-rm apptainer_${APPTAINER_VERSION}_amd64.deb
+sudo apt-get install -y software-properties-common
+sudo add-apt-repository -y ppa:apptainer/ppa
+sudo apt-get update
+sudo apt-get install -y apptainer
+sudo apt-get install -y apptainer-suid
 
 # Verify installation
 apptainer --version
@@ -137,9 +147,12 @@ sudo apt-get install -y git-annex
 # Install Python pip if not available
 sudo apt-get install -y python3-pip python3-venv
 
-# Install DataLad and extensions
-sudo pip3 install --upgrade pip
-sudo pip3 install datalad datalad-container datalad-neuroimaging
+# Install DataLad and extensions from neurodebian
+python3 -m venv ~/venv_runner
+source ~/venv_runner/bin/activate
+pip install datalad-installer
+datalad-installer git-annex -m datalad/packages
+pip install datalad
 
 # Verify DataLad installation
 datalad --version
