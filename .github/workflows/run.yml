@@ -1,0 +1,112 @@
+name: Run All Analysis Scripts
+
+on:
+  workflow_dispatch:  # Manual trigger
+  push:
+    paths:
+      - '**/run_analysis.sh'
+      - '.github/workflows/run.yml'
+
+jobs:
+  run-analyses:
+    runs-on: self-hosted  # Custom runner with neurodesk
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          lfs: true
+
+      - name: Configure Git
+        run: |
+          git config --global user.name "GitHub Actions Bot"
+          git config --global user.email "actions@github.com"
+
+      - name: Set up environment
+        run: |
+          which datalad || echo "Datalad not found, please install"
+          which python3 || echo "Python3 not found"
+          echo "Environment Information:"
+          echo "========================"
+          echo "OS: $(uname -a)"
+          echo "Python: $(python3 --version)"
+          echo "Datalad: $(datalad --version || echo 'not available')"
+          echo "Available modules:"
+          module avail 2>&1 | head -20 || echo "Module system not available"
+
+     
+      - name: Discover analysis scripts
+        id: discover
+        run: |
+          set -e
+          echo "Searching for run_analysis.sh scripts..."
+          mapfile -t scripts < <(find . -type f -name "run_analysis.sh" -not -path "./.git/*" | sort)
+
+          if [ ${#scripts[@]} -eq 0 ]; then
+            echo "No run_analysis.sh scripts found. Exiting."
+            exit 1
+          fi
+
+          echo "Found ${#scripts[@]} scripts:"
+          printf ' - %s\n' "${scripts[@]}"
+
+          {
+            echo "scripts<<'EOF'"
+            printf '%s\n' "${scripts[@]}"
+            echo "EOF"
+          } >> "$GITHUB_OUTPUT"
+
+      - name: Run analyses
+        run: |
+          set -e
+          while IFS= read -r script; do
+            [ -z "$script" ] && continue
+            if [ ! -f "$script" ]; then
+              echo "Skipping missing script: $script"
+              continue
+            fi
+
+            chmod +x "$script"
+            script_dir=$(dirname "$script")
+            script_name=$(basename "$script")
+
+            echo "----------------------------------------"
+            echo "Running $script"
+            pushd "$script_dir" >/dev/null
+            ./"$script_name"
+            popd >/dev/null
+            echo "Completed $script"
+          done <<< "${{ steps.discover.outputs.scripts }}"
+
+      - name: Commit evidence files
+        run: |
+          git add -A
+          if git diff --staged --quiet; then
+            echo "No changes to commit"
+          else
+            git commit -m "Add evidence from run_analysis scripts"
+            git push
+            echo "✓ Evidence files committed and pushed"
+          fi
+
+      - name: Upload evidence as artifact
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: run-analysis-evidence
+          path: '**/evidence/**'
+          retention-days: 90
+
+      - name: Summary
+        if: always()
+        run: |
+          echo "## Run Analysis Summary" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "### Scripts executed" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          printf '%s\n' "${{ steps.discover.outputs.scripts }}" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "### Evidence directories" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          find . -maxdepth 5 -type d -name evidence -print >> $GITHUB_STEP_SUMMARY || echo "No evidence directories found" >> $GITHUB_STEP_SUMMARY
