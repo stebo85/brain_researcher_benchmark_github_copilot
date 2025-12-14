@@ -10,6 +10,8 @@ on:
 jobs:
   run-analyses:
     runs-on: self-hosted  # Custom runner with neurodesk
+    permissions:
+      contents: write  # Allow pushing commits
 
     steps:
       - name: Checkout repository
