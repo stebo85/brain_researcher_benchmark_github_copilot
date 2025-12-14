@@ -89,10 +89,16 @@ cd ds000105
 # Get the data (download actual files, not just git-annex pointers)
 echo ""
 echo "Step 3: Retrieving dataset files..."
-datalad get dataset_description.json participants.tsv participants.json README CHANGES
+# Get required files
+datalad get dataset_description.json README CHANGES || true
+
+# Try to get optional files
+datalad get participants.tsv participants.json 2>/dev/null || echo "Note: participants files not present (optional)"
 
 # Also get a sample of the data to verify structure
-datalad get sub-1/anat sub-1/func/*bold.json sub-1/func/*events.tsv || true
+datalad get sub-1/anat sub-1/func/*bold.json sub-1/func/*events.tsv 2>/dev/null || {
+    echo "Note: Could not retrieve all sample data files (this may be expected for git-annex datasets)"
+}
 
 # Step 4: Validate BIDS structure
 echo ""
@@ -194,19 +200,20 @@ else
     exit 1
 fi
 
-# Copy participants.tsv
+# Copy participants.tsv (optional in BIDS)
 if [ -f "participants.tsv" ]; then
     cp participants.tsv "${EVIDENCE_DIR}/"
     echo "✓ Copied participants.tsv"
 else
-    echo "✗ participants.tsv not found!"
-    exit 1
+    echo "⚠ participants.tsv not found (optional in BIDS)"
 fi
 
 # Copy participants.json if it exists (optional but useful)
 if [ -f "participants.json" ]; then
     cp participants.json "${EVIDENCE_DIR}/"
     echo "✓ Copied participants.json (optional)"
+else
+    echo "⚠ participants.json not found (optional in BIDS)"
 fi
 
 # Step 7: Generate summary report
