@@ -1,0 +1,125 @@
+name: DATA-001 - Fetch and Validate BIDS Structure
+
+on:
+  workflow_dispatch:  # Manual trigger
+  push:
+    paths:
+      - 'Data_Management/DATA-001-Fetch-and-validate-BIDS-structure/**'
+      - '.github/workflows/data-001.yml'
+
+jobs:
+  validate-bids-structure:
+    runs-on: self-hosted  # Custom runner with neurodesk
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          lfs: true
+      
+      - name: Configure Git
+        run: |
+          git config --global user.name "GitHub Actions Bot"
+          git config --global user.email "actions@github.com"
+      
+      - name: Set up environment
+        run: |
+          # Ensure datalad is available
+          which datalad || echo "Datalad not found, please install"
+          
+          # Ensure Python is available
+          which python3 || echo "Python3 not found"
+          
+          # Print environment info
+          echo "Environment Information:"
+          echo "========================"
+          echo "OS: $(uname -a)"
+          echo "Python: $(python3 --version)"
+          echo "Datalad: $(datalad --version || echo 'not available')"
+          echo "Available modules:"
+          module avail 2>&1 | head -20 || echo "Module system not available"
+      
+      - name: Install Python dependencies
+        run: |
+          # Install required Python packages
+          pip install --user --upgrade pip
+          pip install --user bids-validator pandas numpy || echo "Will try npm bids-validator"
+      
+      - name: Make script executable
+        run: |
+          chmod +x Data_Management/DATA-001-Fetch-and-validate-BIDS-structure/run_analysis.sh
+      
+      - name: Run DATA-001 analysis
+        id: analysis
+        run: |
+          cd "$GITHUB_WORKSPACE"
+          bash Data_Management/DATA-001-Fetch-and-validate-BIDS-structure/run_analysis.sh
+        continue-on-error: false
+      
+      - name: Check evidence files
+        run: |
+          echo "Checking for required evidence files..."
+          EVIDENCE_DIR="Data_Management/DATA-001-Fetch-and-validate-BIDS-structure/evidence"
+          
+          if [ ! -f "${EVIDENCE_DIR}/dataset_description.json" ]; then
+            echo "ERROR: dataset_description.json not found!"
+            exit 1
+          fi
+          
+          if [ ! -f "${EVIDENCE_DIR}/participants.tsv" ]; then
+            echo "ERROR: participants.tsv not found!"
+            exit 1
+          fi
+          
+          echo "✓ All required evidence files present"
+          echo ""
+          echo "Evidence files:"
+          ls -lh "${EVIDENCE_DIR}/"
+      
+      - name: Commit evidence files
+        run: |
+          git add Data_Management/DATA-001-Fetch-and-validate-BIDS-structure/evidence/
+          
+          if git diff --staged --quiet; then
+            echo "No changes to commit"
+          else
+            git commit -m "Add evidence for DATA-001: BIDS validation results
+            
+            - dataset_description.json
+            - participants.tsv
+            - validation_summary.json
+            - bids_validation_report.txt
+            
+            Task: Fetch and validate BIDS structure for Haxby dataset
+            Status: ✓ Completed successfully"
+            
+            git push
+            echo "✓ Evidence files committed and pushed"
+          fi
+      
+      - name: Upload evidence as artifact
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: data-001-evidence
+          path: Data_Management/DATA-001-Fetch-and-validate-BIDS-structure/evidence/
+          retention-days: 90
+      
+      - name: Summary
+        if: always()
+        run: |
+          echo "## DATA-001 Validation Summary" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          
+          if [ -f "Data_Management/DATA-001-Fetch-and-validate-BIDS-structure/evidence/validation_summary.json" ]; then
+            echo "### Results" >> $GITHUB_STEP_SUMMARY
+            echo "\`\`\`json" >> $GITHUB_STEP_SUMMARY
+            cat Data_Management/DATA-001-Fetch-and-validate-BIDS-structure/evidence/validation_summary.json >> $GITHUB_STEP_SUMMARY
+            echo "\`\`\`" >> $GITHUB_STEP_SUMMARY
+          fi
+          
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "### Evidence Files" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          ls -lh Data_Management/DATA-001-Fetch-and-validate-BIDS-structure/evidence/ >> $GITHUB_STEP_SUMMARY || echo "Evidence directory not found" >> $GITHUB_STEP_SUMMARY
