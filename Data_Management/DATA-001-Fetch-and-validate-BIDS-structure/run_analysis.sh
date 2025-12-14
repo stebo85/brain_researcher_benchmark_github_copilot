@@ -59,10 +59,14 @@ if ! command -v datalad &> /dev/null; then
         echo "git-annex not found. Attempting to install from system packages..."
         # Check if sudo is available and user has privileges
         if command -v sudo &> /dev/null && sudo -n true 2>/dev/null; then
-            if sudo apt-get update -qq && sudo apt-get install -qq -y git-annex 2>&1 | tail -5; then
+            INSTALL_OUTPUT=$(sudo apt-get update -qq && sudo apt-get install -qq -y git-annex 2>&1)
+            INSTALL_STATUS=$?
+            if [ $INSTALL_STATUS -eq 0 ]; then
                 echo "git-annex installed successfully"
             else
-                echo "Warning: Could not install git-annex from system packages"
+                echo "Warning: Could not install git-annex from system packages (exit code: $INSTALL_STATUS)"
+                echo "Last few lines of output:"
+                echo "$INSTALL_OUTPUT" | tail -5
                 echo "Installing DataLad without git-annex (some features will be limited)..."
             fi
         else
@@ -102,15 +106,11 @@ if ! datalad get dataset_description.json README CHANGES; then
     echo "Warning: Failed to retrieve some required files. This may affect validation."
 fi
 
-# Try to get optional files
-if ! datalad get participants.tsv participants.json 2>&1 | grep -v "path does not exist"; then
-    echo "Note: participants files not present (optional in BIDS)"
-fi
+# Try to get optional files - these may not exist in all datasets
+datalad get participants.tsv participants.json 2>&1 || echo "Note: participants files not present (optional in BIDS)"
 
-# Also get a sample of the data to verify structure
-if ! datalad get sub-1/anat sub-1/func/*bold.json sub-1/func/*events.tsv 2>&1 | grep -v "path does not exist"; then
-    echo "Note: Could not retrieve all sample data files (this may be expected for git-annex datasets)"
-fi
+# Also get a sample of the data to verify structure - may fail for git-annex datasets
+datalad get sub-1/anat sub-1/func/*bold.json sub-1/func/*events.tsv 2>&1 || echo "Note: Could not retrieve all sample data files (this may be expected for git-annex datasets)"
 
 # Step 4: Validate BIDS structure
 echo ""
@@ -325,8 +325,8 @@ Fetch and validate BIDS structure for Haxby dataset from OpenNeuro (ds000105).
 
 ## Acceptance Metrics
 
-- ✓ **bids_valid**: Dataset passes BIDS validation
-- ✓ **all_subjects_present**: All subjects listed in participants.tsv have corresponding directories
+- **bids_valid**: Dataset passes BIDS validation (see validation_summary.json for actual result)
+- **all_subjects_present**: All subjects listed in participants.tsv have corresponding directories (see validation_summary.json for actual result)
 
 ## Dataset Information
 
