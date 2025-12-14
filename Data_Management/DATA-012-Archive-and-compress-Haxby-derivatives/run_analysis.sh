@@ -68,7 +68,7 @@ echo "✓ Created haxby_derivatives.tar.gz"
 # Calculate compression ratio
 ORIG_SIZE=$(du -sb haxby_derivatives/ | cut -f1)
 COMP_SIZE=$(stat -f%z haxby_derivatives.tar.gz 2>/dev/null || stat -c%s haxby_derivatives.tar.gz)
-RATIO=$(echo "scale=2; $COMP_SIZE / $ORIG_SIZE" | bc)
+RATIO=$(echo "scale=3; $COMP_SIZE / $ORIG_SIZE" | bc)
 
 echo "Compression ratio: $RATIO"
 
@@ -76,7 +76,8 @@ echo "Compression ratio: $RATIO"
 cp haxby_derivatives/manifest.txt "${EVIDENCE_DIR}/"
 cp haxby_derivatives.tar.gz "${EVIDENCE_DIR}/"
 
-python3 << 'PYEOF' > "${EVIDENCE_DIR}/validation_summary.json"
+# Pass compression ratio to Python validation script
+python3 << PYEOF > "${EVIDENCE_DIR}/validation_summary.json"
 import json
 import os
 from datetime import datetime
@@ -86,7 +87,7 @@ manifest_exists = os.path.exists('haxby_derivatives/manifest.txt')
 
 if archive_exists:
     archive_size = os.path.getsize('haxby_derivatives.tar.gz')
-    compression_ratio = 0.3  # placeholder
+    compression_ratio = float('${RATIO}')
 else:
     archive_size = 0
     compression_ratio = 0
@@ -99,6 +100,7 @@ summary = {
     "status": "success",
     "checks_performed": {
         "archive_created": archive_exists,
+        "compression_ratio": compression_ratio,
         "compression_ratio_gt_0.5": compression_ratio > 0.5,
         "archive_size_bytes": archive_size
     },
