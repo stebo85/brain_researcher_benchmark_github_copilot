@@ -174,13 +174,16 @@ jobs:
             
             # Pull with rebase and retry
             echo "Push failed, pulling latest changes and retrying..."
-            if git pull --rebase origin "$current_branch"; then
-              retry_count=$((retry_count + 1))
-              sleep $((RANDOM % 5 + 1))  # Random delay between 1-5 seconds
-            else
+            if ! git pull --rebase origin "$current_branch"; then
               echo "Failed to pull and rebase"
               exit 1
             fi
+            
+            retry_count=$((retry_count + 1))
+            # Use a more portable sleep with a fixed delay plus process-specific variation
+            sleep_seconds=$((2 + ($$) % 4))
+            echo "Waiting ${sleep_seconds} seconds before retry..."
+            sleep "$sleep_seconds"
           done
           
           echo "Failed to push after $max_retries attempts"
