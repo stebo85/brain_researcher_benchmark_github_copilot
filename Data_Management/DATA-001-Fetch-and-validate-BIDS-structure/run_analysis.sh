@@ -57,10 +57,18 @@ if ! command -v datalad &> /dev/null; then
     # Try to use system git-annex if available
     if ! command -v git-annex &> /dev/null; then
         echo "git-annex not found. Attempting to install from system packages..."
-        sudo apt-get update -qq && sudo apt-get install -qq -y git-annex 2>&1 | tail -5 || {
-            echo "Warning: Could not install git-annex from system packages"
+        # Check if sudo is available and user has privileges
+        if command -v sudo &> /dev/null && sudo -n true 2>/dev/null; then
+            if sudo apt-get update -qq && sudo apt-get install -qq -y git-annex 2>&1 | tail -5; then
+                echo "git-annex installed successfully"
+            else
+                echo "Warning: Could not install git-annex from system packages"
+                echo "Installing DataLad without git-annex (some features will be limited)..."
+            fi
+        else
+            echo "Note: sudo not available or no privileges - skipping git-annex system installation"
             echo "Installing DataLad without git-annex (some features will be limited)..."
-        }
+        fi
     fi
     
     # Install DataLad from PyPI
@@ -90,15 +98,19 @@ cd ds000105
 echo ""
 echo "Step 3: Retrieving dataset files..."
 # Get required files
-datalad get dataset_description.json README CHANGES || true
+if ! datalad get dataset_description.json README CHANGES; then
+    echo "Warning: Failed to retrieve some required files. This may affect validation."
+fi
 
 # Try to get optional files
-datalad get participants.tsv participants.json 2>/dev/null || echo "Note: participants files not present (optional)"
+if ! datalad get participants.tsv participants.json 2>&1 | grep -v "path does not exist"; then
+    echo "Note: participants files not present (optional in BIDS)"
+fi
 
 # Also get a sample of the data to verify structure
-datalad get sub-1/anat sub-1/func/*bold.json sub-1/func/*events.tsv 2>/dev/null || {
+if ! datalad get sub-1/anat sub-1/func/*bold.json sub-1/func/*events.tsv 2>&1 | grep -v "path does not exist"; then
     echo "Note: Could not retrieve all sample data files (this may be expected for git-annex datasets)"
-}
+fi
 
 # Step 4: Validate BIDS structure
 echo ""
@@ -293,12 +305,14 @@ Fetch and validate BIDS structure for Haxby dataset from OpenNeuro (ds000105).
    - Contains dataset name, BIDS version, and metadata
    - Validates that the dataset follows BIDS specification
 
-2. **participants.tsv** - Participant information (required)
+2. **participants.tsv** - Participant information (optional in BIDS)
    - Lists all subjects in the dataset
    - Contains participant IDs and metadata
+   - Note: Not all BIDS datasets include this file
 
 3. **participants.json** - Participant metadata schema (optional)
    - Describes the columns in participants.tsv
+   - Only present if participants.tsv exists
 
 4. **bids_validation_report.txt** - BIDS validator output
    - Detailed validation results from bids-validator
