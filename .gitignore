@@ -42,3 +42,8 @@ node_modules/
 # Evidence directories (keep structure but ignore large data files if any)
 **/evidence/*.nii.gz
 **/evidence/*.tar.gz
+
+# Generated data directories and files from run_analysis.sh scripts
+**/mixed_gambles_data/
+**/fetch_data.py
+**/setup_instructions.md
