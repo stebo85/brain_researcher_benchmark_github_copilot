@@ -107,14 +107,15 @@ print("✓ Created file_access_frequency.png")
 plt.close()
 
 # Identify access patterns
+peak_hour = int(df['hour'].mode()[0])
 pattern_summary = {
     "most_accessed_files": file_counts.head(3).to_dict(),
-    "peak_access_hour": int(df['hour'].mode()[0]),
+    "peak_access_hour": peak_hour,
     "total_data_transferred_gb": df['size_mb'].sum() / 1024,
     "average_access_duration_sec": df['duration_sec'].mean(),
     "recommendations": [
         f"Cache {file_counts.index[0]} for faster access (most frequently accessed)",
-        "Consider load balancing during peak hour ({})".format(int(df['hour'].mode()[0])),
+        f"Consider load balancing during peak hour ({peak_hour})",
         "Optimize storage for frequently accessed files"
     ]
 }
