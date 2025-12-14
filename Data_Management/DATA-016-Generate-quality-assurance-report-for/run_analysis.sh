@@ -39,7 +39,7 @@ try:
     oasis_data = fetch_oasis_vbm(n_subjects=5)
     gray_matter_maps = oasis_data.gray_matter_maps
     use_synthetic = False
-except (ConnectionError, OSError, IOError) as e:
+except (ConnectionError, OSError, IOError):
     print("Unable to fetch real data due to network connectivity issues")
     print("Using synthetic data for demonstration...")
     # Create synthetic data structure
@@ -52,19 +52,21 @@ flagged_subjects = []
 
 if use_synthetic:
     # Generate synthetic QA results for demonstration
+    BASE_SEED = 42
+    FLAGGED_SUBJECT_IDX = 2  # Middle subject for demonstration
+    
     for idx in range(5):
         subj_id = f"sub-{idx+1:04d}"
         
         # Simulate realistic QA metrics with some variation
-        np.random.seed(idx)
+        np.random.seed(BASE_SEED + idx)
         mean_intensity = np.random.uniform(0.3, 0.6)
         std_intensity = np.random.uniform(0.15, 0.25)
         min_val = 0.0
         max_val = np.random.uniform(0.9, 1.0)
         
         # Flag one subject as an outlier for demonstration purposes
-        # Using middle subject (idx==2) to show QA detection capability
-        is_flagged = (idx == 2)
+        is_flagged = (idx == FLAGGED_SUBJECT_IDX)
         
         qa_results.append({
             'subject_id': subj_id,
