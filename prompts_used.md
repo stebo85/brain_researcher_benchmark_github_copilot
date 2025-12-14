@@ -20,3 +20,6 @@ Now write bash scripts based on every prompt file for Data_Management. The bash 
 
 -> The response hit the run limit
 
+-> Trying again as github issue:
+https://github.com/stebo85/brain_researcher_benchmark_github_copilot/issues/5
+
