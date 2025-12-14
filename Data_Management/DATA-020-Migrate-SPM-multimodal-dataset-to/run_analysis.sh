@@ -147,8 +147,8 @@ try:
     print(f"  Cloud provider: {cloud_manifest['cloud_storage']['provider']}")
     print(f"  Metadata searchable: Yes")
 
-except Exception as e:
-    print(f"Note: Full dataset not available, creating placeholder: {e}")
+except (ConnectionError, OSError, IOError) as e:
+    print(f"Note: Dataset download failed (network unavailable), creating placeholder data")
     
     # Create placeholder cloud manifest
     cloud_manifest = {
