@@ -167,41 +167,44 @@ jobs:
             # Count tasks in this category
             while IFS= read -r script; do
               [ -z "$script" ] && continue
+              
+              cat_total=$((cat_total + 1))
+              script_dir=$(dirname "$script")
+              evidence_dir="$script_dir/evidence"
               prompt_file="$script_dir/prompt.md"
               
-              # Extract required evidence files
-              required_files=()
-              if [ -f "$prompt_file" ]; then
-                  evidence_line=$(grep -A 1 "^## Evidence Required" "$prompt_file" 2>/dev/null | tail -n 1 | tr -d '\r' | tr ';' '\n')
-                if [ -n "$evidence_line" ] && [ "$evidence_line" != "## Evidence Required" ]; then
-                    while IFS= read -r file; do
-                    trimmed=$(echo "$file" | sed 's/^[[:space:]]*//;s/[[:space:]]*$//')
-                    if [ -n "$trimmed" ]; then
-                      required_files+=("$trimmed")
-                    fi
-                    done < <(echo "$evidence_line")
-                fi
-              fi
-              
-              # Check if all required evidence exists
+              # Check if evidence directory exists and has files
               if [ -d "$evidence_dir" ] && [ -n "$(ls -A "$evidence_dir" 2>/dev/null)" ]; then
-                all_present=true
-                if [ ${#required_files[@]} -gt 0 ]; then
-                  for req_file in "${required_files[@]}"; do
-                    if [ ! -f "$evidence_dir/$req_file" ]; then
-                      all_present=false
-                      break
-                    fi
-                  done
-                  
-                  if $all_present; then
-                    cat_completed=$((cat_completed + 1))
-                  fi
-                fi
-              evidence_dir="$script_dir/evidence"
-              
-              if [ -d "$evidence_dir" ] && [ -n "$(ls -A "$evidence_dir" 2>/dev/null)" ]; then
-                cat_completed=$((cat_completed + 1))
+                 # Extract required evidence files
+                 required_files=()
+                 if [ -f "$prompt_file" ]; then
+                   evidence_line=$(grep -A 1 "^## Evidence Required" "$prompt_file" 2>/dev/null | tail -n 1 | tr -d '\r')
+                   if [ -n "$evidence_line" ] && [ "$evidence_line" != "## Evidence Required" ]; then
+                     OLDIFS="$IFS"
+                     IFS=';'
+                     for file in $evidence_line; do
+                       trimmed=$(echo "$file" | sed 's/^[[:space:]]*//;s/[[:space:]]*$//')
+                       if [ -n "$trimmed" ]; then
+                         required_files+=("$trimmed")
+                       fi
+                     done
+                     IFS="$OLDIFS"
+                   fi
+                 fi
+                 
+                 all_present=true
+                 if [ ${#required_files[@]} -gt 0 ]; then
+                   for req_file in "${required_files[@]}"; do
+                     if [ ! -f "$evidence_dir/$req_file" ]; then
+                       all_present=false
+                       break
+                     fi
+                   done
+                 fi
+                 
+                 if $all_present; then
+                   cat_completed=$((cat_completed + 1))
+                 fi
               fi
             done < <(find "$category" -type f -name "run_analysis.sh" 2>/dev/null)
             
