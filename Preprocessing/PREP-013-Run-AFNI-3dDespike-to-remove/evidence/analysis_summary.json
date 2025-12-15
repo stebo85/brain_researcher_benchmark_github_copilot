@@ -1,0 +1,9 @@
+{
+  "task_id": "PREP-013",
+  "task_name": "Run AFNI 3dDespike to remove extreme outliers from ADHD data",
+  "dataset": "ADHD-200 dataset",
+  "category": "Preprocessing",
+  "timestamp": "2025-12-15T08:10:37.366005",
+  "status": "completed",
+  "implementation": "automated_batch"
+}
