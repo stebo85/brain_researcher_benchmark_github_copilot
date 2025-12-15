@@ -1,0 +1,9 @@
+{
+  "task_id": "SIM-009",
+  "task_name": "Simulate task-based fMRI with parametric modulation",
+  "dataset": "Event timing design",
+  "category": "Simulation",
+  "timestamp": "2025-12-15T08:45:02.155320",
+  "status": "completed",
+  "implementation": "automated_batch"
+}
