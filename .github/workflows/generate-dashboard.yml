@@ -52,15 +52,19 @@ jobs:
             # Extract required evidence files from prompt
             required_files=()
             if [ -f "$prompt_file" ]; then
-              evidence_line=$(grep "^## Evidence Required" -A 1 "$prompt_file" | tail -n 1)
-              if [ -n "$evidence_line" ]; then
+              # Use a safer approach to extract evidence line
+              evidence_line=$(grep -A 1 "^## Evidence Required" "$prompt_file" 2>/dev/null | tail -n 1 | tr -d '\r')
+              if [ -n "$evidence_line" ] && [ "$evidence_line" != "## Evidence Required" ]; then
                 # Split by semicolon and trim whitespace
-                IFS=';' read -ra files <<< "$evidence_line"
-                for file in "${files[@]}"; do
-                  # Trim whitespace
-                  file=$(echo "$file" | xargs)
-                  [ -n "$file" ] && required_files+=("$file")
-                done
+                while IFS=';' read -ra files; do
+                  for file in "${files[@]}"; do
+                    # Trim whitespace and skip empty
+                    trimmed=$(echo "$file" | sed 's/^[[:space:]]*//;s/[[:space:]]*$//')
+                    if [ -n "$trimmed" ]; then
+                      required_files+=("$trimmed")
+                    fi
+                  done
+                done <<< "$evidence_line"
               fi
             fi
             
@@ -182,13 +186,16 @@ jobs:
               # Extract required evidence files
               required_files=()
               if [ -f "$prompt_file" ]; then
-                evidence_line=$(grep "^## Evidence Required" -A 1 "$prompt_file" | tail -n 1)
-                if [ -n "$evidence_line" ]; then
-                  IFS=';' read -ra files <<< "$evidence_line"
-                  for file in "${files[@]}"; do
-                    file=$(echo "$file" | xargs)
-                    [ -n "$file" ] && required_files+=("$file")
-                  done
+                evidence_line=$(grep -A 1 "^## Evidence Required" "$prompt_file" 2>/dev/null | tail -n 1 | tr -d '\r')
+                if [ -n "$evidence_line" ] && [ "$evidence_line" != "## Evidence Required" ]; then
+                  while IFS=';' read -ra files; do
+                    for file in "${files[@]}"; do
+                      trimmed=$(echo "$file" | sed 's/^[[:space:]]*//;s/[[:space:]]*$//')
+                      if [ -n "$trimmed" ]; then
+                        required_files+=("$trimmed")
+                      fi
+                    done
+                  done <<< "$evidence_line"
                 fi
               fi
               

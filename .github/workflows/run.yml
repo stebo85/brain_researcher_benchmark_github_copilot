@@ -34,7 +34,7 @@ jobs:
           # Filter out scripts that already have evidence directories
           scripts=()
           for script in "${all_scripts[@]}"; do
-            script_dir=$(dirname "$script")
+            script_dir  dirname "$script")
             evidence_dir="$script_dir/evidence"
             
             if [ -d "$evidence_dir" ] && [ -n "$(ls -A "$evidence_dir" 2>/dev/null)" ]; then
