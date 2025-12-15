@@ -1,0 +1,9 @@
+{
+  "task_id": "RT-007",
+  "task_name": "Run online connectivity estimation for neurofeedback",
+  "dataset": "Streaming rest data",
+  "category": "Real-time Processing",
+  "timestamp": "2025-12-15T08:13:15.887455",
+  "status": "completed",
+  "implementation": "automated_batch"
+}
