@@ -1,0 +1,9 @@
+{
+  "task_id": "CONN-008",
+  "task_name": "Calculate inter-subject correlation during movie watching in development dataset",
+  "dataset": "Development fMRI",
+  "category": "Connectivity",
+  "timestamp": "2025-12-15T07:51:46.441316",
+  "status": "completed",
+  "implementation": "automated_batch"
+}
