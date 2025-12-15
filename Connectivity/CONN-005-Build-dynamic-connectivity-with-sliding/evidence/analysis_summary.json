@@ -1,0 +1,9 @@
+{
+  "task_id": "CONN-005",
+  "task_name": "Build dynamic connectivity with sliding windows on Localizer dataset",
+  "dataset": "Brainomics Localizer",
+  "category": "Connectivity",
+  "timestamp": "2025-12-15T07:55:07.463464",
+  "status": "completed",
+  "implementation": "automated_batch"
+}
