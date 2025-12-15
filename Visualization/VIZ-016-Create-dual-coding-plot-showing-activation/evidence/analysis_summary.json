@@ -1,0 +1,9 @@
+{
+  "task_id": "VIZ-016",
+  "task_name": "Create dual-coding plot showing activation and deactivation",
+  "dataset": "Localizer task>rest contrast",
+  "category": "Visualization",
+  "timestamp": "2025-12-15T08:52:45.794472",
+  "status": "completed",
+  "implementation": "automated_batch"
+}
