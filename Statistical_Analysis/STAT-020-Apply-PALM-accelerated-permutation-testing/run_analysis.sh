@@ -98,13 +98,13 @@ Step 2: Running statistical analysis...")
     group2 = np.random.randn(50)
     t_stat, p_value = stats.ttest_ind(group1, group2)
     
-    print(f"✓ T-statistic: {{t_stat:.3f}}, p-value: {{p_value:.4f}}")
+    print(f"✓ T-statistic: {t_stat:.3f}, p-value: {p_value:.4f}")
     
     # Save results
-    results_df = pd.DataFrame({{
+    results_df = pd.DataFrame({
         'statistic': [t_stat],
         'p_value': [p_value]
-    }})
+    })
     results_df.to_csv(evidence_dir / "statistical_results.csv", index=False)
     print("✓ Saved statistical_results.csv")
     

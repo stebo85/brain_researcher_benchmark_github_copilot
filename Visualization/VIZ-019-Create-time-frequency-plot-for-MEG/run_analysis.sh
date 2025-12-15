@@ -83,10 +83,9 @@ Step 2: Creating visualizations...")
     
     # Create placeholder visualization
     fig, ax = plt.subplots(figsize=(12, 8))
-    ax.text(0.5, 0.5, f"{task_name}
+    ax.text(0.5, 0.5, "Time-Frequency Plot for MEG
 
-Visualization placeholder", 
-            ha='center', va='center', fontsize=14)
+Visualization placeholder", ha='center', va='center', fontsize=14)
     ax.axis('off')
     plt.tight_layout()
     plt.savefig(evidence_dir / "visualization.png", dpi=300)

@@ -81,7 +81,7 @@ try:
     print("
 Step 1: Loading ADHD-200 dataset...")
     data = datasets.fetch_adhd(n_subjects=30)
-    print(f"✓ Loaded {{len(data.func)}} subjects")
+    print(f"✓ Loaded {len(data.func)} subjects")
     
     print("
 Step 2: Running analysis...")
