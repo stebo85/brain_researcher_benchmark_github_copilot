@@ -1,0 +1,9 @@
+{
+  "task_id": "STATINF-013",
+  "task_name": "Run robust regression with outlier detection on age effects",
+  "dataset": "OASIS VBM dataset",
+  "category": "Statistical Inference",
+  "timestamp": "2025-12-15T08:49:39.423619",
+  "status": "completed",
+  "implementation": "automated_batch"
+}
