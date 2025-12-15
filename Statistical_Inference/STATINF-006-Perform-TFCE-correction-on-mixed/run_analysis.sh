@@ -83,12 +83,10 @@ evidence_dir.mkdir(exist_ok=True)
 
 try:
     # Dataset loading: nilearn.datasets.fetch_development_fmri
-    print("
-Step 1: Dataset loading...")
+    print("\nStep 1: Dataset loading...")
     print("Note: Dataset access method: nilearn.datasets.fetch_development_fmri")
     
-    print("
-Step 2: Running statistical analysis...")
+    print("\nStep 2: Running statistical analysis...")
     from nilearn.glm.first_level import FirstLevelModel
     from scipy import stats
     
@@ -126,8 +124,7 @@ summary = {
 with open(evidence_dir / "analysis_summary.json", "w") as f:
     json.dump(summary, indent=2, fp=f)
 
-print("
-" + "=" * 60)
+print("\n" + "=" * 60)
 print("Analysis completed!")
 print(f"Evidence saved to: {evidence_dir.absolute()}")
 print("=" * 60)

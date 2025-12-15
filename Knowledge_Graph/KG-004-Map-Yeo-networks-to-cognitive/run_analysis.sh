@@ -78,12 +78,10 @@ evidence_dir.mkdir(exist_ok=True)
 
 try:
     # Dataset loading: nilearn.datasets.fetch_atlas_yeo_2011
-    print("
-Step 1: Dataset loading...")
+    print("\nStep 1: Dataset loading...")
     print("Note: Dataset access method: nilearn.datasets.fetch_atlas_yeo_2011")
     
-    print("
-Step 2: Running analysis...")
+    print("\nStep 2: Running analysis...")
     print(f"Task: Map Yeo networks to cognitive ontology terms")
     print(f"Context: Associate the 7 large-scale brain networks with specific mental functions and behaviors")
     print("Note: Analysis implementation placeholder")
@@ -117,8 +115,7 @@ summary = {
 with open(evidence_dir / "analysis_summary.json", "w") as f:
     json.dump(summary, indent=2, fp=f)
 
-print("
-" + "=" * 60)
+print("\n" + "=" * 60)
 print("Analysis completed!")
 print(f"Evidence saved to: {evidence_dir.absolute()}")
 print("=" * 60)

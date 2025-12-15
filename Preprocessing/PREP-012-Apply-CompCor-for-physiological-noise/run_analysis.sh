@@ -78,13 +78,11 @@ evidence_dir.mkdir(exist_ok=True)
 
 try:
     from nilearn import datasets
-    print("
-Step 1: Loading Haxby dataset...")
+    print("\nStep 1: Loading Haxby dataset...")
     data = datasets.fetch_haxby()
     print("✓ Dataset loaded")
     
-    print("
-Step 2: Running analysis...")
+    print("\nStep 2: Running analysis...")
     print(f"Task: Apply CompCor for physiological noise removal on Haxby")
     print(f"Context: Remove breathing and heartbeat artifacts by modeling noise from white matter and CSF")
     print("Note: Analysis implementation placeholder")
@@ -118,8 +116,7 @@ summary = {
 with open(evidence_dir / "analysis_summary.json", "w") as f:
     json.dump(summary, indent=2, fp=f)
 
-print("
-" + "=" * 60)
+print("\n" + "=" * 60)
 print("Analysis completed!")
 print(f"Evidence saved to: {evidence_dir.absolute()}")
 print("=" * 60)

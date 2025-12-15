@@ -78,12 +78,10 @@ evidence_dir.mkdir(exist_ok=True)
 
 try:
     # Dataset loading: nilearn.datasets.fetch_surf_nki_enhanced and nilearn.datasets.load_nki
-    print("
-Step 1: Dataset loading...")
+    print("\nStep 1: Dataset loading...")
     print("Note: Dataset access method: nilearn.datasets.fetch_surf_nki_enhanced and nilearn.datasets.load_nki")
     
-    print("
-Step 2: Running analysis...")
+    print("\nStep 2: Running analysis...")
     print(f"Task: Run phase-based motion correction for sub-voxel displacement")
     print(f"Context: Use phase information for more accurate motion correction")
     print("Note: Analysis implementation placeholder")
@@ -117,8 +115,7 @@ summary = {
 with open(evidence_dir / "analysis_summary.json", "w") as f:
     json.dump(summary, indent=2, fp=f)
 
-print("
-" + "=" * 60)
+print("\n" + "=" * 60)
 print("Analysis completed!")
 print(f"Evidence saved to: {evidence_dir.absolute()}")
 print("=" * 60)
