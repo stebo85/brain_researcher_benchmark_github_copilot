@@ -1,0 +1,9 @@
+{
+  "task_id": "ELEC-019",
+  "task_name": "Compute phase lag index connectivity to assess true interactions",
+  "dataset": "MNE sample dataset",
+  "category": "Electrophysiology",
+  "timestamp": "2025-12-15T08:04:17.587881",
+  "status": "completed",
+  "implementation": "automated_batch"
+}
