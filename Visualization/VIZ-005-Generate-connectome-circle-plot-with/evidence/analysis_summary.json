@@ -1,0 +1,9 @@
+{
+  "task_id": "VIZ-005",
+  "task_name": "Generate connectome circle plot with Dosenbach ROIs",
+  "dataset": "Dosenbach connectivity",
+  "category": "Visualization",
+  "timestamp": "2025-12-15T15:10:48.697849",
+  "status": "completed",
+  "implementation": "automated_batch"
+}
