@@ -1,0 +1,9 @@
+{
+  "task_id": "HARM-009",
+  "task_name": "Use propensity score matching to balance ABIDE demographic confounds",
+  "dataset": "ABIDE dataset",
+  "category": "Data Harmonization",
+  "timestamp": "2025-12-15T07:59:33.307542",
+  "status": "completed",
+  "implementation": "automated_batch"
+}
