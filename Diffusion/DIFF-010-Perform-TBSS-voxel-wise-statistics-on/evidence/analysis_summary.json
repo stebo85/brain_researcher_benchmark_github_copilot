@@ -1,0 +1,9 @@
+{
+  "task_id": "DIFF-010",
+  "task_name": "Perform TBSS voxel-wise statistics on FA maps across subjects",
+  "dataset": "Custom FA maps multi-subject",
+  "category": "Diffusion",
+  "timestamp": "2025-12-15T08:01:16.310422",
+  "status": "completed",
+  "implementation": "automated_batch"
+}
