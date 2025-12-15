@@ -1,0 +1,9 @@
+{
+  "task_id": "VIZ-006",
+  "task_name": "Plot MVPA searchlight accuracy map on brain slices",
+  "dataset": "Haxby searchlight results",
+  "category": "Visualization",
+  "timestamp": "2025-12-15T08:52:21.427085",
+  "status": "completed",
+  "implementation": "automated_batch"
+}
