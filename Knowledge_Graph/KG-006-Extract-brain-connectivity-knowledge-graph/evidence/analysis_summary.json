@@ -1,0 +1,9 @@
+{
+  "task_id": "KG-006",
+  "task_name": "Extract brain connectivity knowledge graph from HCP functional connectomes",
+  "dataset": "Schaefer 400 atlas + connectivity",
+  "category": "Knowledge Graph",
+  "timestamp": "2025-12-15T08:04:59.271853",
+  "status": "completed",
+  "implementation": "automated_batch"
+}
