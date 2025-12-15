@@ -1,0 +1,9 @@
+{
+  "task_id": "ML-018",
+  "task_name": "Train multi-task learning model predicting both age and cognitive scores",
+  "dataset": "HCP MegaTrawls + behavior",
+  "category": "Machine Learning",
+  "timestamp": "2025-12-15T08:07:39.416582",
+  "status": "completed",
+  "implementation": "automated_batch"
+}
