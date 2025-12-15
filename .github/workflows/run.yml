@@ -60,7 +60,7 @@ jobs:
       contents: write
     strategy:
       fail-fast: false  # Continue running other jobs even if one fails
-      max-parallel: 43
+      max-parallel: 50
       matrix: ${{ fromJson(needs.discover-scripts.outputs.matrix) }}
 
     steps:
