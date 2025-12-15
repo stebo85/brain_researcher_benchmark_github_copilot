@@ -1,0 +1,9 @@
+{
+  "task_id": "QC-003",
+  "task_name": "Compute temporal SNR maps for Brainomics Localizer data",
+  "dataset": "Brainomics Localizer dataset",
+  "category": "Quality Control",
+  "timestamp": "2025-12-15T08:11:33.586021",
+  "status": "completed",
+  "implementation": "automated_batch"
+}
