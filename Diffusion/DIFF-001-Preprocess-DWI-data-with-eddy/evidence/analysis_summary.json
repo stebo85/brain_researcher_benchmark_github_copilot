@@ -1,0 +1,9 @@
+{
+  "task_id": "DIFF-001",
+  "task_name": "Preprocess DWI data with eddy current and motion correction",
+  "dataset": "Custom DWI BIDS",
+  "category": "Diffusion",
+  "timestamp": "2025-12-15T08:00:19.697816",
+  "status": "completed",
+  "implementation": "automated_batch"
+}
