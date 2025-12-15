@@ -1,0 +1,9 @@
+{
+  "task_id": "QC-012",
+  "task_name": "Generate ghost-to-signal ratio metrics for HCP resting-state",
+  "dataset": "HCP-style data",
+  "category": "Quality Control",
+  "timestamp": "2025-12-15T08:12:25.660345",
+  "status": "completed",
+  "implementation": "automated_batch"
+}
