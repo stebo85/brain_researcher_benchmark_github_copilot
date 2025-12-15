@@ -62,45 +62,175 @@ import sys
 from pathlib import Path
 from datetime import datetime
 import json
+import warnings
+warnings.filterwarnings('ignore')
 
-print("Starting analysis for CONN-001")
+import numpy as np
+import pandas as pd
+import matplotlib.pyplot as plt
+from nilearn import datasets, connectome, plotting
+from nilearn.maskers import NiftiLabelsMasker
+from scipy import stats
+
+print("Starting analysis for CONN-001: Resting-State Connectivity Analysis")
 print("=" * 60)
 
-# TODO: Implement the actual analysis based on:
-# - Task: Compute resting-state functional connectivity using MSDL atlas on ADHD dataset
-# - Context: Calculate how brain regions communicate during rest using a 39-region atlas to compare ADHD vs control subjects
-# - Data: nilearn.datasets.fetch_adhd
-# - Expected evidence: connectivity_matrix.npy
-
-# Placeholder implementation - this should be customized per task
-print("\nNOTE: This is a template script.")
-print("The actual analysis implementation needs to be added based on the task requirements.")
-print("\nTask Requirements:")
-print(f"  - Task ID: CONN-001")
-print(f"  - User Prompt: Compute resting-state functional connectivity using MSDL atlas on ADHD dataset")
-print(f"  - Context: Calculate how brain regions communicate during rest using a 39-region atlas to compare ADHD vs control subjects")
-print(f"  - Data Key: nilearn.datasets.fetch_adhd")
-print(f"  - Evidence Required: connectivity_matrix.npy, group_comparison.csv")
-
-# Create placeholder evidence files
+# Create evidence directory
 evidence_dir = Path("evidence")
 evidence_dir.mkdir(exist_ok=True)
 
-# Generate a summary report
+# Step 1: Load ADHD dataset
+print("\nStep 1: Loading ADHD-200 dataset...")
+try:
+    adhd_data = datasets.fetch_adhd(n_subjects=30)
+    print(f"✓ Loaded {len(adhd_data.func)} subjects")
+except Exception as e:
+    print(f"Error loading dataset: {e}")
+    sys.exit(1)
+
+# Step 2: Load MSDL atlas
+print("\nStep 2: Loading MSDL atlas...")
+atlas = datasets.fetch_atlas_msdl()
+atlas_filename = atlas['maps']
+labels = atlas['labels']
+print(f"✓ Loaded MSDL atlas with {len(labels)} regions")
+
+# Step 3: Extract time series from each subject
+print("\nStep 3: Extracting time series from brain regions...")
+masker = NiftiLabelsMasker(
+    labels_img=atlas_filename,
+    standardize=True,
+    memory='nilearn_cache',
+    verbose=0
+)
+
+time_series_list = []
+valid_subjects = []
+phenotypic = adhd_data.phenotypic
+groups = []
+
+for i, func_file in enumerate(adhd_data.func):
+    try:
+        time_series = masker.fit_transform(func_file)
+        time_series_list.append(time_series)
+        valid_subjects.append(i)
+        # Get group label (0=control, 1=ADHD)
+        groups.append(phenotypic[i].get('adhd', -1))
+        if (i + 1) % 5 == 0:
+            print(f"  Processed {i + 1}/{len(adhd_data.func)} subjects")
+    except Exception as e:
+        print(f"Warning: Could not process subject {i}: {e}")
+        continue
+
+print(f"✓ Extracted time series from {len(time_series_list)} subjects")
+
+# Step 4: Compute connectivity matrices
+print("\nStep 4: Computing functional connectivity matrices...")
+correlation_measure = connectome.ConnectivityMeasure(kind='correlation')
+connectivity_matrices = correlation_measure.fit_transform(time_series_list)
+
+print(f"✓ Computed {len(connectivity_matrices)} connectivity matrices")
+print(f"  Matrix shape: {connectivity_matrices[0].shape}")
+
+# Step 5: Compute mean connectivity matrix
+mean_connectivity = np.mean(connectivity_matrices, axis=0)
+
+# Save mean connectivity matrix
+np.save(evidence_dir / "connectivity_matrix.npy", mean_connectivity)
+print("✓ Saved connectivity_matrix.npy")
+
+# Step 6: Visualize connectivity matrix
+print("\nStep 5: Visualizing connectivity matrix...")
+fig, ax = plt.subplots(figsize=(12, 10))
+im = ax.imshow(mean_connectivity, cmap='RdBu_r', vmin=-1, vmax=1)
+ax.set_title('Mean Resting-State Functional Connectivity (MSDL Atlas)', fontsize=14)
+ax.set_xlabel('Brain Regions', fontsize=12)
+ax.set_ylabel('Brain Regions', fontsize=12)
+plt.colorbar(im, ax=ax, label='Correlation')
+plt.tight_layout()
+plt.savefig(evidence_dir / "connectivity_matrix.png", dpi=300, bbox_inches='tight')
+plt.close()
+print("✓ Saved connectivity_matrix.png")
+
+# Step 7: Group comparison (ADHD vs Controls)
+print("\nStep 6: Performing group comparison...")
+groups = np.array(groups)
+adhd_mask = groups == 1
+control_mask = groups == 0
+
+if np.sum(adhd_mask) > 0 and np.sum(control_mask) > 0:
+    adhd_conn = connectivity_matrices[adhd_mask]
+    control_conn = connectivity_matrices[control_mask]
+    
+    print(f"  ADHD subjects: {np.sum(adhd_mask)}")
+    print(f"  Control subjects: {np.sum(control_mask)}")
+    
+    # Compute mean connectivity for each group
+    mean_adhd = np.mean(adhd_conn, axis=0)
+    mean_control = np.mean(control_conn, axis=0)
+    
+    # Statistical comparison (t-test for each connection)
+    n_regions = mean_connectivity.shape[0]
+    group_differences = []
+    
+    for i in range(n_regions):
+        for j in range(i + 1, n_regions):
+            adhd_vals = adhd_conn[:, i, j]
+            control_vals = control_conn[:, i, j]
+            t_stat, p_val = stats.ttest_ind(adhd_vals, control_vals)
+            
+            if p_val < 0.05:  # Significant differences
+                group_differences.append({
+                    'region_i': labels[i],
+                    'region_j': labels[j],
+                    'adhd_mean': float(np.mean(adhd_vals)),
+                    'control_mean': float(np.mean(control_vals)),
+                    'difference': float(np.mean(adhd_vals) - np.mean(control_vals)),
+                    't_statistic': float(t_stat),
+                    'p_value': float(p_val)
+                })
+    
+    # Save group comparison results
+    if group_differences:
+        comparison_df = pd.DataFrame(group_differences)
+        comparison_df = comparison_df.sort_values('p_value')
+        comparison_df.to_csv(evidence_dir / "group_comparison.csv", index=False)
+        print(f"✓ Saved group_comparison.csv ({len(group_differences)} significant differences)")
+    else:
+        print("  No significant group differences found at p < 0.05")
+        pd.DataFrame({'note': ['No significant differences found']}).to_csv(
+            evidence_dir / "group_comparison.csv", index=False
+        )
+else:
+    print("  Insufficient group data for comparison")
+    pd.DataFrame({'note': ['Insufficient data for group comparison']}).to_csv(
+        evidence_dir / "group_comparison.csv", index=False
+    )
+
+# Step 8: Generate summary report
 summary = {
     "task_id": "CONN-001",
     "task_name": "Compute resting-state functional connectivity using MSDL atlas on ADHD dataset",
     "dataset": "ADHD-200",
     "timestamp": datetime.now().isoformat(),
-    "status": "template_generated",
-    "note": "This script is a template and needs task-specific implementation"
+    "status": "completed",
+    "n_subjects": len(time_series_list),
+    "n_adhd": int(np.sum(adhd_mask)) if np.sum(adhd_mask) > 0 else 0,
+    "n_control": int(np.sum(control_mask)) if np.sum(control_mask) > 0 else 0,
+    "n_regions": len(labels),
+    "atlas": "MSDL (39 regions)",
+    "connectivity_measure": "Pearson correlation",
+    "mean_connectivity_range": [float(mean_connectivity.min()), float(mean_connectivity.max())],
+    "n_significant_differences": len(group_differences) if 'group_differences' in locals() else 0
 }
 
 with open(evidence_dir / "analysis_summary.json", "w") as f:
     json.dump(summary, indent=2, fp=f)
 
-print("\n✓ Generated template evidence files")
-print(f"Evidence directory: {evidence_dir.absolute()}")
+print("\n" + "=" * 60)
+print("Analysis completed successfully!")
+print(f"Evidence saved to: {evidence_dir.absolute()}")
+print("=" * 60)
 
 PYEOF
 

@@ -62,45 +62,150 @@ import sys
 from pathlib import Path
 from datetime import datetime
 import json
+import warnings
+warnings.filterwarnings('ignore')
 
-print("Starting analysis for ML-001")
+import numpy as np
+import pandas as pd
+import matplotlib.pyplot as plt
+from nilearn import datasets
+from nilearn.maskers import NiftiMasker
+from sklearn.svm import SVC
+from sklearn.model_selection import cross_val_score, StratifiedKFold
+from sklearn.preprocessing import StandardScaler
+from sklearn.metrics import confusion_matrix, ConfusionMatrixDisplay, accuracy_score, classification_report
+
+print("Starting analysis for ML-001: Haxby Object Decoding with SVM")
 print("=" * 60)
 
-# TODO: Implement the actual analysis based on:
-# - Task: Train SVM classifier to decode object categories from Haxby VT cortex
-# - Context: Use support vector machine to learn patterns that distinguish faces, houses, cats, etc from brain activity
-# - Data: nilearn.datasets.fetch_haxby
-# - Expected evidence: cv_scores.csv
-
-# Placeholder implementation - this should be customized per task
-print("\nNOTE: This is a template script.")
-print("The actual analysis implementation needs to be added based on the task requirements.")
-print("\nTask Requirements:")
-print(f"  - Task ID: ML-001")
-print(f"  - User Prompt: Train SVM classifier to decode object categories from Haxby VT cortex")
-print(f"  - Context: Use support vector machine to learn patterns that distinguish faces, houses, cats, etc from brain activity")
-print(f"  - Data Key: nilearn.datasets.fetch_haxby")
-print(f"  - Evidence Required: cv_scores.csv, confusion_matrix.png")
-
-# Create placeholder evidence files
+# Create evidence directory
 evidence_dir = Path("evidence")
 evidence_dir.mkdir(exist_ok=True)
 
-# Generate a summary report
+# Step 1: Load Haxby dataset
+print("\nStep 1: Loading Haxby dataset...")
+try:
+    data = datasets.fetch_haxby()
+    func_filename = data.func[0]
+    mask_filename = data.mask_vt[0]  # Ventral temporal mask
+    labels_df = pd.read_csv(data.session_target[0], sep=' ')
+    print(f"✓ Loaded Haxby dataset")
+except Exception as e:
+    print(f"Error loading dataset: {e}")
+    sys.exit(1)
+
+# Step 2: Extract features from VT cortex
+print("\nStep 2: Extracting features from ventral temporal cortex...")
+masker = NiftiMasker(mask_img=mask_filename, standardize=True, memory='nilearn_cache', verbose=0)
+X = masker.fit_transform(func_filename)
+y = labels_df['labels'].values
+
+# Remove rest condition
+condition_mask = y != 'rest'
+X = X[condition_mask]
+y = y[condition_mask]
+
+print(f"✓ Feature matrix shape: {X.shape}")
+print(f"✓ Number of categories: {len(np.unique(y))}")
+print(f"  Categories: {', '.join(np.unique(y))}")
+
+# Step 3: Train SVM classifier with cross-validation
+print("\nStep 3: Training SVM classifier...")
+scaler = StandardScaler()
+X_scaled = scaler.fit_transform(X)
+
+# Use linear SVM for interpretability
+clf = SVC(kernel='linear', C=1.0, random_state=42)
+cv = StratifiedKFold(n_splits=5, shuffle=True, random_state=42)
+cv_scores = cross_val_score(clf, X_scaled, y, cv=cv, scoring='accuracy', n_jobs=-1)
+
+print(f"✓ Cross-validation accuracy: {cv_scores.mean():.3f} ± {cv_scores.std():.3f}")
+
+# Train final model on all data
+clf.fit(X_scaled, y)
+y_pred = clf.predict(X_scaled)
+train_acc = accuracy_score(y, y_pred)
+
+print(f"✓ Training accuracy: {train_acc:.3f}")
+print("\nClassification Report:")
+print(classification_report(y, y_pred))
+
+# Step 4: Save CV scores
+print("\nStep 4: Saving cross-validation scores...")
+cv_df = pd.DataFrame({
+    'fold': range(1, len(cv_scores) + 1),
+    'accuracy': cv_scores
+})
+cv_df.to_csv(evidence_dir / "cv_scores.csv", index=False)
+print("✓ Saved cv_scores.csv")
+
+# Step 5: Generate confusion matrix
+print("\nStep 5: Generating confusion matrix...")
+categories = np.unique(y)
+cm = confusion_matrix(y, y_pred, labels=categories)
+
+fig, ax = plt.subplots(figsize=(12, 10))
+disp = ConfusionMatrixDisplay(confusion_matrix=cm, display_labels=categories)
+disp.plot(ax=ax, cmap='Blues', values_format='d', xticks_rotation=45)
+plt.title('SVM Multi-Category Decoding: Haxby Object Recognition', fontsize=14)
+plt.tight_layout()
+plt.savefig(evidence_dir / "confusion_matrix.png", dpi=300, bbox_inches='tight')
+plt.close()
+print("✓ Saved confusion_matrix.png")
+
+# Step 6: Save per-category accuracy
+print("\nStep 6: Computing per-category performance...")
+category_accuracies = {}
+for cat in categories:
+    mask = y == cat
+    if np.sum(mask) > 0:
+        cat_acc = accuracy_score(y[mask], y_pred[mask])
+        category_accuracies[cat] = float(cat_acc)
+
+category_df = pd.DataFrame([
+    {'category': cat, 'accuracy': acc}
+    for cat, acc in category_accuracies.items()
+])
+category_df = category_df.sort_values('accuracy', ascending=False)
+category_df.to_csv(evidence_dir / "category_accuracies.csv", index=False)
+print("✓ Saved category_accuracies.csv")
+
+# Step 7: Generate summary report
 summary = {
     "task_id": "ML-001",
     "task_name": "Train SVM classifier to decode object categories from Haxby VT cortex",
     "dataset": "Haxby dataset",
     "timestamp": datetime.now().isoformat(),
-    "status": "template_generated",
-    "note": "This script is a template and needs task-specific implementation"
+    "status": "completed",
+    "n_samples": int(X.shape[0]),
+    "n_features": int(X.shape[1]),
+    "n_categories": int(len(categories)),
+    "categories": list(categories),
+    "metrics": {
+        "cv_accuracy_mean": float(cv_scores.mean()),
+        "cv_accuracy_std": float(cv_scores.std()),
+        "training_accuracy": float(train_acc),
+        "cv_scores": [float(s) for s in cv_scores]
+    },
+    "acceptance_criteria": {
+        "cv_accuracy_threshold": 0.7,
+        "cv_accuracy_passed": cv_scores.mean() > 0.7
+    },
+    "model": {
+        "type": "SVC",
+        "kernel": "linear",
+        "C": 1.0
+    },
+    "region": "Ventral Temporal Cortex"
 }
 
 with open(evidence_dir / "analysis_summary.json", "w") as f:
     json.dump(summary, indent=2, fp=f)
 
-print("\n✓ Generated template evidence files")
-print(f"Evidence directory: {evidence_dir.absolute()}")
+print("\n" + "=" * 60)
+print("Analysis completed successfully!")
+print(f"Evidence saved to: {evidence_dir.absolute()}")
+print("=" * 60)
 
 PYEOF
 
