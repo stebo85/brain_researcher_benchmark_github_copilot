@@ -1,0 +1,9 @@
+{
+  "task_id": "HARM-008",
+  "task_name": "Harmonize HCP connectivity matrices to match legacy scanner parameters",
+  "dataset": "HCP MegaTrawls dataset",
+  "category": "Data Harmonization",
+  "timestamp": "2025-12-15T07:51:45.764934",
+  "status": "completed",
+  "implementation": "automated_batch"
+}
