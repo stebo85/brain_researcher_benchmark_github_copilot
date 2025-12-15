@@ -78,13 +78,11 @@ evidence_dir.mkdir(exist_ok=True)
 
 try:
     from nilearn import datasets
-    print("
-Step 1: Loading Haxby dataset...")
+    print("\nStep 1: Loading Haxby dataset...")
     data = datasets.fetch_haxby()
     print("✓ Dataset loaded")
     
-    print("
-Step 2: Running analysis...")
+    print("\nStep 2: Running analysis...")
     print(f"Task: Run reproducibility workflow: analysis on train/test split, cross-validation, bootstrapping")
     print(f"Context: Ensure result reproducibility through multiple validation strategies")
     print("Note: Analysis implementation placeholder")

@@ -86,7 +86,7 @@ try:
     print("
 Step 1: Loading OASIS VBM dataset...")
     data = datasets.fetch_oasis_vbm()
-    print(f"✓ Loaded {{len(data.gray_matter_maps)}} subjects")
+    print(f"✓ Loaded {len(data.gray_matter_maps)} subjects")
     
     print("
 Step 2: Running statistical analysis...")
