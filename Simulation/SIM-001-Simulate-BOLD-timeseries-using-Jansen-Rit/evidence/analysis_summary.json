@@ -1,0 +1,9 @@
+{
+  "task_id": "SIM-001",
+  "task_name": "Simulate BOLD timeseries using Jansen-Rit neural mass model",
+  "dataset": "AAL atlas connectivity",
+  "category": "Simulation",
+  "timestamp": "2025-12-15T15:05:22.014146",
+  "status": "completed",
+  "implementation": "automated_batch"
+}
