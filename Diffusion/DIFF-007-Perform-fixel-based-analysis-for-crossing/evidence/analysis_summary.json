@@ -1,0 +1,9 @@
+{
+  "task_id": "DIFF-007",
+  "task_name": "Perform fixel-based analysis for crossing fiber metrics",
+  "dataset": "Custom DWI multi-subject",
+  "category": "Diffusion",
+  "timestamp": "2025-12-15T08:00:53.584069",
+  "status": "completed",
+  "implementation": "automated_batch"
+}
