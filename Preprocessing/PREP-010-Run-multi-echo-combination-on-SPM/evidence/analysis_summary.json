@@ -1,0 +1,9 @@
+{
+  "task_id": "PREP-010",
+  "task_name": "Run multi-echo combination on SPM multimodal data",
+  "dataset": "SPM multimodal dataset",
+  "category": "Preprocessing",
+  "timestamp": "2025-12-15T08:10:29.349521",
+  "status": "completed",
+  "implementation": "automated_batch"
+}
