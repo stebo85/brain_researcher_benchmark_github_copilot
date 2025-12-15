@@ -1,0 +1,9 @@
+{
+  "task_id": "STATINF-020",
+  "task_name": "Perform cross-validated prediction with nested resampling",
+  "dataset": "ADHD-200 dataset",
+  "category": "Statistical Inference",
+  "timestamp": "2025-12-15T08:49:50.571848",
+  "status": "completed",
+  "implementation": "automated_batch"
+}
