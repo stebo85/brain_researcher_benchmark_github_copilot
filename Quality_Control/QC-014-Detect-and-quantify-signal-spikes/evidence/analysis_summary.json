@@ -1,0 +1,9 @@
+{
+  "task_id": "QC-014",
+  "task_name": "Detect and quantify signal spikes in ADHD-200 timeseries",
+  "dataset": "ADHD-200 dataset",
+  "category": "Quality Control",
+  "timestamp": "2025-12-15T08:12:37.751768",
+  "status": "completed",
+  "implementation": "automated_batch"
+}
