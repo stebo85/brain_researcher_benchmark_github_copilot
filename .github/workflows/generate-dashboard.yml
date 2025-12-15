@@ -1,0 +1,198 @@
+name: Generate Dashboard
+
+on:
+  workflow_dispatch:  # Manual trigger
+  push:
+    paths:
+      - '**/evidence/**'
+      - '.github/workflows/generate-dashboard.yml'
+  schedule:
+    - cron: '0 */6 * * *'  # Run every 6 hours
+
+jobs:
+  generate-dashboard:
+    runs-on: self-hosted
+    permissions:
+      contents: write
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Generate Dashboard
+        run: |
+          set -e
+          
+          echo "# Brain Researcher Benchmark - Dashboard" > DASHBOARD.md
+          echo "" >> DASHBOARD.md
+          echo "**Last Updated:** $(date -u '+%Y-%m-%d %H:%M:%S UTC')" >> DASHBOARD.md
+          echo "" >> DASHBOARD.md
+          
+          # Find all directories with run_analysis.sh scripts
+          mapfile -t all_scripts < <(find . -type f -name "run_analysis.sh" -not -path "./.git/*" | sort)
+          
+          total_tasks=${#all_scripts[@]}
+          completed_tasks=0
+          incomplete_tasks=0
+          
+          # Arrays to store task info
+          declare -a completed_list
+          declare -a incomplete_list
+          
+          echo "Analyzing $total_tasks tasks..."
+          
+          for script in "${all_scripts[@]}"; do
+            script_dir=$(dirname "$script")
+            task_name=$(basename "$script_dir")
+            evidence_dir="$script_dir/evidence"
+            
+            if [ -d "$evidence_dir" ] && [ -n "$(ls -A "$evidence_dir" 2>/dev/null)" ]; then
+              completed_tasks=$((completed_tasks + 1))
+              # Count evidence files
+              file_count=$(find "$evidence_dir" -type f | wc -l | tr -d ' ')
+              completed_list+=("| $task_name | ✅ | $file_count |")
+            else
+              incomplete_tasks=$((incomplete_tasks + 1))
+              incomplete_list+=("| $task_name | ❌ | 0 |")
+            fi
+          done
+          
+          # Calculate percentage
+          if [ $total_tasks -gt 0 ]; then
+            percentage=$((completed_tasks * 100 / total_tasks))
+          else
+            percentage=0
+          fi
+          
+          # Summary section
+          echo "## 📊 Summary" >> DASHBOARD.md
+          echo "" >> DASHBOARD.md
+          echo "| Metric | Value |" >> DASHBOARD.md
+          echo "|--------|-------|" >> DASHBOARD.md
+          echo "| Total Tasks | $total_tasks |" >> DASHBOARD.md
+          echo "| Completed Tasks (with evidence) | $completed_tasks |" >> DASHBOARD.md
+          echo "| Incomplete Tasks | $incomplete_tasks |" >> DASHBOARD.md
+          echo "| Completion Rate | ${percentage}% |" >> DASHBOARD.md
+          echo "" >> DASHBOARD.md
+          
+          # Progress bar
+          echo "### Progress" >> DASHBOARD.md
+          echo "" >> DASHBOARD.md
+          echo -n "![Progress](https://progress-bar.dev/${percentage}/?title=Completed&width=500)" >> DASHBOARD.md
+          echo "" >> DASHBOARD.md
+          echo "" >> DASHBOARD.md
+          
+          # Completed tasks section
+          if [ ${#completed_list[@]} -gt 0 ]; then
+            echo "## ✅ Completed Tasks ($completed_tasks)" >> DASHBOARD.md
+            echo "" >> DASHBOARD.md
+            echo "| Task | Status | Evidence Files |" >> DASHBOARD.md
+            echo "|------|--------|----------------|" >> DASHBOARD.md
+            for item in "${completed_list[@]}"; do
+              echo "$item" >> DASHBOARD.md
+            done
+            echo "" >> DASHBOARD.md
+          fi
+          
+          # Incomplete tasks section
+          if [ ${#incomplete_list[@]} -gt 0 ]; then
+            echo "## ❌ Incomplete Tasks ($incomplete_tasks)" >> DASHBOARD.md
+            echo "" >> DASHBOARD.md
+            echo "| Task | Status | Evidence Files |" >> DASHBOARD.md
+            echo "|------|--------|----------------|" >> DASHBOARD.md
+            for item in "${incomplete_list[@]}"; do
+              echo "$item" >> DASHBOARD.md
+            done
+            echo "" >> DASHBOARD.md
+          fi
+          
+          # Category breakdown
+          echo "## 📁 Category Breakdown" >> DASHBOARD.md
+          echo "" >> DASHBOARD.md
+          
+          # Get unique categories (top-level directories)
+          mapfile -t categories < <(find . -maxdepth 1 -type d -not -path "." -not -path "./.git" -not -path "./.github" | sed 's|^\./||' | sort)
+          
+          echo "| Category | Total | Completed | Incomplete | Rate |" >> DASHBOARD.md
+          echo "|----------|-------|-----------|------------|------|" >> DASHBOARD.md
+          
+          for category in "${categories[@]}"; do
+            if [ -z "$category" ]; then continue; fi
+            
+            cat_total=0
+            cat_completed=0
+            
+            # Count tasks in this category
+            while IFS= read -r script; do
+              [ -z "$script" ] && continue
+              cat_total=$((cat_total + 1))
+              
+              script_dir=$(dirname "$script")
+              evidence_dir="$script_dir/evidence"
+              
+              if [ -d "$evidence_dir" ] && [ -n "$(ls -A "$evidence_dir" 2>/dev/null)" ]; then
+                cat_completed=$((cat_completed + 1))
+              fi
+            done < <(find "$category" -type f -name "run_analysis.sh" 2>/dev/null)
+            
+            if [ $cat_total -gt 0 ]; then
+              cat_incomplete=$((cat_total - cat_completed))
+              cat_percentage=$((cat_completed * 100 / cat_total))
+              echo "| $category | $cat_total | $cat_completed | $cat_incomplete | ${cat_percentage}% |" >> DASHBOARD.md
+            fi
+          done
+          
+          echo "" >> DASHBOARD.md
+          echo "---" >> DASHBOARD.md
+          echo "" >> DASHBOARD.md
+          echo "*Dashboard generated automatically by GitHub Actions*" >> DASHBOARD.md
+          
+          echo "✓ Dashboard generated successfully"
+
+      - name: Commit Dashboard
+        run: |
+          git config --local user.name "GitHub Actions Bot"
+          git config --local user.email "actions@github.com"
+          
+          git add DASHBOARD.md
+          
+          if git diff --staged --quiet; then
+            echo "No changes to dashboard"
+            exit 0
+          fi
+          
+          git commit -m "Update dashboard [skip ci]"
+          
+          # Push with retry logic
+          max_retries=5
+          retry_count=0
+          current_branch="${{ github.ref_name }}"
+          
+          while [ $retry_count -lt $max_retries ]; do
+            echo "Attempt $((retry_count + 1)) to push dashboard..."
+            
+            if git push origin HEAD:"$current_branch"; then
+              echo "✓ Dashboard pushed successfully"
+              exit 0
+            fi
+            
+            echo "Push failed, pulling latest changes..."
+            git pull --rebase origin "$current_branch"
+            
+            retry_count=$((retry_count + 1))
+            sleep 2
+          done
+          
+          echo "Failed to push after $max_retries attempts"
+          exit 1
+
+      - name: Create Job Summary
+        if: always()
+        run: |
+          if [ -f DASHBOARD.md ]; then
+            cat DASHBOARD.md >> $GITHUB_STEP_SUMMARY
+          else
+            echo "Dashboard file not found" >> $GITHUB_STEP_SUMMARY
+          fi
