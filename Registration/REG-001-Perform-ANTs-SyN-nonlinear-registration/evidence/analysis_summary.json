@@ -1,0 +1,9 @@
+{
+  "task_id": "REG-001",
+  "task_name": "Perform ANTs SyN nonlinear registration to MNI152 for Haxby anatomicals",
+  "dataset": "Haxby dataset",
+  "category": "Registration",
+  "timestamp": "2025-12-15T08:41:52.993851",
+  "status": "completed",
+  "implementation": "automated_batch"
+}
