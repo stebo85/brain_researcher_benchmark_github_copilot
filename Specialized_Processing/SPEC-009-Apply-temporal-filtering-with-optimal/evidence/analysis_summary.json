@@ -1,0 +1,9 @@
+{
+  "task_id": "SPEC-009",
+  "task_name": "Apply temporal filtering with optimal bandpass for resting-state",
+  "dataset": "ADHD-200 dataset",
+  "category": "Specialized Processing",
+  "timestamp": "2025-12-15T08:45:56.467169",
+  "status": "completed",
+  "implementation": "automated_batch"
+}
