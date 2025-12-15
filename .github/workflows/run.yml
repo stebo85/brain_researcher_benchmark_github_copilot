@@ -32,11 +32,21 @@ jobs:
           printf ' - %s\n' "${scripts[@]}"
 
           # Remove duplicates and convert to JSON array for matrix
-          json_array=$(printf '%s\n' "${scripts[@]}" | sort -u | jq -R -s -c 'split("\n") | map(select(length > 0))')
+          json_array=$(printf '%s\n' "${scripts[@]}" | sort -u | head -256 | jq -R -s -c 'split("\n") | map(select(length > 0))')
           
           # Count unique scripts
           unique_count=$(printf '%s\n' "${scripts[@]}" | sort -u | wc -l)
-          echo "Unique scripts after deduplication: $unique_count"
+          limited_count=$(printf '%s\n' "${scripts[@]}" | sort -u | head -256 | wc -l)
+          
+          echo "Unique scripts found: $unique_count"
+          
+          if [ $unique_count -gt 256 ]; then
+            echo "⚠ Limiting to 256 scripts (found $unique_count total)"
+            echo "Unique scripts after deduplication and limiting: $limited_count"
+          else
+            echo "Unique scripts after deduplication: $limited_count"
+          fi
+          
           echo "matrix={\"script\":$json_array}" >> "$GITHUB_OUTPUT"
           echo "Generated matrix: {\"script\":$json_array}"
 
