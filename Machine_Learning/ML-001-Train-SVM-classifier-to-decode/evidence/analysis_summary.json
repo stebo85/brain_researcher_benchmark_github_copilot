@@ -2,7 +2,7 @@
   "task_id": "ML-001",
   "task_name": "Train SVM classifier to decode object categories from Haxby VT cortex",
   "dataset": "Haxby dataset",
-  "timestamp": "2025-12-15T22:40:21.710541",
+  "timestamp": "2025-12-15T22:42:04.966239",
   "status": "completed",
   "n_samples": 864,
   "n_features": 464,

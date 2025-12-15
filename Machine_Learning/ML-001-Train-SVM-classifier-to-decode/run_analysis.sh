@@ -71,7 +71,7 @@ import matplotlib.pyplot as plt
 from nilearn import datasets
 from nilearn.maskers import NiftiMasker
 from sklearn.svm import SVC
-from sklearn.model_selection import cross_val_score, StratifiedKFold
+from sklearn.model_selection import cross_val_score, cross_val_predict, StratifiedKFold
 from sklearn.preprocessing import StandardScaler
 from sklearn.metrics import confusion_matrix, ConfusionMatrixDisplay, accuracy_score, classification_report
 
@@ -124,7 +124,6 @@ cv_scores = cross_val_score(clf, X_scaled, y, cv=cv, scoring='accuracy', n_jobs=
 print(f"✓ Cross-validation accuracy: {cv_scores.mean():.3f} ± {cv_scores.std():.3f}")
 
 # Get cross-validated predictions for confusion matrix (more realistic than training data)
-from sklearn.model_selection import cross_val_predict
 y_pred_cv = cross_val_predict(clf, X_scaled, y, cv=cv, n_jobs=-1)
 cv_acc = accuracy_score(y, y_pred_cv)
 
@@ -194,7 +193,7 @@ summary = {
     },
     "acceptance_criteria": {
         "cv_accuracy_threshold": 0.7,
-        "cv_accuracy_passed": bool(cv_scores.mean() > 0.7)
+        "cv_accuracy_passed": float(cv_scores.mean()) > 0.7
     },
     "model": {
         "type": "SVC",
