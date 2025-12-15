@@ -1,0 +1,9 @@
+{
+  "task_id": "META-004",
+  "task_name": "Run random effects meta-analysis on language activation maps",
+  "dataset": "NeuroVault language collection",
+  "category": "Meta-Analysis",
+  "timestamp": "2025-12-15T08:08:20.951467",
+  "status": "completed",
+  "implementation": "automated_batch"
+}
