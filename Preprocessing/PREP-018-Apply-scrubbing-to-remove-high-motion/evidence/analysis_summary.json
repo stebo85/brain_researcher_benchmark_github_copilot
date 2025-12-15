@@ -1,0 +1,9 @@
+{
+  "task_id": "PREP-018",
+  "task_name": "Apply scrubbing to remove high-motion volumes from Development fMRI",
+  "dataset": "Development fMRI dataset",
+  "category": "Preprocessing",
+  "timestamp": "2025-12-15T08:17:44.976830",
+  "status": "completed",
+  "implementation": "automated_batch"
+}
