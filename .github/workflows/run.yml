@@ -22,34 +22,47 @@ jobs:
         run: |
           set -e
           echo "Searching for run_analysis.sh scripts..."
-          mapfile -t scripts < <(find . -type f -name "run_analysis.sh" -not -path "./.git/*" | sort)
+          mapfile -t all_scripts < <(find . -type f -name "run_analysis.sh" -not -path "./.git/*" | sort -u)
 
-          if [ ${#scripts[@]} -eq 0 ]; then
+          if [ ${#all_scripts[@]} -eq 0 ]; then
             echo "No run_analysis.sh scripts found. Exiting."
             exit 1
           fi
 
-          echo "Found ${#scripts[@]} scripts:"
-          printf ' - %s\n' "${scripts[@]}"
+          echo "Found ${#all_scripts[@]} total scripts"
 
-          # Remove duplicates and convert to JSON array for matrix
-          json_array=$(printf '%s\n' "${scripts[@]}" | sort -u | head -256 | jq -R -s -c 'split("\n") | map(select(length > 0))')
+          # Filter out scripts that already have evidence directories
+          scripts=()
+          for script in "${all_scripts[@]}"; do
+            script_dir=$(dirname "$script")
+            evidence_dir="$script_dir/evidence"
+            
+            if [ -d "$evidence_dir" ] && [ -n "$(ls -A "$evidence_dir" 2>/dev/null)" ]; then
+              echo "✓ Skipping $script (evidence already exists)"
+            else
+              scripts+=("$script")
+            fi
+          done
+
+          if [ ${#scripts[@]} -eq 0 ]; then
+            echo "All scripts have evidence directories. Nothing to run."
+            echo "matrix={\"script\":[]}" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+
+          echo "Scripts to run: ${#scripts[@]}"
           
-          # Count unique scripts
-          unique_count=$(printf '%s\n' "${scripts[@]}" | sort -u | wc -l)
-          limited_count=$(printf '%s\n' "${scripts[@]}" | sort -u | head -256 | wc -l)
-          
-          echo "Unique scripts found: $unique_count"
-          
-          if [ $unique_count -gt 256 ]; then
-            echo "⚠ Limiting to 256 scripts (found $unique_count total)"
-            echo "Unique scripts after deduplication and limiting: $limited_count"
-          else
-            echo "Unique scripts after deduplication: $limited_count"
+          # Limit to 256 for matrix constraints
+          if [ ${#scripts[@]} -gt 256 ]; then
+            echo "⚠ Found ${#scripts[@]} scripts to run, limiting to 256 for this batch"
+            scripts=("${scripts[@]:0:256}")
           fi
           
+          # Convert to JSON array
+          json_array=$(printf '%s\n' "${scripts[@]}" | jq -R -s -c 'split("\n") | map(select(length > 0))')
+          
           echo "matrix={\"script\":$json_array}" >> "$GITHUB_OUTPUT"
-          echo "Generated matrix: {\"script\":$json_array}"
+          echo "Generated matrix with ${#scripts[@]} scripts"
 
   run-analysis:
     needs: discover-scripts
