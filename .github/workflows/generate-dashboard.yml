@@ -53,19 +53,15 @@ jobs:
             required_files=()
             if [ -f "$prompt_file" ]; then
               # Use a safer approach to extract evidence line
-              evidence_line=$(grep -A 1 "^## Evidence Required" "$prompt_file" 2>/dev/null | tail -n 1 | tr -d '\r')
+                evidence_line=$(grep -A 1 "^## Evidence Required" "$prompt_file" 2>/dev/null | tail -n 1 | tr -d '\r' | tr ';' '\n')
               if [ -n "$evidence_line" ] && [ "$evidence_line" != "## Evidence Required" ]; then
-                # Split by semicolon using parameter expansion
-                OLDIFS="$IFS"
-                IFS=';'
-                for file in $evidence_line; do
-                  # Trim whitespace and skip empty
-                  trimmed=$(echo "$file" | sed 's/^[[:space:]]*//;s/[[:space:]]*$//')
+                  # Process line by line
+                  while IFS= read -r file; do
+                    trimmed=$(echo "$file" | sed 's/^[[:space:]]*//;s/[[:space:]]*$//')
                   if [ -n "$trimmed" ]; then
                     required_files+=("$trimmed")
                   fi
-                done
-                IFS="$OLDIFS"
+                  done < <(echo "$evidence_line")
               fi
             fi
             
@@ -92,25 +88,14 @@ jobs:
                 completed_list+=("| $task_name | ✅ | $file_count / $required_count |")
               else
                 incomplete_tasks=$((incomplete_tasks + 1))
-                if [ ${#missing_files[@]} -gt 0 ]; then
-                  All required evidence files are present." >> DASHBOARD.md
-            echo "" >> DASHBOARD.md
-            echo "| Task | Status | Evidence Files (Found/Required) |" >> DASHBOARD.md
-            echo "|------|--------|----------------------------------|" >> DASHBOARD.md
-            for item in "${completed_list[@]}"; do
-              echo "$item" >> DASHBOARD.md
-            done
-            echo "" >> DASHBOARD.md
-          fi
-          
-          # Incomplete tasks section
-          if [ ${#incomplete_list[@]} -gt 0 ]; then
-            echo "## ❌ Incomplete Tasks ($incomplete_tasks)" >> DASHBOARD.md
-            echo "" >> DASHBOARD.md
-            echo "Tasks missing required evidence files or with partial evidence." >> DASHBOARD.md
-            echo "" >> DASHBOARD.md
-            echo "| Task | Status | Evidence Files | Notes |" >> DASHBOARD.md
-            echo "|------|--------|----------------|
+                missing_str=$(IFS=, ; echo "${missing_files[*]}")
+                incomplete_list+=("| $task_name | ⚠️ | $file_count / $required_count | Missing: $missing_str |")
+              fi
+            else
+              # No evidence directory or empty
+              incomplete_tasks=$((incomplete_tasks + 1))
+              required_count=${#required_files[@]}
+              incomplete_list+=("| $task_name | ❌ | 0 / $required_count | No evidence found |")
             fi
           done
           
@@ -187,17 +172,14 @@ jobs:
               # Extract required evidence files
               required_files=()
               if [ -f "$prompt_file" ]; then
-                evidence_line=$(grep -A 1 "^## Evidence Required" "$prompt_file" 2>/dev/null | tail -n 1 | tr -d '\r')
+                  evidence_line=$(grep -A 1 "^## Evidence Required" "$prompt_file" 2>/dev/null | tail -n 1 | tr -d '\r' | tr ';' '\n')
                 if [ -n "$evidence_line" ] && [ "$evidence_line" != "## Evidence Required" ]; then
-                  OLDIFS="$IFS"
-                  IFS=';'
-                  for file in $evidence_line; do
+                    while IFS= read -r file; do
                     trimmed=$(echo "$file" | sed 's/^[[:space:]]*//;s/[[:space:]]*$//')
                     if [ -n "$trimmed" ]; then
                       required_files+=("$trimmed")
                     fi
-                  done
-                  IFS="$OLDIFS"
+                    done < <(echo "$evidence_line")
                 fi
               fi
               
