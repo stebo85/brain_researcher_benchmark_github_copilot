@@ -1,0 +1,9 @@
+{
+  "task_id": "META-015",
+  "task_name": "Perform specification curve meta-analysis testing analysis choices",
+  "dataset": "Multiple analytic pipelines",
+  "category": "Meta-Analysis",
+  "timestamp": "2025-12-15T08:09:10.463217",
+  "status": "completed",
+  "implementation": "automated_batch"
+}
