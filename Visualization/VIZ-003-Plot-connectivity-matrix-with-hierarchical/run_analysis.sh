@@ -83,9 +83,7 @@ Step 2: Creating visualizations...")
     
     # Create placeholder visualization
     fig, ax = plt.subplots(figsize=(12, 8))
-    ax.text(0.5, 0.5, f"{task_name}
-
-Visualization placeholder", 
+    ax.text(0.5, 0.5, "Visualization Placeholder", 
             ha='center', va='center', fontsize=14)
     ax.axis('off')
     plt.tight_layout()
