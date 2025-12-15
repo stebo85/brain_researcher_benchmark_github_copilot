@@ -53,7 +53,7 @@ jobs:
             required_files=()
             if [ -f "$prompt_file" ]; then
               # Use a safer approach to extract evidence line
-                evidence_line=$(grep -A 1 "^## Evidence Required" "$prompt_file" 2>/dev/null | tail -n 1 | tr -d '\r' | tr ';' '\n')
+                evidence_line=$(awk '/^## Evidence Required/{flag=1; next} /^##/{flag=0} flag && NF {print; exit}' "$prompt_file" | tr -d '\r' | tr ';' '\n')
               if [ -n "$evidence_line" ] && [ "$evidence_line" != "## Evidence Required" ]; then
                   # Process line by line
                   while IFS= read -r file; do
@@ -178,7 +178,7 @@ jobs:
                  # Extract required evidence files
                  required_files=()
                  if [ -f "$prompt_file" ]; then
-                   evidence_line=$(grep -A 1 "^## Evidence Required" "$prompt_file" 2>/dev/null | tail -n 1 | tr -d '\r')
+                   evidence_line=$(awk '/^## Evidence Required/{flag=1; next} /^##/{flag=0} flag && NF {print; exit}' "$prompt_file" | tr -d '\r')
                    if [ -n "$evidence_line" ] && [ "$evidence_line" != "## Evidence Required" ]; then
                      OLDIFS="$IFS"
                      IFS=';'
