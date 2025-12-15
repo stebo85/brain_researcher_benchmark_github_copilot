@@ -1,0 +1,9 @@
+{
+  "task_id": "DL-008",
+  "task_name": "Implement transfer learning using pretrained ImageNet weights for brain MRI",
+  "dataset": "ADHD-200 T1w images",
+  "category": "Deep Learning",
+  "timestamp": "2025-12-15T07:58:46.542825",
+  "status": "completed",
+  "implementation": "automated_batch"
+}
