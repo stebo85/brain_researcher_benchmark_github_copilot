@@ -1,0 +1,9 @@
+{
+  "task_id": "SIM-011",
+  "task_name": "Simulate multi-echo fMRI with known TE-dependent decay",
+  "dataset": "Multi-echo parameters",
+  "category": "Simulation",
+  "timestamp": "2025-12-15T15:05:22.210447",
+  "status": "completed",
+  "implementation": "automated_batch"
+}
