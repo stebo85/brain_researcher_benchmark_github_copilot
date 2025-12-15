@@ -1,0 +1,9 @@
+{
+  "task_id": "KG-007",
+  "task_name": "Link Harvard-Oxford regions to disease associations from literature",
+  "dataset": "Harvard-Oxford atlas",
+  "category": "Knowledge Graph",
+  "timestamp": "2025-12-15T08:05:03.694154",
+  "status": "completed",
+  "implementation": "automated_batch"
+}
