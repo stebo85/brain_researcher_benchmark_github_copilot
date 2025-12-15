@@ -1,0 +1,9 @@
+{
+  "task_id": "VIZ-004",
+  "task_name": "Create surface plot of cortical thickness on fsaverage",
+  "dataset": "FreeSurfer thickness data",
+  "category": "Visualization",
+  "timestamp": "2025-12-15T08:52:15.334649",
+  "status": "completed",
+  "implementation": "automated_batch"
+}
