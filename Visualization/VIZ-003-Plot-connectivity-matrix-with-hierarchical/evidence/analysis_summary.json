@@ -1,0 +1,9 @@
+{
+  "task_id": "VIZ-003",
+  "task_name": "Plot connectivity matrix with hierarchical clustering",
+  "dataset": "ABIDE connectivity data",
+  "category": "Visualization",
+  "timestamp": "2025-12-15T08:52:10.842817",
+  "status": "completed",
+  "implementation": "automated_batch"
+}
