@@ -1,0 +1,9 @@
+{
+  "task_id": "KG-020",
+  "task_name": "Build intervention-outcome knowledge graph from clinical trial imaging",
+  "dataset": "Simulated intervention data",
+  "category": "Knowledge Graph",
+  "timestamp": "2025-12-15T08:06:01.333080",
+  "status": "completed",
+  "implementation": "automated_batch"
+}
