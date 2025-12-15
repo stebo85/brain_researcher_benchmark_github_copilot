@@ -1,21 +1,21 @@
 # Brain Researcher Benchmark - Dashboard
 
-**Last Updated:** 2025-12-15 08:47:37 UTC
+**Last Updated:** 2025-12-15 08:49:20 UTC
 
 ## 📊 Summary
 
 | Metric | Value |
 |--------|-------|
 | Total Tasks | 440 |
-| Completed Tasks (with evidence) | 18 |
-| Incomplete Tasks | 422 |
+| Completed Tasks (with evidence) | 20 |
+| Incomplete Tasks | 420 |
 | Completion Rate | 4% |
 
 ### Progress
 
 ![Progress](https://progress-bar.dev/4/?title=Completed&width=500)
 
-## ✅ Completed Tasks (18)
+## ✅ Completed Tasks (20)
 
 | Task | Status | Evidence Files |
 |------|--------|----------------|
@@ -37,8 +37,10 @@
 | RT-018-Perform-online-event-detection-for | ✅ | 5 / 2 |
 | RT-019-Run-real-time-seed-based-connectivity-for | ✅ | 5 / 2 |
 | SIM-005-Simulate-lesion-effects-using-virtual | ✅ | 5 / 2 |
+| SIM-019-Simulate-group-differences-with-controlled | ✅ | 6 / 3 |
+| SPEC-017-Apply-phase-scrambling-for-null-hypothesis | ✅ | 5 / 2 |
 
-## ❌ Incomplete Tasks (422)
+## ❌ Incomplete Tasks (420)
 
 | Task | Status | Evidence Files |
 |------|--------|----------------|
@@ -322,17 +324,17 @@
 | SEG-015-Perform-nucleus-accumbens-subdivision-into | ❌ | 0 / 2 | No evidence found |
 | SEG-016-Run-joint-tissue-segmentation-and | ❌ | 0 / 2 | No evidence found |
 | SEG-017-Segment-ventricular-system-with-lateral | ⚠️ | 4 / 2 | Missing: ventricle_labels.nii.gz |
-| SEG-018-Perform-cortical-myelin-mapping-from | ❌ | 0 / 2 | No evidence found |
+| SEG-018-Perform-cortical-myelin-mapping-from | ⚠️ | 4 / 2 | Missing: myelin_map.nii.gz |
 | SEG-019-Run-deep-sulci-labeling-including | ❌ | 0 / 2 | No evidence found |
-| SEG-020-Segment-basal-ganglia-nuclei-with | ❌ | 0 / 2 | No evidence found |
+| SEG-020-Segment-basal-ganglia-nuclei-with | ⚠️ | 4 / 2 | Missing: basal_ganglia.nii.gz |
 | SIM-001-Simulate-BOLD-timeseries-using-Jansen-Rit | ❌ | 0 / 2 | No evidence found |
-| SIM-002-Generate-synthetic-fMRI-with-known | ❌ | 0 / 2 | No evidence found |
+| SIM-002-Generate-synthetic-fMRI-with-known | ⚠️ | 3 / 2 | Missing: synthetic_fmri.nii.gz,ground_truth_mask.nii.gz |
 | SIM-003-Simulate-resting-state-networks-using-Kuramoto | ❌ | 0 / 2 | No evidence found |
 | SIM-004-Create-synthetic-DWI-data-with | ❌ | 0 / 2 | No evidence found |
 | SIM-006-Generate-synthetic-MEG-data-with | ❌ | 0 / 2 | No evidence found |
 | SIM-007-Simulate-HRF-variations-across-subjects | ❌ | 0 / 2 | No evidence found |
 | SIM-008-Create-synthetic-activation-patterns-with | ⚠️ | 4 / 2 | Missing: synthetic_activation.nii.gz |
-| SIM-009-Simulate-task-based-fMRI-with-parametric | ❌ | 0 / 2 | No evidence found |
+| SIM-009-Simulate-task-based-fMRI-with-parametric | ⚠️ | 4 / 2 | Missing: simulated_task_fmri.nii.gz |
 | SIM-010-Generate-synthetic-connectivity-with-hub | ❌ | 0 / 2 | No evidence found |
 | SIM-011-Simulate-multi-echo-fMRI-with-known | ❌ | 0 / 2 | No evidence found |
 | SIM-012-Create-synthetic-lesion-dataset-with | ❌ | 0 / 2 | No evidence found |
@@ -342,38 +344,36 @@
 | SIM-016-Create-synthetic-population-with-known | ❌ | 0 / 2 | No evidence found |
 | SIM-017-Simulate-motion-artifacts-with-realistic | ⚠️ | 4 / 2 | Missing: motion_corrupted.nii.gz |
 | SIM-018-Generate-synthetic-tractography-with-known | ❌ | 0 / 2 | No evidence found |
-| SIM-019-Simulate-group-differences-with-controlled | ❌ | 0 / 3 | No evidence found |
-| SIM-020-Create-synthetic-fMRI-with-known | ❌ | 0 / 2 | No evidence found |
+| SIM-020-Create-synthetic-fMRI-with-known | ⚠️ | 4 / 2 | Missing: synthetic_fmri.nii.gz |
 | SPEC-001-Apply-TEDANA-multi-echo-denoising-to | ❌ | 0 / 2 | No evidence found |
 | SPEC-002-Run-AROMA-ICA-based-denoising-on | ❌ | 0 / 2 | No evidence found |
 | SPEC-003-Apply-global-signal-regression-with | ❌ | 0 / 2 | No evidence found |
 | SPEC-004-Run-anatomical-CompCor-to-extract | ❌ | 0 / 2 | No evidence found |
 | SPEC-005-Apply-slice-timing-correction-using-different | ❌ | 0 / 2 | No evidence found |
-| SPEC-006-Run-RETROICOR-to-remove-cardiac | ❌ | 0 / 2 | No evidence found |
-| SPEC-007-Apply-susceptibility-distortion-correction-using | ❌ | 0 / 2 | No evidence found |
-| SPEC-008-Run-phase-based-motion-correction-for | ❌ | 0 / 2 | No evidence found |
-| SPEC-009-Apply-temporal-filtering-with-optimal | ❌ | 0 / 2 | No evidence found |
-| SPEC-010-Run-spike-regression-to-remove | ❌ | 0 / 2 | No evidence found |
+| SPEC-006-Run-RETROICOR-to-remove-cardiac | ⚠️ | 4 / 2 | Missing: denoised_bold.nii.gz |
+| SPEC-007-Apply-susceptibility-distortion-correction-using | ⚠️ | 3 / 2 | Missing: unwarped_bold.nii.gz,fieldmap_hz.nii.gz |
+| SPEC-008-Run-phase-based-motion-correction-for | ⚠️ | 4 / 2 | Missing: motion_corrected.nii.gz |
+| SPEC-009-Apply-temporal-filtering-with-optimal | ⚠️ | 4 / 2 | Missing: filtered_data.nii.gz |
+| SPEC-010-Run-spike-regression-to-remove | ⚠️ | 4 / 2 | Missing: cleaned_data.nii.gz |
 | SPEC-011-Apply-spatial-smoothing-with-varying | ❌ | 0 / 2 | No evidence found |
 | SPEC-012-Run-scrubbing-to-remove-high-motion | ❌ | 0 / 2 | No evidence found |
 | SPEC-013-Apply-gradient-unwarping-to-correct | ❌ | 0 / 2 | No evidence found |
-| SPEC-014-Run-nuisance-regression-with-orthogonalization | ❌ | 0 / 2 | No evidence found |
-| SPEC-015-Apply-despiking-to-remove-outlier | ❌ | 0 / 2 | No evidence found |
-| SPEC-016-Run-independent-vector-analysis-for | ❌ | 0 / 2 | No evidence found |
-| SPEC-017-Apply-phase-scrambling-for-null-hypothesis | ❌ | 0 / 2 | No evidence found |
+| SPEC-014-Run-nuisance-regression-with-orthogonalization | ⚠️ | 4 / 2 | Missing: cleaned_beta_maps.nii.gz |
+| SPEC-015-Apply-despiking-to-remove-outlier | ⚠️ | 3 / 2 | Missing: despiked_data.nii.gz,outlier_map.nii.gz |
+| SPEC-016-Run-independent-vector-analysis-for | ⚠️ | 4 / 2 | Missing: iva_components.nii.gz |
 | SPEC-018-Run-dual-regression-to-extract | ❌ | 0 / 2 | No evidence found |
 | SPEC-019-Apply-motion-censoring-with-interpolation | ❌ | 0 / 2 | No evidence found |
-| SPEC-020-Run-component-based-noise-correction-on | ❌ | 0 / 2 | No evidence found |
+| SPEC-020-Run-component-based-noise-correction-on | ⚠️ | 3 / 2 | Missing: denoised_cbf.nii.gz,noise_components.nii.gz |
 | STAT-001-Run-first-level-GLM-on-Haxby | ❌ | 0 / 2 | No evidence found |
-| STAT-002-Perform-group-level-one-sample-t-test-on | ❌ | 0 / 2 | No evidence found |
-| STAT-003-Run-two-sample-t-test-comparing-ADHD | ❌ | 0 / 2 | No evidence found |
+| STAT-002-Perform-group-level-one-sample-t-test-on | ⚠️ | 2 / 2 | Missing: group_tmap.nii.gz,thresholded_map.nii.gz |
+| STAT-003-Run-two-sample-t-test-comparing-ADHD | ⚠️ | 3 / 2 | Missing: adhd_vs_control_tmap.nii.gz |
 | STAT-004-Perform-ANCOVA-with-age-as | ❌ | 0 / 2 | No evidence found |
-| STAT-005-Run-paired-t-test-on-NKI | ❌ | 0 / 2 | No evidence found |
+| STAT-005-Run-paired-t-test-on-NKI | ⚠️ | 3 / 2 | Missing: paired_tmap.nii.gz |
 | STAT-006-Apply-FDR-correction-to-Miyawaki | ❌ | 0 / 2 | No evidence found |
 | STAT-007-Perform-cluster-extent-threshold-with-FSL | ❌ | 0 / 2 | No evidence found |
 | STAT-008-Run-AFNI-3dClustSim-Monte-Carlo | ❌ | 0 / 2 | No evidence found |
-| STAT-009-Compute-effect-sizes-Cohens-d | ❌ | 0 / 2 | No evidence found |
-| STAT-010-Run-mixed-effects-GLM-with-random | ❌ | 0 / 2 | No evidence found |
+| STAT-009-Compute-effect-sizes-Cohens-d | ⚠️ | 3 / 2 | Missing: cohens_d_map.nii.gz |
+| STAT-010-Run-mixed-effects-GLM-with-random | ⚠️ | 3 / 2 | Missing: fixed_effects.nii.gz |
 | STAT-011-Perform-factorial-ANOVA-with-task | ❌ | 0 / 3 | No evidence found |
 | STAT-012-Apply-Bonferroni-correction-for-family-wise | ❌ | 0 / 2 | No evidence found |
 | STAT-013-Run-non-parametric-Kruskal-Wallis-test-on | ❌ | 0 / 2 | No evidence found |
@@ -484,8 +484,8 @@
 | Real-time_Processing | 20 | 2 | 18 | 10% |
 | Registration | 20 | 0 | 20 | 0% |
 | Segmentation | 20 | 0 | 20 | 0% |
-| Simulation | 20 | 1 | 19 | 5% |
-| Specialized_Processing | 20 | 0 | 20 | 0% |
+| Simulation | 20 | 2 | 18 | 10% |
+| Specialized_Processing | 20 | 1 | 19 | 5% |
 | Statistical_Analysis | 20 | 0 | 20 | 0% |
 | Statistical_Inference | 20 | 0 | 20 | 0% |
 | Surface | 20 | 0 | 20 | 0% |
