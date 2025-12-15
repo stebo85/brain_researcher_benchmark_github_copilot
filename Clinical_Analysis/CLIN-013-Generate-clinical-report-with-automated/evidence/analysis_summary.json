@@ -1,0 +1,9 @@
+{
+  "task_id": "CLIN-013",
+  "task_name": "Generate clinical report with automated ROI volumetry",
+  "dataset": "Custom T1w scan",
+  "category": "Clinical Analysis",
+  "timestamp": "2025-12-15T07:51:46.954126",
+  "status": "completed",
+  "implementation": "automated_batch"
+}
