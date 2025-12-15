@@ -1,0 +1,9 @@
+{
+  "task_id": "SPEC-015",
+  "task_name": "Apply despiking to remove outlier voxel intensities",
+  "dataset": "Custom artifact-heavy fMRI",
+  "category": "Specialized Processing",
+  "timestamp": "2025-12-15T08:46:01.311630",
+  "status": "completed",
+  "implementation": "automated_batch"
+}
