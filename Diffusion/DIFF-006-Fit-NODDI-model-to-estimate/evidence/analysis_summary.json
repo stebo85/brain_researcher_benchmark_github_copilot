@@ -1,0 +1,9 @@
+{
+  "task_id": "DIFF-006",
+  "task_name": "Fit NODDI model to estimate neurite density and orientation dispersion",
+  "dataset": "Custom multi-shell DWI",
+  "category": "Diffusion",
+  "timestamp": "2025-12-15T08:17:09.641539",
+  "status": "completed",
+  "implementation": "automated_batch"
+}
