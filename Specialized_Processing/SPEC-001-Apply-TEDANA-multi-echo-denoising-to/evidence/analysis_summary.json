@@ -1,0 +1,9 @@
+{
+  "task_id": "SPEC-001",
+  "task_name": "Apply TEDANA multi-echo denoising to separate BOLD from non-BOLD signals",
+  "dataset": "Custom multi-echo fMRI",
+  "category": "Specialized Processing",
+  "timestamp": "2025-12-15T15:08:22.877585",
+  "status": "completed",
+  "implementation": "automated_batch"
+}
