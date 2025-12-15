@@ -1,0 +1,9 @@
+{
+  "task_id": "PREP-008",
+  "task_name": "Perform intensity normalization on ABIDE T1w images",
+  "dataset": "ABIDE dataset",
+  "category": "Preprocessing",
+  "timestamp": "2025-12-15T08:10:16.639178",
+  "status": "completed",
+  "implementation": "automated_batch"
+}
