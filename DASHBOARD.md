@@ -1,21 +1,21 @@
 # Brain Researcher Benchmark - Dashboard
 
-**Last Updated:** 2025-12-15 08:49:20 UTC
+**Last Updated:** 2025-12-15 12:41:38 UTC
 
 ## 📊 Summary
 
 | Metric | Value |
 |--------|-------|
 | Total Tasks | 440 |
-| Completed Tasks (with evidence) | 20 |
-| Incomplete Tasks | 420 |
-| Completion Rate | 4% |
+| Completed Tasks (with evidence) | 33 |
+| Incomplete Tasks | 407 |
+| Completion Rate | 7% |
 
 ### Progress
 
-![Progress](https://progress-bar.dev/4/?title=Completed&width=500)
+![Progress](https://progress-bar.dev/7/?title=Completed&width=500)
 
-## ✅ Completed Tasks (20)
+## ✅ Completed Tasks (33)
 
 | Task | Status | Evidence Files |
 |------|--------|----------------|
@@ -32,6 +32,7 @@
 | DATA-017-Link-MNE-sample-dataset-with | ✅ | 4 / 2 |
 | DATA-019-Monitor-and-log-dataset-access | ✅ | 4 / 2 |
 | DATA-020-Migrate-SPM-multimodal-dataset-to | ✅ | 4 / 2 |
+| DL-001-Train-3D-CNN-for-ADHD | ✅ | 5 / 2 |
 | ML-001-Train-SVM-classifier-to-decode | ✅ | 4 / 2 |
 | ML-003-Perform-cross-validated-age-prediction-from | ✅ | 4 / 2 |
 | RT-018-Perform-online-event-detection-for | ✅ | 5 / 2 |
@@ -39,8 +40,20 @@
 | SIM-005-Simulate-lesion-effects-using-virtual | ✅ | 5 / 2 |
 | SIM-019-Simulate-group-differences-with-controlled | ✅ | 6 / 3 |
 | SPEC-017-Apply-phase-scrambling-for-null-hypothesis | ✅ | 5 / 2 |
+| STAT-019-Compute-bootstrap-confidence-intervals-for | ✅ | 4 / 2 |
+| STATINF-001-Run-10000-permutation-test-on | ✅ | 4 / 2 |
+| STATINF-013-Run-robust-regression-with-outlier | ✅ | 4 / 2 |
+| STATINF-014-Perform-exact-permutation-test-with | ✅ | 4 / 2 |
+| SURF-013-Compute-geodesic-distance-along-surface | ✅ | 5 / 2 |
+| WORK-006-Run-developmental-trajectory-workflow-age | ✅ | 5 / 2 |
+| WORK-010-Run-multisite-harmonization-workflow-ComBat | ✅ | 5 / 2 |
+| WORK-012-Run-genetics-workflow-GWAS-on | ✅ | 5 / 2 |
+| WORK-015-Execute-deep-learning-workflow-data | ✅ | 5 / 2 |
+| WORK-018-Run-connectivity-dynamics-workflow-sliding | ✅ | 5 / 2 |
+| WORK-019-Execute-multivariate-workflow-dimensionality-reduction | ✅ | 5 / 2 |
+| WORK-020-Run-reproducibility-workflow-analysis-on | ✅ | 5 / 2 |
 
-## ❌ Incomplete Tasks (420)
+## ❌ Incomplete Tasks (407)
 
 | Task | Status | Evidence Files |
 |------|--------|----------------|
@@ -111,7 +124,6 @@
 | DATA-010-Export-Development-fMRI-derivatives-to | ⚠️ | 7 / 2 | Missing: derivatives/,dataset_description.json |
 | DATA-012-Archive-and-compress-Haxby-derivatives | ⚠️ | 3 / 2 | Missing: haxby_derivatives.tar.gz |
 | DATA-018-Create-reproducible-data-access-script | ⚠️ | 2 / 2 | Missing: fetch_data.py,setup_instructions.md |
-| DL-001-Train-3D-CNN-for-ADHD | ❌ | 0 / 2 | No evidence found |
 | DL-002-Implement-MONAI-U-Net-for-automated | ⚠️ | 3 / 2 | Missing: trained_unet.pth,segmentation_examples.nii.gz |
 | DL-003-Build-ResNet-for-age-prediction | ⚠️ | 3 / 2 | Missing: trained_resnet.pth,age_predictions.csv |
 | DL-004-Train-variational-autoencoder-to-learn | ⚠️ | 3 / 2 | Missing: trained_vae.pth,latent_embeddings.npy |
@@ -374,36 +386,32 @@
 | STAT-008-Run-AFNI-3dClustSim-Monte-Carlo | ❌ | 0 / 2 | No evidence found |
 | STAT-009-Compute-effect-sizes-Cohens-d | ⚠️ | 3 / 2 | Missing: cohens_d_map.nii.gz |
 | STAT-010-Run-mixed-effects-GLM-with-random | ⚠️ | 3 / 2 | Missing: fixed_effects.nii.gz |
-| STAT-011-Perform-factorial-ANOVA-with-task | ❌ | 0 / 3 | No evidence found |
+| STAT-011-Perform-factorial-ANOVA-with-task | ⚠️ | 3 / 3 | Missing: main_effect_task.nii.gz,task_x_group.nii.gz |
 | STAT-012-Apply-Bonferroni-correction-for-family-wise | ❌ | 0 / 2 | No evidence found |
 | STAT-013-Run-non-parametric-Kruskal-Wallis-test-on | ❌ | 0 / 2 | No evidence found |
 | STAT-014-Perform-multivariate-GLM-with-multiple | ❌ | 0 / 2 | No evidence found |
 | STAT-015-Run-robust-regression-to-handle | ❌ | 0 / 2 | No evidence found |
-| STAT-016-Apply-small-volume-correction-for | ❌ | 0 / 2 | No evidence found |
-| STAT-017-Perform-conjunction-analysis-between-language | ❌ | 0 / 2 | No evidence found |
+| STAT-016-Apply-small-volume-correction-for | ⚠️ | 3 / 2 | Missing: svc_corrected_map.nii.gz |
+| STAT-017-Perform-conjunction-analysis-between-language | ⚠️ | 3 / 2 | Missing: conjunction_map.nii.gz |
 | STAT-018-Run-temporal-autocorrelation-correction-with | ❌ | 0 / 2 | No evidence found |
-| STAT-019-Compute-bootstrap-confidence-intervals-for | ❌ | 0 / 2 | No evidence found |
 | STAT-020-Apply-PALM-accelerated-permutation-testing | ❌ | 0 / 2 | No evidence found |
-| STATINF-001-Run-10000-permutation-test-on | ❌ | 0 / 2 | No evidence found |
 | STATINF-002-Apply-FDR-correction-to-group | ❌ | 0 / 2 | No evidence found |
 | STATINF-003-Perform-cluster-based-thresholding-using-FSL | ❌ | 0 / 2 | No evidence found |
-| STATINF-004-Run-Bayesian-second-level-analysis-with | ❌ | 0 / 2 | No evidence found |
+| STATINF-004-Run-Bayesian-second-level-analysis-with | ⚠️ | 2 / 2 | Missing: posterior_mean.nii.gz,credible_intervals.nii.gz |
 | STATINF-005-Calculate-confidence-intervals-for-ROI | ❌ | 0 / 2 | No evidence found |
-| STATINF-006-Perform-TFCE-correction-on-mixed | ❌ | 0 / 2 | No evidence found |
+| STATINF-006-Perform-TFCE-correction-on-mixed | ⚠️ | 2 / 2 | Missing: tfce_map.nii.gz,corrected_pvals.nii.gz |
 | STATINF-007-Run-sign-flipping-permutation-test-for | ❌ | 0 / 2 | No evidence found |
 | STATINF-008-Apply-Bonferroni-correction-to-ROI-based | ❌ | 0 / 2 | No evidence found |
-| STATINF-009-Compute-standardized-effect-sizes-Cohens | ❌ | 0 / 2 | No evidence found |
-| STATINF-010-Run-mixed-effects-ANOVA-with | ❌ | 0 / 2 | No evidence found |
+| STATINF-009-Compute-standardized-effect-sizes-Cohens | ⚠️ | 3 / 2 | Missing: effect_size_map.nii.gz |
+| STATINF-010-Run-mixed-effects-ANOVA-with | ⚠️ | 3 / 2 | Missing: anova_fmap.nii.gz |
 | STATINF-011-Perform-equivalence-testing-for-null | ❌ | 0 / 2 | No evidence found |
 | STATINF-012-Calculate-power-analysis-for-future | ❌ | 0 / 2 | No evidence found |
-| STATINF-013-Run-robust-regression-with-outlier | ❌ | 0 / 2 | No evidence found |
-| STATINF-014-Perform-exact-permutation-test-with | ❌ | 0 / 2 | No evidence found |
-| STATINF-015-Apply-voxel-wise-FWE-correction-using | ❌ | 0 / 2 | No evidence found |
+| STATINF-015-Apply-voxel-wise-FWE-correction-using | ⚠️ | 3 / 2 | Missing: fwe_corrected.nii.gz |
 | STATINF-016-Run-bootstrap-resampling-to-estimate | ❌ | 0 / 2 | No evidence found |
-| STATINF-017-Perform-omnibus-F-test-followed-by | ❌ | 0 / 2 | No evidence found |
-| STATINF-018-Calculate-heterogeneity-in-multi-site-data | ❌ | 0 / 2 | No evidence found |
+| STATINF-017-Perform-omnibus-F-test-followed-by | ⚠️ | 3 / 2 | Missing: ftest_map.nii.gz |
+| STATINF-018-Calculate-heterogeneity-in-multi-site-data | ⚠️ | 3 / 2 | Missing: i2_by_region.nii.gz |
 | STATINF-019-Run-likelihood-ratio-test-comparing | ❌ | 0 / 2 | No evidence found |
-| STATINF-020-Perform-cross-validated-prediction-with-nested | ❌ | 0 / 2 | No evidence found |
+| STATINF-020-Perform-cross-validated-prediction-with-nested | ⚠️ | 3 / 2 | Missing: nested_cv_results.csv,cv_scheme.png |
 | SURF-001-Run-complete-FreeSurfer-recon-all-on | ❌ | 0 / 3 | No evidence found |
 | SURF-002-Extract-cortical-thickness-from-Desikan-Killiany | ❌ | 0 / 3 | No evidence found |
 | SURF-003-Compute-surface-based-functional-connectivity-on | ❌ | 0 / 2 | No evidence found |
@@ -416,7 +424,6 @@
 | SURF-010-Compute-Destrieux-atlas-parcellation-with | ❌ | 0 / 2 | No evidence found |
 | SURF-011-Calculate-surface-based-inter-subject-alignment-using | ❌ | 0 / 2 | No evidence found |
 | SURF-012-Extract-myelin-maps-from-T1wT2w | ❌ | 0 / 3 | No evidence found |
-| SURF-013-Compute-geodesic-distance-along-surface | ❌ | 0 / 2 | No evidence found |
 | SURF-014-Perform-surface-based-searchlight-decoding-on | ❌ | 0 / 2 | No evidence found |
 | SURF-015-Create-gradient-maps-of-functional | ❌ | 0 / 3 | No evidence found |
 | SURF-016-Compute-surface-area-expansioncontraction-from | ❌ | 0 / 2 | No evidence found |
@@ -426,44 +433,37 @@
 | SURF-020-Compute-local-gyrification-index-to | ❌ | 0 / 3 | No evidence found |
 | VIZ-001-Create-interactive-3D-brain-with | ❌ | 0 / 2 | No evidence found |
 | VIZ-002-Generate-glass-brain-plot-of | ❌ | 0 / 1 | No evidence found |
-| VIZ-003-Plot-connectivity-matrix-with-hierarchical | ❌ | 0 / 2 | No evidence found |
-| VIZ-004-Create-surface-plot-of-cortical | ❌ | 0 / 2 | No evidence found |
+| VIZ-003-Plot-connectivity-matrix-with-hierarchical | ⚠️ | 3 / 2 | Missing: connectivity_matrix.png,dendrogram.png |
+| VIZ-004-Create-surface-plot-of-cortical | ⚠️ | 3 / 2 | Missing: thickness_lh.png,thickness_rh.png |
 | VIZ-005-Generate-connectome-circle-plot-with | ❌ | 0 / 1 | No evidence found |
-| VIZ-006-Plot-MVPA-searchlight-accuracy-map | ❌ | 0 / 1 | No evidence found |
+| VIZ-006-Plot-MVPA-searchlight-accuracy-map | ⚠️ | 3 / 1 | Missing: searchlight_slices.png |
 | VIZ-007-Create-animated-movie-of-dynamic | ❌ | 0 / 2 | No evidence found |
 | VIZ-008-Generate-VR-ready-brain-model-with | ❌ | 0 / 2 | No evidence found |
-| VIZ-009-Plot-ROI-timecourses-with-event | ❌ | 0 / 2 | No evidence found |
-| VIZ-010-Create-carpet-plot-showing-all | ❌ | 0 / 1 | No evidence found |
-| VIZ-011-Generate-statistical-map-with-cluster | ❌ | 0 / 2 | No evidence found |
+| VIZ-009-Plot-ROI-timecourses-with-event | ⚠️ | 3 / 2 | Missing: roi_timecourses.png,event_markers.csv |
+| VIZ-010-Create-carpet-plot-showing-all | ⚠️ | 3 / 1 | Missing: carpet_plot.png |
+| VIZ-011-Generate-statistical-map-with-cluster | ⚠️ | 3 / 2 | Missing: activation_map.png,cluster_table.csv |
 | VIZ-012-Plot-confusion-matrix-for-MVPA | ❌ | 0 / 2 | No evidence found |
 | VIZ-013-Create-graph-visualization-of-structural | ❌ | 0 / 1 | No evidence found |
 | VIZ-014-Generate-design-matrix-visualization-with | ❌ | 0 / 2 | No evidence found |
-| VIZ-015-Plot-probabilistic-atlas-on-MNI | ❌ | 0 / 1 | No evidence found |
-| VIZ-016-Create-dual-coding-plot-showing-activation | ❌ | 0 / 1 | No evidence found |
+| VIZ-015-Plot-probabilistic-atlas-on-MNI | ⚠️ | 3 / 1 | Missing: atlas_probability.png |
+| VIZ-016-Create-dual-coding-plot-showing-activation | ⚠️ | 3 / 1 | Missing: activation_deactivation.png |
 | VIZ-017-Generate-augmented-reality-brain-for | ❌ | 0 / 2 | No evidence found |
-| VIZ-018-Plot-brain-parcellation-with-region | ❌ | 0 / 2 | No evidence found |
+| VIZ-018-Plot-brain-parcellation-with-region | ⚠️ | 3 / 2 | Missing: labeled_brain.png,region_legend.csv |
 | VIZ-019-Create-time-frequency-plot-for-MEG | ❌ | 0 / 2 | No evidence found |
 | VIZ-020-Generate-publication-quality-figure-panel-with | ❌ | 0 / 2 | No evidence found |
 | WORK-001-Run-complete-fMRI-pipeline-from | ❌ | 0 / 3 | No evidence found |
 | WORK-002-Execute-end-to-end-connectivity-analysis-on | ❌ | 0 / 2 | No evidence found |
 | WORK-003-Run-multimodal-pipeline-structural-segmentation | ❌ | 0 / 2 | No evidence found |
-| WORK-004-Orchestrate-group-level-meta-analysis-workflow-fetch | ❌ | 0 / 2 | No evidence found |
-| WORK-005-Execute-MVPA-workflow-on-Haxby | ❌ | 0 / 2 | No evidence found |
-| WORK-006-Run-developmental-trajectory-workflow-age | ❌ | 0 / 2 | No evidence found |
+| WORK-004-Orchestrate-group-level-meta-analysis-workflow-fetch | ⚠️ | 4 / 2 | Missing: ale_map.nii.gz |
+| WORK-005-Execute-MVPA-workflow-on-Haxby | ⚠️ | 4 / 2 | Missing: searchlight_map.nii.gz |
 | WORK-007-Execute-diffusion-pipeline-preprocessing-tractography | ❌ | 0 / 2 | No evidence found |
 | WORK-008-Run-quality-control-workflow-MRIQC | ❌ | 0 / 2 | No evidence found |
 | WORK-009-Execute-surface-based-workflow-FreeSurfer-recon | ❌ | 0 / 2 | No evidence found |
-| WORK-010-Run-multisite-harmonization-workflow-ComBat | ❌ | 0 / 2 | No evidence found |
 | WORK-011-Execute-real-time-neurofeedback-workflow-ROI | ❌ | 0 / 2 | No evidence found |
-| WORK-012-Run-genetics-workflow-GWAS-on | ❌ | 0 / 2 | No evidence found |
 | WORK-013-Execute-MEG-workflow-preprocessing-source | ❌ | 0 / 2 | No evidence found |
-| WORK-014-Run-clinical-workflow-lesion-detection | ❌ | 0 / 2 | No evidence found |
-| WORK-015-Execute-deep-learning-workflow-data | ❌ | 0 / 2 | No evidence found |
+| WORK-014-Run-clinical-workflow-lesion-detection | ⚠️ | 4 / 2 | Missing: lesion_masks.nii.gz |
 | WORK-016-Run-batch-processing-workflow-process | ❌ | 0 / 2 | No evidence found |
 | WORK-017-Execute-RSA-workflow-compute-RDMs | ❌ | 0 / 2 | No evidence found |
-| WORK-018-Run-connectivity-dynamics-workflow-sliding | ❌ | 0 / 2 | No evidence found |
-| WORK-019-Execute-multivariate-workflow-dimensionality-reduction | ❌ | 0 / 2 | No evidence found |
-| WORK-020-Run-reproducibility-workflow-analysis-on | ❌ | 0 / 2 | No evidence found |
 
 ## 📁 Category Breakdown
 
@@ -473,7 +473,7 @@
 | Connectivity | 20 | 0 | 20 | 0% |
 | Data_Harmonization | 20 | 0 | 20 | 0% |
 | Data_Management | 20 | 13 | 7 | 65% |
-| Deep_Learning | 20 | 0 | 20 | 0% |
+| Deep_Learning | 20 | 1 | 19 | 5% |
 | Diffusion | 20 | 0 | 20 | 0% |
 | Electrophysiology | 20 | 0 | 20 | 0% |
 | Knowledge_Graph | 20 | 0 | 20 | 0% |
@@ -486,11 +486,11 @@
 | Segmentation | 20 | 0 | 20 | 0% |
 | Simulation | 20 | 2 | 18 | 10% |
 | Specialized_Processing | 20 | 1 | 19 | 5% |
-| Statistical_Analysis | 20 | 0 | 20 | 0% |
-| Statistical_Inference | 20 | 0 | 20 | 0% |
-| Surface | 20 | 0 | 20 | 0% |
+| Statistical_Analysis | 20 | 1 | 19 | 5% |
+| Statistical_Inference | 20 | 3 | 17 | 15% |
+| Surface | 20 | 1 | 19 | 5% |
 | Visualization | 20 | 0 | 20 | 0% |
-| Workflow | 20 | 0 | 20 | 0% |
+| Workflow | 20 | 7 | 13 | 35% |
 
 ---
 
