@@ -10,6 +10,7 @@ on:
 jobs:
   discover-scripts:
     runs-on: self-hosted
+    if: ${{ !contains(github.event.head_commit.message, 'SKIPCI') }}
     outputs:
       matrix: ${{ steps.set-matrix.outputs.matrix }}
     steps:
@@ -199,17 +200,6 @@ jobs:
           
           echo "Failed to push after $max_retries attempts"
           exit 1
-
-      - name: Upload evidence as artifact (backup)
-        uses: actions/upload-artifact@v4
-        if: always()
-        with:
-          name: evidence-${{ hashFiles(matrix.script) }}
-          path: |
-            ${{ github.workspace }}/**/evidence/**
-            !${{ github.workspace }}/artifacts/**
-          if-no-files-found: warn
-          retention-days: 90
 
   summary:
     needs: run-analysis
