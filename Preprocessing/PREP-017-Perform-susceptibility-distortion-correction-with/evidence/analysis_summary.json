@@ -1,0 +1,9 @@
+{
+  "task_id": "PREP-017",
+  "task_name": "Perform susceptibility distortion correction with opposite phase encoding on FIAC",
+  "dataset": "FIAC dataset",
+  "category": "Preprocessing",
+  "timestamp": "2025-12-15T08:10:56.280646",
+  "status": "completed",
+  "implementation": "automated_batch"
+}
