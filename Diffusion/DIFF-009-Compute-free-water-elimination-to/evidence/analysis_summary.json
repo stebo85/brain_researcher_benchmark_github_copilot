@@ -1,0 +1,9 @@
+{
+  "task_id": "DIFF-009",
+  "task_name": "Compute free water elimination to separate tissue from CSF contamination",
+  "dataset": "Custom DWI data",
+  "category": "Diffusion",
+  "timestamp": "2025-12-15T08:01:07.526188",
+  "status": "completed",
+  "implementation": "automated_batch"
+}
