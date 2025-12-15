@@ -117,18 +117,23 @@ X_scaled = scaler.fit_transform(X)
 # Use linear SVM for interpretability
 clf = SVC(kernel='linear', C=1.0, random_state=42)
 cv = StratifiedKFold(n_splits=5, shuffle=True, random_state=42)
+
+# Get cross-validation scores and predictions
 cv_scores = cross_val_score(clf, X_scaled, y, cv=cv, scoring='accuracy', n_jobs=-1)
 
 print(f"✓ Cross-validation accuracy: {cv_scores.mean():.3f} ± {cv_scores.std():.3f}")
 
-# Train final model on all data
-clf.fit(X_scaled, y)
-y_pred = clf.predict(X_scaled)
-train_acc = accuracy_score(y, y_pred)
+# Get cross-validated predictions for confusion matrix (more realistic than training data)
+from sklearn.model_selection import cross_val_predict
+y_pred_cv = cross_val_predict(clf, X_scaled, y, cv=cv, n_jobs=-1)
+cv_acc = accuracy_score(y, y_pred_cv)
 
-print(f"✓ Training accuracy: {train_acc:.3f}")
-print("\nClassification Report:")
-print(classification_report(y, y_pred))
+print(f"✓ Cross-validation prediction accuracy: {cv_acc:.3f}")
+print("\nClassification Report (from CV predictions):")
+print(classification_report(y, y_pred_cv))
+
+# Train final model on all data for reference
+clf.fit(X_scaled, y)
 
 # Step 4: Save CV scores
 print("\nStep 4: Saving cross-validation scores...")
@@ -139,27 +144,27 @@ cv_df = pd.DataFrame({
 cv_df.to_csv(evidence_dir / "cv_scores.csv", index=False)
 print("✓ Saved cv_scores.csv")
 
-# Step 5: Generate confusion matrix
+# Step 5: Generate confusion matrix (using CV predictions, not training predictions)
 print("\nStep 5: Generating confusion matrix...")
 categories = np.unique(y)
-cm = confusion_matrix(y, y_pred, labels=categories)
+cm = confusion_matrix(y, y_pred_cv, labels=categories)
 
 fig, ax = plt.subplots(figsize=(12, 10))
 disp = ConfusionMatrixDisplay(confusion_matrix=cm, display_labels=categories)
 disp.plot(ax=ax, cmap='Blues', values_format='d', xticks_rotation=45)
-plt.title('SVM Multi-Category Decoding: Haxby Object Recognition', fontsize=14)
+plt.title('SVM Multi-Category Decoding: Haxby Object Recognition\n(Cross-Validation Predictions)', fontsize=14)
 plt.tight_layout()
 plt.savefig(evidence_dir / "confusion_matrix.png", dpi=300, bbox_inches='tight')
 plt.close()
 print("✓ Saved confusion_matrix.png")
 
-# Step 6: Save per-category accuracy
+# Step 6: Save per-category accuracy (using CV predictions)
 print("\nStep 6: Computing per-category performance...")
 category_accuracies = {}
 for cat in categories:
     mask = y == cat
     if np.sum(mask) > 0:
-        cat_acc = accuracy_score(y[mask], y_pred[mask])
+        cat_acc = accuracy_score(y[mask], y_pred_cv[mask])
         category_accuracies[cat] = float(cat_acc)
 
 category_df = pd.DataFrame([
@@ -184,19 +189,20 @@ summary = {
     "metrics": {
         "cv_accuracy_mean": float(cv_scores.mean()),
         "cv_accuracy_std": float(cv_scores.std()),
-        "training_accuracy": float(train_acc),
+        "cv_prediction_accuracy": float(cv_acc),
         "cv_scores": [float(s) for s in cv_scores]
     },
     "acceptance_criteria": {
         "cv_accuracy_threshold": 0.7,
-        "cv_accuracy_passed": cv_scores.mean() > 0.7
+        "cv_accuracy_passed": bool(cv_scores.mean() > 0.7)
     },
     "model": {
         "type": "SVC",
         "kernel": "linear",
         "C": 1.0
     },
-    "region": "Ventral Temporal Cortex"
+    "region": "Ventral Temporal Cortex",
+    "note": "Confusion matrix and category accuracies based on cross-validated predictions, not training data"
 }
 
 with open(evidence_dir / "analysis_summary.json", "w") as f:
