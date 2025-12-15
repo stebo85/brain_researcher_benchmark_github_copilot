@@ -1,0 +1,9 @@
+{
+  "task_id": "META-019",
+  "task_name": "Run subgroup meta-analysis comparing clinical vs healthy populations",
+  "dataset": "Mixed population coordinates",
+  "category": "Meta-Analysis",
+  "timestamp": "2025-12-15T08:09:35.845517",
+  "status": "completed",
+  "implementation": "automated_batch"
+}
