@@ -1,0 +1,9 @@
+{
+  "task_id": "ML-016",
+  "task_name": "Apply SMOTE to handle class imbalance in autism dataset",
+  "dataset": "ABIDE (imbalanced classes)",
+  "category": "Machine Learning",
+  "timestamp": "2025-12-15T08:08:26.481395",
+  "status": "completed",
+  "implementation": "automated_batch"
+}
