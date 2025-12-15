@@ -1,0 +1,9 @@
+{
+  "task_id": "STATINF-018",
+  "task_name": "Calculate heterogeneity in multi-site data using I\u00b2",
+  "dataset": "ABIDE multi-site",
+  "category": "Statistical Inference",
+  "timestamp": "2025-12-15T08:49:43.860125",
+  "status": "completed",
+  "implementation": "automated_batch"
+}
