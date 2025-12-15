@@ -1,0 +1,9 @@
+{
+  "task_id": "META-005",
+  "task_name": "Extract coordinates from 100 PubMed fMRI abstracts automatically",
+  "dataset": "PubMed IDs list",
+  "category": "Meta-Analysis",
+  "timestamp": "2025-12-15T08:08:25.890859",
+  "status": "completed",
+  "implementation": "automated_batch"
+}
