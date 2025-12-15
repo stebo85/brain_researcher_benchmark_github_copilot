@@ -62,45 +62,194 @@ import sys
 from pathlib import Path
 from datetime import datetime
 import json
+import warnings
+warnings.filterwarnings('ignore')
 
-print("Starting analysis for STAT-001")
+import numpy as np
+import pandas as pd
+import matplotlib.pyplot as plt
+from nilearn import datasets, plotting
+from nilearn.glm.first_level import FirstLevelModel, make_first_level_design_matrix
+from nilearn.plotting import plot_stat_map, plot_design_matrix
+
+print("Starting analysis for STAT-001: First-Level GLM Analysis")
 print("=" * 60)
 
-# TODO: Implement the actual analysis based on:
-# - Task: Run first-level GLM on Haxby faces vs houses with HRF convolution
-# - Context: Model brain response to experimental conditions using general linear model with hemodynamic response function
-# - Data: nilearn.datasets.fetch_haxby
-# - Expected evidence: beta_maps.nii.gz
-
-# Placeholder implementation - this should be customized per task
-print("\nNOTE: This is a template script.")
-print("The actual analysis implementation needs to be added based on the task requirements.")
-print("\nTask Requirements:")
-print(f"  - Task ID: STAT-001")
-print(f"  - User Prompt: Run first-level GLM on Haxby faces vs houses with HRF convolution")
-print(f"  - Context: Model brain response to experimental conditions using general linear model with hemodynamic response function")
-print(f"  - Data Key: nilearn.datasets.fetch_haxby")
-print(f"  - Evidence Required: beta_maps.nii.gz, contrast_zmap.nii.gz")
-
-# Create placeholder evidence files
+# Create evidence directory
 evidence_dir = Path("evidence")
 evidence_dir.mkdir(exist_ok=True)
 
-# Generate a summary report
+# Step 1: Load Haxby dataset
+print("\nStep 1: Loading Haxby dataset...")
+try:
+    data = datasets.fetch_haxby()
+    fmri_filename = data.func[0]
+    labels_df = pd.read_csv(data.session_target[0], sep=' ')
+    mask_filename = data.mask_vt[0]
+    print(f"✓ Loaded Haxby dataset")
+except Exception as e:
+    print(f"Error loading dataset: {e}")
+    sys.exit(1)
+
+# Step 2: Prepare design matrix
+print("\nStep 2: Creating GLM design matrix...")
+
+# Get timing information
+tr = 2.5  # Repetition time in seconds
+n_scans = len(labels_df)
+frame_times = np.arange(n_scans) * tr
+
+# Create events dataframe for faces and houses
+events = []
+for idx, row in labels_df.iterrows():
+    label = row['labels']
+    if label in ['face', 'house']:
+        events.append({
+            'onset': frame_times[idx],
+            'duration': tr,
+            'trial_type': label
+        })
+
+events_df = pd.DataFrame(events)
+print(f"✓ Created events dataframe with {len(events_df)} events")
+print(f"  Faces: {np.sum(events_df['trial_type'] == 'face')}")
+print(f"  Houses: {np.sum(events_df['trial_type'] == 'house')}")
+
+# Create design matrix with HRF convolution
+design_matrix = make_first_level_design_matrix(
+    frame_times=frame_times,
+    events=events_df,
+    hrf_model='glover',  # Canonical HRF
+    drift_model='cosine',
+    high_pass=0.01
+)
+
+print(f"✓ Design matrix shape: {design_matrix.shape}")
+
+# Save design matrix visualization
+fig = plot_design_matrix(design_matrix)
+fig.savefig(evidence_dir / "design_matrix.png", dpi=300, bbox_inches='tight')
+plt.close()
+print("✓ Saved design_matrix.png")
+
+# Step 3: Fit GLM model
+print("\nStep 3: Fitting first-level GLM...")
+fmri_glm = FirstLevelModel(
+    t_r=tr,
+    mask_img=mask_filename,
+    standardize=False,
+    hrf_model='glover',
+    drift_model='cosine',
+    high_pass=0.01,
+    verbose=0
+)
+
+fmri_glm.fit(fmri_filename, events=events_df)
+print("✓ GLM model fitted")
+
+# Step 4: Compute contrasts
+print("\nStep 4: Computing contrasts...")
+
+# Extract beta maps for each condition
+beta_face = fmri_glm.compute_contrast('face', output_type='effect_size')
+beta_house = fmri_glm.compute_contrast('house', output_type='effect_size')
+
+# Compute faces vs houses contrast
+contrast_faces_vs_houses = fmri_glm.compute_contrast('face - house', output_type='z_score')
+
+# Save beta maps
+print("✓ Saving beta maps...")
+beta_face.to_filename(evidence_dir / "beta_maps.nii.gz")
+print("  Saved beta_maps.nii.gz (face condition)")
+
+# Step 5: Save z-score contrast map
+contrast_faces_vs_houses.to_filename(evidence_dir / "contrast_zmap.nii.gz")
+print("✓ Saved contrast_zmap.nii.gz (faces vs houses)")
+
+# Step 6: Visualize results
+print("\nStep 5: Creating visualizations...")
+
+# Plot beta map for faces
+fig, axes = plt.subplots(2, 1, figsize=(12, 10))
+
+plotting.plot_stat_map(
+    beta_face,
+    bg_img=None,
+    threshold=3.0,
+    title='Beta Map: Face Condition',
+    axes=axes[0],
+    display_mode='z',
+    cut_coords=5,
+    colorbar=True
+)
+
+# Plot contrast map (faces vs houses)
+plotting.plot_stat_map(
+    contrast_faces_vs_houses,
+    bg_img=None,
+    threshold=2.5,
+    title='Z-Score Map: Faces vs Houses',
+    axes=axes[1],
+    display_mode='z',
+    cut_coords=5,
+    colorbar=True
+)
+
+plt.tight_layout()
+plt.savefig(evidence_dir / "stat_maps.png", dpi=300, bbox_inches='tight')
+plt.close()
+print("✓ Saved stat_maps.png")
+
+# Step 7: Compute summary statistics
+print("\nStep 6: Computing summary statistics...")
+
+# Get z-score statistics
+z_data = contrast_faces_vs_houses.get_fdata()
+z_data_flat = z_data[z_data != 0]  # Exclude masked voxels
+
+summary_stats = {
+    'max_z': float(np.max(z_data_flat)),
+    'min_z': float(np.min(z_data_flat)),
+    'mean_z': float(np.mean(z_data_flat)),
+    'std_z': float(np.std(z_data_flat)),
+    'n_significant_voxels_p05': int(np.sum(np.abs(z_data_flat) > 1.96)),
+    'n_significant_voxels_p01': int(np.sum(np.abs(z_data_flat) > 2.58)),
+    'n_significant_voxels_p001': int(np.sum(np.abs(z_data_flat) > 3.29))
+}
+
+print(f"  Max Z-score: {summary_stats['max_z']:.3f}")
+print(f"  Significant voxels (p<0.001): {summary_stats['n_significant_voxels_p001']}")
+
+# Step 8: Generate summary report
 summary = {
     "task_id": "STAT-001",
     "task_name": "Run first-level GLM on Haxby faces vs houses with HRF convolution",
     "dataset": "Haxby dataset",
     "timestamp": datetime.now().isoformat(),
-    "status": "template_generated",
-    "note": "This script is a template and needs task-specific implementation"
+    "status": "completed",
+    "n_scans": int(n_scans),
+    "tr": float(tr),
+    "n_events": len(events_df),
+    "n_faces": int(np.sum(events_df['trial_type'] == 'face')),
+    "n_houses": int(np.sum(events_df['trial_type'] == 'house')),
+    "hrf_model": "glover",
+    "drift_model": "cosine",
+    "statistics": summary_stats,
+    "outputs": {
+        "beta_maps": "beta_maps.nii.gz",
+        "contrast_zmap": "contrast_zmap.nii.gz",
+        "design_matrix_plot": "design_matrix.png",
+        "stat_maps_plot": "stat_maps.png"
+    }
 }
 
 with open(evidence_dir / "analysis_summary.json", "w") as f:
     json.dump(summary, indent=2, fp=f)
 
-print("\n✓ Generated template evidence files")
-print(f"Evidence directory: {evidence_dir.absolute()}")
+print("\n" + "=" * 60)
+print("Analysis completed successfully!")
+print(f"Evidence saved to: {evidence_dir.absolute()}")
+print("=" * 60)
 
 PYEOF
 
