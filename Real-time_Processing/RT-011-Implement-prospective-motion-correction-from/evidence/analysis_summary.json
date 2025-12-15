@@ -1,0 +1,9 @@
+{
+  "task_id": "RT-011",
+  "task_name": "Implement prospective motion correction from navigator echoes",
+  "dataset": "Real-time with navigators",
+  "category": "Real-time Processing",
+  "timestamp": "2025-12-15T08:13:26.075419",
+  "status": "completed",
+  "implementation": "automated_batch"
+}
