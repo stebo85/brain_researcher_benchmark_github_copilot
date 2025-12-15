@@ -77,15 +77,12 @@ evidence_dir = Path("evidence")
 evidence_dir.mkdir(exist_ok=True)
 
 try:
-    print("
-Step 2: Creating visualizations...")
+    print("\nStep 2: Creating visualizations...")
     from nilearn import plotting
     
     # Create placeholder visualization
     fig, ax = plt.subplots(figsize=(12, 8))
-    ax.text(0.5, 0.5, "Time-Frequency Plot for MEG
-
-Visualization placeholder", ha='center', va='center', fontsize=14)
+    ax.text(0.5, 0.5, "Time-Frequency Plot for MEG\n\nVisualization placeholder", ha='center', va='center', fontsize=14)
     ax.axis('off')
     plt.tight_layout()
     plt.savefig(evidence_dir / "visualization.png", dpi=300)
@@ -111,8 +108,7 @@ summary = {
 with open(evidence_dir / "analysis_summary.json", "w") as f:
     json.dump(summary, indent=2, fp=f)
 
-print("
-" + "=" * 60)
+print("\n" + "=" * 60)
 print("Analysis completed!")
 print(f"Evidence saved to: {evidence_dir.absolute()}")
 print("=" * 60)

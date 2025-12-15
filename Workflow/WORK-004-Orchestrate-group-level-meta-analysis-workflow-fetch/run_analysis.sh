@@ -77,8 +77,7 @@ evidence_dir = Path("evidence")
 evidence_dir.mkdir(exist_ok=True)
 
 try:
-    print("
-Step 2: Running analysis...")
+    print("\nStep 2: Running analysis...")
     print(f"Task: Orchestrate group-level meta-analysis workflow: fetch studies, extract coordinates, run ALE")
     print(f"Context: Automate the entire meta-analysis process from data collection to results")
     print("Note: Analysis implementation placeholder")
@@ -112,8 +111,7 @@ summary = {
 with open(evidence_dir / "analysis_summary.json", "w") as f:
     json.dump(summary, indent=2, fp=f)
 
-print("
-" + "=" * 60)
+print("\n" + "=" * 60)
 print("Analysis completed!")
 print(f"Evidence saved to: {evidence_dir.absolute()}")
 print("=" * 60)

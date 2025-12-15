@@ -78,13 +78,11 @@ evidence_dir.mkdir(exist_ok=True)
 
 try:
     from nilearn import datasets
-    print("
-Step 1: Loading ADHD-200 dataset...")
+    print("\nStep 1: Loading ADHD-200 dataset...")
     data = datasets.fetch_adhd(n_subjects=30)
     print(f"✓ Loaded {{len(data.func)}} subjects")
     
-    print("
-Step 2: Running classification analysis...")
+    print("\nStep 2: Running classification analysis...")
     from sklearn.ensemble import RandomForestClassifier
     from sklearn.model_selection import cross_val_score
     from sklearn.metrics import accuracy_score
@@ -124,8 +122,7 @@ summary = {
 with open(evidence_dir / "analysis_summary.json", "w") as f:
     json.dump(summary, indent=2, fp=f)
 
-print("
-" + "=" * 60)
+print("\n" + "=" * 60)
 print("Analysis completed!")
 print(f"Evidence saved to: {evidence_dir.absolute()}")
 print("=" * 60)
