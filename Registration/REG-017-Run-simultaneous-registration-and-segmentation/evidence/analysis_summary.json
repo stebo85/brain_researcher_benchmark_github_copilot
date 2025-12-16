@@ -1,0 +1,9 @@
+{
+  "task_id": "REG-017",
+  "task_name": "Run simultaneous registration and segmentation for FIAC structural data",
+  "dataset": "FIAC dataset",
+  "category": "Registration",
+  "timestamp": "2025-12-16T02:23:54.687365",
+  "status": "completed",
+  "implementation": "automated_batch"
+}
