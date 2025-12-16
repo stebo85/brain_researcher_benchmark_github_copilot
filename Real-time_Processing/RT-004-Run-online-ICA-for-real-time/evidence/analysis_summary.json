@@ -1,0 +1,9 @@
+{
+  "task_id": "RT-004",
+  "task_name": "Run online ICA for real-time denoising",
+  "dataset": "Streaming resting-state",
+  "category": "Real-time Processing",
+  "timestamp": "2025-12-16T02:23:53.420847",
+  "status": "completed",
+  "implementation": "automated_batch"
+}
