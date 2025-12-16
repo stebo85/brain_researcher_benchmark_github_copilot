@@ -1,0 +1,118 @@
+# Detailed Implementation Plan: SPEC-017: Apply phase-scrambling for null hypothesis generation in connectivity
+
+**Task ID:** SPEC-017
+**Category:** Specialized Processing
+
+## Overview
+
+**Objective:** Apply phase-scrambling for null hypothesis generation in connectivity
+
+**Context:** Create phase-randomized surrogates preserving power spectrum
+
+## Data Source
+
+**Dataset:** NKI Enhanced dataset
+**Data Key:** `nilearn.datasets.fetch_surf_nki_enhanced and nilearn.datasets.load_nki`
+
+## Prerequisites
+
+**Required Capabilities:** specialized_processing_tool; permutation_testing_tool
+
+### Tool Installation and Setup
+
+This analysis requires the following tools:
+
+#### Required Tools
+
+The specific tools needed are listed in the **Required Capabilities** section above.
+
+```bash
+# Search for available tools in Neurodesk
+ml av  # List all available modules
+ml av <toolname>  # Search for specific tool
+
+# Load required tools
+module load <toolname>/<version>
+
+# Install Python packages if needed
+pip install <package-name>
+```
+
+#### Environment Verification
+
+```bash
+# Verify all tools are accessible
+
+# Check system resources
+free -h  # Check available memory
+df -h .  # Check available disk space
+```
+
+## Step 1: Data Acquisition
+
+```python
+# Import required libraries
+from nilearn import datasets
+import os
+
+# Fetch the dataset
+data = datasets.fetch_surf_nki_enhanced(n_subjects=10)
+print(f'Data downloaded to: {data.keys()}')
+```
+
+## Step 2: Implementation Steps
+
+1. **Prepare the environment**
+   - Set up required tools and libraries
+   - Create output directories
+
+2. **Load the data**
+   - Fetch or load the input data
+   - Verify data integrity
+
+3. **Perform the analysis**
+   - Create phase-randomized surrogates preserving power spectrum
+   - Apply phase-scrambling for null hypothesis generation in connectivity
+
+4. **Generate outputs**
+   - Create required evidence files
+   - Validate output formats
+
+5. **Verify results**
+   - Check that acceptance metrics are met
+   - Document any issues
+
+## Acceptance Criteria
+
+- [ ] surrogates_generated
+- [ ] null_distribution_created
+
+## Required Evidence Files
+
+- [ ] `phase_scrambled_data.npy`
+- [ ] `null_connectivity.npy`
+
+## Verification Steps
+
+1. **Check output files exist**
+   ```bash
+   ls -lh phase_scrambled_data.npy
+   ls -lh null_connectivity.npy
+   ```
+
+2. **Validate file formats and contents**
+   - Ensure NIfTI files have correct dimensions and headers
+   - Verify CSV/TSV files have expected columns
+   - Check that plots are generated and display correctly
+
+3. **Confirm acceptance metrics are satisfied**
+   - Verify: surrogates_generated
+   - Verify: null_distribution_created
+
+## Notes
+
+- This plan uses real data as specified in the Data Key field
+- All code should be executable with the specified datasets
+- Ensure proper error handling and logging throughout
+- Document any deviations from the standard approach
+- Save intermediate results for debugging if needed
