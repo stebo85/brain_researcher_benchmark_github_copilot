@@ -21,13 +21,23 @@ Each `detailed_plan.md` file provides a comprehensive, actionable guide for impl
 - **Data Key**: Actual code to fetch data (e.g., `nilearn.datasets.fetch_haxby()`)
 - No placeholder or dummy data - all references are to real, accessible datasets
 
-### 3. Prerequisites
+### 3. Prerequisites and Tool Setup
 - Required capabilities and tools
-- Installation commands for necessary software:
-  - Neuroimaging tools (fMRIPrep, FreeSurfer, FSL, ANTs, AFNI)
-  - Python libraries (nilearn, nibabel, scikit-learn)
-  - Deep learning frameworks (PyTorch, TensorFlow)
-  - Analysis packages (MNE, DIPY, Connectome Workbench)
+- **Neurodesk Module Loading**: Commands to load neuroimaging tools via Neurodesk's module system:
+  - `module load fsl/6.0.5` - FSL tools for fMRI analysis
+  - `module load freesurfer/7.3.2` - FreeSurfer for surface reconstruction
+  - `module load ants/2.3.5` - ANTs for registration
+  - `module load afni/22.3.06` - AFNI for preprocessing and analysis
+  - `module load mrtrix3/3.0.3` - MRtrix3 for diffusion imaging
+  - `module load spm12/12.7219` - SPM12 for statistical analysis
+- **Python Package Installation**: Commands for analysis libraries:
+  - `pip install nilearn nibabel scikit-learn` - Core neuroimaging and ML
+  - `pip install torch torchvision` - Deep learning with PyTorch
+  - `pip install mne` - MEG/EEG analysis
+  - `pip install dipy` - Diffusion imaging
+- **Container-based Tools**: Instructions for preprocessing pipelines:
+  - fMRIPrep, MRIQC, QSIPrep via Singularity/Docker
+- **Verification Commands**: Check installation with `ml list` and Python imports
 
 ### 4. Data Acquisition Steps
 - Actual Python code to fetch datasets using nilearn, MNE, or other APIs
