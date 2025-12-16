@@ -117,38 +117,96 @@ def get_tool_setup_instructions(capability: str) -> str:
         return ""
     
     instructions = []
+    neurodesk_tools = []
+    python_packages = []
+    container_tools = []
+    
     tools = [t.strip() for t in capability.split(';')]
     
-    instructions.append("```bash")
-    instructions.append("# Required tools and libraries")
-    
+    # Map tools to their installation methods
     for tool in tools:
         tool_lower = tool.lower()
-        if 'fmriprep' in tool_lower:
-            instructions.append("# fMRIPrep: Use Docker or Singularity container")
-            instructions.append("# docker pull nipreps/fmriprep:latest")
+        
+        # Neuroimaging tools available in Neurodesk
+        if 'fsl' in tool_lower:
+            neurodesk_tools.append(('fsl', '6.0.5'))
         elif 'freesurfer' in tool_lower:
-            instructions.append("# FreeSurfer: Ensure it's installed and licensed")
-            instructions.append("# export FREESURFER_HOME=/usr/local/freesurfer")
-        elif 'fsl' in tool_lower:
-            instructions.append("# FSL: Ensure FSL is installed")
-            instructions.append("# export FSLDIR=/usr/local/fsl")
+            neurodesk_tools.append(('freesurfer', '7.3.2'))
         elif 'ants' in tool_lower:
-            instructions.append("# ANTs: Install Advanced Normalization Tools")
+            neurodesk_tools.append(('ants', '2.3.5'))
         elif 'afni' in tool_lower:
-            instructions.append("# AFNI: Install AFNI tools")
+            neurodesk_tools.append(('afni', '22.3.06'))
+        elif 'mrtrix' in tool_lower or 'mrtrix3' in tool_lower:
+            neurodesk_tools.append(('mrtrix3', '3.0.3'))
+        elif 'spm' in tool_lower:
+            neurodesk_tools.append(('spm12', '12.7219'))
+        elif 'dipy' in tool_lower or 'diffusion' in tool_lower:
+            python_packages.append('dipy')
+        elif 'mne' in tool_lower or 'meg' in tool_lower or 'eeg' in tool_lower:
+            python_packages.append('mne')
+        
+        # Python-based analysis tools
         elif 'nilearn' in tool_lower or 'glm' in tool_lower:
-            instructions.append("pip install nilearn nibabel scikit-learn")
-        elif 'pytorch' in tool_lower or 'dl_' in tool_lower or 'cnn' in tool_lower:
-            instructions.append("pip install torch torchvision nibabel")
+            python_packages.extend(['nilearn', 'nibabel', 'scikit-learn'])
+        elif 'pytorch' in tool_lower or 'dl_pytorch' in tool_lower or 'cnn' in tool_lower or '3d_cnn' in tool_lower:
+            python_packages.extend(['torch', 'torchvision', 'nibabel'])
         elif 'tensorflow' in tool_lower:
-            instructions.append("pip install tensorflow nibabel")
-        elif 'sklearn' in tool_lower or 'svm' in tool_lower or 'classification' in tool_lower:
-            instructions.append("pip install scikit-learn nibabel nilearn")
+            python_packages.extend(['tensorflow', 'nibabel'])
+        elif 'sklearn' in tool_lower or 'svm' in tool_lower or 'classification' in tool_lower or 'regression' in tool_lower:
+            python_packages.extend(['scikit-learn', 'nibabel', 'nilearn'])
         elif 'connectivity' in tool_lower or 'conn_' in tool_lower:
-            instructions.append("pip install nilearn nibabel scipy")
-        elif 'visualization' in tool_lower:
-            instructions.append("pip install nilearn matplotlib seaborn plotly")
+            python_packages.extend(['nilearn', 'nibabel', 'scipy'])
+        elif 'visualization' in tool_lower or 'plotting' in tool_lower:
+            python_packages.extend(['nilearn', 'matplotlib', 'seaborn', 'plotly'])
+        
+        # Container-based tools
+        elif 'fmriprep' in tool_lower:
+            container_tools.append(('fmriprep', '23.1.3', 'Comprehensive fMRI preprocessing'))
+        elif 'mriqc' in tool_lower:
+            container_tools.append(('mriqc', '23.1.0', 'MRI quality control'))
+        elif 'qsiprep' in tool_lower:
+            container_tools.append(('qsiprep', '0.18.1', 'Diffusion MRI preprocessing'))
+    
+    # Remove duplicates
+    python_packages = list(set(python_packages))
+    
+    # Generate instructions
+    instructions.append("```bash")
+    instructions.append("# Tool Setup Instructions")
+    instructions.append("")
+    
+    if neurodesk_tools:
+        instructions.append("# Neuroimaging tools (available via Neurodesk)")
+        for tool_name, version in neurodesk_tools:
+            instructions.append(f"module load {tool_name}/{version}")
+        instructions.append("")
+    
+    if python_packages:
+        instructions.append("# Python packages")
+        packages_str = ' '.join(python_packages)
+        instructions.append(f"pip install {packages_str}")
+        instructions.append("")
+    
+    if container_tools:
+        instructions.append("# Container-based tools (via Singularity/Docker)")
+        for tool_name, version, description in container_tools:
+            instructions.append(f"# {tool_name} {version}: {description}")
+            instructions.append(f"# Available via Neurodesk or pull container:")
+            instructions.append(f"# singularity pull docker://nipreps/{tool_name}:{version}")
+        instructions.append("")
+    
+    # Generic note if no specific tools were matched
+    if not neurodesk_tools and not python_packages and not container_tools:
+        instructions.append("# Install required tools based on task requirements")
+        instructions.append("# Use 'ml av' to see available Neurodesk modules")
+        instructions.append("# Use 'pip install <package>' for Python packages")
+        instructions.append("")
+    
+    instructions.append("# Verify installation")
+    if neurodesk_tools:
+        instructions.append("ml list  # Check loaded modules")
+    if python_packages:
+        instructions.append("python -c \"import " + python_packages[0].replace('-', '_') + "\"  # Test Python imports")
     
     instructions.append("```")
     return '\n'.join(instructions)

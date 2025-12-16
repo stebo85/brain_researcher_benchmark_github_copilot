@@ -21,7 +21,13 @@
 ### Tool Installation
 
 ```bash
-# Required tools and libraries
+# Tool Setup Instructions
+
+# Install required tools based on task requirements
+# Use 'ml av' to see available Neurodesk modules
+# Use 'pip install <package>' for Python packages
+
+# Verify installation
 ```
 
 ## Step 1: Data Acquisition

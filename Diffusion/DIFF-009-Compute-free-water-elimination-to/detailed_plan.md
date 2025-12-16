@@ -21,7 +21,13 @@
 ### Tool Installation
 
 ```bash
-# Required tools and libraries
+# Tool Setup Instructions
+
+# Python packages
+pip install dipy
+
+# Verify installation
+python -c "import dipy"  # Test Python imports
 ```
 
 ## Step 1: Data Acquisition

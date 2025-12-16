@@ -21,8 +21,13 @@
 ### Tool Installation
 
 ```bash
-# Required tools and libraries
-# ANTs: Install Advanced Normalization Tools
+# Tool Setup Instructions
+
+# Neuroimaging tools (available via Neurodesk)
+module load ants/2.3.5
+
+# Verify installation
+ml list  # Check loaded modules
 ```
 
 ## Step 1: Data Acquisition

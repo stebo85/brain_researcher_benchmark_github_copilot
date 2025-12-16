@@ -21,10 +21,17 @@
 ### Tool Installation
 
 ```bash
-# Required tools and libraries
-# FreeSurfer: Ensure it's installed and licensed
-# export FREESURFER_HOME=/usr/local/freesurfer
-pip install nilearn nibabel scipy
+# Tool Setup Instructions
+
+# Neuroimaging tools (available via Neurodesk)
+module load freesurfer/7.3.2
+
+# Python packages
+pip install nibabel scipy nilearn
+
+# Verify installation
+ml list  # Check loaded modules
+python -c "import nibabel"  # Test Python imports
 ```
 
 ## Step 1: Data Acquisition

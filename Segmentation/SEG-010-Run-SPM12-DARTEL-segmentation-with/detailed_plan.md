@@ -21,7 +21,13 @@
 ### Tool Installation
 
 ```bash
-# Required tools and libraries
+# Tool Setup Instructions
+
+# Neuroimaging tools (available via Neurodesk)
+module load spm12/12.7219
+
+# Verify installation
+ml list  # Check loaded modules
 ```
 
 ## Step 1: Data Acquisition

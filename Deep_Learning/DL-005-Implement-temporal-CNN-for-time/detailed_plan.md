@@ -21,9 +21,13 @@
 ### Tool Installation
 
 ```bash
-# Required tools and libraries
-pip install torch torchvision nibabel
-pip install torch torchvision nibabel
+# Tool Setup Instructions
+
+# Python packages
+pip install torchvision nibabel torch
+
+# Verify installation
+python -c "import torchvision"  # Test Python imports
 ```
 
 ## Step 1: Data Acquisition

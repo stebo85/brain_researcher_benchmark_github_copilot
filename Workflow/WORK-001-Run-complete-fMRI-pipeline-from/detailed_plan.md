@@ -21,11 +21,18 @@
 ### Tool Installation
 
 ```bash
-# Required tools and libraries
-# fMRIPrep: Use Docker or Singularity container
-# docker pull nipreps/fmriprep:latest
-pip install nilearn nibabel scikit-learn
-pip install nilearn matplotlib seaborn plotly
+# Tool Setup Instructions
+
+# Python packages
+pip install plotly nibabel scikit-learn nilearn matplotlib seaborn
+
+# Container-based tools (via Singularity/Docker)
+# fmriprep 23.1.3: Comprehensive fMRI preprocessing
+# Available via Neurodesk or pull container:
+# singularity pull docker://nipreps/fmriprep:23.1.3
+
+# Verify installation
+python -c "import plotly"  # Test Python imports
 ```
 
 ## Step 1: Data Acquisition

@@ -21,8 +21,13 @@
 ### Tool Installation
 
 ```bash
-# Required tools and libraries
-# AFNI: Install AFNI tools
+# Tool Setup Instructions
+
+# Neuroimaging tools (available via Neurodesk)
+module load afni/22.3.06
+
+# Verify installation
+ml list  # Check loaded modules
 ```
 
 ## Step 1: Data Acquisition

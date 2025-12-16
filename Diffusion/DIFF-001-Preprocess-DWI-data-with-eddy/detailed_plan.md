@@ -21,9 +21,18 @@
 ### Tool Installation
 
 ```bash
-# Required tools and libraries
-# FSL: Ensure FSL is installed
-# export FSLDIR=/usr/local/fsl
+# Tool Setup Instructions
+
+# Neuroimaging tools (available via Neurodesk)
+module load fsl/6.0.5
+
+# Container-based tools (via Singularity/Docker)
+# qsiprep 0.18.1: Diffusion MRI preprocessing
+# Available via Neurodesk or pull container:
+# singularity pull docker://nipreps/qsiprep:0.18.1
+
+# Verify installation
+ml list  # Check loaded modules
 ```
 
 ## Step 1: Data Acquisition

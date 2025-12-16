@@ -21,7 +21,14 @@
 ### Tool Installation
 
 ```bash
-# Required tools and libraries
+# Tool Setup Instructions
+
+# Container-based tools (via Singularity/Docker)
+# mriqc 23.1.0: MRI quality control
+# Available via Neurodesk or pull container:
+# singularity pull docker://nipreps/mriqc:23.1.0
+
+# Verify installation
 ```
 
 ## Step 1: Data Acquisition

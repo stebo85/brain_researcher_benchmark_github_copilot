@@ -21,7 +21,13 @@
 ### Tool Installation
 
 ```bash
-# Required tools and libraries
+# Tool Setup Instructions
+
+# Python packages
+pip install mne
+
+# Verify installation
+python -c "import mne"  # Test Python imports
 ```
 
 ## Step 1: Data Acquisition

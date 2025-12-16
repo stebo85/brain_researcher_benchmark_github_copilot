@@ -21,9 +21,17 @@
 ### Tool Installation
 
 ```bash
-# Required tools and libraries
-# FSL: Ensure FSL is installed
-# export FSLDIR=/usr/local/fsl
+# Tool Setup Instructions
+
+# Neuroimaging tools (available via Neurodesk)
+module load fsl/6.0.5
+
+# Python packages
+pip install dipy
+
+# Verify installation
+ml list  # Check loaded modules
+python -c "import dipy"  # Test Python imports
 ```
 
 ## Step 1: Data Acquisition

@@ -21,9 +21,13 @@
 ### Tool Installation
 
 ```bash
-# Required tools and libraries
-# FSL: Ensure FSL is installed
-# export FSLDIR=/usr/local/fsl
+# Tool Setup Instructions
+
+# Neuroimaging tools (available via Neurodesk)
+module load fsl/6.0.5
+
+# Verify installation
+ml list  # Check loaded modules
 ```
 
 ## Step 1: Data Acquisition

@@ -21,7 +21,17 @@
 ### Tool Installation
 
 ```bash
-# Required tools and libraries
+# Tool Setup Instructions
+
+# Neuroimaging tools (available via Neurodesk)
+module load mrtrix3/3.0.3
+
+# Python packages
+pip install dipy
+
+# Verify installation
+ml list  # Check loaded modules
+python -c "import dipy"  # Test Python imports
 ```
 
 ## Step 1: Data Acquisition

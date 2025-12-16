@@ -21,9 +21,14 @@
 ### Tool Installation
 
 ```bash
-# Required tools and libraries
-# fMRIPrep: Use Docker or Singularity container
-# docker pull nipreps/fmriprep:latest
+# Tool Setup Instructions
+
+# Container-based tools (via Singularity/Docker)
+# fmriprep 23.1.3: Comprehensive fMRI preprocessing
+# Available via Neurodesk or pull container:
+# singularity pull docker://nipreps/fmriprep:23.1.3
+
+# Verify installation
 ```
 
 ## Step 1: Data Acquisition

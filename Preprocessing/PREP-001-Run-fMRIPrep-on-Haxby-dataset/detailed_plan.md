@@ -21,11 +21,18 @@
 ### Tool Installation
 
 ```bash
-# Required tools and libraries
-# fMRIPrep: Use Docker or Singularity container
-# docker pull nipreps/fmriprep:latest
-# FreeSurfer: Ensure it's installed and licensed
-# export FREESURFER_HOME=/usr/local/freesurfer
+# Tool Setup Instructions
+
+# Neuroimaging tools (available via Neurodesk)
+module load freesurfer/7.3.2
+
+# Container-based tools (via Singularity/Docker)
+# fmriprep 23.1.3: Comprehensive fMRI preprocessing
+# Available via Neurodesk or pull container:
+# singularity pull docker://nipreps/fmriprep:23.1.3
+
+# Verify installation
+ml list  # Check loaded modules
 ```
 
 ## Step 1: Data Acquisition

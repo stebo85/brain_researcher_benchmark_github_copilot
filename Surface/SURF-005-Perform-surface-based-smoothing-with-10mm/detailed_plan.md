@@ -21,8 +21,13 @@
 ### Tool Installation
 
 ```bash
-# Required tools and libraries
-pip install nilearn nibabel scikit-learn
+# Tool Setup Instructions
+
+# Python packages
+pip install scikit-learn nibabel nilearn
+
+# Verify installation
+python -c "import scikit_learn"  # Test Python imports
 ```
 
 ## Step 1: Data Acquisition

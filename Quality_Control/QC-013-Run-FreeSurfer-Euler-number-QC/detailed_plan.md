@@ -21,9 +21,13 @@
 ### Tool Installation
 
 ```bash
-# Required tools and libraries
-# FreeSurfer: Ensure it's installed and licensed
-# export FREESURFER_HOME=/usr/local/freesurfer
+# Tool Setup Instructions
+
+# Neuroimaging tools (available via Neurodesk)
+module load freesurfer/7.3.2
+
+# Verify installation
+ml list  # Check loaded modules
 ```
 
 ## Step 1: Data Acquisition

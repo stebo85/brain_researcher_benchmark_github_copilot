@@ -21,9 +21,13 @@
 ### Tool Installation
 
 ```bash
-# Required tools and libraries
-pip install nilearn matplotlib seaborn plotly
-pip install nilearn matplotlib seaborn plotly
+# Tool Setup Instructions
+
+# Python packages
+pip install matplotlib plotly seaborn nilearn
+
+# Verify installation
+python -c "import matplotlib"  # Test Python imports
 ```
 
 ## Step 1: Data Acquisition
