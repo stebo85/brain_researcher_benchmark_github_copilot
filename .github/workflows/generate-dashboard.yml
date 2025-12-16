@@ -6,8 +6,6 @@ on:
     paths:
       - '**/evidence/**'
       - '.github/workflows/generate-dashboard.yml'
-  schedule:
-    - cron: '0 */6 * * *'  # Run every 6 hours
 
 jobs:
   generate-dashboard:
