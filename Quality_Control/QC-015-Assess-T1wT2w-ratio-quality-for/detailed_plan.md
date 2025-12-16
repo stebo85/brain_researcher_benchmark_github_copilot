@@ -48,7 +48,7 @@ print(f'Data downloaded to: {data.keys()}')
 
 3. **Perform the analysis**
    - Check structural scan quality using tissue contrast metrics
-   - {user_prompt}
+   - Assess T1w/T2w ratio quality for Development fMRI anatomicals
 
 4. **Generate outputs**
    - Create required evidence files

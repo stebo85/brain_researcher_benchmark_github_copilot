@@ -41,7 +41,7 @@
 
 3. **Perform the analysis**
    - Generate synthetic brain activity from coupled neural populations
-   - {user_prompt}
+   - Simulate BOLD timeseries using Jansen-Rit neural mass model
 
 4. **Generate outputs**
    - Create required evidence files

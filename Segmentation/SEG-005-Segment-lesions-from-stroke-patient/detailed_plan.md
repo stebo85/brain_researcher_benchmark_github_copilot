@@ -41,7 +41,7 @@
 
 3. **Perform the analysis**
    - Identify and delineate brain lesions for volume quantification and location analysis
-   - {user_prompt}
+   - Segment lesions from stroke patient data using automated detection
 
 4. **Generate outputs**
    - Create required evidence files

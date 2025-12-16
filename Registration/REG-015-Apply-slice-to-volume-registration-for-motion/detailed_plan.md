@@ -48,7 +48,7 @@ print(f'Data downloaded to: {data.keys()}')
 
 3. **Perform the analysis**
    - Correct for within-volume motion by aligning individual slices independently
-   - {user_prompt}
+   - Apply slice-to-volume registration for motion correction in Mixed Gambles
 
 4. **Generate outputs**
    - Create required evidence files

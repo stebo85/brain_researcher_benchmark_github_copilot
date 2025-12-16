@@ -43,7 +43,7 @@
 
 3. **Perform the analysis**
    - Remove site effects from surface-based measures
-   - {user_prompt}
+   - Apply Neurocombat to harmonize cortical thickness across FreeSurfer datasets
 
 4. **Generate outputs**
    - Create required evidence files

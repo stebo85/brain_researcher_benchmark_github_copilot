@@ -41,7 +41,7 @@
 
 3. **Perform the analysis**
    - Mine scientific literature to extract reported brain coordinates and effect sizes
-   - {user_prompt}
+   - Extract coordinates from 100 PubMed fMRI abstracts automatically
 
 4. **Generate outputs**
    - Create required evidence files

@@ -42,7 +42,7 @@ pip install nilearn nibabel scipy
 
 3. **Perform the analysis**
    - Show live correlation between two brain regions for connectivity training
-   - {user_prompt}
+   - Run real-time seed-based connectivity for neurofeedback training
 
 4. **Generate outputs**
    - Create required evidence files

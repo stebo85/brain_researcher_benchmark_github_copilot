@@ -41,7 +41,7 @@
 
 3. **Perform the analysis**
    - Generate data with realistic temporal and spatial correlation structure
-   - {user_prompt}
+   - Create synthetic fMRI with known noise structure
 
 4. **Generate outputs**
    - Create required evidence files

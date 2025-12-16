@@ -48,7 +48,7 @@ print(f'Data downloaded to: {data.keys()}')
 
 3. **Perform the analysis**
    - Verify that field of view includes all relevant brain regions without cutoff
-   - {user_prompt}
+   - Run brain coverage check on Mixed Gambles acquisition
 
 4. **Generate outputs**
    - Create required evidence files

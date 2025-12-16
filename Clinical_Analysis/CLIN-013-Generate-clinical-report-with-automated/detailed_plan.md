@@ -43,7 +43,7 @@
 
 3. **Perform the analysis**
    - Measure hippocampus and ventricle volumes and compare to normative database
-   - {user_prompt}
+   - Generate clinical report with automated ROI volumetry
 
 4. **Generate outputs**
    - Create required evidence files

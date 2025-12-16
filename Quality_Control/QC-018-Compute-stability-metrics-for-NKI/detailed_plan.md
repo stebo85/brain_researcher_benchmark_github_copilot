@@ -48,7 +48,7 @@ print(f'Data downloaded to: {data.keys()}')
 
 3. **Perform the analysis**
    - Measure how consistent brain activations are across multiple scanning sessions
-   - {user_prompt}
+   - Compute stability metrics for NKI test-retest subjects
 
 4. **Generate outputs**
    - Create required evidence files

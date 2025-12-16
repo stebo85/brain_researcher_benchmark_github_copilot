@@ -41,7 +41,7 @@
 
 3. **Perform the analysis**
    - Align functional PET images to structural MRI using intensity-based methods
-   - {user_prompt}
+   - Perform cross-modality registration of PET to MRI for clinical data
 
 4. **Generate outputs**
    - Create required evidence files

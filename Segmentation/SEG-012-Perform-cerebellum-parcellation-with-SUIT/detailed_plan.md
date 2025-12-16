@@ -48,7 +48,7 @@ print(f'Data downloaded to: {data.keys()}')
 
 3. **Perform the analysis**
    - Label cerebellar lobules and deep nuclei using specialized cerebellum template
-   - {user_prompt}
+   - Perform cerebellum parcellation with SUIT toolbox
 
 4. **Generate outputs**
    - Create required evidence files

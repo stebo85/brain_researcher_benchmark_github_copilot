@@ -49,7 +49,7 @@ print(f'Data downloaded to: {data.keys()}')
 
 3. **Perform the analysis**
    - Classify inattentive vs hyperactive vs combined ADHD subtypes from neural data
-   - {user_prompt}
+   - Identify individual ADHD subtype from brain connectivity fingerprint
 
 4. **Generate outputs**
    - Create required evidence files

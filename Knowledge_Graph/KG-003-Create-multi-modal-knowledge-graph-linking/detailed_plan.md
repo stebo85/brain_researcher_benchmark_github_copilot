@@ -49,7 +49,7 @@ print(f'Data downloaded to: {data.keys()}')
 
 3. **Perform the analysis**
    - Build connections between autism symptoms, demographics, and brain connectivity patterns
-   - {user_prompt}
+   - Create multi-modal knowledge graph linking ABIDE phenotypes to brain networks
 
 4. **Generate outputs**
    - Create required evidence files

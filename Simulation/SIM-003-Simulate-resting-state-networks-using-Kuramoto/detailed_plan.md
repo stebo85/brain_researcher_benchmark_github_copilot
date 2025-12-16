@@ -41,7 +41,7 @@
 
 3. **Perform the analysis**
    - Model spontaneous activity with coupled phase oscillators on network
-   - {user_prompt}
+   - Simulate resting-state networks using Kuramoto oscillators
 
 4. **Generate outputs**
    - Create required evidence files

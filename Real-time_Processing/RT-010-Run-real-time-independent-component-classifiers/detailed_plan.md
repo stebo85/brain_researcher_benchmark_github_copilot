@@ -41,7 +41,7 @@
 
 3. **Perform the analysis**
    - Automatically label ICA components as signal vs noise online
-   - {user_prompt}
+   - Run real-time independent component classifiers
 
 4. **Generate outputs**
    - Create required evidence files

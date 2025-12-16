@@ -41,7 +41,7 @@
 
 3. **Perform the analysis**
    - Link specific brain damage sites to functional impairments they cause
-   - {user_prompt}
+   - Map lesion locations to behavioral deficits using VLSM
 
 4. **Generate outputs**
    - Create required evidence files

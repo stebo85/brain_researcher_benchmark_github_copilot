@@ -41,7 +41,7 @@
 
 3. **Perform the analysis**
    - Detect subtle structural abnormalities causing seizures
-   - {user_prompt}
+   - Perform automated epilepsy focus localization from MRI
 
 4. **Generate outputs**
    - Create required evidence files

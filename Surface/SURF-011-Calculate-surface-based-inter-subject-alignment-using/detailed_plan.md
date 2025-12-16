@@ -41,7 +41,7 @@
 
 3. **Perform the analysis**
    - Align individual brains using cortical folding geometry instead of just volume matching
-   - {user_prompt}
+   - Calculate surface-based inter-subject alignment using cortical folding patterns
 
 4. **Generate outputs**
    - Create required evidence files

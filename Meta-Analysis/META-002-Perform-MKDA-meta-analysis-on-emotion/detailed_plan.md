@@ -41,7 +41,7 @@
 
 3. **Perform the analysis**
    - Use density-based method to find consistent emotion-related activations across studies
-   - {user_prompt}
+   - Perform MKDA meta-analysis on emotion processing coordinates
 
 4. **Generate outputs**
    - Create required evidence files

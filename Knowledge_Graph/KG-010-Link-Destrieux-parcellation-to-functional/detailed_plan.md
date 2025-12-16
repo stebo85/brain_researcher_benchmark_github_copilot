@@ -42,7 +42,7 @@ pip install nilearn nibabel scikit-learn
 
 3. **Perform the analysis**
    - Associate each anatomical region with its typical activation pattern across multiple tasks
-   - {user_prompt}
+   - Link Destrieux parcellation to functional fingerprints from Localizer
 
 4. **Generate outputs**
    - Create required evidence files

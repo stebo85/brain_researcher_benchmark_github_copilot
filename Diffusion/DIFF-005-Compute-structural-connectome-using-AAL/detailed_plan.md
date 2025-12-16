@@ -41,7 +41,7 @@
 
 3. **Perform the analysis**
    - Build connectivity matrix showing white matter connections between 167 brain regions
-   - {user_prompt}
+   - Compute structural connectome using AAL atlas parcellation
 
 4. **Generate outputs**
    - Create required evidence files

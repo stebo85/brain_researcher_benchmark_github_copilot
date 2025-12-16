@@ -41,7 +41,7 @@
 
 3. **Perform the analysis**
    - Link MEG sensors to brain sources they detect, organized by oscillation frequency
-   - {user_prompt}
+   - Build MEG sensor-source knowledge graph with frequency bands
 
 4. **Generate outputs**
    - Create required evidence files

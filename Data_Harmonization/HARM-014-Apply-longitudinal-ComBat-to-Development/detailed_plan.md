@@ -48,7 +48,7 @@ print(f'Data downloaded to: {data.keys()}')
 
 3. **Perform the analysis**
    - Harmonize while preserving within-subject correlation structure
-   - {user_prompt}
+   - Apply longitudinal ComBat to Development fMRI repeated measures
 
 4. **Generate outputs**
    - Create required evidence files

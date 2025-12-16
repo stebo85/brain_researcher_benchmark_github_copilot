@@ -41,7 +41,7 @@
 
 3. **Perform the analysis**
    - Create age-referenced percentile curves for clinical comparison
-   - {user_prompt}
+   - Generate normative growth charts for pediatric brain volumes
 
 4. **Generate outputs**
    - Create required evidence files

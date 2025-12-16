@@ -48,7 +48,7 @@ print(f'Data downloaded to: {data.keys()}')
 
 3. **Perform the analysis**
    - Apply reverse transformation to project group results onto individual's original brain
-   - {user_prompt}
+   - Perform inverse normalization to bring MNI results back to native space for Miyawaki
 
 4. **Generate outputs**
    - Create required evidence files

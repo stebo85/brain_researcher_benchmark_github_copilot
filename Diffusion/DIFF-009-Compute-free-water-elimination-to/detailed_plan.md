@@ -41,7 +41,7 @@
 
 3. **Perform the analysis**
    - Remove CSF partial volume effects to get cleaner white matter diffusion measures
-   - {user_prompt}
+   - Compute free water elimination to separate tissue from CSF contamination
 
 4. **Generate outputs**
    - Create required evidence files

@@ -41,7 +41,7 @@
 
 3. **Perform the analysis**
    - Create complete white matter pathway map while using anatomical boundaries to prevent invalid tracks
-   - {user_prompt}
+   - Generate whole-brain tractogram with anatomically-constrained tracking
 
 4. **Generate outputs**
    - Create required evidence files

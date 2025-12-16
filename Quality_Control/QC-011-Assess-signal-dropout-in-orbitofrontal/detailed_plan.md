@@ -48,7 +48,7 @@ print(f'Data downloaded to: {data.keys()}')
 
 3. **Perform the analysis**
    - Check for signal loss in susceptibility-prone regions near sinuses
-   - {user_prompt}
+   - Assess signal dropout in orbitofrontal cortex for FIAC data
 
 4. **Generate outputs**
    - Create required evidence files

@@ -41,7 +41,7 @@
 
 3. **Perform the analysis**
    - Measure brain shrinkage over time to monitor disease progression
-   - {user_prompt}
+   - Track longitudinal atrophy in repeated OASIS scans
 
 4. **Generate outputs**
    - Create required evidence files

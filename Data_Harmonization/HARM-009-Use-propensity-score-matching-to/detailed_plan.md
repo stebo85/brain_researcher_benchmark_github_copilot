@@ -48,7 +48,7 @@ print(f'Data downloaded to: {data.keys()}')
 
 3. **Perform the analysis**
    - Create matched ASD/control groups balanced on age, sex, IQ
-   - {user_prompt}
+   - Use propensity score matching to balance ABIDE demographic confounds
 
 4. **Generate outputs**
    - Create required evidence files

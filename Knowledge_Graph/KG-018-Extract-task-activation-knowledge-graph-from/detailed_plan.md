@@ -49,7 +49,7 @@ print(f'Data downloaded to: {data.keys()}')
 
 3. **Perform the analysis**
    - Link cognitive tasks to their consistent activation patterns across subjects
-   - {user_prompt}
+   - Extract task-activation knowledge graph from Brainomics Localizer
 
 4. **Generate outputs**
    - Create required evidence files

@@ -50,7 +50,7 @@ print(f'Data downloaded to: {data.keys()}')
 
 3. **Perform the analysis**
    - Divide cortex into anatomical regions and label subcortical structures using probabilistic atlas
-   - {user_prompt}
+   - Run FreeSurfer automatic parcellation on OASIS anatomical images
 
 4. **Generate outputs**
    - Create required evidence files

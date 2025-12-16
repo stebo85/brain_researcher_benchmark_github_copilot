@@ -41,7 +41,7 @@
 
 3. **Perform the analysis**
    - Unwarp EPI images using B0 field measurements
-   - {user_prompt}
+   - Apply susceptibility distortion correction using fieldmap
 
 4. **Generate outputs**
    - Create required evidence files

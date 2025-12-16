@@ -41,7 +41,7 @@
 
 3. **Perform the analysis**
    - Analyze white matter network using graph measures like efficiency, modularity, and small-worldness
-   - {user_prompt}
+   - Compute graph theory metrics from structural connectome
 
 4. **Generate outputs**
    - Create required evidence files

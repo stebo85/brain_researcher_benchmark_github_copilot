@@ -41,7 +41,7 @@
 
 3. **Perform the analysis**
    - Meta-analyze the differential activation between two stimulus types
-   - {user_prompt}
+   - Perform contrast meta-analysis: faces vs houses across studies
 
 4. **Generate outputs**
    - Create required evidence files

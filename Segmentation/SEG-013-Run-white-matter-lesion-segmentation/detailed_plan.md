@@ -48,7 +48,7 @@ print(f'Data downloaded to: {data.keys()}')
 
 3. **Perform the analysis**
    - Detect white matter hyperintensities indicating vascular pathology in elderly
-   - {user_prompt}
+   - Run white matter lesion segmentation for aging cohort
 
 4. **Generate outputs**
    - Create required evidence files

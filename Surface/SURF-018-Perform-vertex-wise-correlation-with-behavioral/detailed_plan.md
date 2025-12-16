@@ -41,7 +41,7 @@
 
 3. **Perform the analysis**
    - Test association between cortical measures and behavior at every surface point
-   - {user_prompt}
+   - Perform vertex-wise correlation with behavioral measures on surface
 
 4. **Generate outputs**
    - Create required evidence files

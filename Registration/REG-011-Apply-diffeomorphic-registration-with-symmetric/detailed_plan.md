@@ -49,7 +49,7 @@ print(f'Data downloaded to: {data.keys()}')
 
 3. **Perform the analysis**
    - Use topology-preserving warps that maintain one-to-one correspondence between brains
-   - {user_prompt}
+   - Apply diffeomorphic registration with symmetric normalization for OASIS
 
 4. **Generate outputs**
    - Create required evidence files

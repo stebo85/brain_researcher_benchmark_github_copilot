@@ -43,7 +43,7 @@
 
 3. **Perform the analysis**
    - Measure thickness of cortex in 68 regions defined by anatomical landmarks
-   - {user_prompt}
+   - Extract cortical thickness from Desikan-Killiany parcellation
 
 4. **Generate outputs**
    - Create required evidence files

@@ -41,7 +41,7 @@
 
 3. **Perform the analysis**
    - Quantify magnetic susceptibility to assess iron accumulation in Parkinson's
-   - {user_prompt}
+   - Perform QSM analysis to measure brain iron in basal ganglia
 
 4. **Generate outputs**
    - Create required evidence files

@@ -48,7 +48,7 @@ print(f'Data downloaded to: {data.keys()}')
 
 3. **Perform the analysis**
    - Check how well the functional scan aligns with the structural scan using overlap metrics
-   - {user_prompt}
+   - Assess coregistration quality between functional and anatomical in NKI
 
 4. **Generate outputs**
    - Create required evidence files

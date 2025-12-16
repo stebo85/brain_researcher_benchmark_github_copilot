@@ -49,7 +49,7 @@ print(f'Data downloaded to: {data.keys()}')
 
 3. **Perform the analysis**
    - Visualize how well individual brains align to template to catch registration failures
-   - {user_prompt}
+   - Generate registration quality plots for OASIS VBM normalization
 
 4. **Generate outputs**
    - Create required evidence files

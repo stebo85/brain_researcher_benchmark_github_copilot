@@ -48,7 +48,7 @@ print(f'Data downloaded to: {data.keys()}')
 
 3. **Perform the analysis**
    - Find subjects with excessive head movement that might need to be excluded from analysis
-   - {user_prompt}
+   - Detect and flag outlier subjects in ADHD-200 based on motion
 
 4. **Generate outputs**
    - Create required evidence files

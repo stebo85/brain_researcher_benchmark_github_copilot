@@ -41,7 +41,7 @@
 
 3. **Perform the analysis**
    - Apply Gaussian smoothing online with kernel size adjusted to SNR
-   - {user_prompt}
+   - Run real-time spatial smoothing with adaptive kernel
 
 4. **Generate outputs**
    - Create required evidence files

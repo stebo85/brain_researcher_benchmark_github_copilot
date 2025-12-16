@@ -41,7 +41,7 @@
 
 3. **Perform the analysis**
    - Model excitatory-inhibitory balance with Wilson-Cowan equations
-   - {user_prompt}
+   - Simulate Wilson-Cowan excitatory-inhibitory dynamics
 
 4. **Generate outputs**
    - Create required evidence files

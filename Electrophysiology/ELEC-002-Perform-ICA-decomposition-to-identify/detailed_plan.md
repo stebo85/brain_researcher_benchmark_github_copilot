@@ -41,7 +41,7 @@
 
 3. **Perform the analysis**
    - Separate mixed MEG signals into independent sources to isolate and remove eye movement artifacts
-   - {user_prompt}
+   - Perform ICA decomposition to identify eye blink components in MNE sample
 
 4. **Generate outputs**
    - Create required evidence files

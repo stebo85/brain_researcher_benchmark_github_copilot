@@ -41,7 +41,7 @@
 
 3. **Perform the analysis**
    - Decode task information from local surface patches while respecting cortical topology
-   - {user_prompt}
+   - Perform surface-based searchlight decoding on task fMRI data
 
 4. **Generate outputs**
    - Create required evidence files

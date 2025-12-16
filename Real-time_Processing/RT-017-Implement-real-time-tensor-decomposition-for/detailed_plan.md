@@ -41,7 +41,7 @@
 
 3. **Perform the analysis**
    - Use multi-echo information to separate BOLD from non-BOLD signals online
-   - {user_prompt}
+   - Implement real-time tensor decomposition for denoising
 
 4. **Generate outputs**
    - Create required evidence files

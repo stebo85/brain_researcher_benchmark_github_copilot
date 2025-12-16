@@ -50,7 +50,7 @@ print(f'Data downloaded to: {data.keys()}')
 
 3. **Perform the analysis**
    - Segment tissues while simultaneously removing intensity inhomogeneity artifacts
-   - {user_prompt}
+   - Run FAST tissue segmentation with bias field correction on NKI T1w
 
 4. **Generate outputs**
    - Create required evidence files

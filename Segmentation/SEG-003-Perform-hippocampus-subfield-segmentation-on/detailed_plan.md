@@ -50,7 +50,7 @@ print(f'Data downloaded to: {data.keys()}')
 
 3. **Perform the analysis**
    - Divide hippocampus into detailed subregions (CA1, CA2/3, DG, subiculum) for precise volumetry
-   - {user_prompt}
+   - Perform hippocampus subfield segmentation on ABIDE structural scans
 
 4. **Generate outputs**
    - Create required evidence files

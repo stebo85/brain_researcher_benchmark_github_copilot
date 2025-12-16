@@ -41,7 +41,7 @@
 
 3. **Perform the analysis**
    - Combine metabolic and structural imaging for surgical planning
-   - {user_prompt}
+   - Perform multimodal fusion of PET and MRI for tumor characterization
 
 4. **Generate outputs**
    - Create required evidence files

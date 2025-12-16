@@ -41,7 +41,7 @@
 
 3. **Perform the analysis**
    - Predict which patients will benefit from intervention using pre-treatment scans
-   - {user_prompt}
+   - Identify treatment responders from baseline brain features
 
 4. **Generate outputs**
    - Create required evidence files

@@ -41,7 +41,7 @@
 
 3. **Perform the analysis**
    - Compare sinc, linear, and spline interpolation for slice timing
-   - {user_prompt}
+   - Apply slice-timing correction using different interpolation methods
 
 4. **Generate outputs**
    - Create required evidence files

@@ -41,7 +41,7 @@
 
 3. **Perform the analysis**
    - Detect severe motion or artifacts and trigger scan termination to save time
-   - {user_prompt}
+   - Implement real-time quality control with automatic scan abort
 
 4. **Generate outputs**
    - Create required evidence files

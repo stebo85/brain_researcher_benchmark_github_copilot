@@ -50,7 +50,7 @@ print(f'Data downloaded to: {data.keys()}')
 
 3. **Perform the analysis**
    - Label midbrain, pons, medulla and internal structures like substantia nigra
-   - {user_prompt}
+   - Run brainstem substructure segmentation on OASIS dataset
 
 4. **Generate outputs**
    - Create required evidence files

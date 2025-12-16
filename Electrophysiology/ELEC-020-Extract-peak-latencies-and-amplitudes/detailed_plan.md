@@ -41,7 +41,7 @@
 
 3. **Perform the analysis**
    - Identify timing and magnitude of major evoked response peaks to characterize neural processing speed
-   - {user_prompt}
+   - Extract peak latencies and amplitudes from evoked components (N100, P200)
 
 4. **Generate outputs**
    - Create required evidence files

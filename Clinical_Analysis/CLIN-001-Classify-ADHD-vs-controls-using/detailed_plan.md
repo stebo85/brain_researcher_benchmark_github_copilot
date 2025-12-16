@@ -48,7 +48,7 @@ print(f'Data downloaded to: {data.keys()}')
 
 3. **Perform the analysis**
    - Build diagnostic classifier from brain network patterns to aid clinical assessment
-   - {user_prompt}
+   - Classify ADHD vs controls using resting-state connectivity features
 
 4. **Generate outputs**
    - Create required evidence files

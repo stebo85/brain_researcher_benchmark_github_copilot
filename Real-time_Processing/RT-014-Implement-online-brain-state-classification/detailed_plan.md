@@ -41,7 +41,7 @@
 
 3. **Perform the analysis**
    - Classify vigilance states to trigger intervention at optimal moments
-   - {user_prompt}
+   - Implement online brain state classification for closed-loop stimulation
 
 4. **Generate outputs**
    - Create required evidence files

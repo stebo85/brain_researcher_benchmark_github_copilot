@@ -48,7 +48,7 @@ print(f'Data downloaded to: {data.keys()}')
 
 3. **Perform the analysis**
    - Standardize signal intensity within each scanner separately
-   - {user_prompt}
+   - Apply z-score normalization to ADHD-200 within-scanner batches
 
 4. **Generate outputs**
    - Create required evidence files

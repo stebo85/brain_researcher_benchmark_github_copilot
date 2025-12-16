@@ -48,7 +48,7 @@ print(f'Data downloaded to: {data.keys()}')
 
 3. **Perform the analysis**
    - Subdivide thalamus into constituent nuclei using probabilistic atlas registration
-   - {user_prompt}
+   - Perform thalamic nuclei segmentation on Development fMRI anatomicals
 
 4. **Generate outputs**
    - Create required evidence files

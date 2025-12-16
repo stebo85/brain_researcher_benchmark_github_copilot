@@ -50,7 +50,7 @@ print(f'Data downloaded to: {data.keys()}')
 
 3. **Perform the analysis**
    - Divide amygdala into functional subdivisions (basal, lateral, central nuclei)
-   - {user_prompt}
+   - Segment amygdala subnuclei using high-resolution protocol
 
 4. **Generate outputs**
    - Create required evidence files

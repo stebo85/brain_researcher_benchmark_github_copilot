@@ -48,7 +48,7 @@ print(f'Data downloaded to: {data.keys()}')
 
 3. **Perform the analysis**
    - Separate reward-related striatal structure into functional subregions
-   - {user_prompt}
+   - Perform nucleus accumbens subdivision into core and shell
 
 4. **Generate outputs**
    - Create required evidence files

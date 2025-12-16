@@ -41,7 +41,7 @@
 
 3. **Perform the analysis**
    - Measure how consistently oscillation phases align across repeated trials at each time point
-   - {user_prompt}
+   - Calculate inter-trial coherence to measure phase consistency
 
 4. **Generate outputs**
    - Create required evidence files

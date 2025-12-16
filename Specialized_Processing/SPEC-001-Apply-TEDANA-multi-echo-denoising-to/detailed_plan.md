@@ -41,7 +41,7 @@
 
 3. **Perform the analysis**
    - Use information across echo times to optimally remove noise
-   - {user_prompt}
+   - Apply TEDANA multi-echo denoising to separate BOLD from non-BOLD signals
 
 4. **Generate outputs**
    - Create required evidence files

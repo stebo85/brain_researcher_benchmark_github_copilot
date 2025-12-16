@@ -41,7 +41,7 @@
 
 3. **Perform the analysis**
    - Train classifier to distinguish stimulus types from MEG patterns to test information content at sensors
-   - {user_prompt}
+   - Extract sensor space decoding to classify auditory vs visual trials
 
 4. **Generate outputs**
    - Create required evidence files

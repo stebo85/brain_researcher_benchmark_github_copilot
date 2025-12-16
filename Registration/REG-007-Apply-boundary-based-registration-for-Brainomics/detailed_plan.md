@@ -48,7 +48,7 @@ print(f'Data downloaded to: {data.keys()}')
 
 3. **Perform the analysis**
    - Use white matter boundary to improve functional-anatomical registration accuracy
-   - {user_prompt}
+   - Apply boundary-based registration for Brainomics functional-structural alignment
 
 4. **Generate outputs**
    - Create required evidence files

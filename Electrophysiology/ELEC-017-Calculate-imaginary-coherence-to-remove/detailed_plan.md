@@ -42,7 +42,7 @@ pip install nilearn nibabel scipy
 
 3. **Perform the analysis**
    - Measure connectivity using only the imaginary part of coherence to avoid spurious correlations from signal mixing
-   - {user_prompt}
+   - Calculate imaginary coherence to remove volume conduction effects
 
 4. **Generate outputs**
    - Create required evidence files

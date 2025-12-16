@@ -48,7 +48,7 @@ print(f'Data downloaded to: {data.keys()}')
 
 3. **Perform the analysis**
    - Link genetic variants to brain structure changes to cognitive/behavioral outcomes
-   - {user_prompt}
+   - Build gene-brain-behavior knowledge graph from OASIS and genetic data
 
 4. **Generate outputs**
    - Create required evidence files

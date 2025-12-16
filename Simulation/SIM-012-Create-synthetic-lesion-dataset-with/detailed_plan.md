@@ -41,7 +41,7 @@
 
 3. **Perform the analysis**
    - Generate labeled lesion masks for training segmentation algorithms
-   - {user_prompt}
+   - Create synthetic lesion dataset with various sizes and locations
 
 4. **Generate outputs**
    - Create required evidence files

@@ -43,7 +43,7 @@
 
 3. **Perform the analysis**
    - Automatically reconstruct cortical surfaces, measure thickness, and parcellate brain into anatomical regions
-   - {user_prompt}
+   - Run complete FreeSurfer recon-all on T1-weighted anatomical scan
 
 4. **Generate outputs**
    - Create required evidence files

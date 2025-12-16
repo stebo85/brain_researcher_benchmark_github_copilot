@@ -353,7 +353,7 @@ def get_analysis_steps(fields: Dict[str, str]) -> str:
             "",
             "3. **Perform the analysis**",
             f"   - {context}",
-            "   - {user_prompt}",
+            f"   - {user_prompt}",
             "",
             "4. **Generate outputs**",
             "   - Create required evidence files",

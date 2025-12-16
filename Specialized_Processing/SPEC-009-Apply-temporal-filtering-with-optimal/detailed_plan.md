@@ -49,7 +49,7 @@ print(f'Data downloaded to: {data.keys()}')
 
 3. **Perform the analysis**
    - Test different frequency bands to optimize resting-state signal
-   - {user_prompt}
+   - Apply temporal filtering with optimal bandpass for resting-state
 
 4. **Generate outputs**
    - Create required evidence files

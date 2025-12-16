@@ -48,7 +48,7 @@ print(f'Data downloaded to: {data.keys()}')
 
 3. **Perform the analysis**
    - Calculate signal-to-noise ratio at each voxel over time to identify problematic brain regions
-   - {user_prompt}
+   - Compute temporal SNR maps for Brainomics Localizer data
 
 4. **Generate outputs**
    - Create required evidence files

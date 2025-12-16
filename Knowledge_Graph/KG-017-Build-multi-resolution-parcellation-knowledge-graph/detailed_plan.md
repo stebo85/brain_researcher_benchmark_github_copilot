@@ -41,7 +41,7 @@
 
 3. **Perform the analysis**
    - Show how fine-grained brain regions nest within larger networks at multiple scales
-   - {user_prompt}
+   - Build multi-resolution parcellation knowledge graph showing nested hierarchies
 
 4. **Generate outputs**
    - Create required evidence files

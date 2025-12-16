@@ -41,7 +41,7 @@
 
 3. **Perform the analysis**
    - Create myelin content maps showing cortical myeloarchitecture from intensity ratios
-   - {user_prompt}
+   - Perform cortical myelin mapping from T1w/T2w ratio images
 
 4. **Generate outputs**
    - Create required evidence files

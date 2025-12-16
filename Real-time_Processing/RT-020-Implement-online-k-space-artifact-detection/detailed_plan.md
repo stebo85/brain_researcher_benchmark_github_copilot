@@ -41,7 +41,7 @@
 
 3. **Perform the analysis**
    - Detect corrupted k-space lines and exclude before image reconstruction
-   - {user_prompt}
+   - Implement online k-space artifact detection and rejection
 
 4. **Generate outputs**
    - Create required evidence files

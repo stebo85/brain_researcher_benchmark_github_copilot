@@ -41,7 +41,7 @@
 
 3. **Perform the analysis**
    - Generate fMRI data corrupted by known motion for QC testing
-   - {user_prompt}
+   - Simulate motion artifacts with realistic head displacement
 
 4. **Generate outputs**
    - Create required evidence files

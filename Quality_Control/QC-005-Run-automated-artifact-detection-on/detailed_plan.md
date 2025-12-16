@@ -48,7 +48,7 @@ print(f'Data downloaded to: {data.keys()}')
 
 3. **Perform the analysis**
    - Identify volumes with signal dropouts, ghosting, or other scanning problems
-   - {user_prompt}
+   - Run automated artifact detection on SPM auditory data
 
 4. **Generate outputs**
    - Create required evidence files

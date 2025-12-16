@@ -41,7 +41,7 @@
 
 3. **Perform the analysis**
    - Account for spatial correlation when multiple nearby peaks reported from same study
-   - {user_prompt}
+   - Run multivariate meta-analysis on correlated brain regions
 
 4. **Generate outputs**
    - Create required evidence files

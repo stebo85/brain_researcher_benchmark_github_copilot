@@ -48,7 +48,7 @@ print(f'Data downloaded to: {data.keys()}')
 
 3. **Perform the analysis**
    - Create phase-randomized surrogates preserving power spectrum
-   - {user_prompt}
+   - Apply phase-scrambling for null hypothesis generation in connectivity
 
 4. **Generate outputs**
    - Create required evidence files

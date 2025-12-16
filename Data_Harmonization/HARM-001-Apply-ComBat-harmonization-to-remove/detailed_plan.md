@@ -48,7 +48,7 @@ print(f'Data downloaded to: {data.keys()}')
 
 3. **Perform the analysis**
    - Remove systematic differences between scanning sites while preserving biological variation
-   - {user_prompt}
+   - Apply ComBat harmonization to remove site effects from ABIDE resting-state data
 
 4. **Generate outputs**
    - Create required evidence files

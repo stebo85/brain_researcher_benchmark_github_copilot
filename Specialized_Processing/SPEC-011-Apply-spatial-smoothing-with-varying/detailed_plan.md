@@ -48,7 +48,7 @@ print(f'Data downloaded to: {data.keys()}')
 
 3. **Perform the analysis**
    - Test FWHM from 4-10mm to find optimal smoothing
-   - {user_prompt}
+   - Apply spatial smoothing with varying kernel sizes and compare
 
 4. **Generate outputs**
    - Create required evidence files

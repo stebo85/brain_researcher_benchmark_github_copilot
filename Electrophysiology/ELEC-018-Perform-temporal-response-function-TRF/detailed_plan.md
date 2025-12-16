@@ -41,7 +41,7 @@
 
 3. **Perform the analysis**
    - Build encoding models that predict MEG responses from stimulus features over time lags
-   - {user_prompt}
+   - Perform temporal response function (TRF) analysis on continuous data
 
 4. **Generate outputs**
    - Create required evidence files

@@ -48,7 +48,7 @@ print(f'Data downloaded to: {data.keys()}')
 
 3. **Perform the analysis**
    - Create within-subject template and register multiple timepoints for stability
-   - {user_prompt}
+   - Perform longitudinal registration for NKI subjects with repeated scans
 
 4. **Generate outputs**
    - Create required evidence files

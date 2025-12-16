@@ -41,7 +41,7 @@
 
 3. **Perform the analysis**
    - Align individual cortical surfaces to standard template using spherical registration
-   - {user_prompt}
+   - Resample individual surface data to fsaverage5 template for group analysis
 
 4. **Generate outputs**
    - Create required evidence files

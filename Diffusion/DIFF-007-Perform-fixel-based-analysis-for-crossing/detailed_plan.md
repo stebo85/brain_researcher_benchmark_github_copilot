@@ -41,7 +41,7 @@
 
 3. **Perform the analysis**
    - Analyze fiber density and cross-section at the level of individual fiber populations within voxels
-   - {user_prompt}
+   - Perform fixel-based analysis for crossing fiber metrics
 
 4. **Generate outputs**
    - Create required evidence files

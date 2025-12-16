@@ -41,7 +41,7 @@
 
 3. **Perform the analysis**
    - Model how damage to specific regions affects network dynamics
-   - {user_prompt}
+   - Simulate lesion effects using virtual brain lesioning
 
 4. **Generate outputs**
    - Create required evidence files

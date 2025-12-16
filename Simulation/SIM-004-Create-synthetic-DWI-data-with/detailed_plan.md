@@ -41,7 +41,7 @@
 
 3. **Perform the analysis**
    - Generate diffusion signals with known fiber orientations for validation
-   - {user_prompt}
+   - Create synthetic DWI data with crossing fibers
 
 4. **Generate outputs**
    - Create required evidence files

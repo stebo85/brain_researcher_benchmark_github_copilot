@@ -49,7 +49,7 @@ print(f'Data downloaded to: {data.keys()}')
 
 3. **Perform the analysis**
    - Calculate correlations between vertices on the cortical surface to find functional networks
-   - {user_prompt}
+   - Compute surface-based functional connectivity on NKI Enhanced dataset
 
 4. **Generate outputs**
    - Create required evidence files

@@ -48,7 +48,7 @@ print(f'Data downloaded to: {data.keys()}')
 
 3. **Perform the analysis**
    - Remove motion artifacts while maintaining temporal continuity
-   - {user_prompt}
+   - Apply motion censoring with interpolation for continuous timeseries
 
 4. **Generate outputs**
    - Create required evidence files

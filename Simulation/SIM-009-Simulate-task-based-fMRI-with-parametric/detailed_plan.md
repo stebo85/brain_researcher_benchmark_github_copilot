@@ -41,7 +41,7 @@
 
 3. **Perform the analysis**
    - Model brain responses with amplitude varying by task difficulty
-   - {user_prompt}
+   - Simulate task-based fMRI with parametric modulation
 
 4. **Generate outputs**
    - Create required evidence files

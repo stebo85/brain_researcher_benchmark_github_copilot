@@ -41,7 +41,7 @@
 
 3. **Perform the analysis**
    - Create streamlines connecting regions according to specified connectivity
-   - {user_prompt}
+   - Generate synthetic tractography with known connectivity matrix
 
 4. **Generate outputs**
    - Create required evidence files

@@ -48,7 +48,7 @@ print(f'Data downloaded to: {data.keys()}')
 
 3. **Perform the analysis**
    - Align functional topographies before group analysis
-   - {user_prompt}
+   - Apply functional alignment to harmonize task activation patterns across subjects
 
 4. **Generate outputs**
    - Create required evidence files

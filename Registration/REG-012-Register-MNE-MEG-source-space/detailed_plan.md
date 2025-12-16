@@ -41,7 +41,7 @@
 
 3. **Perform the analysis**
    - Align MEG source model to subject's cortical surface for accurate localization
-   - {user_prompt}
+   - Register MNE MEG source space to individual FreeSurfer surfaces
 
 4. **Generate outputs**
    - Create required evidence files

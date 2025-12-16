@@ -43,7 +43,7 @@
 
 3. **Perform the analysis**
    - Calculate contrast between white and gray matter intensities at cortical boundary
-   - {user_prompt}
+   - Extract white matter surface and compute WM-GM contrast
 
 4. **Generate outputs**
    - Create required evidence files

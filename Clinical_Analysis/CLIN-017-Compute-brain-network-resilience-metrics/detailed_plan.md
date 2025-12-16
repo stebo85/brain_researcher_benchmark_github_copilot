@@ -48,7 +48,7 @@ print(f'Data downloaded to: {data.keys()}')
 
 3. **Perform the analysis**
    - Assess network robustness to damage as indicator of functional reserve
-   - {user_prompt}
+   - Compute brain network resilience metrics in neurological disease
 
 4. **Generate outputs**
    - Create required evidence files

@@ -48,7 +48,7 @@ print(f'Data downloaded to: {data.keys()}')
 
 3. **Perform the analysis**
    - Label all ventricles and measure volumes for hydrocephalus and atrophy studies
-   - {user_prompt}
+   - Segment ventricular system with lateral, third, fourth ventricles
 
 4. **Generate outputs**
    - Create required evidence files

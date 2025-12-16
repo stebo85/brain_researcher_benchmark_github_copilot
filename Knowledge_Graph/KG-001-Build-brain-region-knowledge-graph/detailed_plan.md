@@ -48,7 +48,7 @@ print(f'Data downloaded to: {data.keys()}')
 
 3. **Perform the analysis**
    - Create a structured database showing how brain regions relate to each other hierarchically
-   - {user_prompt}
+   - Build brain region knowledge graph from AAL atlas with hierarchical relationships
 
 4. **Generate outputs**
    - Create required evidence files

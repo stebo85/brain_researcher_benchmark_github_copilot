@@ -41,7 +41,7 @@
 
 3. **Perform the analysis**
    - Clean up raw MEG signals by removing environmental magnetic interference and biological artifacts like heartbeats
-   - {user_prompt}
+   - Preprocess MNE sample MEG data with maxwell filtering and artifact removal
 
 4. **Generate outputs**
    - Create required evidence files

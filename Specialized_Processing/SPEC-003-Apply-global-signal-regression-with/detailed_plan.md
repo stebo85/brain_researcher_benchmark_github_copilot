@@ -49,7 +49,7 @@ print(f'Data downloaded to: {data.keys()}')
 
 3. **Perform the analysis**
    - Test different global signal removal approaches and compare
-   - {user_prompt}
+   - Apply global signal regression with multiple strategies on ABIDE data
 
 4. **Generate outputs**
    - Create required evidence files

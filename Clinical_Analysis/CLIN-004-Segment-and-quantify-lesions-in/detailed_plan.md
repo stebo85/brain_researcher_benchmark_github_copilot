@@ -41,7 +41,7 @@
 
 3. **Perform the analysis**
    - Automatically identify and measure stroke lesions for treatment planning
-   - {user_prompt}
+   - Segment and quantify lesions in synthetic stroke imaging
 
 4. **Generate outputs**
    - Create required evidence files

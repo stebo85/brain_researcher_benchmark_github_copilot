@@ -41,7 +41,7 @@
 
 3. **Perform the analysis**
    - Show corresponding brain regions across species for translational research
-   - {user_prompt}
+   - Create cross-species knowledge graph comparing human and animal atlases
 
 4. **Generate outputs**
    - Create required evidence files

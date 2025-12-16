@@ -41,7 +41,7 @@
 
 3. **Perform the analysis**
    - Represent brain regions as nodes and their connections as edges with weights and properties
-   - {user_prompt}
+   - Extract brain connectivity knowledge graph from HCP functional connectomes
 
 4. **Generate outputs**
    - Create required evidence files

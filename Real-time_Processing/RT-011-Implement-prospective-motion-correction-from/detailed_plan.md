@@ -41,7 +41,7 @@
 
 3. **Perform the analysis**
    - Update scan parameters mid-acquisition to follow head movement
-   - {user_prompt}
+   - Implement prospective motion correction from navigator echoes
 
 4. **Generate outputs**
    - Create required evidence files

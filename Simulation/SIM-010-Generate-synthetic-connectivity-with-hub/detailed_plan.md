@@ -41,7 +41,7 @@
 
 3. **Perform the analysis**
    - Create brain networks with realistic hub topology for graph theory testing
-   - {user_prompt}
+   - Generate synthetic connectivity with hub structure
 
 4. **Generate outputs**
    - Create required evidence files

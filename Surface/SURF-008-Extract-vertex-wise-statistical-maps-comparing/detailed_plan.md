@@ -41,7 +41,7 @@
 
 3. **Perform the analysis**
    - Test every surface vertex for group differences in thickness while controlling for multiple comparisons
-   - {user_prompt}
+   - Extract vertex-wise statistical maps comparing cortical thickness across groups
 
 4. **Generate outputs**
    - Create required evidence files

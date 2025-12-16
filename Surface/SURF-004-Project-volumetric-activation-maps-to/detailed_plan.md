@@ -41,7 +41,7 @@
 
 3. **Perform the analysis**
    - Transform 3D brain activation into surface representation for better visualization of cortical patterns
-   - {user_prompt}
+   - Project volumetric activation maps to fsaverage surface for visualization
 
 4. **Generate outputs**
    - Create required evidence files

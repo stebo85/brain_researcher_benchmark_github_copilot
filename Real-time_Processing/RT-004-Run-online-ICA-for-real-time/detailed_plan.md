@@ -41,7 +41,7 @@
 
 3. **Perform the analysis**
    - Remove artifacts like breathing and heartbeat as data is collected
-   - {user_prompt}
+   - Run online ICA for real-time denoising
 
 4. **Generate outputs**
    - Create required evidence files

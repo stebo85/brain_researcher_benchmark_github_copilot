@@ -41,7 +41,7 @@
 
 3. **Perform the analysis**
    - Generate realistic activation maps with controlled spatial properties
-   - {user_prompt}
+   - Create synthetic activation patterns with spatial autocorrelation
 
 4. **Generate outputs**
    - Create required evidence files

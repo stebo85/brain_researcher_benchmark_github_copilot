@@ -49,7 +49,7 @@ print(f'Data downloaded to: {data.keys()}')
 
 3. **Perform the analysis**
    - Register multiple atlas brains and combine their labels for robust tissue classification
-   - {user_prompt}
+   - Run multi-atlas label fusion for improved ADHD-200 segmentation
 
 4. **Generate outputs**
    - Create required evidence files

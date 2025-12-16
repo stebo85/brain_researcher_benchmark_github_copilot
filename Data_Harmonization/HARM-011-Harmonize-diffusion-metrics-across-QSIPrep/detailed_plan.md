@@ -41,7 +41,7 @@
 
 3. **Perform the analysis**
    - Account for preprocessing pipeline differences in longitudinal data
-   - {user_prompt}
+   - Harmonize diffusion metrics across QSIPrep pipeline versions
 
 4. **Generate outputs**
    - Create required evidence files

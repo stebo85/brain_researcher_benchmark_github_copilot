@@ -41,7 +41,7 @@
 
 3. **Perform the analysis**
    - Create two populations with specified standardized mean differences
-   - {user_prompt}
+   - Simulate group differences with controlled effect sizes
 
 4. **Generate outputs**
    - Create required evidence files

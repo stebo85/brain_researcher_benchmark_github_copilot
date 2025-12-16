@@ -41,7 +41,7 @@
 
 3. **Perform the analysis**
    - Model water diffusion as ellipsoid to get metrics like fractional anisotropy (white matter integrity)
-   - {user_prompt}
+   - Fit diffusion tensor model and compute FA, MD, RD, AD maps
 
 4. **Generate outputs**
    - Create required evidence files

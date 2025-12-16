@@ -48,7 +48,7 @@ print(f'Data downloaded to: {data.keys()}')
 
 3. **Perform the analysis**
    - Automatically assess scan quality with dozens of metrics covering artifacts, noise, and motion
-   - {user_prompt}
+   - Run MRIQC on Haxby dataset and generate quality reports
 
 4. **Generate outputs**
    - Create required evidence files

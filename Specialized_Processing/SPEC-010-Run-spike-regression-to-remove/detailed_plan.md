@@ -48,7 +48,7 @@ print(f'Data downloaded to: {data.keys()}')
 
 3. **Perform the analysis**
    - Identify and regress out motion spike timepoints
-   - {user_prompt}
+   - Run spike regression to remove sudden motion artifacts
 
 4. **Generate outputs**
    - Create required evidence files

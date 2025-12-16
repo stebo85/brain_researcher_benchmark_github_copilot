@@ -48,7 +48,7 @@ print(f'Data downloaded to: {data.keys()}')
 
 3. **Perform the analysis**
    - Create interactive visualization combining multiple quality metrics in one view
-   - {user_prompt}
+   - Generate comprehensive QC summary dashboard for SPM multimodal
 
 4. **Generate outputs**
    - Create required evidence files

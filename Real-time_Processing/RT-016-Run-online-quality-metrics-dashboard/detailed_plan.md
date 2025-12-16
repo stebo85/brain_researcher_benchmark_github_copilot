@@ -42,7 +42,7 @@ pip install nilearn matplotlib seaborn plotly
 
 3. **Perform the analysis**
    - Display live plots of motion, SNR, and activation to monitor scan
-   - {user_prompt}
+   - Run online quality metrics dashboard with visualization
 
 4. **Generate outputs**
    - Create required evidence files

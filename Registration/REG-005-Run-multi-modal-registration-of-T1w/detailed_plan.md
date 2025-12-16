@@ -48,7 +48,7 @@ print(f'Data downloaded to: {data.keys()}')
 
 3. **Perform the analysis**
    - Align images from different MRI sequences accounting for contrast differences
-   - {user_prompt}
+   - Run multi-modal registration of T1w to T2w for SPM multimodal
 
 4. **Generate outputs**
    - Create required evidence files

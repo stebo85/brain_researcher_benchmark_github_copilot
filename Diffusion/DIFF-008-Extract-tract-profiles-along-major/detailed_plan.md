@@ -41,7 +41,7 @@
 
 3. **Perform the analysis**
    - Sample diffusion metrics along the length of specific tracts to detect localized abnormalities
-   - {user_prompt}
+   - Extract tract profiles along major white matter pathways (CST, arcuate)
 
 4. **Generate outputs**
    - Create required evidence files

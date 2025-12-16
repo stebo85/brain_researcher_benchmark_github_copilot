@@ -48,7 +48,7 @@ print(f'Data downloaded to: {data.keys()}')
 
 3. **Perform the analysis**
    - Compute distance between pial and white surfaces at each vertex for thickness measurement
-   - {user_prompt}
+   - Segment cortical thickness maps from Haxby FreeSurfer outputs
 
 4. **Generate outputs**
    - Create required evidence files

@@ -41,7 +41,7 @@
 
 3. **Perform the analysis**
    - Connect medications to the brain areas they affect based on imaging studies
-   - {user_prompt}
+   - Build pharmacological knowledge graph linking drugs to brain regions
 
 4. **Generate outputs**
    - Create required evidence files

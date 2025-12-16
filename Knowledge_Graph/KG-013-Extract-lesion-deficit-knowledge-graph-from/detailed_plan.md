@@ -41,7 +41,7 @@
 
 3. **Perform the analysis**
    - Link damaged brain areas to specific cognitive/motor impairments they cause
-   - {user_prompt}
+   - Extract lesion-deficit knowledge graph from clinical cases
 
 4. **Generate outputs**
    - Create required evidence files

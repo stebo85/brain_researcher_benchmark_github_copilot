@@ -41,7 +41,7 @@
 
 3. **Perform the analysis**
    - Warp each brain volume to template space as it's acquired
-   - {user_prompt}
+   - Perform online normalization to standard space
 
 4. **Generate outputs**
    - Create required evidence files

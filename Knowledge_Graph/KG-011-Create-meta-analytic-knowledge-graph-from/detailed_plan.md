@@ -41,7 +41,7 @@
 
 3. **Perform the analysis**
    - Build network showing which brain regions co-activate across thousands of studies
-   - {user_prompt}
+   - Create meta-analytic knowledge graph from NeuroVault statistical maps
 
 4. **Generate outputs**
    - Create required evidence files

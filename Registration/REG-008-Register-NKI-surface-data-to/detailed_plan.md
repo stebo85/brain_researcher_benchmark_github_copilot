@@ -48,7 +48,7 @@ print(f'Data downloaded to: {data.keys()}')
 
 3. **Perform the analysis**
    - Transform surface data to different resolution templates for multi-scale analysis
-   - {user_prompt}
+   - Register NKI surface data to multiple target spaces (fsaverage5, fsaverage6)
 
 4. **Generate outputs**
    - Create required evidence files

@@ -49,7 +49,7 @@ print(f'Data downloaded to: {data.keys()}')
 
 3. **Perform the analysis**
    - Harmonize covariance structure of connectivity while preserving correlations
-   - {user_prompt}
+   - Apply CovBat to harmonize connectivity matrices across ABIDE sites
 
 4. **Generate outputs**
    - Create required evidence files

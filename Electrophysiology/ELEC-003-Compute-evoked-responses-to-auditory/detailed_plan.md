@@ -41,7 +41,7 @@
 
 3. **Perform the analysis**
    - Average brain responses time-locked to stimulus presentation to reveal consistent event-related fields
-   - {user_prompt}
+   - Compute evoked responses to auditory and visual stimuli in MNE sample
 
 4. **Generate outputs**
    - Create required evidence files

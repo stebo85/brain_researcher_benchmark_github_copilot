@@ -41,7 +41,7 @@
 
 3. **Perform the analysis**
    - Merge surface-based cortical data with subcortical volumetric data in CIFTI format
-   - {user_prompt}
+   - Create CIFTI dscalar files combining cortical and subcortical data
 
 4. **Generate outputs**
    - Create required evidence files

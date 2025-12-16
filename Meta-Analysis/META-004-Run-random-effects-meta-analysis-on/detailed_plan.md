@@ -41,7 +41,7 @@
 
 3. **Perform the analysis**
    - Account for between-study variability when combining language task results
-   - {user_prompt}
+   - Run random effects meta-analysis on language activation maps
 
 4. **Generate outputs**
    - Create required evidence files

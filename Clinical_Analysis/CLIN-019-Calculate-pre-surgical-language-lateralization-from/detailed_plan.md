@@ -42,7 +42,7 @@ pip install nilearn nibabel scikit-learn
 
 3. **Perform the analysis**
    - Determine which hemisphere controls language before brain surgery
-   - {user_prompt}
+   - Calculate pre-surgical language lateralization from fMRI
 
 4. **Generate outputs**
    - Create required evidence files

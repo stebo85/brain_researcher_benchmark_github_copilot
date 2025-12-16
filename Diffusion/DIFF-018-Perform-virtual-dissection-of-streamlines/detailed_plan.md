@@ -41,7 +41,7 @@
 
 3. **Perform the analysis**
    - Extract specific white matter pathways by filtering full tractogram through anatomical waypoint regions
-   - {user_prompt}
+   - Perform virtual dissection of streamlines using ROI-based filtering
 
 4. **Generate outputs**
    - Create required evidence files

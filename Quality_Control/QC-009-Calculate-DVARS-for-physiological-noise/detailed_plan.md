@@ -48,7 +48,7 @@ print(f'Data downloaded to: {data.keys()}')
 
 3. **Perform the analysis**
    - Measure rate of change of BOLD signal to detect physiological artifacts like respiration
-   - {user_prompt}
+   - Calculate DVARS for physiological noise assessment in Miyawaki
 
 4. **Generate outputs**
    - Create required evidence files

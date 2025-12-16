@@ -41,7 +41,7 @@
 
 3. **Perform the analysis**
    - Give more influence to studies with larger samples when pooling results
-   - {user_prompt}
+   - Compute activation likelihood estimation with sample size weighting
 
 4. **Generate outputs**
    - Create required evidence files

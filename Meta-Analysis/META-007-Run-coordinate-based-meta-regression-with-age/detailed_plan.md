@@ -41,7 +41,7 @@
 
 3. **Perform the analysis**
    - Test if brain activation patterns change systematically with participant age across studies
-   - {user_prompt}
+   - Run coordinate-based meta-regression with age as moderator
 
 4. **Generate outputs**
    - Create required evidence files

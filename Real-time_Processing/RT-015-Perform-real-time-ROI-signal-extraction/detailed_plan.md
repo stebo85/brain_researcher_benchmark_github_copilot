@@ -41,7 +41,7 @@
 
 3. **Perform the analysis**
    - Extract timecourse from region and remove slow drifts as scan progresses
-   - {user_prompt}
+   - Perform real-time ROI signal extraction with drift correction
 
 4. **Generate outputs**
    - Create required evidence files

@@ -43,7 +43,7 @@
 
 3. **Perform the analysis**
    - Measure local changes in cortical surface area over time to detect atrophy or growth
-   - {user_prompt}
+   - Compute surface area expansion/contraction from longitudinal scans
 
 4. **Generate outputs**
    - Create required evidence files

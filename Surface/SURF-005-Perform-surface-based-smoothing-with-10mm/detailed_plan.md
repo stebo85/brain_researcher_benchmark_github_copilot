@@ -42,7 +42,7 @@ pip install nilearn nibabel scikit-learn
 
 3. **Perform the analysis**
    - Smooth data along the cortical surface (not through cortex) to increase signal-to-noise
-   - {user_prompt}
+   - Perform surface-based smoothing with 10mm FWHM on cortical data
 
 4. **Generate outputs**
    - Create required evidence files

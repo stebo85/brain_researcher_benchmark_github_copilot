@@ -41,7 +41,7 @@
 
 3. **Perform the analysis**
    - Link treatment types to brain changes they produce and clinical outcomes
-   - {user_prompt}
+   - Build intervention-outcome knowledge graph from clinical trial imaging
 
 4. **Generate outputs**
    - Create required evidence files

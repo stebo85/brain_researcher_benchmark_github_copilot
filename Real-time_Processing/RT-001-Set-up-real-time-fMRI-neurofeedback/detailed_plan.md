@@ -41,7 +41,7 @@
 
 3. **Perform the analysis**
    - Give live feedback about amygdala activity so person can learn to calm it
-   - {user_prompt}
+   - Set up real-time fMRI neurofeedback for amygdala down-regulation
 
 4. **Generate outputs**
    - Create required evidence files

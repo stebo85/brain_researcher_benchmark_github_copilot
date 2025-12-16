@@ -43,7 +43,7 @@
 
 3. **Perform the analysis**
    - Align all subjects' white matter skeletons and test for group differences along major tracts
-   - {user_prompt}
+   - Perform TBSS voxel-wise statistics on FA maps across subjects
 
 4. **Generate outputs**
    - Create required evidence files

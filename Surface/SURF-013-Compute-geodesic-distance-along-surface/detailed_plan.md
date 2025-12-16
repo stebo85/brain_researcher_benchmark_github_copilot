@@ -41,7 +41,7 @@
 
 3. **Perform the analysis**
    - Measure distances following cortical surface curvature instead of straight-line Euclidean
-   - {user_prompt}
+   - Compute geodesic distance along surface between ROIs
 
 4. **Generate outputs**
    - Create required evidence files

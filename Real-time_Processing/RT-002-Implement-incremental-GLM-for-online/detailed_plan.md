@@ -42,7 +42,7 @@ pip install nilearn nibabel scikit-learn
 
 3. **Perform the analysis**
    - Update statistical model as each brain volume arrives during scan
-   - {user_prompt}
+   - Implement incremental GLM for online activation detection
 
 4. **Generate outputs**
    - Create required evidence files

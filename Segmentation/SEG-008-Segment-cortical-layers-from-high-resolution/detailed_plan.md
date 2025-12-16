@@ -41,7 +41,7 @@
 
 3. **Perform the analysis**
    - Distinguish cortical depth from pial surface to white matter boundary at submillimeter scale
-   - {user_prompt}
+   - Segment cortical layers from high-resolution 7T anatomical
 
 4. **Generate outputs**
    - Create required evidence files

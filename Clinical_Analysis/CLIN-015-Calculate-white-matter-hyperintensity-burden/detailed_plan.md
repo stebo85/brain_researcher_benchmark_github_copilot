@@ -41,7 +41,7 @@
 
 3. **Perform the analysis**
    - Quantify white matter lesions associated with vascular risk and cognitive decline
-   - {user_prompt}
+   - Calculate white matter hyperintensity burden in aging
 
 4. **Generate outputs**
    - Create required evidence files

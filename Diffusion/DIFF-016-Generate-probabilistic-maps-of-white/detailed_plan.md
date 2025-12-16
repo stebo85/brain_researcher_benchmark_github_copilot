@@ -41,7 +41,7 @@
 
 3. **Perform the analysis**
    - Create population-average probability maps showing where specific tracts are likely to be found
-   - {user_prompt}
+   - Generate probabilistic maps of white matter tract spatial distribution
 
 4. **Generate outputs**
    - Create required evidence files

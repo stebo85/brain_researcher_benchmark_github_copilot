@@ -50,7 +50,7 @@ print(f'Data downloaded to: {data.keys()}')
 
 3. **Perform the analysis**
    - Align cortical surface geometry to FreeSurfer standard using spherical registration
-   - {user_prompt}
+   - Register Development fMRI surfaces to fsaverage template
 
 4. **Generate outputs**
    - Create required evidence files

@@ -41,7 +41,7 @@
 
 3. **Perform the analysis**
    - Weight studies by methodological quality when pooling activation coordinates
-   - {user_prompt}
+   - Extract study quality metrics and run quality-weighted meta-analysis
 
 4. **Generate outputs**
    - Create required evidence files

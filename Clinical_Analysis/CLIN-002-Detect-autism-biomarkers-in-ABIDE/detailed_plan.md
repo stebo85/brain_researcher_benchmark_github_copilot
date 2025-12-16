@@ -48,7 +48,7 @@ print(f'Data downloaded to: {data.keys()}')
 
 3. **Perform the analysis**
    - Find brain measures that differ between ASD and controls for potential diagnostic use
-   - {user_prompt}
+   - Detect autism biomarkers in ABIDE structural and functional data
 
 4. **Generate outputs**
    - Create required evidence files

@@ -41,7 +41,7 @@
 
 3. **Perform the analysis**
    - Pull standardized effect sizes from papers and synthesize with inverse-variance weighting
-   - {user_prompt}
+   - Extract and meta-analyze effect sizes from memory fMRI papers
 
 4. **Generate outputs**
    - Create required evidence files

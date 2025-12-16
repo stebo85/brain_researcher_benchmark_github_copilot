@@ -43,7 +43,7 @@
 
 3. **Perform the analysis**
    - Extract geometric properties of cortical surface to characterize folding patterns
-   - {user_prompt}
+   - Compute curvature, sulcal depth, and surface area for morphometry analysis
 
 4. **Generate outputs**
    - Create required evidence files

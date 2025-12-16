@@ -49,7 +49,7 @@ print(f'Data downloaded to: {data.keys()}')
 
 3. **Perform the analysis**
    - Adjust HCP data to be compatible with older scanning protocols
-   - {user_prompt}
+   - Harmonize HCP connectivity matrices to match legacy scanner parameters
 
 4. **Generate outputs**
    - Create required evidence files

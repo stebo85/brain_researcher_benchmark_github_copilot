@@ -41,7 +41,7 @@
 
 3. **Perform the analysis**
    - Map smooth gradients in connectivity patterns across cortex to reveal organizational axes
-   - {user_prompt}
+   - Create gradient maps of functional connectivity on cortical surface
 
 4. **Generate outputs**
    - Create required evidence files

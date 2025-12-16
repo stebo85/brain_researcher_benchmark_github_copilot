@@ -41,7 +41,7 @@
 
 3. **Perform the analysis**
    - Create synthetic multi-echo data where BOLD vs non-BOLD components known
-   - {user_prompt}
+   - Simulate multi-echo fMRI with known TE-dependent decay
 
 4. **Generate outputs**
    - Create required evidence files

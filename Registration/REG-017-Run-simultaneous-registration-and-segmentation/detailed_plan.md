@@ -48,7 +48,7 @@ print(f'Data downloaded to: {data.keys()}')
 
 3. **Perform the analysis**
    - Jointly optimize brain alignment and tissue classification in unified framework
-   - {user_prompt}
+   - Run simultaneous registration and segmentation for FIAC structural data
 
 4. **Generate outputs**
    - Create required evidence files

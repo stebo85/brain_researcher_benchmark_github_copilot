@@ -41,7 +41,7 @@
 
 3. **Perform the analysis**
    - Create artificial data where true activation locations are known for testing
-   - {user_prompt}
+   - Generate synthetic fMRI with known ground truth activations
 
 4. **Generate outputs**
    - Create required evidence files

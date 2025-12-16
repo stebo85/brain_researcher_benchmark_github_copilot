@@ -41,7 +41,7 @@
 
 3. **Perform the analysis**
    - Decompose frequency spectrum into periodic peaks (oscillations) and aperiodic background (1/f noise)
-   - {user_prompt}
+   - Extract power spectral density and fit FOOOF model to parameterize
 
 4. **Generate outputs**
    - Create required evidence files

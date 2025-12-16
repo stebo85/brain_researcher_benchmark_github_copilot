@@ -41,7 +41,7 @@
 
 3. **Perform the analysis**
    - Measure how theta oscillations (4-8 Hz) increase or decrease in power relative to baseline after stimuli
-   - {user_prompt}
+   - Compute event-related spectral perturbation (ERSP) for theta band
 
 4. **Generate outputs**
    - Create required evidence files

@@ -41,7 +41,7 @@
 
 3. **Perform the analysis**
    - Quantify how folded the cortex is by comparing surface area to outer hull area
-   - {user_prompt}
+   - Compute local gyrification index to measure cortical folding complexity
 
 4. **Generate outputs**
    - Create required evidence files

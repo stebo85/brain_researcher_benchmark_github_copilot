@@ -41,7 +41,7 @@
 
 3. **Perform the analysis**
    - Reweight streamlines to match underlying fiber density from FOD for more accurate connectomes
-   - {user_prompt}
+   - Compute connectome edge weights using SIFT2 for biologically accurate density
 
 4. **Generate outputs**
    - Create required evidence files

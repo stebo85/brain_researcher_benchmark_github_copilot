@@ -41,7 +41,7 @@
 
 3. **Perform the analysis**
    - Use physiological recordings to model and remove periodic noise
-   - {user_prompt}
+   - Run RETROICOR to remove cardiac and respiratory artifacts
 
 4. **Generate outputs**
    - Create required evidence files

@@ -41,7 +41,7 @@
 
 3. **Perform the analysis**
    - Automatically identify 20 major white matter tracts and extract diffusion metrics along their length
-   - {user_prompt}
+   - Perform AFQ automated fiber quantification on major tracts
 
 4. **Generate outputs**
    - Create required evidence files

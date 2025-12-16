@@ -48,7 +48,7 @@ print(f'Data downloaded to: {data.keys()}')
 
 3. **Perform the analysis**
    - Find sudden intensity jumps that indicate scanner glitches or severe motion
-   - {user_prompt}
+   - Detect and quantify signal spikes in ADHD-200 timeseries
 
 4. **Generate outputs**
    - Create required evidence files

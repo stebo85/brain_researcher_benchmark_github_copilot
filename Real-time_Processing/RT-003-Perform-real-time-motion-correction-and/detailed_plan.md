@@ -41,7 +41,7 @@
 
 3. **Perform the analysis**
    - Correct head movement and flag data quality problems as scan happens
-   - {user_prompt}
+   - Perform real-time motion correction and quality assessment
 
 4. **Generate outputs**
    - Create required evidence files

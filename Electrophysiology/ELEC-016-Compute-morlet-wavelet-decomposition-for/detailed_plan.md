@@ -41,7 +41,7 @@
 
 3. **Perform the analysis**
    - Decompose signals into different frequency components over time using wavelets for high resolution
-   - {user_prompt}
+   - Compute morlet wavelet decomposition for multi-scale time-frequency
 
 4. **Generate outputs**
    - Create required evidence files

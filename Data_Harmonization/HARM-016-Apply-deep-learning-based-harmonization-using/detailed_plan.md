@@ -49,7 +49,7 @@ print(f'Data downloaded to: {data.keys()}')
 
 3. **Perform the analysis**
    - Use unpaired image translation to harmonize scanner characteristics
-   - {user_prompt}
+   - Apply deep learning-based harmonization using CycleGAN on structural MRI
 
 4. **Generate outputs**
    - Create required evidence files

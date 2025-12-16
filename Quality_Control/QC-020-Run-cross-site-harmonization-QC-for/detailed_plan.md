@@ -48,7 +48,7 @@ print(f'Data downloaded to: {data.keys()}')
 
 3. **Perform the analysis**
    - Check for systematic differences between scanning sites that need correction
-   - {user_prompt}
+   - Run cross-site harmonization QC for ABIDE multi-site data
 
 4. **Generate outputs**
    - Create required evidence files

@@ -41,7 +41,7 @@
 
 3. **Perform the analysis**
    - Combine information across echoes while harmonizing sites
-   - {user_prompt}
+   - Use MUDI to harmonize multi-echo fMRI across sites
 
 4. **Generate outputs**
    - Create required evidence files

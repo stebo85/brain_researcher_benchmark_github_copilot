@@ -50,7 +50,7 @@ print(f'Data downloaded to: {data.keys()}')
 
 3. **Perform the analysis**
    - Check surface reconstruction quality using topological defect count
-   - {user_prompt}
+   - Run FreeSurfer Euler number QC on ABIDE structural reconstructions
 
 4. **Generate outputs**
    - Create required evidence files

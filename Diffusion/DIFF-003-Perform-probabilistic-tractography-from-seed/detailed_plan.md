@@ -43,7 +43,7 @@
 
 3. **Perform the analysis**
    - Model crossing fibers then trace probabilistic pathways from seed regions through white matter
-   - {user_prompt}
+   - Perform probabilistic tractography from seed regions using FSL BEDPOSTX
 
 4. **Generate outputs**
    - Create required evidence files

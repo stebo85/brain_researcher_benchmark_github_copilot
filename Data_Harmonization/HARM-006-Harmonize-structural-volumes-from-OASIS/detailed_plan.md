@@ -48,7 +48,7 @@ print(f'Data downloaded to: {data.keys()}')
 
 3. **Perform the analysis**
    - Model nonlinear age effects before harmonizing across scanners
-   - {user_prompt}
+   - Harmonize structural volumes from OASIS using GAM-based normalization
 
 4. **Generate outputs**
    - Create required evidence files

@@ -48,7 +48,7 @@ print(f'Data downloaded to: {data.keys()}')
 
 3. **Perform the analysis**
    - Align functional scans to anatomical using 12-parameter linear transformation
-   - {user_prompt}
+   - Run FSL FLIRT affine registration for ADHD-200 functional to structural
 
 4. **Generate outputs**
    - Create required evidence files

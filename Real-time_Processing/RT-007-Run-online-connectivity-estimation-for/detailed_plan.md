@@ -42,7 +42,7 @@ pip install nilearn nibabel scipy
 
 3. **Perform the analysis**
    - Calculate brain region correlations in real-time for connectivity training
-   - {user_prompt}
+   - Run online connectivity estimation for neurofeedback
 
 4. **Generate outputs**
    - Create required evidence files

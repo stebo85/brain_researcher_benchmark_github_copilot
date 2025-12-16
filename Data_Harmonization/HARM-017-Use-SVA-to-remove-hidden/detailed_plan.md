@@ -41,7 +41,7 @@
 
 3. **Perform the analysis**
    - Identify and remove unknown sources of variation in expression matrices
-   - {user_prompt}
+   - Use SVA to remove hidden batch effects from gene expression data
 
 4. **Generate outputs**
    - Create required evidence files

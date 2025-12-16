@@ -41,7 +41,7 @@
 
 3. **Perform the analysis**
    - Assess robustness by meta-analyzing results across different preprocessing/analysis paths
-   - {user_prompt}
+   - Perform specification curve meta-analysis testing analysis choices
 
 4. **Generate outputs**
    - Create required evidence files

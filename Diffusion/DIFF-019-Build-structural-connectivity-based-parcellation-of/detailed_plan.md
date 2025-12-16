@@ -42,7 +42,7 @@ pip install nilearn nibabel scipy
 
 3. **Perform the analysis**
    - Divide thalamus into subregions based on their white matter connectivity patterns to cortex
-   - {user_prompt}
+   - Build structural connectivity-based parcellation of thalamus
 
 4. **Generate outputs**
    - Create required evidence files

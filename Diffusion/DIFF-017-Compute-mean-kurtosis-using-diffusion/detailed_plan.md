@@ -41,7 +41,7 @@
 
 3. **Perform the analysis**
    - Fit kurtosis model to capture non-Gaussian diffusion reflecting tissue complexity
-   - {user_prompt}
+   - Compute mean kurtosis using diffusion kurtosis imaging (DKI)
 
 4. **Generate outputs**
    - Create required evidence files

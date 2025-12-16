@@ -41,7 +41,7 @@
 
 3. **Perform the analysis**
    - Separate perfusion signal from physiological noise using ICA
-   - {user_prompt}
+   - Run component-based noise correction on ASL perfusion data
 
 4. **Generate outputs**
    - Create required evidence files

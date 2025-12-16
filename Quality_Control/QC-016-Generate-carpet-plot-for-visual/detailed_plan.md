@@ -48,7 +48,7 @@ print(f'Data downloaded to: {data.keys()}')
 
 3. **Perform the analysis**
    - Create comprehensive visualization showing all voxels' timeseries to spot global artifacts
-   - {user_prompt}
+   - Generate carpet plot for visual inspection of Brainomics data
 
 4. **Generate outputs**
    - Create required evidence files

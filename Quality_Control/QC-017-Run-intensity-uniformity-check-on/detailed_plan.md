@@ -48,7 +48,7 @@ print(f'Data downloaded to: {data.keys()}')
 
 3. **Perform the analysis**
    - Verify consistent brightness across field of view indicating good RF coil performance
-   - {user_prompt}
+   - Run intensity uniformity check on OASIS T1w images
 
 4. **Generate outputs**
    - Create required evidence files

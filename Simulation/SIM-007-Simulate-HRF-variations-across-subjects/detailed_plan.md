@@ -41,7 +41,7 @@
 
 3. **Perform the analysis**
    - Model hemodynamic response variability for statistical power analysis
-   - {user_prompt}
+   - Simulate HRF variations across subjects and regions
 
 4. **Generate outputs**
    - Create required evidence files

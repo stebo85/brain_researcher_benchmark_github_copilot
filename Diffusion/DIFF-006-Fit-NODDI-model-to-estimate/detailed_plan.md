@@ -41,7 +41,7 @@
 
 3. **Perform the analysis**
    - Use advanced diffusion model to separate intracellular from extracellular water and measure fiber complexity
-   - {user_prompt}
+   - Fit NODDI model to estimate neurite density and orientation dispersion
 
 4. **Generate outputs**
    - Create required evidence files

@@ -41,7 +41,7 @@
 
 3. **Perform the analysis**
    - Use phantom scans to calibrate and harmonize SUV quantification
-   - {user_prompt}
+   - Harmonize PET SUV values across scanners using phantom calibration
 
 4. **Generate outputs**
    - Create required evidence files

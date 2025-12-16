@@ -41,7 +41,7 @@
 
 3. **Perform the analysis**
    - Model detailed neurovascular coupling using biophysical balloon model
-   - {user_prompt}
+   - Simulate hemodynamic response with balloon model
 
 4. **Generate outputs**
    - Create required evidence files

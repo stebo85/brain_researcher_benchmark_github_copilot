@@ -50,7 +50,7 @@ print(f'Data downloaded to: {data.keys()}')
 
 3. **Perform the analysis**
    - Perform group ICA maintaining subject-specific variation
-   - {user_prompt}
+   - Run independent vector analysis for group ICA with linked components
 
 4. **Generate outputs**
    - Create required evidence files

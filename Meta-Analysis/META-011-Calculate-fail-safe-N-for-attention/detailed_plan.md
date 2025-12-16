@@ -41,7 +41,7 @@
 
 3. **Perform the analysis**
    - Determine how many null studies needed to overturn significant meta-analytic finding
-   - {user_prompt}
+   - Calculate fail-safe N for attention network meta-analysis
 
 4. **Generate outputs**
    - Create required evidence files

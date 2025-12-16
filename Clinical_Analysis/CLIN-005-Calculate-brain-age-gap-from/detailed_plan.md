@@ -49,7 +49,7 @@ print(f'Data downloaded to: {data.keys()}')
 
 3. **Perform the analysis**
    - Predict biological brain age and compare to chronological age as health marker
-   - {user_prompt}
+   - Calculate brain age gap from structural MRI using trained model
 
 4. **Generate outputs**
    - Create required evidence files

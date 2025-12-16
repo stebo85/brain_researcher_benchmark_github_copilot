@@ -43,7 +43,7 @@
 
 3. **Perform the analysis**
    - Correct geometric distortions caused by magnetic susceptibility using field inhomogeneity maps
-   - {user_prompt}
+   - Perform DWI distortion correction using B0 fieldmaps
 
 4. **Generate outputs**
    - Create required evidence files

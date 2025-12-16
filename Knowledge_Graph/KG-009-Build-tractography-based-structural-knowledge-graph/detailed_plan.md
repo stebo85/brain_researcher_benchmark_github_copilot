@@ -41,7 +41,7 @@
 
 3. **Perform the analysis**
    - Represent white matter pathways as directed edges connecting cortical regions
-   - {user_prompt}
+   - Build tractography-based structural knowledge graph from diffusion data
 
 4. **Generate outputs**
    - Create required evidence files

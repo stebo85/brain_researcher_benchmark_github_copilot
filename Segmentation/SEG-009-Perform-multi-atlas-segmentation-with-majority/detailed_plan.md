@@ -48,7 +48,7 @@ print(f'Data downloaded to: {data.keys()}')
 
 3. **Perform the analysis**
    - Register multiple labeled atlases and combine predictions for robust parcellation
-   - {user_prompt}
+   - Perform multi-atlas segmentation with majority voting for Brainomics
 
 4. **Generate outputs**
    - Create required evidence files

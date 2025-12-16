@@ -41,7 +41,7 @@
 
 3. **Perform the analysis**
    - Quantify ghosting artifacts caused by motion and physiological pulsation
-   - {user_prompt}
+   - Generate ghost-to-signal ratio metrics for HCP resting-state
 
 4. **Generate outputs**
    - Create required evidence files

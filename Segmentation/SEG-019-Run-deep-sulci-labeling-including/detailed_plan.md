@@ -48,7 +48,7 @@ print(f'Data downloaded to: {data.keys()}')
 
 3. **Perform the analysis**
    - Identify and label complex sulcal patterns often missed by standard parcellation
-   - {user_prompt}
+   - Run deep sulci labeling including circular sulcus of insula
 
 4. **Generate outputs**
    - Create required evidence files

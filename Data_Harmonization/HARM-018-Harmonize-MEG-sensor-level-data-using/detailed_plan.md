@@ -41,7 +41,7 @@
 
 3. **Perform the analysis**
    - Calibrate MEG signals using external reference sensors
-   - {user_prompt}
+   - Harmonize MEG sensor-level data using reference site method
 
 4. **Generate outputs**
    - Create required evidence files

@@ -49,7 +49,7 @@ print(f'Data downloaded to: {data.keys()}')
 
 3. **Perform the analysis**
    - Classify each voxel into one of three main tissue types using intensity and spatial priors
-   - {user_prompt}
+   - Segment gray matter, white matter, and CSF from ADHD-200 T1w images
 
 4. **Generate outputs**
    - Create required evidence files

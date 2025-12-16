@@ -48,7 +48,7 @@ print(f'Data downloaded to: {data.keys()}')
 
 3. **Perform the analysis**
    - Measure how much the head moved from one volume to the next throughout the scan
-   - {user_prompt}
+   - Generate framewise displacement timeseries for Development fMRI
 
 4. **Generate outputs**
    - Create required evidence files

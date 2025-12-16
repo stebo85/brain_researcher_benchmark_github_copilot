@@ -50,7 +50,7 @@ print(f'Data downloaded to: {data.keys()}')
 
 3. **Perform the analysis**
    - Automatically identify and remove motion-related ICA components
-   - {user_prompt}
+   - Run AROMA ICA-based denoising on Haxby data
 
 4. **Generate outputs**
    - Create required evidence files

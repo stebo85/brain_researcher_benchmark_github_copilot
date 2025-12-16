@@ -48,7 +48,7 @@ print(f'Data downloaded to: {data.keys()}')
 
 3. **Perform the analysis**
    - Remove unwanted intensity variation while preserving biological signal
-   - {user_prompt}
+   - Apply RAVEL intensity normalization to Brainomics Localizer T-maps
 
 4. **Generate outputs**
    - Create required evidence files

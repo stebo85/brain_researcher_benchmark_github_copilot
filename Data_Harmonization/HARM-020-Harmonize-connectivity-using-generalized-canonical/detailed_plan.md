@@ -48,7 +48,7 @@ print(f'Data downloaded to: {data.keys()}')
 
 3. **Perform the analysis**
    - Find common connectivity dimensions across heterogeneous datasets
-   - {user_prompt}
+   - Harmonize connectivity using generalized canonical correlation analysis
 
 4. **Generate outputs**
    - Create required evidence files

@@ -41,7 +41,7 @@
 
 3. **Perform the analysis**
    - Use non-parametric stats to threshold meta-analysis at family-wise error rate
-   - {user_prompt}
+   - Perform permutation-based thresholding for meta-analytic maps
 
 4. **Generate outputs**
    - Create required evidence files

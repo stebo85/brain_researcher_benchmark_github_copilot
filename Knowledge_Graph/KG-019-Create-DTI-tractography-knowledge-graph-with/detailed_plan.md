@@ -41,7 +41,7 @@
 
 3. **Perform the analysis**
    - Represent white matter tracts as entities with FA, MD, and connectivity properties
-   - {user_prompt}
+   - Create DTI-tractography knowledge graph with tract properties
 
 4. **Generate outputs**
    - Create required evidence files

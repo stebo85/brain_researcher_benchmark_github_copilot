@@ -48,7 +48,7 @@ print(f'Data downloaded to: {data.keys()}')
 
 3. **Perform the analysis**
    - Use phase information for more accurate motion correction
-   - {user_prompt}
+   - Run phase-based motion correction for sub-voxel displacement
 
 4. **Generate outputs**
    - Create required evidence files

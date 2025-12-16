@@ -48,7 +48,7 @@ print(f'Data downloaded to: {data.keys()}')
 
 3. **Perform the analysis**
    - Bring standard brain atlas into subject space for extracting signals from regions
-   - {user_prompt}
+   - Register atlas labels to Development fMRI native space for ROI analysis
 
 4. **Generate outputs**
    - Create required evidence files

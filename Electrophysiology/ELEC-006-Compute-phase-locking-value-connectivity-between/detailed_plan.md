@@ -42,7 +42,7 @@ pip install nilearn nibabel scipy
 
 3. **Perform the analysis**
    - Measure synchronization between different brain regions by analyzing phase relationships of oscillations
-   - {user_prompt}
+   - Compute phase-locking value connectivity between MEG sensors
 
 4. **Generate outputs**
    - Create required evidence files

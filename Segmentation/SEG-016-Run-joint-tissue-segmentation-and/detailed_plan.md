@@ -48,7 +48,7 @@ print(f'Data downloaded to: {data.keys()}')
 
 3. **Perform the analysis**
    - Simultaneously classify tissues and remove intensity artifacts in unified model
-   - {user_prompt}
+   - Run joint tissue segmentation and bias correction on NKI
 
 4. **Generate outputs**
    - Create required evidence files

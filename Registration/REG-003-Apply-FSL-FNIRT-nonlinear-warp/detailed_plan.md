@@ -48,7 +48,7 @@ print(f'Data downloaded to: {data.keys()}')
 
 3. **Perform the analysis**
    - Use nonlinear field to deform brains accounting for local shape differences
-   - {user_prompt}
+   - Apply FSL FNIRT nonlinear warp to OASIS subjects to MNI space
 
 4. **Generate outputs**
    - Create required evidence files

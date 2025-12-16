@@ -41,7 +41,7 @@
 
 3. **Perform the analysis**
    - Classify what object person is viewing from brain activity in real-time
-   - {user_prompt}
+   - Perform real-time MVPA decoding of visual categories
 
 4. **Generate outputs**
    - Create required evidence files

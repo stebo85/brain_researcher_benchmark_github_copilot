@@ -41,7 +41,7 @@
 
 3. **Perform the analysis**
    - Represent fiber orientations at each voxel as spherical functions to capture crossing fibers
-   - {user_prompt}
+   - Generate FOD spherical harmonic representations for fiber orientation
 
 4. **Generate outputs**
    - Create required evidence files

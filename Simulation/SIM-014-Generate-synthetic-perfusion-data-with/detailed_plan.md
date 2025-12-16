@@ -41,7 +41,7 @@
 
 3. **Perform the analysis**
    - Simulate ASL with realistic blood arrival time variations
-   - {user_prompt}
+   - Generate synthetic perfusion data with transit delays
 
 4. **Generate outputs**
    - Create required evidence files

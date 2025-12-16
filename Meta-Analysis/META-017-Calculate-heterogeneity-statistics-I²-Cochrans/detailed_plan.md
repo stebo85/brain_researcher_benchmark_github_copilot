@@ -41,7 +41,7 @@
 
 3. **Perform the analysis**
    - Quantify variability in default mode network coordinates across studies
-   - {user_prompt}
+   - Calculate heterogeneity statistics (I², Cochran's Q) for DMN meta
 
 4. **Generate outputs**
    - Create required evidence files

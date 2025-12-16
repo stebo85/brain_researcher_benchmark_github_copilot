@@ -48,7 +48,7 @@ print(f'Data downloaded to: {data.keys()}')
 
 3. **Perform the analysis**
    - Associate the 7 large-scale brain networks with specific mental functions and behaviors
-   - {user_prompt}
+   - Map Yeo networks to cognitive ontology terms
 
 4. **Generate outputs**
    - Create required evidence files

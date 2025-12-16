@@ -41,7 +41,7 @@
 
 3. **Perform the analysis**
    - Model axon sizes using time-dependent diffusion with multiple gradient pulse sequences
-   - {user_prompt}
+   - Estimate axon diameter distribution using PGSE and OGSE sequences
 
 4. **Generate outputs**
    - Create required evidence files

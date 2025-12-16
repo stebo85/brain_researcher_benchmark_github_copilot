@@ -48,7 +48,7 @@ print(f'Data downloaded to: {data.keys()}')
 
 3. **Perform the analysis**
    - Connect brain locations that activate during tasks to psychological concepts from literature
-   - {user_prompt}
+   - Link Haxby activation coordinates to Neurosynth terms
 
 4. **Generate outputs**
    - Create required evidence files

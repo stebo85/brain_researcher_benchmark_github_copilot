@@ -43,7 +43,7 @@
 
 3. **Perform the analysis**
    - Divide cortex into detailed anatomical regions separating gyri from sulci
-   - {user_prompt}
+   - Compute Destrieux atlas parcellation with 148 gyral and sulcal regions
 
 4. **Generate outputs**
    - Create required evidence files

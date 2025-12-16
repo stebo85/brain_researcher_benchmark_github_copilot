@@ -41,7 +41,7 @@
 
 3. **Perform the analysis**
    - Test if brain activation differs between patient and control groups across studies
-   - {user_prompt}
+   - Run subgroup meta-analysis comparing clinical vs healthy populations
 
 4. **Generate outputs**
    - Create required evidence files

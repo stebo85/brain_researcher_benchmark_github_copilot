@@ -48,7 +48,7 @@ print(f'Data downloaded to: {data.keys()}')
 
 3. **Perform the analysis**
    - Synchronize acquisition timing with heartbeat to reduce physiological noise
-   - {user_prompt}
+   - Apply temporal registration to align cardiac phase across SPM auditory volumes
 
 4. **Generate outputs**
    - Create required evidence files

@@ -41,7 +41,7 @@
 
 3. **Perform the analysis**
    - Generate expanded views of cortex to see into sulci and fully flattened views for complete visibility
-   - {user_prompt}
+   - Create inflated and flattened surface representations for visualization
 
 4. **Generate outputs**
    - Create required evidence files

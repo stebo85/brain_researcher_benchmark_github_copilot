@@ -41,7 +41,7 @@
 
 3. **Perform the analysis**
    - Use Gaussian kernel smoothing to create probabilistic activation maps
-   - {user_prompt}
+   - Run kernel density analysis meta-analysis on reward coordinates
 
 4. **Generate outputs**
    - Create required evidence files

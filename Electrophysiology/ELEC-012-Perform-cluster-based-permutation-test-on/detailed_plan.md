@@ -41,7 +41,7 @@
 
 3. **Perform the analysis**
    - Test for statistical differences between conditions while controlling for multiple comparisons across sensors and time
-   - {user_prompt}
+   - Perform cluster-based permutation test on sensor-level data
 
 4. **Generate outputs**
    - Create required evidence files

@@ -48,7 +48,7 @@ print(f'Data downloaded to: {data.keys()}')
 
 3. **Perform the analysis**
    - Model scanner as random effect and remove its contribution statistically
-   - {user_prompt}
+   - Remove scanner effects from Brainomics Localizer using linear mixed models
 
 4. **Generate outputs**
    - Create required evidence files

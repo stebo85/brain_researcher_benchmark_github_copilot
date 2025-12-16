@@ -49,7 +49,7 @@ print(f'Data downloaded to: {data.keys()}')
 
 3. **Perform the analysis**
    - Remove confounds while preserving task-related variance
-   - {user_prompt}
+   - Run nuisance regression with orthogonalization to preserve signal
 
 4. **Generate outputs**
    - Create required evidence files

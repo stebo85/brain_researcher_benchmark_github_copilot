@@ -48,7 +48,7 @@ print(f'Data downloaded to: {data.keys()}')
 
 3. **Perform the analysis**
    - Measure how smooth the data is to ensure preprocessing didn't over-blur images
-   - {user_prompt}
+   - Compute spatial smoothness estimates for ABIDE preprocessed data
 
 4. **Generate outputs**
    - Create required evidence files

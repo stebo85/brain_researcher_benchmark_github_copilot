@@ -41,7 +41,7 @@
 
 3. **Perform the analysis**
    - Measure brain chemistry (NAA, Cho, Cr) to assess neuronal health
-   - {user_prompt}
+   - Compute MRS metabolite concentrations in hippocampus
 
 4. **Generate outputs**
    - Create required evidence files

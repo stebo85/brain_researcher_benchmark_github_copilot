@@ -41,7 +41,7 @@
 
 3. **Perform the analysis**
    - Combine activation peaks from many studies to find reliably activated brain areas
-   - {user_prompt}
+   - Run ALE meta-analysis on 50 working memory studies from Neurosynth
 
 4. **Generate outputs**
    - Create required evidence files

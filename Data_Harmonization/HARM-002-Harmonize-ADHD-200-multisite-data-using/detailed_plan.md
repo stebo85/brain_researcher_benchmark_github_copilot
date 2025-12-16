@@ -48,7 +48,7 @@ print(f'Data downloaded to: {data.keys()}')
 
 3. **Perform the analysis**
    - Use traveling subjects to model and remove site-specific biases
-   - {user_prompt}
+   - Harmonize ADHD-200 multisite data using Traveling Subject method
 
 4. **Generate outputs**
    - Create required evidence files

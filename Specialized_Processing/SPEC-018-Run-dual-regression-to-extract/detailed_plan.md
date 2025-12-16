@@ -49,7 +49,7 @@ print(f'Data downloaded to: {data.keys()}')
 
 3. **Perform the analysis**
    - Back-project group ICA maps to individual subjects
-   - {user_prompt}
+   - Run dual regression to extract subject-specific spatial maps
 
 4. **Generate outputs**
    - Create required evidence files

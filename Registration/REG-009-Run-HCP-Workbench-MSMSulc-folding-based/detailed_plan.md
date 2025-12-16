@@ -41,7 +41,7 @@
 
 3. **Perform the analysis**
    - Align cortical surfaces using sulcal depth patterns for superior functional correspondence
-   - {user_prompt}
+   - Run HCP Workbench MSMSulc folding-based surface registration
 
 4. **Generate outputs**
    - Create required evidence files

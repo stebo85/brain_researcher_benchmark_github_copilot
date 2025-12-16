@@ -41,7 +41,7 @@
 
 3. **Perform the analysis**
    - Compare effectiveness of different interventions on brain activity patterns
-   - {user_prompt}
+   - Perform network meta-analysis comparing CBT, medication, and placebo brain effects
 
 4. **Generate outputs**
    - Create required evidence files

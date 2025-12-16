@@ -48,7 +48,7 @@ print(f'Data downloaded to: {data.keys()}')
 
 3. **Perform the analysis**
    - Remove scanner effects while preserving true developmental changes
-   - {user_prompt}
+   - Use RELIEF to harmonize longitudinal data accounting for age effects
 
 4. **Generate outputs**
    - Create required evidence files

@@ -48,7 +48,7 @@ print(f'Data downloaded to: {data.keys()}')
 
 3. **Perform the analysis**
    - Map visual stimulus types to the specific brain response patterns they evoke
-   - {user_prompt}
+   - Create stimulus-response knowledge graph from Haxby visual categories
 
 4. **Generate outputs**
    - Create required evidence files

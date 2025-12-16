@@ -41,7 +41,7 @@
 
 3. **Perform the analysis**
    - Create cortical myelin content maps by projecting intensity ratios to surface
-   - {user_prompt}
+   - Extract myelin maps from T1w/T2w ratio on cortical surface
 
 4. **Generate outputs**
    - Create required evidence files

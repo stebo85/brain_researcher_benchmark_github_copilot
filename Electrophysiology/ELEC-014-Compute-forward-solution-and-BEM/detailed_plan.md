@@ -41,7 +41,7 @@
 
 3. **Perform the analysis**
    - Build a model of how brain sources create sensor signals by computing electromagnetic forward problem
-   - {user_prompt}
+   - Compute forward solution and BEM model for source reconstruction
 
 4. **Generate outputs**
    - Create required evidence files

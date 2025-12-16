@@ -49,7 +49,7 @@ print(f'Data downloaded to: {data.keys()}')
 
 3. **Perform the analysis**
    - Show how brain network connections evolve over childhood and into adulthood
-   - {user_prompt}
+   - Create temporal knowledge graph of developmental brain changes
 
 4. **Generate outputs**
    - Create required evidence files

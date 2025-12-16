@@ -49,7 +49,7 @@ print(f'Data downloaded to: {data.keys()}')
 
 3. **Perform the analysis**
    - Warp individual brain anatomy to match standard template using advanced diffeomorphic algorithm
-   - {user_prompt}
+   - Perform ANTs SyN nonlinear registration to MNI152 for Haxby anatomicals
 
 4. **Generate outputs**
    - Create required evidence files

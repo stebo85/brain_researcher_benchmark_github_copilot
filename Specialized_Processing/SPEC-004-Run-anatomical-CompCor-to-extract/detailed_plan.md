@@ -49,7 +49,7 @@ print(f'Data downloaded to: {data.keys()}')
 
 3. **Perform the analysis**
    - Extract principal components from white matter and CSF for denoising
-   - {user_prompt}
+   - Run anatomical CompCor to extract physiological noise from Localizer data
 
 4. **Generate outputs**
    - Create required evidence files

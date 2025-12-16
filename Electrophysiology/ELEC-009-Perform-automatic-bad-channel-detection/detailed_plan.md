@@ -41,7 +41,7 @@
 
 3. **Perform the analysis**
    - Automatically identify and mark problematic MEG sensors that have excessive noise or artifacts
-   - {user_prompt}
+   - Perform automatic bad channel detection using autoreject on epochs
 
 4. **Generate outputs**
    - Create required evidence files

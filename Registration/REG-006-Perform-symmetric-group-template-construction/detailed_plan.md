@@ -49,7 +49,7 @@ print(f'Data downloaded to: {data.keys()}')
 
 3. **Perform the analysis**
    - Build unbiased average brain by iteratively registering all subjects together
-   - {user_prompt}
+   - Perform symmetric group template construction from ABIDE controls
 
 4. **Generate outputs**
    - Create required evidence files

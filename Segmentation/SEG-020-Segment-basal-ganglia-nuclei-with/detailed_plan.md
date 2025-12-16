@@ -48,7 +48,7 @@ print(f'Data downloaded to: {data.keys()}')
 
 3. **Perform the analysis**
    - Label striatum, pallidum, subthalamic nucleus using high-resolution probabilistic atlas
-   - {user_prompt}
+   - Segment basal ganglia nuclei with CIT168 atlas registration
 
 4. **Generate outputs**
    - Create required evidence files

@@ -41,7 +41,7 @@
 
 3. **Perform the analysis**
    - Show how oscillatory power at different frequencies changes over time in response to stimuli
-   - {user_prompt}
+   - Calculate time-frequency representations for gamma band activity
 
 4. **Generate outputs**
    - Create required evidence files

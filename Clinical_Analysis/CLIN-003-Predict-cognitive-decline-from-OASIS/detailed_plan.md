@@ -49,7 +49,7 @@ print(f'Data downloaded to: {data.keys()}')
 
 3. **Perform the analysis**
    - Train model to forecast dementia progression from baseline brain structure
-   - {user_prompt}
+   - Predict cognitive decline from OASIS brain volumes using ML
 
 4. **Generate outputs**
    - Create required evidence files

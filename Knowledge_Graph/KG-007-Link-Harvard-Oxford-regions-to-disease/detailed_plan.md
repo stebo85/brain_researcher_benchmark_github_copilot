@@ -41,7 +41,7 @@
 
 3. **Perform the analysis**
    - Connect brain anatomy to known clinical conditions from medical literature mining
-   - {user_prompt}
+   - Link Harvard-Oxford regions to disease associations from literature
 
 4. **Generate outputs**
    - Create required evidence files

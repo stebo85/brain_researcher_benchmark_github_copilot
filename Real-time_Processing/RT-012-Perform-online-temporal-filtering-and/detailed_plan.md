@@ -41,7 +41,7 @@
 
 3. **Perform the analysis**
    - Remove breathing and cardiac artifacts in real-time using recorded physiology
-   - {user_prompt}
+   - Perform online temporal filtering and physiological noise removal
 
 4. **Generate outputs**
    - Create required evidence files

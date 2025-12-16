@@ -41,7 +41,7 @@
 
 3. **Perform the analysis**
    - Test stability of meta-analytic results by systematically excluding each study
-   - {user_prompt}
+   - Perform leave-one-out meta-analysis to identify influential studies
 
 4. **Generate outputs**
    - Create required evidence files

@@ -48,7 +48,7 @@ print(f'Data downloaded to: {data.keys()}')
 
 3. **Perform the analysis**
    - Use diffeomorphic registration during segmentation for better alignment of atrophied brains
-   - {user_prompt}
+   - Run SPM12 DARTEL segmentation with improved normalization
 
 4. **Generate outputs**
    - Create required evidence files

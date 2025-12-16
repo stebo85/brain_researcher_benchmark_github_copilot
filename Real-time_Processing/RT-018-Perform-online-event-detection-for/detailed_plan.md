@@ -41,7 +41,7 @@
 
 3. **Perform the analysis**
    - Identify spontaneous brain events as they occur during resting scan
-   - {user_prompt}
+   - Perform online event detection for task-free paradigms
 
 4. **Generate outputs**
    - Create required evidence files

@@ -41,7 +41,7 @@
 
 3. **Perform the analysis**
    - Transform diffusion tensors while rotating them to maintain fiber direction accuracy
-   - {user_prompt}
+   - Register DTI tensors to T1w space preserving orientation for diffusion data
 
 4. **Generate outputs**
    - Create required evidence files

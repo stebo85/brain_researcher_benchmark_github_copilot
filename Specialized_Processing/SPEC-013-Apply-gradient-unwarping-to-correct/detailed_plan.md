@@ -41,7 +41,7 @@
 
 3. **Perform the analysis**
    - Correct geometric distortions from gradient coil imperfections
-   - {user_prompt}
+   - Apply gradient unwarping to correct for gradient nonlinearity
 
 4. **Generate outputs**
    - Create required evidence files

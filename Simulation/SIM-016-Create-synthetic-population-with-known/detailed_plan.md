@@ -41,7 +41,7 @@
 
 3. **Perform the analysis**
    - Simulate individuals with genetic variants affecting brain phenotypes
-   - {user_prompt}
+   - Create synthetic population with known genetic architecture
 
 4. **Generate outputs**
    - Create required evidence files

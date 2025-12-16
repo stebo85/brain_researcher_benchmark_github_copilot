@@ -41,7 +41,7 @@
 
 3. **Perform the analysis**
    - Detect and interpolate extreme intensity values
-   - {user_prompt}
+   - Apply despiking to remove outlier voxel intensities
 
 4. **Generate outputs**
    - Create required evidence files

@@ -48,7 +48,7 @@ print(f'Data downloaded to: {data.keys()}')
 
 3. **Perform the analysis**
    - Distinguish early cognitive decline from dementia using brain atrophy patterns
-   - {user_prompt}
+   - Classify mild cognitive impairment vs Alzheimer's from OASIS
 
 4. **Generate outputs**
    - Create required evidence files

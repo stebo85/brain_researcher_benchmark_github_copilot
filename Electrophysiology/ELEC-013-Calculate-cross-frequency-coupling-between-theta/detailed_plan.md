@@ -42,7 +42,7 @@ pip install nilearn nibabel scipy
 
 3. **Perform the analysis**
    - Measure if gamma power is modulated by the phase of slower theta oscillations (phase-amplitude coupling)
-   - {user_prompt}
+   - Calculate cross-frequency coupling between theta phase and gamma amplitude
 
 4. **Generate outputs**
    - Create required evidence files

@@ -41,7 +41,7 @@
 
 3. **Perform the analysis**
    - Reconstruct cortical source activity from MEG sensors using minimum energy solution with depth bias correction
-   - {user_prompt}
+   - Compute minimum norm estimates with depth weighting on visual responses
 
 4. **Generate outputs**
    - Create required evidence files

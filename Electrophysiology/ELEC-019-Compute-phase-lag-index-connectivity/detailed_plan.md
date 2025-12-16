@@ -42,7 +42,7 @@ pip install nilearn nibabel scipy
 
 3. **Perform the analysis**
    - Measure non-zero phase lag connectivity that must reflect true interactions not instantaneous mixing
-   - {user_prompt}
+   - Compute phase lag index connectivity to assess true interactions
 
 4. **Generate outputs**
    - Create required evidence files

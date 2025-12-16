@@ -41,7 +41,7 @@
 
 3. **Perform the analysis**
    - Pool Z-scores from multiple motor task studies into single consensus map
-   - {user_prompt}
+   - Combine NeuroVault statistical maps using Stouffer's method
 
 4. **Generate outputs**
    - Create required evidence files

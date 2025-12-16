@@ -41,7 +41,7 @@
 
 3. **Perform the analysis**
    - Measure blood flow to assess stroke risk and vascular health
-   - {user_prompt}
+   - Compute cerebral blood flow maps from ASL perfusion data
 
 4. **Generate outputs**
    - Create required evidence files

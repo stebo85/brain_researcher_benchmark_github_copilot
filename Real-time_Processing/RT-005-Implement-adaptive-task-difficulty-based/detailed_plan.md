@@ -41,7 +41,7 @@
 
 3. **Perform the analysis**
    - Adjust task hardness based on current brain activity to maintain engagement
-   - {user_prompt}
+   - Implement adaptive task difficulty based on brain state
 
 4. **Generate outputs**
    - Create required evidence files

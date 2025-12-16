@@ -43,7 +43,7 @@
 
 3. **Perform the analysis**
    - Clean up diffusion scans by correcting distortions from eddy currents and subject head movement
-   - {user_prompt}
+   - Preprocess DWI data with eddy current and motion correction
 
 4. **Generate outputs**
    - Create required evidence files

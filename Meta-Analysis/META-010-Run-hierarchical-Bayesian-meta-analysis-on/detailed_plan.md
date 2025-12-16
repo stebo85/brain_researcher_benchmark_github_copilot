@@ -41,7 +41,7 @@
 
 3. **Perform the analysis**
    - Use Bayesian framework to handle complex study hierarchies and estimate uncertainty
-   - {user_prompt}
+   - Run hierarchical Bayesian meta-analysis on resting-state networks
 
 4. **Generate outputs**
    - Create required evidence files
