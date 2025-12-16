@@ -1,0 +1,9 @@
+{
+  "task_id": "REG-011",
+  "task_name": "Apply diffeomorphic registration with symmetric normalization for OASIS",
+  "dataset": "OASIS VBM dataset",
+  "category": "Registration",
+  "timestamp": "2025-12-16T02:23:48.964138",
+  "status": "completed",
+  "implementation": "automated_batch"
+}
