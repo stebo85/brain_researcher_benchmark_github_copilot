@@ -1,9 +1,0 @@
-{
-  "task_id": "ELEC-003",
-  "task_name": "Compute evoked responses to auditory and visual stimuli in MNE sample",
-  "dataset": "MNE sample dataset",
-  "category": "Electrophysiology",
-  "timestamp": "2025-12-15T08:03:03.465421",
-  "status": "completed",
-  "implementation": "automated_batch"
-}

@@ -1,9 +1,0 @@
-{
-  "task_id": "KG-016",
-  "task_name": "Create stimulus-response knowledge graph from Haxby visual categories",
-  "dataset": "Haxby dataset",
-  "category": "Knowledge Graph",
-  "timestamp": "2025-12-15T08:05:37.130881",
-  "status": "completed",
-  "implementation": "automated_batch"
-}

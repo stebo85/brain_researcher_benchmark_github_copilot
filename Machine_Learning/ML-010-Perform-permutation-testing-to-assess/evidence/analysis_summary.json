@@ -1,9 +1,0 @@
-{
-  "task_id": "ML-010",
-  "task_name": "Perform permutation testing to assess statistical significance of decoder",
-  "dataset": "Haxby dataset",
-  "category": "Machine Learning",
-  "timestamp": "2025-12-15T08:06:50.239253",
-  "status": "completed",
-  "implementation": "automated_batch"
-}

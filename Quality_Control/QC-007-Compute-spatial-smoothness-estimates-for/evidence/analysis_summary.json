@@ -1,9 +1,0 @@
-{
-  "task_id": "QC-007",
-  "task_name": "Compute spatial smoothness estimates for ABIDE preprocessed data",
-  "dataset": "ABIDE dataset",
-  "category": "Quality Control",
-  "timestamp": "2025-12-15T08:12:01.047023",
-  "status": "completed",
-  "implementation": "automated_batch"
-}

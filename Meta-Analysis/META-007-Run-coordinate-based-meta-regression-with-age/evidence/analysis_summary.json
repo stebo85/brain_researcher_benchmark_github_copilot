@@ -1,9 +1,0 @@
-{
-  "task_id": "META-007",
-  "task_name": "Run coordinate-based meta-regression with age as moderator",
-  "dataset": "Age-stratified coordinates",
-  "category": "Meta-Analysis",
-  "timestamp": "2025-12-15T08:08:35.784142",
-  "status": "completed",
-  "implementation": "automated_batch"
-}

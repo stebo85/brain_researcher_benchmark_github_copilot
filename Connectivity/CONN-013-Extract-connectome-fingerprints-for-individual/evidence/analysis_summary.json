@@ -1,9 +1,0 @@
-{
-  "task_id": "CONN-013",
-  "task_name": "Extract connectome fingerprints for individual identification from HCP data",
-  "dataset": "HCP MegaTrawls",
-  "category": "Connectivity",
-  "timestamp": "2025-12-15T07:53:23.054792",
-  "status": "completed",
-  "implementation": "automated_batch"
-}

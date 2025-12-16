@@ -1,2 +1,0 @@
-subject_id,file,mean_intensity,std_intensity,min_value,max_value,flagged,reason
-sub-0003,sub-0003_gm.nii.gz,0.5504526445996948,0.16047961043698697,0.0,0.9744640481679518,True,Intensity outlier (synthetic)

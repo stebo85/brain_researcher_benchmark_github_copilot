@@ -1,9 +1,0 @@
-{
-  "task_id": "DL-017",
-  "task_name": "Implement curriculum learning starting with easy examples for age prediction",
-  "dataset": "OASIS VBM",
-  "category": "Deep Learning",
-  "timestamp": "2025-12-15T07:59:45.227630",
-  "status": "completed",
-  "implementation": "automated_batch"
-}

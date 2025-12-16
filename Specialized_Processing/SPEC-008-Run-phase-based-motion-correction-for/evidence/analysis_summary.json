@@ -1,9 +1,0 @@
-{
-  "task_id": "SPEC-008",
-  "task_name": "Run phase-based motion correction for sub-voxel displacement",
-  "dataset": "NKI Enhanced dataset",
-  "category": "Specialized Processing",
-  "timestamp": "2025-12-15T08:45:43.840032",
-  "status": "completed",
-  "implementation": "automated_batch"
-}

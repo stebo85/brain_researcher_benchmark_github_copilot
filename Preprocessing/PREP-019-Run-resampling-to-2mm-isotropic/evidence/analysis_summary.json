@@ -1,9 +1,0 @@
-{
-  "task_id": "PREP-019",
-  "task_name": "Run resampling to 2mm isotropic resolution for HCP MegaTrawls source data",
-  "dataset": "HCP source data",
-  "category": "Preprocessing",
-  "timestamp": "2025-12-15T08:11:08.702562",
-  "status": "completed",
-  "implementation": "automated_batch"
-}

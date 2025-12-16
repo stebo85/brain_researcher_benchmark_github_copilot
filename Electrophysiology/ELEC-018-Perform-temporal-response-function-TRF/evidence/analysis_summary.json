@@ -1,9 +1,0 @@
-{
-  "task_id": "ELEC-018",
-  "task_name": "Perform temporal response function (TRF) analysis on continuous data",
-  "dataset": "MNE sample dataset",
-  "category": "Electrophysiology",
-  "timestamp": "2025-12-15T08:04:21.050928",
-  "status": "completed",
-  "implementation": "automated_batch"
-}

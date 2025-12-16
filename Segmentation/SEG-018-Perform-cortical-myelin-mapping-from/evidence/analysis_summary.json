@@ -1,9 +1,0 @@
-{
-  "task_id": "SEG-018",
-  "task_name": "Perform cortical myelin mapping from T1w/T2w ratio images",
-  "dataset": "HCP-style data",
-  "category": "Segmentation",
-  "timestamp": "2025-12-15T08:44:47.372403",
-  "status": "completed",
-  "implementation": "automated_batch"
-}

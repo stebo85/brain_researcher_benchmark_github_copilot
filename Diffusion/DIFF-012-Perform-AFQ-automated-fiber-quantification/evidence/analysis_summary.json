@@ -1,9 +1,0 @@
-{
-  "task_id": "DIFF-012",
-  "task_name": "Perform AFQ automated fiber quantification on major tracts",
-  "dataset": "Custom DWI + anatomy",
-  "category": "Diffusion",
-  "timestamp": "2025-12-15T08:01:29.520953",
-  "status": "completed",
-  "implementation": "automated_batch"
-}

@@ -1,9 +1,0 @@
-{
-  "task_id": "HARM-017",
-  "task_name": "Use SVA to remove hidden batch effects from gene expression data",
-  "dataset": "Allen Human Brain Atlas",
-  "category": "Data Harmonization",
-  "timestamp": "2025-12-15T07:57:18.415970",
-  "status": "completed",
-  "implementation": "automated_batch"
-}

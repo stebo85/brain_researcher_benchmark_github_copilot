@@ -1,9 +1,0 @@
-{
-  "task_id": "DIFF-008",
-  "task_name": "Extract tract profiles along major white matter pathways (CST, arcuate)",
-  "dataset": "Custom DWI + atlas",
-  "category": "Diffusion",
-  "timestamp": "2025-12-15T08:01:01.918041",
-  "status": "completed",
-  "implementation": "automated_batch"
-}

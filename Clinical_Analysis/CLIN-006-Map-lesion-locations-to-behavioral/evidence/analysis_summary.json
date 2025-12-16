@@ -1,9 +1,0 @@
-{
-  "task_id": "CLIN-006",
-  "task_name": "Map lesion locations to behavioral deficits using VLSM",
-  "dataset": "Simulated lesion-symptom data",
-  "category": "Clinical Analysis",
-  "timestamp": "2025-12-15T07:56:07.469692",
-  "status": "completed",
-  "implementation": "automated_batch"
-}

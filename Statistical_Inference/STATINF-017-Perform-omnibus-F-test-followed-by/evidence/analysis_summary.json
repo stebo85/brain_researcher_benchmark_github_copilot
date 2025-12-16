@@ -1,9 +1,0 @@
-{
-  "task_id": "STATINF-017",
-  "task_name": "Perform omnibus F-test followed by post-hoc t-tests",
-  "dataset": "Localizer multi-contrast",
-  "category": "Statistical Inference",
-  "timestamp": "2025-12-15T08:49:43.779362",
-  "status": "completed",
-  "implementation": "automated_batch"
-}

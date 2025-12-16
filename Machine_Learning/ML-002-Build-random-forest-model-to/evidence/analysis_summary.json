@@ -1,9 +1,0 @@
-{
-  "task_id": "ML-002",
-  "task_name": "Build random forest model to predict ADHD diagnosis from connectivity",
-  "dataset": "ADHD-200 connectivity",
-  "category": "Machine Learning",
-  "timestamp": "2025-12-15T08:06:13.854072",
-  "status": "completed",
-  "implementation": "automated_batch"
-}

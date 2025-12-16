@@ -1,9 +1,0 @@
-{
-  "task_id": "PREP-001",
-  "task_name": "Run fMRIPrep on Haxby dataset with FreeSurfer surface reconstruction",
-  "dataset": "Haxby dataset",
-  "category": "Preprocessing",
-  "timestamp": "2025-12-15T08:09:39.298183",
-  "status": "completed",
-  "implementation": "automated_batch"
-}

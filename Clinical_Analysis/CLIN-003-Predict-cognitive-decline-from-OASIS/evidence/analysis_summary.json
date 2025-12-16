@@ -1,9 +1,0 @@
-{
-  "task_id": "CLIN-003",
-  "task_name": "Predict cognitive decline from OASIS brain volumes using ML",
-  "dataset": "OASIS VBM dataset",
-  "category": "Clinical Analysis",
-  "timestamp": "2025-12-15T07:58:17.776293",
-  "status": "completed",
-  "implementation": "automated_batch"
-}

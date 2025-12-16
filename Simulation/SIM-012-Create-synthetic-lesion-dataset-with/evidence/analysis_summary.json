@@ -1,9 +1,0 @@
-{
-  "task_id": "SIM-012",
-  "task_name": "Create synthetic lesion dataset with various sizes and locations",
-  "dataset": "Brain template",
-  "category": "Simulation",
-  "timestamp": "2025-12-15T15:08:10.104079",
-  "status": "completed",
-  "implementation": "automated_batch"
-}

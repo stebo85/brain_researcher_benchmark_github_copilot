@@ -1,9 +1,0 @@
-{
-  "task_id": "CONN-012",
-  "task_name": "Perform edge-wise connectivity analysis comparing autism vs control in ABIDE",
-  "dataset": "ABIDE",
-  "category": "Connectivity",
-  "timestamp": "2025-12-15T07:55:35.944593",
-  "status": "completed",
-  "implementation": "automated_batch"
-}

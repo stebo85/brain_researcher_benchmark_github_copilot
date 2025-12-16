@@ -1,9 +1,0 @@
-{
-  "task_id": "ML-003",
-  "task_name": "Perform cross-validated age prediction from gray matter density in OASIS",
-  "dataset": "OASIS VBM",
-  "category": "Machine Learning",
-  "timestamp": "2025-12-15T08:41:48.383258",
-  "status": "completed",
-  "implementation": "automated_batch"
-}

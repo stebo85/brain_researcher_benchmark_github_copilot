@@ -1,9 +1,0 @@
-{
-  "task_id": "CONN-003",
-  "task_name": "Calculate partial correlation connectivity removing global signal on ABIDE",
-  "dataset": "ABIDE",
-  "category": "Connectivity",
-  "timestamp": "2025-12-15T07:53:39.360333",
-  "status": "completed",
-  "implementation": "automated_batch"
-}

@@ -1,8 +1,0 @@
-{
-  "task_id": "SURF-013",
-  "timestamp": "2025-12-15T08:51:32.970715",
-  "metrics": {
-    "accuracy": 0.85,
-    "loss": 0.15
-  }
-}

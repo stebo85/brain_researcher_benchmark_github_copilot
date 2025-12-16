@@ -1,9 +1,0 @@
-{
-  "task_id": "DIFF-005",
-  "task_name": "Compute structural connectome using AAL atlas parcellation",
-  "dataset": "Custom DWI + AAL atlas",
-  "category": "Diffusion",
-  "timestamp": "2025-12-15T08:00:45.774014",
-  "status": "completed",
-  "implementation": "automated_batch"
-}

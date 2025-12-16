@@ -1,9 +1,0 @@
-{
-  "task_id": "ELEC-002",
-  "task_name": "Perform ICA decomposition to identify eye blink components in MNE sample",
-  "dataset": "MNE sample dataset",
-  "category": "Electrophysiology",
-  "timestamp": "2025-12-15T08:17:16.220843",
-  "status": "completed",
-  "implementation": "automated_batch"
-}

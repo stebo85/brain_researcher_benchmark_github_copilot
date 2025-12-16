@@ -1,9 +1,0 @@
-{
-  "task_id": "KG-012",
-  "task_name": "Build pharmacological knowledge graph linking drugs to brain regions",
-  "dataset": "Custom drug-imaging data",
-  "category": "Knowledge Graph",
-  "timestamp": "2025-12-15T08:05:26.637025",
-  "status": "completed",
-  "implementation": "automated_batch"
-}

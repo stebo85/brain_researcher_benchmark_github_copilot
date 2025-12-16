@@ -1,9 +1,0 @@
-{
-  "task_id": "STATINF-001",
-  "task_name": "Run 10000 permutation test on Haxby face vs house contrast",
-  "dataset": "Haxby dataset",
-  "category": "Statistical Inference",
-  "timestamp": "2025-12-15T08:49:26.003459",
-  "status": "completed",
-  "implementation": "automated_batch"
-}

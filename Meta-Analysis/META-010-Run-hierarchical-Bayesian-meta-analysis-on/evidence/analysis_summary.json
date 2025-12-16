@@ -1,9 +1,0 @@
-{
-  "task_id": "META-010",
-  "task_name": "Run hierarchical Bayesian meta-analysis on resting-state networks",
-  "dataset": "Multiple RS-fMRI studies",
-  "category": "Meta-Analysis",
-  "timestamp": "2025-12-15T08:08:49.442029",
-  "status": "completed",
-  "implementation": "automated_batch"
-}

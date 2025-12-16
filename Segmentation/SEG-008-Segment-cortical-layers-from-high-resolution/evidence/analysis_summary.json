@@ -1,9 +1,0 @@
-{
-  "task_id": "SEG-008",
-  "task_name": "Segment cortical layers from high-resolution 7T anatomical",
-  "dataset": "Custom 7T data",
-  "category": "Segmentation",
-  "timestamp": "2025-12-15T08:41:58.711631",
-  "status": "completed",
-  "implementation": "automated_batch"
-}

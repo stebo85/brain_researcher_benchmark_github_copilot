@@ -1,9 +1,0 @@
-{
-  "task_id": "VIZ-009",
-  "task_name": "Plot ROI timecourses with event markers",
-  "dataset": "Haxby ROI signals",
-  "category": "Visualization",
-  "timestamp": "2025-12-15T08:52:27.494873",
-  "status": "completed",
-  "implementation": "automated_batch"
-}

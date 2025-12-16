@@ -1,9 +1,0 @@
-{
-  "task_id": "HARM-014",
-  "task_name": "Apply longitudinal ComBat to Development fMRI repeated measures",
-  "dataset": "Development fMRI dataset",
-  "category": "Data Harmonization",
-  "timestamp": "2025-12-15T07:57:04.394352",
-  "status": "completed",
-  "implementation": "automated_batch"
-}

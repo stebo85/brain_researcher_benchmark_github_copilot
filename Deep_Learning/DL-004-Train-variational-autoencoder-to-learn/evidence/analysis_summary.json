@@ -1,9 +1,0 @@
-{
-  "task_id": "DL-004",
-  "task_name": "Train variational autoencoder to learn low-dimensional brain representations",
-  "dataset": "Development fMRI",
-  "category": "Deep Learning",
-  "timestamp": "2025-12-15T07:58:26.405012",
-  "status": "completed",
-  "implementation": "automated_batch"
-}

@@ -1,9 +1,0 @@
-{
-  "task_id": "STATINF-006",
-  "task_name": "Perform TFCE correction on mixed effects GLM results",
-  "dataset": "Development fMRI dataset",
-  "category": "Statistical Inference",
-  "timestamp": "2025-12-15T08:49:30.401967",
-  "status": "completed",
-  "implementation": "automated_batch"
-}

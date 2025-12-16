@@ -1,9 +1,0 @@
-{
-  "task_id": "DL-019",
-  "task_name": "Train mixture of experts with gating network for multi-dataset learning",
-  "dataset": "ADHD-200 + ABIDE",
-  "category": "Deep Learning",
-  "timestamp": "2025-12-15T07:59:57.292146",
-  "status": "completed",
-  "implementation": "automated_batch"
-}

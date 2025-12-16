@@ -1,9 +1,0 @@
-{
-  "task_id": "CONN-006",
-  "task_name": "Extract HCP connectivity matrices at 200-parcel resolution for age prediction",
-  "dataset": "HCP MegaTrawls",
-  "category": "Connectivity",
-  "timestamp": "2025-12-15T07:53:51.964165",
-  "status": "completed",
-  "implementation": "automated_batch"
-}

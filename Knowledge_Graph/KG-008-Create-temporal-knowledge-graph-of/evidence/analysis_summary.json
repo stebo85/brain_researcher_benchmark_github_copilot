@@ -1,9 +1,0 @@
-{
-  "task_id": "KG-008",
-  "task_name": "Create temporal knowledge graph of developmental brain changes",
-  "dataset": "Development fMRI dataset",
-  "category": "Knowledge Graph",
-  "timestamp": "2025-12-15T08:05:05.328577",
-  "status": "completed",
-  "implementation": "automated_batch"
-}

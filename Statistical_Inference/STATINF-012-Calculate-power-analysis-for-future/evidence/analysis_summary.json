@@ -1,9 +1,0 @@
-{
-  "task_id": "STATINF-012",
-  "task_name": "Calculate power analysis for future study design",
-  "dataset": "OASIS VBM dataset",
-  "category": "Statistical Inference",
-  "timestamp": "2025-12-15T15:08:47.250056",
-  "status": "completed",
-  "implementation": "automated_batch"
-}

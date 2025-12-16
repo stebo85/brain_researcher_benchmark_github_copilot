@@ -1,9 +1,0 @@
-{
-  "task_id": "PREP-006",
-  "task_name": "Apply spatial smoothing with 6mm FWHM to Brainomics Localizer",
-  "dataset": "Brainomics Localizer dataset",
-  "category": "Preprocessing",
-  "timestamp": "2025-12-15T08:17:38.836936",
-  "status": "completed",
-  "implementation": "automated_batch"
-}

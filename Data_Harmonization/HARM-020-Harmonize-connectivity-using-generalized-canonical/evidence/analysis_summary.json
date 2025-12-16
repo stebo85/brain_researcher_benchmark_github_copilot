@@ -1,9 +1,0 @@
-{
-  "task_id": "HARM-020",
-  "task_name": "Harmonize connectivity using generalized canonical correlation analysis",
-  "dataset": "ABIDE dataset",
-  "category": "Data Harmonization",
-  "timestamp": "2025-12-15T07:57:27.979434",
-  "status": "completed",
-  "implementation": "automated_batch"
-}

@@ -1,9 +1,0 @@
-{
-  "task_id": "ELEC-011",
-  "task_name": "Compute minimum norm estimates with depth weighting on visual responses",
-  "dataset": "MNE sample dataset",
-  "category": "Electrophysiology",
-  "timestamp": "2025-12-15T08:03:38.098484",
-  "status": "completed",
-  "implementation": "automated_batch"
-}

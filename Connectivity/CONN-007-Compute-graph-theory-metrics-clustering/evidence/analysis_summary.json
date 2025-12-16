@@ -1,9 +1,0 @@
-{
-  "task_id": "CONN-007",
-  "task_name": "Compute graph theory metrics (clustering, path length) from ABIDE connectivity",
-  "dataset": "ABIDE",
-  "category": "Connectivity",
-  "timestamp": "2025-12-15T07:54:39.630665",
-  "status": "completed",
-  "implementation": "automated_batch"
-}

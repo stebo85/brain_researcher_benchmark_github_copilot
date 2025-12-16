@@ -1,9 +1,0 @@
-{
-  "task_id": "META-020",
-  "task_name": "Extract study quality metrics and run quality-weighted meta-analysis",
-  "dataset": "Rated studies coordinates",
-  "category": "Meta-Analysis",
-  "timestamp": "2025-12-15T08:09:35.689413",
-  "status": "completed",
-  "implementation": "automated_batch"
-}

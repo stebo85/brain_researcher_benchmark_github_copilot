@@ -1,9 +1,0 @@
-{
-  "task_id": "STATINF-014",
-  "task_name": "Perform exact permutation test with small sample correction",
-  "dataset": "Small sample dataset (n=10)",
-  "category": "Statistical Inference",
-  "timestamp": "2025-12-15T08:49:41.526122",
-  "status": "completed",
-  "implementation": "automated_batch"
-}

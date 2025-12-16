@@ -1,9 +1,0 @@
-{
-  "task_id": "KG-018",
-  "task_name": "Extract task-activation knowledge graph from Brainomics Localizer",
-  "dataset": "Brainomics Localizer",
-  "category": "Knowledge Graph",
-  "timestamp": "2025-12-15T08:06:37.960998",
-  "status": "completed",
-  "implementation": "automated_batch"
-}

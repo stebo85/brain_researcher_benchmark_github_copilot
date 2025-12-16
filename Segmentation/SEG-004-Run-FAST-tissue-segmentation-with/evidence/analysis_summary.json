@@ -1,9 +1,0 @@
-{
-  "task_id": "SEG-004",
-  "task_name": "Run FAST tissue segmentation with bias field correction on NKI T1w",
-  "dataset": "NKI Enhanced dataset",
-  "category": "Segmentation",
-  "timestamp": "2025-12-15T08:41:55.923539",
-  "status": "completed",
-  "implementation": "automated_batch"
-}

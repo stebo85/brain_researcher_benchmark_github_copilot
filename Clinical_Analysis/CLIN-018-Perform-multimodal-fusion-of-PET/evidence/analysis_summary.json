@@ -1,9 +1,0 @@
-{
-  "task_id": "CLIN-018",
-  "task_name": "Perform multimodal fusion of PET and MRI for tumor characterization",
-  "dataset": "Simulated PET+MRI",
-  "category": "Clinical Analysis",
-  "timestamp": "2025-12-15T07:56:12.347724",
-  "status": "completed",
-  "implementation": "automated_batch"
-}

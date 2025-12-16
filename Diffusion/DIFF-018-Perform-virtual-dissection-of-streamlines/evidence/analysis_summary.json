@@ -1,9 +1,0 @@
-{
-  "task_id": "DIFF-018",
-  "task_name": "Perform virtual dissection of streamlines using ROI-based filtering",
-  "dataset": "Tractogram + ROI masks",
-  "category": "Diffusion",
-  "timestamp": "2025-12-15T08:02:15.745415",
-  "status": "completed",
-  "implementation": "automated_batch"
-}

@@ -1,9 +1,0 @@
-{
-  "task_id": "RT-016",
-  "task_name": "Run online quality metrics dashboard with visualization",
-  "dataset": "Streaming fMRI",
-  "category": "Real-time Processing",
-  "timestamp": "2025-12-15T08:13:34.864796",
-  "status": "completed",
-  "implementation": "automated_batch"
-}

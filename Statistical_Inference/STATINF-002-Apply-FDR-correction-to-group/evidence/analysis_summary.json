@@ -1,9 +1,0 @@
-{
-  "task_id": "STATINF-002",
-  "task_name": "Apply FDR correction to group activation map from Localizer",
-  "dataset": "Brainomics Localizer",
-  "category": "Statistical Inference",
-  "timestamp": "2025-12-15T15:08:36.491967",
-  "status": "completed",
-  "implementation": "automated_batch"
-}

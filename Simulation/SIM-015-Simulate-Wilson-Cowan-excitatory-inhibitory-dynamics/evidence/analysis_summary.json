@@ -1,9 +1,0 @@
-{
-  "task_id": "SIM-015",
-  "task_name": "Simulate Wilson-Cowan excitatory-inhibitory dynamics",
-  "dataset": "E-I coupling parameters",
-  "category": "Simulation",
-  "timestamp": "2025-12-16T02:23:57.701117",
-  "status": "completed",
-  "implementation": "automated_batch"
-}
