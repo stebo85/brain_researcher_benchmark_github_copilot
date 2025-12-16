@@ -18,20 +18,52 @@
 
 **Required Capabilities:** spm_segment_tool; tissue_classification
 
-### Tool Installation
+### Tool Installation and Setup
+
+This analysis requires the following tools:
+
+#### Neuroimaging Software (via Neurodesk)
+
+**SPM12 12.7219**
+- **Purpose**: SPM12 (Statistical Parametric Mapping) for fMRI/PET analysis
+- **Usage**: Use for preprocessing, statistical modeling, and group analysis
+- **Loading**: Available through Neurodesk's module system
 
 ```bash
-# Tool Setup Instructions
-
-# Neuroimaging tools (available via Neurodesk)
+# Load spm12 from Neurodesk
 module load spm12/12.7219
 
-# Python packages
-pip install nibabel nilearn scikit-learn
+# Verify spm12 is loaded
+ml list
+
+# Check spm12 commands are available
+which matlab -batch "spm"
+```
+
+#### Python Packages
+
+**Sklearn**
+- **Purpose**: Scikit-learn for machine learning on brain features
+- **Usage**: Use for SVM, random forests, regression, and cross-validation
+
+```bash
+# Install Python packages
+pip install scikit-learn nilearn nibabel
 
 # Verify installation
-ml list  # Check loaded modules
-python -c "import nibabel"  # Test Python imports
+python -c "import scikit_learn; print('Successfully imported')"
+```
+
+#### Environment Verification
+
+```bash
+# Verify all tools are accessible
+ml list  # Should show loaded modules
+python -c "import scikit_learn"  # Should complete without error
+
+# Check system resources
+free -h  # Check available memory
+df -h .  # Check available disk space
 ```
 
 ## Step 1: Data Acquisition

@@ -18,16 +18,33 @@
 
 **Required Capabilities:** dl_pytorch_tool; cross_validation_tool
 
-### Tool Installation
+### Tool Installation and Setup
+
+This analysis requires the following tools:
+
+#### Python Packages
+
+**Pytorch**
+- **Purpose**: PyTorch for deep learning on brain imaging data
+- **Usage**: Use for 3D CNNs, classification, and custom neural network architectures
 
 ```bash
-# Tool Setup Instructions
-
-# Python packages
-pip install torchvision nibabel torch
+# Install Python packages
+pip install torch nibabel torchvision
 
 # Verify installation
-python -c "import torchvision"  # Test Python imports
+python -c "import torch; print('Successfully imported')"
+```
+
+#### Environment Verification
+
+```bash
+# Verify all tools are accessible
+python -c "import torch"  # Should complete without error
+
+# Check system resources
+free -h  # Check available memory
+df -h .  # Check available disk space
 ```
 
 ## Step 1: Data Acquisition

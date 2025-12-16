@@ -18,16 +18,34 @@
 
 **Required Capabilities:** noddi_tool; advanced_diffusion_model
 
-### Tool Installation
+### Tool Installation and Setup
+
+This analysis requires the following tools:
+
+#### Required Tools
+
+The specific tools needed are listed in the **Required Capabilities** section above.
 
 ```bash
-# Tool Setup Instructions
+# Search for available tools in Neurodesk
+ml av  # List all available modules
+ml av <toolname>  # Search for specific tool
 
-# Python packages
-pip install dipy
+# Load required tools
+module load <toolname>/<version>
 
-# Verify installation
-python -c "import dipy"  # Test Python imports
+# Install Python packages if needed
+pip install <package-name>
+```
+
+#### Environment Verification
+
+```bash
+# Verify all tools are accessible
+
+# Check system resources
+free -h  # Check available memory
+df -h .  # Check available disk space
 ```
 
 ## Step 1: Data Acquisition

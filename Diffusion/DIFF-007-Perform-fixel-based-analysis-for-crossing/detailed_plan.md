@@ -18,16 +18,37 @@
 
 **Required Capabilities:** mrtrix3_fixel_tool; fba_analysis
 
-### Tool Installation
+### Tool Installation and Setup
+
+This analysis requires the following tools:
+
+#### Neuroimaging Software (via Neurodesk)
+
+**MRTRIX3 3.0.3**
+- **Purpose**: MRtrix3 for diffusion MRI analysis and tractography
+- **Usage**: Use for fiber tracking, fixel-based analysis, and DTI modeling
+- **Loading**: Available through Neurodesk's module system
 
 ```bash
-# Tool Setup Instructions
-
-# Neuroimaging tools (available via Neurodesk)
+# Load mrtrix3 from Neurodesk
 module load mrtrix3/3.0.3
 
-# Verify installation
-ml list  # Check loaded modules
+# Verify mrtrix3 is loaded
+ml list
+
+# Check mrtrix3 commands are available
+which dwi2tensor
+```
+
+#### Environment Verification
+
+```bash
+# Verify all tools are accessible
+ml list  # Should show loaded modules
+
+# Check system resources
+free -h  # Check available memory
+df -h .  # Check available disk space
 ```
 
 ## Step 1: Data Acquisition

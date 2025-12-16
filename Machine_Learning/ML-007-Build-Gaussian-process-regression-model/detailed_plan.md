@@ -18,16 +18,33 @@
 
 **Required Capabilities:** gaussian_process_tool; regression_tool
 
-### Tool Installation
+### Tool Installation and Setup
+
+This analysis requires the following tools:
+
+#### Python Packages
+
+**Sklearn**
+- **Purpose**: Scikit-learn for machine learning on brain features
+- **Usage**: Use for SVM, random forests, regression, and cross-validation
 
 ```bash
-# Tool Setup Instructions
-
-# Python packages
-pip install nibabel nilearn scikit-learn
+# Install Python packages
+pip install scikit-learn nilearn nibabel
 
 # Verify installation
-python -c "import nibabel"  # Test Python imports
+python -c "import scikit_learn; print('Successfully imported')"
+```
+
+#### Environment Verification
+
+```bash
+# Verify all tools are accessible
+python -c "import scikit_learn"  # Should complete without error
+
+# Check system resources
+free -h  # Check available memory
+df -h .  # Check available disk space
 ```
 
 ## Step 1: Data Acquisition

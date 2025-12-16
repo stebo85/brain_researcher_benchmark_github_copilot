@@ -18,16 +18,33 @@
 
 **Required Capabilities:** fwe_tool; dipy_tool
 
-### Tool Installation
+### Tool Installation and Setup
+
+This analysis requires the following tools:
+
+#### Python Packages
+
+**Dipy**
+- **Purpose**: DIPY for diffusion MRI analysis
+- **Usage**: Use for tractography, tensor fitting, and DWI preprocessing
 
 ```bash
-# Tool Setup Instructions
-
-# Python packages
+# Install Python packages
 pip install dipy
 
 # Verify installation
-python -c "import dipy"  # Test Python imports
+python -c "import dipy; print('Successfully imported')"
+```
+
+#### Environment Verification
+
+```bash
+# Verify all tools are accessible
+python -c "import dipy"  # Should complete without error
+
+# Check system resources
+free -h  # Check available memory
+df -h .  # Check available disk space
 ```
 
 ## Step 1: Data Acquisition

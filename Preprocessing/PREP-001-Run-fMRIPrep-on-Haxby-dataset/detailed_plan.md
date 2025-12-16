@@ -18,21 +18,56 @@
 
 **Required Capabilities:** fmriprep_tool; freesurfer_tool
 
-### Tool Installation
+### Tool Installation and Setup
+
+This analysis requires the following tools:
+
+#### Neuroimaging Software (via Neurodesk)
+
+**FREESURFER 7.3.2**
+- **Purpose**: FreeSurfer for cortical surface reconstruction and analysis
+- **Usage**: Use for surface-based morphometry and cortical parcellation
+- **Loading**: Available through Neurodesk's module system
 
 ```bash
-# Tool Setup Instructions
-
-# Neuroimaging tools (available via Neurodesk)
+# Load freesurfer from Neurodesk
 module load freesurfer/7.3.2
 
-# Container-based tools (via Singularity/Docker)
-# fmriprep 23.1.3: Comprehensive fMRI preprocessing
-# Available via Neurodesk or pull container:
-# singularity pull docker://nipreps/fmriprep:23.1.3
+# Verify freesurfer is loaded
+ml list
 
-# Verify installation
-ml list  # Check loaded modules
+# Check freesurfer commands are available
+which recon-all
+```
+
+#### Container-Based Tools
+
+**FMRIPREP 23.1.3**
+- **Purpose**: Comprehensive fMRI preprocessing pipeline
+- **Usage**: Automated workflow for motion correction, distortion correction, and normalization
+- **Access**: Available through Neurodesk or Singularity/Docker
+
+```bash
+# Option 1: Use via Neurodesk (recommended)
+# Check if fmriprep container is available in Neurodesk
+ls /cvmfs/neurodesk.ardc.edu.au/containers/fmriprep*/
+
+# Option 2: Pull container directly
+singularity pull docker://nipreps/fmriprep:23.1.3
+
+# Run fmriprep
+singularity run fmriprep_23.1.3.sif --help
+```
+
+#### Environment Verification
+
+```bash
+# Verify all tools are accessible
+ml list  # Should show loaded modules
+
+# Check system resources
+free -h  # Check available memory
+df -h .  # Check available disk space
 ```
 
 ## Step 1: Data Acquisition

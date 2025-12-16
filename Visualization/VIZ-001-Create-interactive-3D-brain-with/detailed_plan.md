@@ -18,16 +18,33 @@
 
 **Required Capabilities:** interactive_visualization_tools; advanced_visualization_tool
 
-### Tool Installation
+### Tool Installation and Setup
+
+This analysis requires the following tools:
+
+#### Python Packages
+
+**Visualization**
+- **Purpose**: Visualization libraries for brain imaging
+- **Usage**: Use for creating publication-quality figures and interactive plots
 
 ```bash
-# Tool Setup Instructions
-
-# Python packages
-pip install matplotlib plotly seaborn nilearn
+# Install Python packages
+pip install seaborn matplotlib nilearn plotly
 
 # Verify installation
-python -c "import matplotlib"  # Test Python imports
+python -c "import seaborn; print('Successfully imported')"
+```
+
+#### Environment Verification
+
+```bash
+# Verify all tools are accessible
+python -c "import seaborn"  # Should complete without error
+
+# Check system resources
+free -h  # Check available memory
+df -h .  # Check available disk space
 ```
 
 ## Step 1: Data Acquisition

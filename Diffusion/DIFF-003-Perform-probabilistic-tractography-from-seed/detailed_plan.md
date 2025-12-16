@@ -18,20 +18,37 @@
 
 **Required Capabilities:** fsl_bedpostx_tool; diffusion_tractography_tool
 
-### Tool Installation
+### Tool Installation and Setup
+
+This analysis requires the following tools:
+
+#### Neuroimaging Software (via Neurodesk)
+
+**FSL 6.0.5**
+- **Purpose**: FSL (FMRIB Software Library) provides tools for fMRI, MRI and DTI analysis
+- **Usage**: Use for brain extraction, registration, preprocessing, and analysis
+- **Loading**: Available through Neurodesk's module system
 
 ```bash
-# Tool Setup Instructions
-
-# Neuroimaging tools (available via Neurodesk)
+# Load fsl from Neurodesk
 module load fsl/6.0.5
 
-# Python packages
-pip install dipy
+# Verify fsl is loaded
+ml list
 
-# Verify installation
-ml list  # Check loaded modules
-python -c "import dipy"  # Test Python imports
+# Check fsl commands are available
+which fsl
+```
+
+#### Environment Verification
+
+```bash
+# Verify all tools are accessible
+ml list  # Should show loaded modules
+
+# Check system resources
+free -h  # Check available memory
+df -h .  # Check available disk space
 ```
 
 ## Step 1: Data Acquisition

@@ -18,20 +18,52 @@
 
 **Required Capabilities:** freesurfer_tool; conn_tool
 
-### Tool Installation
+### Tool Installation and Setup
+
+This analysis requires the following tools:
+
+#### Neuroimaging Software (via Neurodesk)
+
+**FREESURFER 7.3.2**
+- **Purpose**: FreeSurfer for cortical surface reconstruction and analysis
+- **Usage**: Use for surface-based morphometry and cortical parcellation
+- **Loading**: Available through Neurodesk's module system
 
 ```bash
-# Tool Setup Instructions
-
-# Neuroimaging tools (available via Neurodesk)
+# Load freesurfer from Neurodesk
 module load freesurfer/7.3.2
 
-# Python packages
-pip install nibabel scipy nilearn
+# Verify freesurfer is loaded
+ml list
+
+# Check freesurfer commands are available
+which recon-all
+```
+
+#### Python Packages
+
+**Connectivity**
+- **Purpose**: Tools for functional connectivity analysis
+- **Usage**: Use for computing correlation matrices and network analysis
+
+```bash
+# Install Python packages
+pip install nilearn scipy nibabel
 
 # Verify installation
-ml list  # Check loaded modules
-python -c "import nibabel"  # Test Python imports
+python -c "import nilearn; print('Successfully imported')"
+```
+
+#### Environment Verification
+
+```bash
+# Verify all tools are accessible
+ml list  # Should show loaded modules
+python -c "import nilearn"  # Should complete without error
+
+# Check system resources
+free -h  # Check available memory
+df -h .  # Check available disk space
 ```
 
 ## Step 1: Data Acquisition

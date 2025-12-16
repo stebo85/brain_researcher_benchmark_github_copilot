@@ -18,16 +18,37 @@
 
 **Required Capabilities:** mne_preprocessing_tool; mne_source_tool; mne_connectivity_tool
 
-### Tool Installation
+### Tool Installation and Setup
+
+This analysis requires the following tools:
+
+#### Python Packages
+
+**Mne**
+- **Purpose**: MNE-Python for MEG/EEG analysis
+- **Usage**: Use for preprocessing, source localization, and time-frequency analysis
+
+**Connectivity**
+- **Purpose**: Tools for functional connectivity analysis
+- **Usage**: Use for computing correlation matrices and network analysis
 
 ```bash
-# Tool Setup Instructions
-
-# Python packages
-pip install mne
+# Install Python packages
+pip install mne scipy nilearn nibabel
 
 # Verify installation
-python -c "import mne"  # Test Python imports
+python -c "import mne; print('Successfully imported')"
+```
+
+#### Environment Verification
+
+```bash
+# Verify all tools are accessible
+python -c "import mne"  # Should complete without error
+
+# Check system resources
+free -h  # Check available memory
+df -h .  # Check available disk space
 ```
 
 ## Step 1: Data Acquisition

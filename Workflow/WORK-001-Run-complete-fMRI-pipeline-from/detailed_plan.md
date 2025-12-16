@@ -18,21 +18,56 @@
 
 **Required Capabilities:** fmriprep_tool; nilearn_glm_tool; visualization_tool
 
-### Tool Installation
+### Tool Installation and Setup
+
+This analysis requires the following tools:
+
+#### Python Packages
+
+**Nilearn**
+- **Purpose**: Nilearn for statistical learning on neuroimaging data
+- **Usage**: Use for GLM analysis, decoding, connectivity, and plotting
+
+**Visualization**
+- **Purpose**: Visualization libraries for brain imaging
+- **Usage**: Use for creating publication-quality figures and interactive plots
 
 ```bash
-# Tool Setup Instructions
-
-# Python packages
-pip install plotly nibabel scikit-learn nilearn matplotlib seaborn
-
-# Container-based tools (via Singularity/Docker)
-# fmriprep 23.1.3: Comprehensive fMRI preprocessing
-# Available via Neurodesk or pull container:
-# singularity pull docker://nipreps/fmriprep:23.1.3
+# Install Python packages
+pip install matplotlib nilearn seaborn nibabel plotly scikit-learn
 
 # Verify installation
-python -c "import plotly"  # Test Python imports
+python -c "import matplotlib; print('Successfully imported')"
+```
+
+#### Container-Based Tools
+
+**FMRIPREP 23.1.3**
+- **Purpose**: Comprehensive fMRI preprocessing pipeline
+- **Usage**: Automated workflow for motion correction, distortion correction, and normalization
+- **Access**: Available through Neurodesk or Singularity/Docker
+
+```bash
+# Option 1: Use via Neurodesk (recommended)
+# Check if fmriprep container is available in Neurodesk
+ls /cvmfs/neurodesk.ardc.edu.au/containers/fmriprep*/
+
+# Option 2: Pull container directly
+singularity pull docker://nipreps/fmriprep:23.1.3
+
+# Run fmriprep
+singularity run fmriprep_23.1.3.sif --help
+```
+
+#### Environment Verification
+
+```bash
+# Verify all tools are accessible
+python -c "import matplotlib"  # Should complete without error
+
+# Check system resources
+free -h  # Check available memory
+df -h .  # Check available disk space
 ```
 
 ## Step 1: Data Acquisition

@@ -18,16 +18,37 @@
 
 **Required Capabilities:** afni_clustsim_tool; monte_carlo
 
-### Tool Installation
+### Tool Installation and Setup
+
+This analysis requires the following tools:
+
+#### Neuroimaging Software (via Neurodesk)
+
+**AFNI 22.3.06**
+- **Purpose**: AFNI (Analysis of Functional NeuroImages) for fMRI analysis
+- **Usage**: Use for motion correction, statistical analysis, and visualization
+- **Loading**: Available through Neurodesk's module system
 
 ```bash
-# Tool Setup Instructions
-
-# Neuroimaging tools (available via Neurodesk)
+# Load afni from Neurodesk
 module load afni/22.3.06
 
-# Verify installation
-ml list  # Check loaded modules
+# Verify afni is loaded
+ml list
+
+# Check afni commands are available
+which 3dvolreg
+```
+
+#### Environment Verification
+
+```bash
+# Verify all tools are accessible
+ml list  # Should show loaded modules
+
+# Check system resources
+free -h  # Check available memory
+df -h .  # Check available disk space
 ```
 
 ## Step 1: Data Acquisition

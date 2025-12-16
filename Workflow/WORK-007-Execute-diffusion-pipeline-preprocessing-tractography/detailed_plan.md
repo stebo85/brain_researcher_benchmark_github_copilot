@@ -18,21 +18,37 @@
 
 **Required Capabilities:** qsiprep_tool; diffusion_tractography_tool
 
-### Tool Installation
+### Tool Installation and Setup
+
+This analysis requires the following tools:
+
+#### Container-Based Tools
+
+**QSIPREP 0.18.1**
+- **Purpose**: Preprocessing pipeline for diffusion MRI
+- **Usage**: Automated DWI preprocessing, distortion correction, and reconstruction
+- **Access**: Available through Neurodesk or Singularity/Docker
 
 ```bash
-# Tool Setup Instructions
+# Option 1: Use via Neurodesk (recommended)
+# Check if qsiprep container is available in Neurodesk
+ls /cvmfs/neurodesk.ardc.edu.au/containers/qsiprep*/
 
-# Python packages
-pip install dipy
+# Option 2: Pull container directly
+singularity pull docker://nipreps/qsiprep:0.18.1
 
-# Container-based tools (via Singularity/Docker)
-# qsiprep 0.18.1: Diffusion MRI preprocessing
-# Available via Neurodesk or pull container:
-# singularity pull docker://nipreps/qsiprep:0.18.1
+# Run qsiprep
+singularity run qsiprep_0.18.1.sif --help
+```
 
-# Verify installation
-python -c "import dipy"  # Test Python imports
+#### Environment Verification
+
+```bash
+# Verify all tools are accessible
+
+# Check system resources
+free -h  # Check available memory
+df -h .  # Check available disk space
 ```
 
 ## Step 1: Data Acquisition

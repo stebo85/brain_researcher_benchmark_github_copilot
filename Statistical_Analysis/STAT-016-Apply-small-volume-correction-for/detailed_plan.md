@@ -18,16 +18,34 @@
 
 **Required Capabilities:** svc_tool; roi_correction
 
-### Tool Installation
+### Tool Installation and Setup
+
+This analysis requires the following tools:
+
+#### Required Tools
+
+The specific tools needed are listed in the **Required Capabilities** section above.
 
 ```bash
-# Tool Setup Instructions
+# Search for available tools in Neurodesk
+ml av  # List all available modules
+ml av <toolname>  # Search for specific tool
 
-# Install required tools based on task requirements
-# Use 'ml av' to see available Neurodesk modules
-# Use 'pip install <package>' for Python packages
+# Load required tools
+module load <toolname>/<version>
 
-# Verify installation
+# Install Python packages if needed
+pip install <package-name>
+```
+
+#### Environment Verification
+
+```bash
+# Verify all tools are accessible
+
+# Check system resources
+free -h  # Check available memory
+df -h .  # Check available disk space
 ```
 
 ## Step 1: Data Acquisition

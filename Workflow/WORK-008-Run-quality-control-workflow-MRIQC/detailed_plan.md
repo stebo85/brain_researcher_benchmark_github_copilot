@@ -18,17 +18,37 @@
 
 **Required Capabilities:** mriqc_tool; qc_tools
 
-### Tool Installation
+### Tool Installation and Setup
+
+This analysis requires the following tools:
+
+#### Container-Based Tools
+
+**MRIQC 23.1.0**
+- **Purpose**: Automated quality control for MRI
+- **Usage**: Generate quality metrics and visual reports for anatomical and functional scans
+- **Access**: Available through Neurodesk or Singularity/Docker
 
 ```bash
-# Tool Setup Instructions
+# Option 1: Use via Neurodesk (recommended)
+# Check if mriqc container is available in Neurodesk
+ls /cvmfs/neurodesk.ardc.edu.au/containers/mriqc*/
 
-# Container-based tools (via Singularity/Docker)
-# mriqc 23.1.0: MRI quality control
-# Available via Neurodesk or pull container:
-# singularity pull docker://nipreps/mriqc:23.1.0
+# Option 2: Pull container directly
+singularity pull docker://nipreps/mriqc:23.1.0
 
-# Verify installation
+# Run mriqc
+singularity run mriqc_23.1.0.sif --help
+```
+
+#### Environment Verification
+
+```bash
+# Verify all tools are accessible
+
+# Check system resources
+free -h  # Check available memory
+df -h .  # Check available disk space
 ```
 
 ## Step 1: Data Acquisition

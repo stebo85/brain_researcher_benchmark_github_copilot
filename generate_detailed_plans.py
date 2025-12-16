@@ -111,8 +111,8 @@ def get_data_fetching_instructions(data_key: str, input_data: str) -> str:
     return '\n'.join(instructions)
 
 
-def get_tool_setup_instructions(capability: str) -> str:
-    """Generate tool setup instructions based on expected capabilities."""
+def get_tool_setup_instructions(capability: str, user_prompt: str, context: str) -> str:
+    """Generate detailed tool setup instructions based on expected capabilities."""
     if not capability:
         return ""
     
@@ -120,95 +120,257 @@ def get_tool_setup_instructions(capability: str) -> str:
     neurodesk_tools = []
     python_packages = []
     container_tools = []
+    tool_details = {}  # Store detailed information about each tool
     
     tools = [t.strip() for t in capability.split(';')]
     
-    # Map tools to their installation methods
+    # Map tools to their installation methods with detailed usage info
     for tool in tools:
         tool_lower = tool.lower()
         
         # Neuroimaging tools available in Neurodesk
         if 'fsl' in tool_lower:
             neurodesk_tools.append(('fsl', '6.0.5'))
+            tool_details['fsl'] = {
+                'purpose': 'FSL (FMRIB Software Library) provides tools for fMRI, MRI and DTI analysis',
+                'commands': ['fsl', 'bet', 'flirt', 'feat', 'eddy', 'topup'],
+                'location': 'Available via Neurodesk module system',
+                'usage': 'Use for brain extraction, registration, preprocessing, and analysis'
+            }
         elif 'freesurfer' in tool_lower:
             neurodesk_tools.append(('freesurfer', '7.3.2'))
+            tool_details['freesurfer'] = {
+                'purpose': 'FreeSurfer for cortical surface reconstruction and analysis',
+                'commands': ['recon-all', 'mris_convert', 'mri_convert', 'freeview'],
+                'location': 'Available via Neurodesk module system',
+                'usage': 'Use for surface-based morphometry and cortical parcellation'
+            }
         elif 'ants' in tool_lower:
             neurodesk_tools.append(('ants', '2.3.5'))
+            tool_details['ants'] = {
+                'purpose': 'ANTs (Advanced Normalization Tools) for registration and normalization',
+                'commands': ['antsRegistration', 'antsApplyTransforms', 'N4BiasFieldCorrection'],
+                'location': 'Available via Neurodesk module system',
+                'usage': 'Use for image registration, segmentation, and bias correction'
+            }
         elif 'afni' in tool_lower:
             neurodesk_tools.append(('afni', '22.3.06'))
+            tool_details['afni'] = {
+                'purpose': 'AFNI (Analysis of Functional NeuroImages) for fMRI analysis',
+                'commands': ['3dvolreg', '3dTstat', '3dClustSim', '3dDeconvolve'],
+                'location': 'Available via Neurodesk module system',
+                'usage': 'Use for motion correction, statistical analysis, and visualization'
+            }
         elif 'mrtrix' in tool_lower or 'mrtrix3' in tool_lower:
             neurodesk_tools.append(('mrtrix3', '3.0.3'))
+            tool_details['mrtrix3'] = {
+                'purpose': 'MRtrix3 for diffusion MRI analysis and tractography',
+                'commands': ['dwi2tensor', 'tckgen', 'dwi2fod', 'mrconvert'],
+                'location': 'Available via Neurodesk module system',
+                'usage': 'Use for fiber tracking, fixel-based analysis, and DTI modeling'
+            }
         elif 'spm' in tool_lower:
             neurodesk_tools.append(('spm12', '12.7219'))
-        elif 'dipy' in tool_lower or 'diffusion' in tool_lower:
-            python_packages.append('dipy')
-        elif 'mne' in tool_lower or 'meg' in tool_lower or 'eeg' in tool_lower:
-            python_packages.append('mne')
+            tool_details['spm12'] = {
+                'purpose': 'SPM12 (Statistical Parametric Mapping) for fMRI/PET analysis',
+                'commands': ['matlab -batch "spm"', 'spm_standalone'],
+                'location': 'Available via Neurodesk module system',
+                'usage': 'Use for preprocessing, statistical modeling, and group analysis'
+            }
         
         # Python-based analysis tools
-        elif 'nilearn' in tool_lower or 'glm' in tool_lower:
+        if 'nilearn' in tool_lower or 'glm' in tool_lower:
             python_packages.extend(['nilearn', 'nibabel', 'scikit-learn'])
+            tool_details['nilearn'] = {
+                'purpose': 'Nilearn for statistical learning on neuroimaging data',
+                'usage': 'Use for GLM analysis, decoding, connectivity, and plotting'
+            }
         elif 'pytorch' in tool_lower or 'dl_pytorch' in tool_lower or 'cnn' in tool_lower or '3d_cnn' in tool_lower:
             python_packages.extend(['torch', 'torchvision', 'nibabel'])
+            tool_details['pytorch'] = {
+                'purpose': 'PyTorch for deep learning on brain imaging data',
+                'usage': 'Use for 3D CNNs, classification, and custom neural network architectures'
+            }
         elif 'tensorflow' in tool_lower:
             python_packages.extend(['tensorflow', 'nibabel'])
+            tool_details['tensorflow'] = {
+                'purpose': 'TensorFlow for deep learning applications',
+                'usage': 'Use for building and training neural networks on imaging data'
+            }
         elif 'sklearn' in tool_lower or 'svm' in tool_lower or 'classification' in tool_lower or 'regression' in tool_lower:
             python_packages.extend(['scikit-learn', 'nibabel', 'nilearn'])
+            tool_details['sklearn'] = {
+                'purpose': 'Scikit-learn for machine learning on brain features',
+                'usage': 'Use for SVM, random forests, regression, and cross-validation'
+            }
         elif 'connectivity' in tool_lower or 'conn_' in tool_lower:
             python_packages.extend(['nilearn', 'nibabel', 'scipy'])
+            tool_details['connectivity'] = {
+                'purpose': 'Tools for functional connectivity analysis',
+                'usage': 'Use for computing correlation matrices and network analysis'
+            }
         elif 'visualization' in tool_lower or 'plotting' in tool_lower:
             python_packages.extend(['nilearn', 'matplotlib', 'seaborn', 'plotly'])
+            tool_details['visualization'] = {
+                'purpose': 'Visualization libraries for brain imaging',
+                'usage': 'Use for creating publication-quality figures and interactive plots'
+            }
+        elif 'dipy' in tool_lower:
+            python_packages.append('dipy')
+            tool_details['dipy'] = {
+                'purpose': 'DIPY for diffusion MRI analysis',
+                'usage': 'Use for tractography, tensor fitting, and DWI preprocessing'
+            }
+        elif 'mne' in tool_lower or 'meg' in tool_lower or 'eeg' in tool_lower:
+            python_packages.append('mne')
+            tool_details['mne'] = {
+                'purpose': 'MNE-Python for MEG/EEG analysis',
+                'usage': 'Use for preprocessing, source localization, and time-frequency analysis'
+            }
         
         # Container-based tools
-        elif 'fmriprep' in tool_lower:
-            container_tools.append(('fmriprep', '23.1.3', 'Comprehensive fMRI preprocessing'))
+        if 'fmriprep' in tool_lower:
+            container_tools.append(('fmriprep', '23.1.3', 'Comprehensive fMRI preprocessing pipeline'))
+            tool_details['fmriprep'] = {
+                'purpose': 'fMRIPrep - robust preprocessing pipeline for fMRI data',
+                'usage': 'Automated workflow for motion correction, distortion correction, and normalization',
+                'container': True
+            }
         elif 'mriqc' in tool_lower:
-            container_tools.append(('mriqc', '23.1.0', 'MRI quality control'))
+            container_tools.append(('mriqc', '23.1.0', 'Automated quality control for MRI'))
+            tool_details['mriqc'] = {
+                'purpose': 'MRIQC - automated quality assessment for MRI data',
+                'usage': 'Generate quality metrics and visual reports for anatomical and functional scans',
+                'container': True
+            }
         elif 'qsiprep' in tool_lower:
-            container_tools.append(('qsiprep', '0.18.1', 'Diffusion MRI preprocessing'))
+            container_tools.append(('qsiprep', '0.18.1', 'Preprocessing pipeline for diffusion MRI'))
+            tool_details['qsiprep'] = {
+                'purpose': 'QSIPrep - preprocessing and reconstruction of diffusion MRI',
+                'usage': 'Automated DWI preprocessing, distortion correction, and reconstruction',
+                'container': True
+            }
     
     # Remove duplicates
     python_packages = list(set(python_packages))
     
-    # Generate instructions
-    instructions.append("```bash")
-    instructions.append("# Tool Setup Instructions")
+    # Generate detailed instructions
+    instructions.append("### Tool Installation and Setup")
+    instructions.append("")
+    instructions.append("This analysis requires the following tools:")
     instructions.append("")
     
+    # Section 1: Neurodesk tools with detailed explanations
     if neurodesk_tools:
-        instructions.append("# Neuroimaging tools (available via Neurodesk)")
-        for tool_name, version in neurodesk_tools:
-            instructions.append(f"module load {tool_name}/{version}")
+        instructions.append("#### Neuroimaging Software (via Neurodesk)")
         instructions.append("")
+        for tool_name, version in neurodesk_tools:
+            details = tool_details.get(tool_name, {})
+            instructions.append(f"**{tool_name.upper()} {version}**")
+            if 'purpose' in details:
+                instructions.append(f"- **Purpose**: {details['purpose']}")
+            if 'usage' in details:
+                instructions.append(f"- **Usage**: {details['usage']}")
+            instructions.append(f"- **Loading**: Available through Neurodesk's module system")
+            instructions.append("")
+            instructions.append("```bash")
+            instructions.append(f"# Load {tool_name} from Neurodesk")
+            instructions.append(f"module load {tool_name}/{version}")
+            instructions.append("")
+            instructions.append(f"# Verify {tool_name} is loaded")
+            instructions.append("ml list")
+            if 'commands' in details:
+                instructions.append("")
+                instructions.append(f"# Check {tool_name} commands are available")
+                instructions.append(f"which {details['commands'][0]}")
+            instructions.append("```")
+            instructions.append("")
     
+    # Section 2: Python packages with detailed explanations
     if python_packages:
-        instructions.append("# Python packages")
+        instructions.append("#### Python Packages")
+        instructions.append("")
+        # Group related packages
+        for key, details in tool_details.items():
+            if key in ['nilearn', 'pytorch', 'tensorflow', 'sklearn', 'connectivity', 'visualization', 'dipy', 'mne']:
+                if not details.get('container'):
+                    instructions.append(f"**{key.title()}**")
+                    if 'purpose' in details:
+                        instructions.append(f"- **Purpose**: {details['purpose']}")
+                    if 'usage' in details:
+                        instructions.append(f"- **Usage**: {details['usage']}")
+                    instructions.append("")
+        
+        instructions.append("```bash")
+        instructions.append("# Install Python packages")
         packages_str = ' '.join(python_packages)
         instructions.append(f"pip install {packages_str}")
         instructions.append("")
+        instructions.append("# Verify installation")
+        instructions.append(f"python -c \"import {python_packages[0].replace('-', '_')}; print('Successfully imported')\"")
+        instructions.append("```")
+        instructions.append("")
     
+    # Section 3: Container-based tools with detailed usage
     if container_tools:
-        instructions.append("# Container-based tools (via Singularity/Docker)")
+        instructions.append("#### Container-Based Tools")
+        instructions.append("")
         for tool_name, version, description in container_tools:
-            instructions.append(f"# {tool_name} {version}: {description}")
-            instructions.append(f"# Available via Neurodesk or pull container:")
-            instructions.append(f"# singularity pull docker://nipreps/{tool_name}:{version}")
-        instructions.append("")
+            details = tool_details.get(tool_name, {})
+            instructions.append(f"**{tool_name.upper()} {version}**")
+            instructions.append(f"- **Purpose**: {description}")
+            if 'usage' in details:
+                instructions.append(f"- **Usage**: {details['usage']}")
+            instructions.append("- **Access**: Available through Neurodesk or Singularity/Docker")
+            instructions.append("")
+            instructions.append("```bash")
+            instructions.append(f"# Option 1: Use via Neurodesk (recommended)")
+            instructions.append(f"# Check if {tool_name} container is available in Neurodesk")
+            instructions.append(f"ls /cvmfs/neurodesk.ardc.edu.au/containers/{tool_name}*/")
+            instructions.append("")
+            instructions.append(f"# Option 2: Pull container directly")
+            instructions.append(f"singularity pull docker://nipreps/{tool_name}:{version}")
+            instructions.append("")
+            instructions.append(f"# Run {tool_name}")
+            instructions.append(f"singularity run {tool_name}_{version}.sif --help")
+            instructions.append("```")
+            instructions.append("")
     
-    # Generic note if no specific tools were matched
+    # Section 4: Generic setup for unmatched tools
     if not neurodesk_tools and not python_packages and not container_tools:
-        instructions.append("# Install required tools based on task requirements")
-        instructions.append("# Use 'ml av' to see available Neurodesk modules")
-        instructions.append("# Use 'pip install <package>' for Python packages")
+        instructions.append("#### Required Tools")
+        instructions.append("")
+        instructions.append("The specific tools needed are listed in the **Required Capabilities** section above.")
+        instructions.append("")
+        instructions.append("```bash")
+        instructions.append("# Search for available tools in Neurodesk")
+        instructions.append("ml av  # List all available modules")
+        instructions.append("ml av <toolname>  # Search for specific tool")
+        instructions.append("")
+        instructions.append("# Load required tools")
+        instructions.append("module load <toolname>/<version>")
+        instructions.append("")
+        instructions.append("# Install Python packages if needed")
+        instructions.append("pip install <package-name>")
+        instructions.append("```")
         instructions.append("")
     
-    instructions.append("# Verify installation")
+    # Section 5: Final verification
+    instructions.append("#### Environment Verification")
+    instructions.append("")
+    instructions.append("```bash")
+    instructions.append("# Verify all tools are accessible")
     if neurodesk_tools:
-        instructions.append("ml list  # Check loaded modules")
+        instructions.append("ml list  # Should show loaded modules")
     if python_packages:
-        instructions.append("python -c \"import " + python_packages[0].replace('-', '_') + "\"  # Test Python imports")
-    
+        instructions.append(f"python -c \"import {python_packages[0].replace('-', '_')}\"  # Should complete without error")
+    instructions.append("")
+    instructions.append("# Check system resources")
+    instructions.append("free -h  # Check available memory")
+    instructions.append("df -h .  # Check available disk space")
     instructions.append("```")
+    instructions.append("")
+    
     return '\n'.join(instructions)
 
 
@@ -503,12 +665,13 @@ def generate_detailed_plan(fields: Dict[str, str]) -> str:
     plan.append("")
     
     # Tool Setup
-    tool_setup = get_tool_setup_instructions(fields.get('capability', ''))
+    tool_setup = get_tool_setup_instructions(
+        fields.get('capability', ''),
+        fields.get('user_prompt', ''),
+        fields.get('context', '')
+    )
     if tool_setup:
-        plan.append("### Tool Installation")
-        plan.append("")
         plan.append(tool_setup)
-        plan.append("")
     
     # Data Fetching
     plan.append("## Step 1: Data Acquisition")

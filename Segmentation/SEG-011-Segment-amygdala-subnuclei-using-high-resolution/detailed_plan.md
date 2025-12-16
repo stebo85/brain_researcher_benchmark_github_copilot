@@ -18,16 +18,37 @@
 
 **Required Capabilities:** freesurfer_amygdala_tool; subnuclei
 
-### Tool Installation
+### Tool Installation and Setup
+
+This analysis requires the following tools:
+
+#### Neuroimaging Software (via Neurodesk)
+
+**FREESURFER 7.3.2**
+- **Purpose**: FreeSurfer for cortical surface reconstruction and analysis
+- **Usage**: Use for surface-based morphometry and cortical parcellation
+- **Loading**: Available through Neurodesk's module system
 
 ```bash
-# Tool Setup Instructions
-
-# Neuroimaging tools (available via Neurodesk)
+# Load freesurfer from Neurodesk
 module load freesurfer/7.3.2
 
-# Verify installation
-ml list  # Check loaded modules
+# Verify freesurfer is loaded
+ml list
+
+# Check freesurfer commands are available
+which recon-all
+```
+
+#### Environment Verification
+
+```bash
+# Verify all tools are accessible
+ml list  # Should show loaded modules
+
+# Check system resources
+free -h  # Check available memory
+df -h .  # Check available disk space
 ```
 
 ## Step 1: Data Acquisition

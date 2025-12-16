@@ -18,16 +18,37 @@
 
 **Required Capabilities:** connectivity_tool; nilearn_signal_extraction
 
-### Tool Installation
+### Tool Installation and Setup
+
+This analysis requires the following tools:
+
+#### Python Packages
+
+**Connectivity**
+- **Purpose**: Tools for functional connectivity analysis
+- **Usage**: Use for computing correlation matrices and network analysis
+
+**Nilearn**
+- **Purpose**: Nilearn for statistical learning on neuroimaging data
+- **Usage**: Use for GLM analysis, decoding, connectivity, and plotting
 
 ```bash
-# Tool Setup Instructions
-
-# Python packages
-pip install scikit-learn nibabel scipy nilearn
+# Install Python packages
+pip install scikit-learn nilearn scipy nibabel
 
 # Verify installation
-python -c "import scikit_learn"  # Test Python imports
+python -c "import scikit_learn; print('Successfully imported')"
+```
+
+#### Environment Verification
+
+```bash
+# Verify all tools are accessible
+python -c "import scikit_learn"  # Should complete without error
+
+# Check system resources
+free -h  # Check available memory
+df -h .  # Check available disk space
 ```
 
 ## Step 1: Data Acquisition

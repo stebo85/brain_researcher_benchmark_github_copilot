@@ -18,16 +18,37 @@
 
 **Required Capabilities:** mne_timefreq_tool; advanced_visualization_tool
 
-### Tool Installation
+### Tool Installation and Setup
+
+This analysis requires the following tools:
+
+#### Python Packages
+
+**Mne**
+- **Purpose**: MNE-Python for MEG/EEG analysis
+- **Usage**: Use for preprocessing, source localization, and time-frequency analysis
+
+**Visualization**
+- **Purpose**: Visualization libraries for brain imaging
+- **Usage**: Use for creating publication-quality figures and interactive plots
 
 ```bash
-# Tool Setup Instructions
-
-# Python packages
-pip install plotly nilearn mne matplotlib seaborn
+# Install Python packages
+pip install matplotlib nilearn seaborn mne plotly
 
 # Verify installation
-python -c "import plotly"  # Test Python imports
+python -c "import matplotlib; print('Successfully imported')"
+```
+
+#### Environment Verification
+
+```bash
+# Verify all tools are accessible
+python -c "import matplotlib"  # Should complete without error
+
+# Check system resources
+free -h  # Check available memory
+df -h .  # Check available disk space
 ```
 
 ## Step 1: Data Acquisition

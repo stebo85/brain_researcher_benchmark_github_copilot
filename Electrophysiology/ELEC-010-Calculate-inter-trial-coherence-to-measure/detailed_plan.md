@@ -18,16 +18,33 @@
 
 **Required Capabilities:** mne_timefreq_tool; coherence_analysis
 
-### Tool Installation
+### Tool Installation and Setup
+
+This analysis requires the following tools:
+
+#### Python Packages
+
+**Mne**
+- **Purpose**: MNE-Python for MEG/EEG analysis
+- **Usage**: Use for preprocessing, source localization, and time-frequency analysis
 
 ```bash
-# Tool Setup Instructions
-
-# Python packages
+# Install Python packages
 pip install mne
 
 # Verify installation
-python -c "import mne"  # Test Python imports
+python -c "import mne; print('Successfully imported')"
+```
+
+#### Environment Verification
+
+```bash
+# Verify all tools are accessible
+python -c "import mne"  # Should complete without error
+
+# Check system resources
+free -h  # Check available memory
+df -h .  # Check available disk space
 ```
 
 ## Step 1: Data Acquisition

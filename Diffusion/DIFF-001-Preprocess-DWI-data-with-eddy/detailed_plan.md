@@ -18,21 +18,56 @@
 
 **Required Capabilities:** qsiprep_tool; fsl_eddy
 
-### Tool Installation
+### Tool Installation and Setup
+
+This analysis requires the following tools:
+
+#### Neuroimaging Software (via Neurodesk)
+
+**FSL 6.0.5**
+- **Purpose**: FSL (FMRIB Software Library) provides tools for fMRI, MRI and DTI analysis
+- **Usage**: Use for brain extraction, registration, preprocessing, and analysis
+- **Loading**: Available through Neurodesk's module system
 
 ```bash
-# Tool Setup Instructions
-
-# Neuroimaging tools (available via Neurodesk)
+# Load fsl from Neurodesk
 module load fsl/6.0.5
 
-# Container-based tools (via Singularity/Docker)
-# qsiprep 0.18.1: Diffusion MRI preprocessing
-# Available via Neurodesk or pull container:
-# singularity pull docker://nipreps/qsiprep:0.18.1
+# Verify fsl is loaded
+ml list
 
-# Verify installation
-ml list  # Check loaded modules
+# Check fsl commands are available
+which fsl
+```
+
+#### Container-Based Tools
+
+**QSIPREP 0.18.1**
+- **Purpose**: Preprocessing pipeline for diffusion MRI
+- **Usage**: Automated DWI preprocessing, distortion correction, and reconstruction
+- **Access**: Available through Neurodesk or Singularity/Docker
+
+```bash
+# Option 1: Use via Neurodesk (recommended)
+# Check if qsiprep container is available in Neurodesk
+ls /cvmfs/neurodesk.ardc.edu.au/containers/qsiprep*/
+
+# Option 2: Pull container directly
+singularity pull docker://nipreps/qsiprep:0.18.1
+
+# Run qsiprep
+singularity run qsiprep_0.18.1.sif --help
+```
+
+#### Environment Verification
+
+```bash
+# Verify all tools are accessible
+ml list  # Should show loaded modules
+
+# Check system resources
+free -h  # Check available memory
+df -h .  # Check available disk space
 ```
 
 ## Step 1: Data Acquisition

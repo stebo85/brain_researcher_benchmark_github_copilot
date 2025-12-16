@@ -18,16 +18,33 @@
 
 **Required Capabilities:** connectivity_tool; centrality_analysis
 
-### Tool Installation
+### Tool Installation and Setup
+
+This analysis requires the following tools:
+
+#### Python Packages
+
+**Connectivity**
+- **Purpose**: Tools for functional connectivity analysis
+- **Usage**: Use for computing correlation matrices and network analysis
 
 ```bash
-# Tool Setup Instructions
-
-# Python packages
-pip install nibabel scipy nilearn
+# Install Python packages
+pip install nilearn scipy nibabel
 
 # Verify installation
-python -c "import nibabel"  # Test Python imports
+python -c "import nilearn; print('Successfully imported')"
+```
+
+#### Environment Verification
+
+```bash
+# Verify all tools are accessible
+python -c "import nilearn"  # Should complete without error
+
+# Check system resources
+free -h  # Check available memory
+df -h .  # Check available disk space
 ```
 
 ## Step 1: Data Acquisition
