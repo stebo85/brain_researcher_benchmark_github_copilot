@@ -1,6 +1,6 @@
 # Brain Researcher Benchmark - Dashboard
 
-**Last Updated:** 2025-12-16 01:25:49 UTC
+**Last Updated:** 2025-12-16 02:21:08 UTC
 
 ## 📊 Summary
 
@@ -33,7 +33,7 @@
 | DATA-019-Monitor-and-log-dataset-access | ✅ | 4 / 2 |
 | DATA-020-Migrate-SPM-multimodal-dataset-to | ✅ | 4 / 2 |
 | DL-001-Train-3D-CNN-for-ADHD | ✅ | 5 / 2 |
-| ML-001-Train-SVM-classifier-to-decode | ✅ | 4 / 2 |
+| ML-001-Train-SVM-classifier-to-decode | ✅ | 5 / 2 |
 | ML-003-Perform-cross-validated-age-prediction-from | ✅ | 4 / 2 |
 | ML-006-Perform-nested-cross-validation-with-hyperparameter | ✅ | 4 / 2 |
 | META-012-Perform-leave-one-out-meta-analysis-to-identify | ✅ | 5 / 2 |
