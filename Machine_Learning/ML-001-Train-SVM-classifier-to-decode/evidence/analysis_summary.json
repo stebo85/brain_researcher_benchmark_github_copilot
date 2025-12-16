@@ -2,7 +2,7 @@
   "task_id": "ML-001",
   "task_name": "Train SVM classifier to decode object categories from Haxby VT cortex",
   "dataset": "Haxby dataset",
-  "timestamp": "2025-12-15T08:32:18.700147",
+  "timestamp": "2025-12-15T22:42:04.966239",
   "status": "completed",
   "n_samples": 864,
   "n_features": 464,
@@ -20,7 +20,7 @@
   "metrics": {
     "cv_accuracy_mean": 0.893560962494959,
     "cv_accuracy_std": 0.03621938480082089,
-    "training_accuracy": 1.0,
+    "cv_prediction_accuracy": 0.8935185185185185,
     "cv_scores": [
       0.930635838150289,
       0.884393063583815,
@@ -31,4 +31,13 @@
   },
   "acceptance_criteria": {
     "cv_accuracy_threshold": 0.7,
-    "cv_accuracy_passed": 
+    "cv_accuracy_passed": true
+  },
+  "model": {
+    "type": "SVC",
+    "kernel": "linear",
+    "C": 1.0
+  },
+  "region": "Ventral Temporal Cortex",
+  "note": "Confusion matrix and category accuracies based on cross-validated predictions, not training data"
+}
